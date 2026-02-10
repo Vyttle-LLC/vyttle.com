@@ -2,6 +2,7 @@ import { ReactNode } from "react";
 import Nav from "./Nav";
 import Footer from "./Footer";
 import ComingSoonBadge from "./ComingSoonBadge";
+import ScreenshotCarousel from "./ScreenshotCarousel";
 import Link from "next/link";
 import { VyttleApp } from "@/lib/apps";
 
@@ -75,31 +76,8 @@ export default function AppPageLayout({
             {/* Coming Soon */}
             <ComingSoonBadge color={app.accent} />
 
-            {/* Screenshot Placeholder */}
-            <div className="mt-12 flex gap-6 justify-center">
-              {[1, 2, 3].map((i) => (
-                <div
-                  key={i}
-                  className="w-[140px] h-[280px] md:w-[180px] md:h-[360px] rounded-3xl flex items-center justify-center transition-all duration-400"
-                  style={{
-                    border: "1px solid var(--border)",
-                    background: "var(--bg-card)",
-                  }}
-                >
-                  <span
-                    className="text-[10px] font-light uppercase"
-                    style={{
-                      fontFamily: "var(--font-dm-sans), DM Sans, sans-serif",
-                      letterSpacing: "2px",
-                      color: "var(--text-tertiary)",
-                      writingMode: "vertical-rl",
-                    }}
-                  >
-                    Screenshot
-                  </span>
-                </div>
-              ))}
-            </div>
+            {/* Screenshot Carousel */}
+            <ScreenshotCarousel />
           </div>
 
           {/* About Section */}
