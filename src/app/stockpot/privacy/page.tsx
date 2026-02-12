@@ -39,7 +39,7 @@ export default function StockpotPrivacyPage() {
             Stockpot uses Apple&apos;s iCloud service to store and sync your
             recipes. This data is stored in your personal iCloud account,
             encrypted in transit and at rest by Apple, and never accessible to
-            Vyttle. We do not operate any servers that store your recipes or
+            Vyttle LLC. We do not operate any servers that store your recipes or
             personal information.
           </p>
 

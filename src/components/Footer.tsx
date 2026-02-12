@@ -60,7 +60,7 @@ export default function Footer() {
             color: "var(--text-tertiary)",
           }}
         >
-          &copy; 2026 Vyttle
+          &copy; 2026 Vyttle LLC
         </span>
       </div>
     </footer>

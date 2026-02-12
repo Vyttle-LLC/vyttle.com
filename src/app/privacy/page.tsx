@@ -54,10 +54,10 @@ export default function PrivacyPage() {
             issue is resolved.
           </p>
 
-          <h2>App Privacy</h2>
+          <h2>App &amp; Product Privacy</h2>
           <p>
-            Each of our apps has its own privacy policy that describes how the
-            app handles your data:
+            Each of our apps and products has its own privacy policy that
+            describes how it handles your data:
           </p>
           <ul>
             <li>
@@ -70,6 +70,9 @@ export default function PrivacyPage() {
             </li>
             <li>
               <Link href="/bramble/privacy">Bramble Privacy Policy</Link>
+            </li>
+            <li>
+              <Link href="/reviso/privacy">Reviso Privacy Policy</Link>
             </li>
           </ul>
 

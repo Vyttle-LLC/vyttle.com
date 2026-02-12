@@ -50,7 +50,7 @@ export default function TermsPage() {
           <h2>Intellectual Property</h2>
           <p>
             All content, features, and functionality of Vyttle apps and this
-            website are owned by Vyttle and protected by copyright, trademark,
+            website are owned by Vyttle LLC and protected by copyright, trademark,
             and other intellectual property laws.
           </p>
 
@@ -64,7 +64,7 @@ export default function TermsPage() {
 
           <h2>Limitation of Liability</h2>
           <p>
-            Vyttle shall not be liable for any indirect, incidental, special,
+            Vyttle LLC shall not be liable for any indirect, incidental, special,
             consequential, or punitive damages resulting from your use of or
             inability to use our apps or website.
           </p>

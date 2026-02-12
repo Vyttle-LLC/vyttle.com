@@ -40,7 +40,7 @@ export default function RevisoPrivacyPage() {
             environment. When a pull request is opened, the Action fetches the
             diff and file context on your runner, sends it to the AI provider
             you configured (using your API key), and posts the review comments
-            back to GitHub. At no point does your code pass through Vyttle
+            back to GitHub. At no point does your code pass through Vyttle LLC
             infrastructure.
           </p>
 
