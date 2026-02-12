@@ -20,6 +20,8 @@
   --tomato-light: #E8A99E;
   --bramble-purple: #7B5EA7;
   --bramble-light: #B89DD4;
+  --cyan: #22D3EE;
+  --cyan-light: #A5F3FC;
 
   /* Theme — defaults to dark */
   --bg-primary: var(--midnight);
@@ -67,6 +69,8 @@
   --color-tomato-light: #E8A99E;
   --color-bramble: #7B5EA7;
   --color-bramble-light: #B89DD4;
+  --color-cyan: #22D3EE;
+  --color-cyan-light: #A5F3FC;
 
   --animate-float: float 6s ease-in-out infinite;
   --animate-pulse-dot: pulse-dot 2s ease-in-out infinite;

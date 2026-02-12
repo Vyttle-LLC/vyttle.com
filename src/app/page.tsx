@@ -5,7 +5,8 @@ import VyttleMark from "@/components/marks/VyttleMark";
 import SixteenToOneMark from "@/components/marks/SixteenToOneMark";
 import StockpotMark from "@/components/marks/StockpotMark";
 import BrambleMark from "@/components/marks/BrambleMark";
-import { apps } from "@/lib/apps";
+import RevisoMark from "@/components/marks/RevisoMark";
+import { apps, getAppsByType } from "@/lib/apps";
 
 export default function HomePage() {
   return (
@@ -93,7 +94,7 @@ export default function HomePage() {
               color: "var(--text-tertiary)",
             }}
           >
-            Our apps
+            Explore
           </span>
           <div
             className="w-px h-8"
@@ -105,8 +106,8 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ==================== APP CARDS ==================== */}
-      <section className="py-28 md:py-32 px-6 md:px-12 max-w-[1200px] mx-auto">
+      {/* ==================== OUR APPS ==================== */}
+      <section className="pt-28 md:pt-32 pb-16 md:pb-20 px-6 md:px-12 max-w-[1200px] mx-auto">
         <div
           className="text-center mb-14"
           style={{
@@ -119,7 +120,7 @@ export default function HomePage() {
             transition: "color 0.4s ease",
           }}
         >
-          What we&apos;re building
+          Our Apps
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -167,6 +168,43 @@ export default function HomePage() {
             }
             accentColor={apps[2].accent}
           />
+        </div>
+      </section>
+
+      {/* ==================== OUR PRODUCTS ==================== */}
+      <section className="pb-28 md:pb-32 px-6 md:px-12 max-w-[1200px] mx-auto">
+        <div
+          className="text-center mb-14"
+          style={{
+            fontFamily: "var(--font-dm-sans), DM Sans, sans-serif",
+            fontWeight: 300,
+            fontSize: "11px",
+            letterSpacing: "4px",
+            textTransform: "uppercase",
+            color: "var(--text-tertiary)",
+            transition: "color 0.4s ease",
+          }}
+        >
+          Our Products
+        </div>
+
+        <div className="flex justify-center">
+          <div className="w-full max-w-[380px]">
+            <AppCard
+              name={apps[3].name}
+              tagline={apps[3].tagline}
+              href={`/${apps[3].slug}`}
+              logomark={
+                <RevisoMark
+                  size={60}
+                  color={apps[3].accent}
+                  className="transition-colors duration-400"
+                  style={{ color: "var(--text-tertiary)" }}
+                />
+              }
+              accentColor={apps[3].accent}
+            />
+          </div>
         </div>
       </section>
 
