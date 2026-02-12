@@ -12,6 +12,8 @@ export interface VyttleApp {
   appStoreUrl?: string;
   externalUrl?: string;
   accent: string;
+  accentVar?: string;
+  badgeVar?: string;
   accentLight: string;
   darkBg: string;
   lightBg: string;
@@ -29,6 +31,7 @@ export const apps: VyttleApp[] = [
     status: "coming-soon",
     type: "app",
     accent: "#C4956A",
+    badgeVar: "var(--badge-crema)",
     accentLight: "#DFC5A8",
     darkBg: "#1C1008",
     lightBg: "#F8F4EE",
@@ -43,6 +46,7 @@ export const apps: VyttleApp[] = [
     status: "coming-soon",
     type: "app",
     accent: "#A63D2F",
+    badgeVar: "var(--badge-stockpot)",
     accentLight: "#E8A99E",
     darkBg: "#0F1A14",
     lightBg: "#F4F7F4",
@@ -57,6 +61,8 @@ export const apps: VyttleApp[] = [
     status: "coming-soon",
     type: "app",
     accent: "#7B5EA7",
+    accentVar: "var(--bramble-accent)",
+    badgeVar: "var(--badge-bramble)",
     accentLight: "#B89DD4",
     darkBg: "#0A1019",
     lightBg: "#E8F0F7",
@@ -72,6 +78,8 @@ export const apps: VyttleApp[] = [
     type: "product",
     externalUrl: "https://reviso.dev",
     accent: "#22D3EE",
+    accentVar: "var(--reviso-accent)",
+    badgeVar: "var(--badge-reviso)",
     accentLight: "#A5F3FC",
     darkBg: "#0A1019",
     lightBg: "#E8F6FA",

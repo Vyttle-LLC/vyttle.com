@@ -48,7 +48,6 @@ export default function HomePage() {
             <VyttleMark
               size={80}
               className="transition-all duration-400"
-              style={{ color: "var(--text-tertiary)" }}
             />
           </div>
 
@@ -62,7 +61,7 @@ export default function HomePage() {
             }}
           >
             Small by{" "}
-            <em className="not-italic" style={{ color: "var(--amber)" }}>
+            <em className="not-italic" style={{ color: "var(--amber-accent)" }}>
               design
             </em>
             .
@@ -87,7 +86,7 @@ export default function HomePage() {
           style={{ transform: "translateX(-50%)" }}
         >
           <span
-            className="text-[10px] font-light uppercase"
+            className="text-xs font-normal uppercase"
             style={{
               fontFamily: "var(--font-dm-sans), DM Sans, sans-serif",
               letterSpacing: "3px",
@@ -112,8 +111,8 @@ export default function HomePage() {
           className="text-center mb-14"
           style={{
             fontFamily: "var(--font-dm-sans), DM Sans, sans-serif",
-            fontWeight: 300,
-            fontSize: "11px",
+            fontWeight: 400,
+            fontSize: "12px",
             letterSpacing: "4px",
             textTransform: "uppercase",
             color: "var(--text-tertiary)",
@@ -134,10 +133,10 @@ export default function HomePage() {
                 size={64}
                 color={apps[0].accent}
                 className="transition-colors duration-400"
-                style={{ color: "var(--text-tertiary)" }}
               />
             }
             accentColor={apps[0].accent}
+            badgeColor={apps[0].badgeVar}
             isSerif
           />
           <AppCard
@@ -149,10 +148,10 @@ export default function HomePage() {
                 size={60}
                 color={apps[1].accent}
                 className="transition-colors duration-400"
-                style={{ color: "var(--text-tertiary)" }}
               />
             }
             accentColor={apps[1].accent}
+            badgeColor={apps[1].badgeVar}
           />
           <AppCard
             name={apps[2].name}
@@ -161,12 +160,11 @@ export default function HomePage() {
             logomark={
               <BrambleMark
                 size={60}
-                color={apps[2].accent}
                 className="transition-colors duration-400"
-                style={{ color: "var(--text-tertiary)" }}
               />
             }
             accentColor={apps[2].accent}
+            badgeColor={apps[2].badgeVar}
           />
         </div>
       </section>
@@ -177,8 +175,8 @@ export default function HomePage() {
           className="text-center mb-14"
           style={{
             fontFamily: "var(--font-dm-sans), DM Sans, sans-serif",
-            fontWeight: 300,
-            fontSize: "11px",
+            fontWeight: 400,
+            fontSize: "12px",
             letterSpacing: "4px",
             textTransform: "uppercase",
             color: "var(--text-tertiary)",
@@ -197,12 +195,11 @@ export default function HomePage() {
               logomark={
                 <RevisoMark
                   size={60}
-                  color={apps[3].accent}
                   className="transition-colors duration-400"
-                  style={{ color: "var(--text-tertiary)" }}
                 />
               }
               accentColor={apps[3].accent}
+              badgeColor={apps[3].badgeVar}
             />
           </div>
         </div>

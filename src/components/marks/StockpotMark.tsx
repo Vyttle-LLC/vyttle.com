@@ -27,7 +27,7 @@ export default function StockpotMark({
         cy="30"
         r="22"
         fill="none"
-        stroke="currentColor"
+        stroke="var(--mark-neutral)"
         strokeWidth="1.5"
       />
       {/* Left handle */}
@@ -36,7 +36,7 @@ export default function StockpotMark({
         y1="30"
         x2="8"
         y2="30"
-        stroke="currentColor"
+        stroke="var(--mark-neutral)"
         strokeWidth="2"
         strokeLinecap="round"
       />
@@ -46,7 +46,7 @@ export default function StockpotMark({
         y1="30"
         x2="58"
         y2="30"
-        stroke="currentColor"
+        stroke="var(--mark-neutral)"
         strokeWidth="2"
         strokeLinecap="round"
       />

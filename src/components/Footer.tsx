@@ -19,7 +19,7 @@ export default function Footer() {
           VYTTLE
         </span>
         <span
-          className="text-xs font-light uppercase transition-colors duration-400"
+          className="text-xs font-normal uppercase transition-colors duration-400"
           style={{
             fontFamily: "var(--font-dm-sans), DM Sans, sans-serif",
             letterSpacing: "3px",
@@ -57,7 +57,7 @@ export default function Footer() {
           className="text-xs font-light transition-colors duration-400"
           style={{
             fontFamily: "var(--font-dm-sans), DM Sans, sans-serif",
-            color: "var(--text-tertiary)",
+            color: "var(--text-secondary)",
           }}
         >
           &copy; 2026 Vyttle LLC

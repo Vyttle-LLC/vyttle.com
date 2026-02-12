@@ -11,6 +11,7 @@ interface AppCardProps {
   href: string;
   logomark: ReactNode;
   accentColor: string;
+  badgeColor?: string;
   isSerif?: boolean;
 }
 
@@ -21,6 +22,7 @@ export default function AppCard({
   href,
   logomark,
   accentColor,
+  badgeColor,
   isSerif = false,
 }: AppCardProps) {
   return (
@@ -86,7 +88,7 @@ export default function AppCard({
 
         {/* Tagline */}
         <div
-          className="text-sm font-light leading-relaxed"
+          className="text-sm font-normal leading-relaxed"
           style={{
             fontFamily: "var(--font-dm-sans), DM Sans, sans-serif",
             color: "var(--text-secondary)",
@@ -98,7 +100,7 @@ export default function AppCard({
 
         {/* Badge */}
         <div className="mt-1">
-          <ComingSoonBadge color={accentColor} />
+          <ComingSoonBadge color={badgeColor || accentColor} />
         </div>
       </div>
     </Link>

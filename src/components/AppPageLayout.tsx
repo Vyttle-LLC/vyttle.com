@@ -17,6 +17,9 @@ export default function AppPageLayout({
   logomark,
   children,
 }: AppPageLayoutProps) {
+  const accentColor = app.accentVar || app.accent;
+  const badgeColor = app.badgeVar || accentColor;
+
   return (
     <>
       <Nav />
@@ -45,7 +48,7 @@ export default function AppPageLayout({
                     "var(--font-source-serif), 'Source Serif 4', serif",
                   fontWeight: 400,
                   letterSpacing: "1px",
-                  color: app.accent,
+                  color: accentColor,
                 }}
                 dangerouslySetInnerHTML={{ __html: app.nameHtml }}
               />
@@ -55,7 +58,7 @@ export default function AppPageLayout({
                 style={{
                   fontFamily: "var(--font-outfit), Outfit, sans-serif",
                   letterSpacing: "6px",
-                  color: app.accent,
+                  color: accentColor,
                 }}
               >
                 {app.name}
@@ -64,7 +67,7 @@ export default function AppPageLayout({
 
             {/* Description */}
             <p
-              className="text-base font-light max-w-md leading-relaxed"
+              className="text-base font-normal max-w-md leading-relaxed"
               style={{
                 fontFamily: "var(--font-dm-sans), DM Sans, sans-serif",
                 color: "var(--text-secondary)",
@@ -74,7 +77,7 @@ export default function AppPageLayout({
             </p>
 
             {/* Coming Soon */}
-            <ComingSoonBadge color={app.accent} />
+            <ComingSoonBadge color={badgeColor} />
 
             {/* Screenshot Carousel */}
             <ScreenshotCarousel />

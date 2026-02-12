@@ -17,9 +17,7 @@ export default function RevisoPage() {
       logomark={
         <RevisoMark
           size={80}
-          color={app.accent}
           className="transition-colors duration-400"
-          style={{ color: "var(--text-tertiary)" }}
         />
       }
     >

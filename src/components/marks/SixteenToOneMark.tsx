@@ -31,8 +31,8 @@ export default function SixteenToOneMark({
         strokeWidth="1.2"
       />
       {/* Colon dots */}
-      <circle cx="48" cy="22" r="2.5" fill="currentColor" opacity="0.4" />
-      <circle cx="48" cy="38" r="2.5" fill="currentColor" opacity="0.4" />
+      <circle cx="48" cy="22" r="2.5" fill="var(--mark-neutral-sub)" />
+      <circle cx="48" cy="38" r="2.5" fill="var(--mark-neutral-sub)" />
       {/* Small dot (coffee / 1) */}
       <circle cx="65" cy="30" r="5" fill={color} />
     </svg>

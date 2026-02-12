@@ -19,7 +19,6 @@ export default function StockpotPage() {
           size={80}
           color={app.accent}
           className="transition-colors duration-400"
-          style={{ color: "var(--text-tertiary)" }}
         />
       }
     >

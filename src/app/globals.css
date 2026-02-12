@@ -28,11 +28,27 @@
   --bg-secondary: var(--navy);
   --bg-card: rgba(26, 30, 53, 0.6);
   --text-primary: var(--fog);
-  --text-secondary: var(--slate);
+  --text-secondary: var(--silver);
   --text-tertiary: var(--silver);
   --border: rgba(91, 97, 120, 0.2);
   --card-border: rgba(168, 173, 189, 0.08);
   --nav-bg: rgba(12, 14, 26, 0.85);
+
+  /* Theme-aware mark colors — dark defaults */
+  --mark-neutral: #A8ADBD;
+  --mark-neutral-sub: rgba(168, 173, 189, 0.5);
+  --bramble-accent: #7B5EA7;
+  --cyan-deep: #06B6D4;
+  --reviso-accent: var(--cyan);
+
+  /* Theme-aware accent — hero "design" word */
+  --amber-accent: var(--amber);
+
+  /* Theme-aware badge colors — dark defaults */
+  --badge-crema: #C4956A;
+  --badge-stockpot: #E8A99E;
+  --badge-bramble: #B89DD4;
+  --badge-reviso: #22D3EE;
 }
 
 [data-theme="light"] {
@@ -41,10 +57,25 @@
   --bg-card: rgba(255, 255, 255, 0.8);
   --text-primary: var(--midnight);
   --text-secondary: var(--slate);
-  --text-tertiary: var(--silver);
+  --text-tertiary: var(--slate);
   --border: rgba(221, 224, 232, 0.8);
   --card-border: rgba(221, 224, 232, 0.5);
   --nav-bg: rgba(244, 245, 247, 0.85);
+
+  /* Theme-aware mark colors — light overrides */
+  --mark-neutral: #1A1E35;
+  --mark-neutral-sub: rgba(26, 30, 53, 0.5);
+  --bramble-accent: #6A4F94;
+  --reviso-accent: var(--cyan-deep);
+
+  /* Theme-aware accent — hero "design" word */
+  --amber-accent: #B8802E;
+
+  /* Theme-aware badge colors — light overrides */
+  --badge-crema: #5C3D2E;
+  --badge-stockpot: #A63D2F;
+  --badge-bramble: #6A4F94;
+  --badge-reviso: #0E7490;
 }
 
 /* ==================== TAILWIND THEME ==================== */
