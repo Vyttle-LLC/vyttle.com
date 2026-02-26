@@ -20,6 +20,8 @@
   --coral-light: #E8A99A;
   --bramble-purple: #7B5EA7;
   --bramble-light: #B89DD4;
+  --cobalt: #4A6FE0;
+  --cobalt-light: #8AA4F0;
   --cyan: #22D3EE;
   --cyan-light: #A5F3FC;
 
@@ -37,7 +39,12 @@
   /* Theme-aware mark colors — dark defaults */
   --mark-neutral: #DDD8CC;
   --mark-neutral-sub: rgba(221, 216, 204, 0.5);
+  --sixteen-structural: #DFC5A8;
+  --stockpot-structural: #5D8A80;
+  --bramble-structural: #6A9DC8;
   --bramble-accent: #7B5EA7;
+  --pica-structural: #A8ADBD;
+  --reviso-structural: #5B6178;
   --cyan-deep: #06B6D4;
   --reviso-accent: var(--cyan);
 
@@ -48,6 +55,7 @@
   --badge-crema: #C4956A;
   --badge-stockpot: #E8A99A;
   --badge-bramble: #B89DD4;
+  --badge-pica: #8AA4F0;
   --badge-reviso: #22D3EE;
 }
 
@@ -65,7 +73,12 @@
   /* Theme-aware mark colors — light overrides */
   --mark-neutral: #1A1E35;
   --mark-neutral-sub: rgba(26, 30, 53, 0.5);
+  --sixteen-structural: #1C1008;
+  --stockpot-structural: #1E3D38;
+  --bramble-structural: #1E3A5F;
   --bramble-accent: #6A4F94;
+  --pica-structural: #1A1E35;
+  --reviso-structural: #A8ADBD;
   --reviso-accent: var(--cyan-deep);
 
   /* Theme-aware accent — hero "design" word */
@@ -75,6 +88,7 @@
   --badge-crema: #5C3D2E;
   --badge-stockpot: #D4735A;
   --badge-bramble: #6A4F94;
+  --badge-pica: #4A6FE0;
   --badge-reviso: #0E7490;
 }
 
@@ -100,6 +114,8 @@
   --color-coral-light: #E8A99A;
   --color-bramble: #7B5EA7;
   --color-bramble-light: #B89DD4;
+  --color-cobalt: #4A6FE0;
+  --color-cobalt-light: #8AA4F0;
   --color-cyan: #22D3EE;
   --color-cyan-light: #A5F3FC;
 
@@ -132,6 +148,14 @@
 }
 
 /* ==================== BASE STYLES ==================== */
+
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
 
 html {
   scroll-behavior: smooth;

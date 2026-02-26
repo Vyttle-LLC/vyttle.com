@@ -6,7 +6,7 @@ interface SixteenToOneMarkProps {
 }
 
 export default function SixteenToOneMark({
-  size = 80,
+  size = 70,
   className = "",
   style,
   color = "#C4956A",
@@ -14,20 +14,19 @@ export default function SixteenToOneMark({
   return (
     <svg
       width={size}
-      height={size * 0.75}
-      viewBox="0 0 80 60"
+      height={size * (84 / 70)}
+      viewBox="0 0 70 84"
       fill="none"
       className={className}
       style={style}
       aria-label="Sixteen to One logomark"
     >
       {/* Large circle (water / 16) */}
-      <circle cx="22" cy="30" r="18" fill={color} />
-      {/* Colon dots */}
-      <circle cx="48" cy="22" r="2.5" fill="var(--mark-neutral-sub)" />
-      <circle cx="48" cy="38" r="2.5" fill="var(--mark-neutral-sub)" />
-      {/* Small dot (coffee / 1) */}
-      <circle cx="65" cy="30" r="5" fill={color} />
+      <circle cx="35" cy="24" r="20" fill="var(--sixteen-structural)" />
+      {/* Divider bar */}
+      <rect x="15" y="50" width="40" height="4" rx="2" fill="#736860" />
+      {/* Accent dot (coffee / 1) */}
+      <circle cx="35" cy="68" r="7" fill={color} />
     </svg>
   );
 }

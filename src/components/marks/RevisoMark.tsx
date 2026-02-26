@@ -20,12 +20,12 @@ export default function RevisoMark({
       aria-label="Reviso logomark"
     >
       {/* Top context line */}
-      <rect x="6" y="12" width="20" height="5" rx="2.5" fill="var(--mark-neutral-sub)" />
+      <rect x="6" y="12" width="20" height="5" rx="2.5" fill="var(--reviso-structural)" />
       {/* Active line: dot + line */}
       <circle cx="9.5" cy="27.5" r="4" fill="var(--reviso-accent)" />
       <rect x="16" y="25" width="26" height="5" rx="2.5" fill="var(--reviso-accent)" />
       {/* Bottom context line */}
-      <rect x="6" y="38" width="22" height="5" rx="2.5" fill="var(--mark-neutral-sub)" />
+      <rect x="6" y="38" width="22" height="5" rx="2.5" fill="var(--reviso-structural)" />
     </svg>
   );
 }
