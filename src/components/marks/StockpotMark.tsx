@@ -9,7 +9,7 @@ export default function StockpotMark({
   size = 60,
   className = "",
   style,
-  color = "#D4735A",
+  color = "#C0392B",
 }: StockpotMarkProps) {
   return (
     <svg
