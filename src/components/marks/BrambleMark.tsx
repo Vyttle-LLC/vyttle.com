@@ -24,11 +24,11 @@ export default function BrambleMark({
       <line x1="30" y1="48" x2="30" y2="30" stroke="var(--mark-neutral-sub)" strokeWidth="0.8" />
       <line x1="12" y1="30" x2="30" y2="30" stroke="var(--mark-neutral-sub)" strokeWidth="0.8" />
       <line x1="48" y1="30" x2="30" y2="30" stroke="var(--mark-neutral-sub)" strokeWidth="0.8" />
-      {/* Outer nodes (open circles) */}
-      <circle cx="30" cy="12" r="4" fill="none" stroke="var(--mark-neutral)" strokeWidth="1.2" />
-      <circle cx="30" cy="48" r="4" fill="none" stroke="var(--mark-neutral)" strokeWidth="1.2" />
-      <circle cx="12" cy="30" r="4" fill="none" stroke="var(--mark-neutral)" strokeWidth="1.2" />
-      <circle cx="48" cy="30" r="4" fill="none" stroke="var(--mark-neutral)" strokeWidth="1.2" />
+      {/* Outer nodes (solid circles) */}
+      <circle cx="30" cy="12" r="4" fill="var(--mark-neutral)" />
+      <circle cx="30" cy="48" r="4" fill="var(--mark-neutral)" />
+      <circle cx="12" cy="30" r="4" fill="var(--mark-neutral)" />
+      <circle cx="48" cy="30" r="4" fill="var(--mark-neutral)" />
       {/* Center node (filled) */}
       <circle cx="30" cy="30" r="5" fill="var(--bramble-accent)" />
     </svg>

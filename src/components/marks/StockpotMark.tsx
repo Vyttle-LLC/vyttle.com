@@ -9,7 +9,7 @@ export default function StockpotMark({
   size = 60,
   className = "",
   style,
-  color = "#A63D2F",
+  color = "#D4735A",
 }: StockpotMarkProps) {
   return (
     <svg
@@ -21,37 +21,14 @@ export default function StockpotMark({
       style={style}
       aria-label="Stockpot logomark"
     >
-      {/* Rim circle */}
-      <circle
-        cx="30"
-        cy="30"
-        r="22"
-        fill="none"
-        stroke="var(--mark-neutral)"
-        strokeWidth="1.5"
-      />
+      {/* Pot body */}
+      <circle cx="30" cy="30" r="22" fill="var(--mark-neutral)" />
       {/* Left handle */}
-      <line
-        x1="2"
-        y1="30"
-        x2="8"
-        y2="30"
-        stroke="var(--mark-neutral)"
-        strokeWidth="2"
-        strokeLinecap="round"
-      />
+      <rect x="2" y="26" width="8" height="8" rx="3" fill="var(--mark-neutral)" />
       {/* Right handle */}
-      <line
-        x1="52"
-        y1="30"
-        x2="58"
-        y2="30"
-        stroke="var(--mark-neutral)"
-        strokeWidth="2"
-        strokeLinecap="round"
-      />
+      <rect x="50" y="26" width="8" height="8" rx="3" fill="var(--mark-neutral)" />
       {/* Center dot */}
-      <circle cx="30" cy="30" r="4" fill={color} />
+      <circle cx="30" cy="30" r="4.5" fill={color} />
     </svg>
   );
 }

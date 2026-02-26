@@ -22,14 +22,7 @@ export default function SixteenToOneMark({
       aria-label="Sixteen to One logomark"
     >
       {/* Large circle (water / 16) */}
-      <circle
-        cx="22"
-        cy="30"
-        r="18"
-        fill="none"
-        stroke={color}
-        strokeWidth="1.2"
-      />
+      <circle cx="22" cy="30" r="18" fill={color} />
       {/* Colon dots */}
       <circle cx="48" cy="22" r="2.5" fill="var(--mark-neutral-sub)" />
       <circle cx="48" cy="38" r="2.5" fill="var(--mark-neutral-sub)" />

@@ -17,7 +17,7 @@ export default function Nav() {
     >
       {/* Left: Logo + Wordmark */}
       <Link href="/" className="flex items-center gap-3 no-underline">
-        <VyttleMark size={20} strokeWidth={1.5} className="transition-colors duration-400" />
+        <VyttleMark size={20} className="transition-colors duration-400" />
         <span
           className="text-base font-semibold uppercase no-underline transition-colors duration-400"
           style={{
