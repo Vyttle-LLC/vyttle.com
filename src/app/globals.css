@@ -16,8 +16,8 @@
   /* App Accents */
   --crema: #C4956A;
   --crema-light: #DFC5A8;
-  --coral: #D4735A;
-  --coral-light: #E8A99A;
+  --tomato: #C0392B;
+  --tomato-light: #D4756A;
   --bramble-purple: #7B5EA7;
   --bramble-light: #B89DD4;
   --cobalt: #4A6FE0;
@@ -40,7 +40,7 @@
   --mark-neutral: #DDD8CC;
   --mark-neutral-sub: rgba(221, 216, 204, 0.5);
   --sixteen-structural: #DFC5A8;
-  --stockpot-structural: #5D8A80;
+  --stockpot-structural: #8A8580;
   --bramble-structural: #6A9DC8;
   --bramble-accent: #7B5EA7;
   --pica-structural: #A8ADBD;
@@ -53,7 +53,7 @@
 
   /* Theme-aware badge colors — dark defaults */
   --badge-crema: #C4956A;
-  --badge-stockpot: #E8A99A;
+  --badge-stockpot: #D4756A;
   --badge-bramble: #B89DD4;
   --badge-pica: #8AA4F0;
   --badge-reviso: #22D3EE;
@@ -74,7 +74,7 @@
   --mark-neutral: #1A1E35;
   --mark-neutral-sub: rgba(26, 30, 53, 0.5);
   --sixteen-structural: #1C1008;
-  --stockpot-structural: #1E3D38;
+  --stockpot-structural: #3A3632;
   --bramble-structural: #1E3A5F;
   --bramble-accent: #6A4F94;
   --pica-structural: #1A1E35;
@@ -86,7 +86,7 @@
 
   /* Theme-aware badge colors — light overrides */
   --badge-crema: #5C3D2E;
-  --badge-stockpot: #D4735A;
+  --badge-stockpot: #8B2920;
   --badge-bramble: #6A4F94;
   --badge-pica: #4A6FE0;
   --badge-reviso: #0E7490;
@@ -110,8 +110,8 @@
 
   --color-crema: #C4956A;
   --color-crema-light: #DFC5A8;
-  --color-coral: #D4735A;
-  --color-coral-light: #E8A99A;
+  --color-tomato: #C0392B;
+  --color-tomato-light: #D4756A;
   --color-bramble: #7B5EA7;
   --color-bramble-light: #B89DD4;
   --color-cobalt: #4A6FE0;
