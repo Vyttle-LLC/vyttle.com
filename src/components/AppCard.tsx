@@ -26,9 +26,9 @@ export default function AppCard({
   isSerif = false,
 }: AppCardProps) {
   return (
-    <Link href={href} className="block no-underline" style={{ color: "inherit" }}>
+    <Link href={href} className="block no-underline min-w-[260px] max-w-[320px] lg:max-w-none w-full mx-auto h-full" style={{ color: "inherit" }}>
       <div
-        className="relative rounded-[20px] p-12 pb-10 flex flex-col items-center text-center gap-5 cursor-pointer transition-all duration-300 overflow-hidden"
+        className="relative rounded-[20px] p-12 pb-10 flex flex-col items-center text-center gap-5 cursor-pointer transition-all duration-300 overflow-hidden h-full"
         style={{
           border: "1px solid var(--card-border)",
           background: "var(--bg-card)",
@@ -88,7 +88,7 @@ export default function AppCard({
 
         {/* Tagline */}
         <div
-          className="text-sm font-normal leading-relaxed"
+          className="text-sm font-normal leading-relaxed flex-1"
           style={{
             fontFamily: "var(--font-dm-sans), DM Sans, sans-serif",
             color: "var(--text-secondary)",
@@ -99,7 +99,7 @@ export default function AppCard({
         </div>
 
         {/* Badge */}
-        <div className="mt-1">
+        <div className="mt-auto pt-4">
           <ComingSoonBadge color={badgeColor || accentColor} />
         </div>
       </div>

@@ -5,6 +5,7 @@ import VyttleMark from "@/components/marks/VyttleMark";
 import SixteenToOneMark from "@/components/marks/SixteenToOneMark";
 import StockpotMark from "@/components/marks/StockpotMark";
 import BrambleMark from "@/components/marks/BrambleMark";
+import PicaMark from "@/components/marks/PicaMark";
 import RevisoMark from "@/components/marks/RevisoMark";
 import { apps, getAppsByType } from "@/lib/apps";
 
@@ -106,9 +107,9 @@ export default function HomePage() {
       </section>
 
       {/* ==================== OUR APPS ==================== */}
-      <section className="pt-28 md:pt-32 pb-16 md:pb-20 px-6 md:px-12 max-w-[1200px] mx-auto">
+      <section className="pt-28 md:pt-32 pb-16 md:pb-20 lg:px-12 max-w-[1200px] mx-auto">
         <div
-          className="text-center mb-14"
+          className="text-center mb-14 px-6 lg:px-0"
           style={{
             fontFamily: "var(--font-dm-sans), DM Sans, sans-serif",
             fontWeight: 400,
@@ -122,50 +123,72 @@ export default function HomePage() {
           Our Apps
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          <AppCard
-            name={apps[0].name}
-            nameHtml={apps[0].nameHtml}
-            tagline={apps[0].tagline}
-            href={`/${apps[0].slug}`}
-            logomark={
-              <SixteenToOneMark
-                size={64}
-                color={apps[0].accent}
-                className="transition-colors duration-400"
-              />
-            }
-            accentColor={apps[0].accent}
-            badgeColor={apps[0].badgeVar}
-            isSerif
-          />
-          <AppCard
-            name={apps[1].name}
-            tagline={apps[1].tagline}
-            href={`/${apps[1].slug}`}
-            logomark={
-              <StockpotMark
-                size={60}
-                color={apps[1].accent}
-                className="transition-colors duration-400"
-              />
-            }
-            accentColor={apps[1].accent}
-            badgeColor={apps[1].badgeVar}
-          />
-          <AppCard
-            name={apps[2].name}
-            tagline={apps[2].tagline}
-            href={`/${apps[2].slug}`}
-            logomark={
-              <BrambleMark
-                size={60}
-                className="transition-colors duration-400"
-              />
-            }
-            accentColor={apps[2].accent}
-            badgeColor={apps[2].badgeVar}
-          />
+        <div className="flex gap-6 overflow-x-auto snap-x snap-mandatory scroll-smooth px-6 lg:px-0 pt-2 pb-4 lg:py-0 lg:grid lg:grid-cols-4 lg:overflow-visible no-scrollbar items-stretch">
+          <div className="snap-center shrink-0 lg:shrink flex">
+            <AppCard
+              name={apps[0].name}
+              nameHtml={apps[0].nameHtml}
+              tagline={apps[0].tagline}
+              href={`/${apps[0].slug}`}
+              logomark={
+                <SixteenToOneMark
+                  size={64}
+                  color={apps[0].accent}
+                  className="transition-colors duration-400"
+                />
+              }
+              accentColor={apps[0].accent}
+              badgeColor={apps[0].badgeVar}
+              isSerif
+            />
+          </div>
+          <div className="snap-center shrink-0 lg:shrink flex">
+            <AppCard
+              name={apps[1].name}
+              tagline={apps[1].tagline}
+              href={`/${apps[1].slug}`}
+              logomark={
+                <StockpotMark
+                  size={60}
+                  color={apps[1].accent}
+                  className="transition-colors duration-400"
+                />
+              }
+              accentColor={apps[1].accent}
+              badgeColor={apps[1].badgeVar}
+            />
+          </div>
+          <div className="snap-center shrink-0 lg:shrink flex">
+            <AppCard
+              name={apps[2].name}
+              tagline={apps[2].tagline}
+              href={`/${apps[2].slug}`}
+              logomark={
+                <BrambleMark
+                  size={60}
+                  className="transition-colors duration-400"
+                />
+              }
+              accentColor={apps[2].accent}
+              badgeColor={apps[2].badgeVar}
+            />
+          </div>
+          <div className="snap-center shrink-0 lg:shrink flex">
+            <AppCard
+              name={apps[3].name}
+              tagline={apps[3].tagline}
+              href={`/${apps[3].slug}`}
+              logomark={
+                <PicaMark
+                  size={60}
+                  color={apps[3].accent}
+                  className="transition-colors duration-400"
+                />
+              }
+              accentColor={apps[3].accent}
+              badgeColor={apps[3].badgeVar}
+            />
+          </div>
         </div>
       </section>
 
@@ -189,17 +212,17 @@ export default function HomePage() {
         <div className="flex justify-center">
           <div className="w-full max-w-[380px]">
             <AppCard
-              name={apps[3].name}
-              tagline={apps[3].tagline}
-              href={`/${apps[3].slug}`}
+              name={apps[4].name}
+              tagline={apps[4].tagline}
+              href={`/${apps[4].slug}`}
               logomark={
                 <RevisoMark
                   size={60}
                   className="transition-colors duration-400"
                 />
               }
-              accentColor={apps[3].accent}
-              badgeColor={apps[3].badgeVar}
+              accentColor={apps[4].accent}
+              badgeColor={apps[4].badgeVar}
             />
           </div>
         </div>

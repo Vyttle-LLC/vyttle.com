@@ -69,6 +69,21 @@ export const apps: VyttleApp[] = [
     mark: "BrambleMark",
   },
   {
+    slug: "pica",
+    name: "Pica",
+    tagline: "Puzzles, one cell at a time.",
+    description:
+      "A nonogram puzzle app where you fill cells in a grid to reveal hidden pictures. Logic, precision, and the satisfaction of solving — no hints required.",
+    status: "coming-soon",
+    type: "app",
+    accent: "#4A6FE0",
+    badgeVar: "var(--badge-pica)",
+    accentLight: "#8AA4F0",
+    darkBg: "#0A0E1C",
+    lightBg: "#EDF0FB",
+    mark: "PicaMark",
+  },
+  {
     slug: "reviso",
     name: "Reviso",
     tagline: "AI code reviews that don't suck.",

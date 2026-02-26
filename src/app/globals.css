@@ -20,6 +20,8 @@
   --coral-light: #E8A99A;
   --bramble-purple: #7B5EA7;
   --bramble-light: #B89DD4;
+  --cobalt: #4A6FE0;
+  --cobalt-light: #8AA4F0;
   --cyan: #22D3EE;
   --cyan-light: #A5F3FC;
 
@@ -48,6 +50,7 @@
   --badge-crema: #C4956A;
   --badge-stockpot: #E8A99A;
   --badge-bramble: #B89DD4;
+  --badge-pica: #8AA4F0;
   --badge-reviso: #22D3EE;
 }
 
@@ -75,6 +78,7 @@
   --badge-crema: #5C3D2E;
   --badge-stockpot: #D4735A;
   --badge-bramble: #6A4F94;
+  --badge-pica: #4A6FE0;
   --badge-reviso: #0E7490;
 }
 
@@ -100,6 +104,8 @@
   --color-coral-light: #E8A99A;
   --color-bramble: #7B5EA7;
   --color-bramble-light: #B89DD4;
+  --color-cobalt: #4A6FE0;
+  --color-cobalt-light: #8AA4F0;
   --color-cyan: #22D3EE;
   --color-cyan-light: #A5F3FC;
 
@@ -132,6 +138,14 @@
 }
 
 /* ==================== BASE STYLES ==================== */
+
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
 
 html {
   scroll-behavior: smooth;

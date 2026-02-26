@@ -37,6 +37,7 @@ export default function Nav() {
             { href: "/sixteen-to-one", label: "Sixteen to One" },
             { href: "/stockpot", label: "Stockpot" },
             { href: "/bramble", label: "Bramble" },
+            { href: "/pica", label: "Pica" },
             { href: "/reviso", label: "Reviso" },
             { href: "/support", label: "Support" },
           ].map((link) => (
