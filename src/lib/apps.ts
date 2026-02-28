@@ -24,7 +24,7 @@ export const apps: VyttleApp[] = [
   {
     slug: "sixteen-to-one",
     name: "Sixteen to One",
-    nameHtml: 'Sixteen <em>to</em> One',
+    nameHtml: 'Sixteen <em style="font-weight:300;opacity:0.55;font-size:0.88em">to</em> One',
     tagline: "The ratio, perfected.",
     description:
       "A coffee ratio calculator that does one thing and does it well. Dial in your brew with precision — water, coffee, ratio, done.",
@@ -60,12 +60,12 @@ export const apps: VyttleApp[] = [
       "A lightweight contact manager that helps you clean up, organize, and actually maintain your address book. Local-first with iCloud sync.",
     status: "coming-soon",
     type: "app",
-    accent: "#7B5EA7",
+    accent: "#7C4DFF",
     accentVar: "var(--bramble-accent)",
     badgeVar: "var(--badge-bramble)",
     accentLight: "#B89DD4",
-    darkBg: "#0A1019",
-    lightBg: "#E8F0F7",
+    darkBg: "#100F14",
+    lightBg: "#F6F4F8",
     mark: "BrambleMark",
   },
   {

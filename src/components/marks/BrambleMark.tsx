@@ -20,17 +20,17 @@ export default function BrambleMark({
       aria-label="Bramble logomark"
     >
       {/* Connection lines */}
-      <line x1="30" y1="12" x2="30" y2="30" stroke="var(--bramble-structural)" strokeWidth="2" />
-      <line x1="30" y1="48" x2="30" y2="30" stroke="var(--bramble-structural)" strokeWidth="2" />
-      <line x1="12" y1="30" x2="30" y2="30" stroke="var(--bramble-structural)" strokeWidth="2" />
-      <line x1="48" y1="30" x2="30" y2="30" stroke="var(--bramble-structural)" strokeWidth="2" />
+      <line x1="30" y1="6" x2="30" y2="30" stroke="var(--mark-neutral-sub)" strokeWidth="3" strokeLinecap="round" />
+      <line x1="54" y1="30" x2="30" y2="30" stroke="var(--mark-neutral-sub)" strokeWidth="3" strokeLinecap="round" />
+      <line x1="30" y1="54" x2="30" y2="30" stroke="var(--mark-neutral-sub)" strokeWidth="3" strokeLinecap="round" />
+      <line x1="6" y1="30" x2="30" y2="30" stroke="var(--mark-neutral-sub)" strokeWidth="3" strokeLinecap="round" />
       {/* Outer nodes (solid circles) */}
-      <circle cx="30" cy="12" r="5" fill="var(--bramble-structural)" />
-      <circle cx="30" cy="48" r="5" fill="var(--bramble-structural)" />
-      <circle cx="12" cy="30" r="5" fill="var(--bramble-structural)" />
-      <circle cx="48" cy="30" r="5" fill="var(--bramble-structural)" />
-      {/* Center node (filled) */}
-      <circle cx="30" cy="30" r="6.5" fill="var(--bramble-accent)" />
+      <circle cx="30" cy="6" r="5.5" fill="var(--mark-neutral)" />
+      <circle cx="54" cy="30" r="5.5" fill="var(--mark-neutral)" />
+      <circle cx="30" cy="54" r="5.5" fill="var(--mark-neutral)" />
+      <circle cx="6" cy="30" r="5.5" fill="var(--mark-neutral)" />
+      {/* Center node */}
+      <circle cx="30" cy="30" r="7.5" fill="var(--bramble-accent)" />
     </svg>
   );
 }

@@ -18,8 +18,7 @@
   --crema-light: #DFC5A8;
   --tomato: #C0392B;
   --tomato-light: #D4756A;
-  --bramble-purple: #7B5EA7;
-  --bramble-light: #B89DD4;
+  --bramble: #7C4DFF;
   --cobalt: #4A6FE0;
   --cobalt-light: #8AA4F0;
   --cyan: #22D3EE;
@@ -41,8 +40,7 @@
   --mark-neutral-sub: rgba(221, 216, 204, 0.5);
   --sixteen-structural: #DFC5A8;
   --stockpot-structural: #8A8580;
-  --bramble-structural: #6A9DC8;
-  --bramble-accent: #7B5EA7;
+  --bramble-accent: #7C4DFF;
   --pica-structural: #A8ADBD;
   --reviso-structural: #5B6178;
   --cyan-deep: #06B6D4;
@@ -54,7 +52,7 @@
   /* Theme-aware badge colors — dark defaults */
   --badge-crema: #C4956A;
   --badge-stockpot: #D4756A;
-  --badge-bramble: #B89DD4;
+  --badge-bramble: #7C4DFF;
   --badge-pica: #8AA4F0;
   --badge-reviso: #22D3EE;
 }
@@ -75,8 +73,7 @@
   --mark-neutral-sub: rgba(26, 30, 53, 0.5);
   --sixteen-structural: #1C1008;
   --stockpot-structural: #3A3632;
-  --bramble-structural: #1E3A5F;
-  --bramble-accent: #6A4F94;
+  --bramble-accent: #7C4DFF;
   --pica-structural: #1A1E35;
   --reviso-structural: #A8ADBD;
   --reviso-accent: var(--cyan-deep);
@@ -87,7 +84,7 @@
   /* Theme-aware badge colors — light overrides */
   --badge-crema: #5C3D2E;
   --badge-stockpot: #8B2920;
-  --badge-bramble: #6A4F94;
+  --badge-bramble: #7C4DFF;
   --badge-pica: #4A6FE0;
   --badge-reviso: #0E7490;
 }
@@ -112,8 +109,7 @@
   --color-crema-light: #DFC5A8;
   --color-tomato: #C0392B;
   --color-tomato-light: #D4756A;
-  --color-bramble: #7B5EA7;
-  --color-bramble-light: #B89DD4;
+  --color-bramble: #7C4DFF;
   --color-cobalt: #4A6FE0;
   --color-cobalt-light: #8AA4F0;
   --color-cyan: #22D3EE;
