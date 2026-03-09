@@ -1,6 +1,14 @@
 # vyttle.com
 
-The marketing website for [Vyttle](https://vyttle.com) — a family of intentionally compact apps and products.
+The marketing website for [Vyttle](https://vyttle.com) — a software studio building intentionally small, privacy-first iOS apps.
+
+## Apps & Products
+
+- **Sixteen to One** — coffee ratio calculator
+- **Stockpot** — local-first recipe app
+- **Bramble** — contact manager & address book cleaner
+- **Pica** — nonogram puzzle app
+- **Reviso** — GitHub Action for AI-powered code reviews
 
 ## Tech Stack
 
