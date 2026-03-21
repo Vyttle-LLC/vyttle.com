@@ -10,6 +10,12 @@ export const metadata: Metadata = {
   description: app.description,
 };
 
+const screenshots = [
+  { src: "/screenshots/sixteen-to-one/light-drip.png", alt: "Sixteen to One in light mode showing Drip method with dark roast settings" },
+  { src: "/screenshots/sixteen-to-one/settings.png", alt: "Sixteen to One settings showing unit conversions and appearance options" },
+  { src: "/screenshots/sixteen-to-one/dark-chemex.png", alt: "Sixteen to One in dark mode showing Chemex method with medium roast settings" },
+];
+
 export default function SixteenToOnePage() {
   return (
     <AppPageLayout
@@ -21,6 +27,7 @@ export default function SixteenToOnePage() {
           className="transition-colors duration-400"
         />
       }
+      screenshots={screenshots}
     >
       <p>
         Stop guessing your coffee ratios. Whether you&apos;re making pour-over,
