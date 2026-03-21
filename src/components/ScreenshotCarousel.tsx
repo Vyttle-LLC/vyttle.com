@@ -21,16 +21,18 @@ export default function ScreenshotCarousel({
               key={shot.src}
               className={`snap-center shrink-0 ${i === 0 ? "ml-auto" : ""} ${i === screenshots.length - 1 ? "mr-auto" : ""}`}
             >
-              <img
-                src={shot.src}
-                alt={shot.alt}
-                className="rounded-3xl"
-                style={{
-                  width: "180px",
-                  height: "auto",
-                  border: "1px solid var(--border)",
-                }}
-              />
+              <a href={shot.src} target="_blank" rel="noopener noreferrer">
+                <img
+                  src={shot.src}
+                  alt={shot.alt}
+                  className="rounded-3xl"
+                  style={{
+                    width: "180px",
+                    height: "auto",
+                    border: "1px solid var(--border)",
+                  }}
+                />
+              </a>
             </div>
           ))}
         </div>

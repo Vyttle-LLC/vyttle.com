@@ -53,7 +53,7 @@ export default function SixteenToOnePage() {
         <strong style={{ color: "var(--text-primary)" }}>
           Dial in your strength.
         </strong>{" "}
-        Slide between light (1:18) and strong (1:13) to find your perfect brew.
+        Slide between light (18:1) and strong (13:1) to find your perfect brew.
         Presets for every method, from AeroPress to cold brew.
       </p>
     </AppPageLayout>
