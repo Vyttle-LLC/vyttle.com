@@ -10,12 +10,14 @@ interface AppPageLayoutProps {
   app: VyttleApp;
   logomark: ReactNode;
   children?: ReactNode;
+  screenshots?: { src: string; alt: string }[];
 }
 
 export default function AppPageLayout({
   app,
   logomark,
   children,
+  screenshots,
 }: AppPageLayoutProps) {
   const accentColor = app.accentVar || app.accent;
   const badgeColor = app.badgeVar || accentColor;
@@ -80,7 +82,7 @@ export default function AppPageLayout({
             <ComingSoonBadge color={badgeColor} />
 
             {/* Screenshot Carousel */}
-            <ScreenshotCarousel />
+            <ScreenshotCarousel screenshots={screenshots} />
           </div>
 
           {/* About Section */}

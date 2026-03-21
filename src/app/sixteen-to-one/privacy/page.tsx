@@ -24,7 +24,7 @@ export default function SixteenToOnePrivacyPage() {
               marginBottom: "2rem",
             }}
           >
-            Last updated: February 2026
+            Last updated: March 2026
           </p>
 
           <h2>The Short Version</h2>

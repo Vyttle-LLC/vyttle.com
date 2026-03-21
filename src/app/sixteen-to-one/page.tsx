@@ -10,6 +10,12 @@ export const metadata: Metadata = {
   description: app.description,
 };
 
+const screenshots = [
+  { src: "/screenshots/sixteen-to-one/light-drip.png", alt: "Sixteen to One in light mode showing Drip method with dark roast settings" },
+  { src: "/screenshots/sixteen-to-one/dark-chemex.png", alt: "Sixteen to One in dark mode showing Chemex method with medium roast settings" },
+  { src: "/screenshots/sixteen-to-one/settings.png", alt: "Sixteen to One settings showing unit conversions and appearance options" },
+];
+
 export default function SixteenToOnePage() {
   return (
     <AppPageLayout
@@ -21,6 +27,7 @@ export default function SixteenToOnePage() {
           className="transition-colors duration-400"
         />
       }
+      screenshots={screenshots}
     >
       <p>
         Stop guessing your coffee ratios. Whether you&apos;re making pour-over,
@@ -46,7 +53,7 @@ export default function SixteenToOnePage() {
         <strong style={{ color: "var(--text-primary)" }}>
           Dial in your strength.
         </strong>{" "}
-        Slide between light (1:18) and strong (1:13) to find your perfect brew.
+        Slide between light (18:1) and strong (13:1) to find your perfect brew.
         Presets for every method, from AeroPress to cold brew.
       </p>
     </AppPageLayout>
