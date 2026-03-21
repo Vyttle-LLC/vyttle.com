@@ -1,15 +1,51 @@
+interface Screenshot {
+  src: string;
+  alt: string;
+}
+
 interface ScreenshotCarouselProps {
+  screenshots?: Screenshot[];
   count?: number;
 }
 
 export default function ScreenshotCarousel({
+  screenshots,
   count = 3,
 }: ScreenshotCarouselProps) {
+  if (screenshots && screenshots.length > 0) {
+    return (
+      <div className="mt-12 w-full overflow-hidden -mx-6 md:-mx-12 px-6 md:px-12">
+        <div className="flex gap-4 overflow-x-auto snap-x snap-mandatory scroll-smooth pb-2 no-scrollbar">
+          {screenshots.map((shot, i) => (
+            <div
+              key={shot.src}
+              className={`snap-center shrink-0 ${i === 0 ? "ml-auto" : ""} ${i === screenshots.length - 1 ? "mr-auto" : ""}`}
+            >
+              <img
+                src={shot.src}
+                alt={shot.alt}
+                className="rounded-3xl"
+                style={{
+                  width: "180px",
+                  height: "auto",
+                  border: "1px solid var(--border)",
+                }}
+              />
+            </div>
+          ))}
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div className="mt-12 w-full overflow-hidden -mx-6 md:-mx-12 px-6 md:px-12">
       <div className="flex gap-4 overflow-x-auto snap-x snap-mandatory scroll-smooth pb-2 no-scrollbar">
         {Array.from({ length: count }, (_, i) => (
-          <div key={i} className={`snap-center shrink-0 ${i === 0 ? "ml-auto" : ""} ${i === count - 1 ? "mr-auto" : ""}`}>
+          <div
+            key={i}
+            className={`snap-center shrink-0 ${i === 0 ? "ml-auto" : ""} ${i === count - 1 ? "mr-auto" : ""}`}
+          >
             <div
               className="w-[180px] h-[360px] rounded-3xl flex items-center justify-center"
               style={{
