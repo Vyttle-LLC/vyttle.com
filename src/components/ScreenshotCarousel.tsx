@@ -1,3 +1,7 @@
+"use client";
+
+import { useState, useCallback, useEffect } from "react";
+
 interface Screenshot {
   src: string;
   alt: string;
@@ -12,31 +16,78 @@ export default function ScreenshotCarousel({
   screenshots,
   count = 3,
 }: ScreenshotCarouselProps) {
+  const [activeImage, setActiveImage] = useState<Screenshot | null>(null);
+
+  const close = useCallback(() => setActiveImage(null), []);
+
+  useEffect(() => {
+    if (!activeImage) return;
+    const handleKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") close();
+    };
+    document.addEventListener("keydown", handleKey);
+    return () => document.removeEventListener("keydown", handleKey);
+  }, [activeImage, close]);
+
   if (screenshots && screenshots.length > 0) {
     return (
-      <div className="mt-12 w-full overflow-hidden -mx-6 md:-mx-12 px-6 md:px-12">
-        <div className="flex gap-4 overflow-x-auto snap-x snap-mandatory scroll-smooth pb-2 no-scrollbar">
-          {screenshots.map((shot, i) => (
-            <div
-              key={shot.src}
-              className={`snap-center shrink-0 ${i === 0 ? "ml-auto" : ""} ${i === screenshots.length - 1 ? "mr-auto" : ""}`}
-            >
-              <a href={shot.src} target="_blank" rel="noopener noreferrer">
-                <img
-                  src={shot.src}
-                  alt={shot.alt}
-                  className="rounded-3xl"
-                  style={{
-                    width: "180px",
-                    height: "auto",
-                    border: "1px solid var(--border)",
-                  }}
-                />
-              </a>
-            </div>
-          ))}
+      <>
+        <div className="mt-12 w-full overflow-hidden -mx-6 md:-mx-12 px-6 md:px-12">
+          <div className="flex gap-4 overflow-x-auto snap-x snap-mandatory scroll-smooth pb-2 no-scrollbar">
+            {screenshots.map((shot, i) => (
+              <div
+                key={shot.src}
+                className={`snap-center shrink-0 ${i === 0 ? "ml-auto" : ""} ${i === screenshots.length - 1 ? "mr-auto" : ""}`}
+              >
+                <button
+                  onClick={() => setActiveImage(shot)}
+                  className="cursor-pointer bg-transparent border-none p-0"
+                  aria-label={`View full size: ${shot.alt}`}
+                >
+                  <img
+                    src={shot.src}
+                    alt={shot.alt}
+                    className="rounded-3xl"
+                    style={{
+                      width: "180px",
+                      height: "auto",
+                      border: "1px solid var(--border)",
+                    }}
+                  />
+                </button>
+              </div>
+            ))}
+          </div>
         </div>
-      </div>
+
+        {activeImage && (
+          <div
+            onClick={close}
+            style={{
+              position: "fixed",
+              inset: 0,
+              zIndex: 9999,
+              background: "rgba(0, 0, 0, 0.85)",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              cursor: "pointer",
+            }}
+          >
+            <img
+              src={activeImage.src}
+              alt={activeImage.alt}
+              onClick={(e) => e.stopPropagation()}
+              style={{
+                maxHeight: "90vh",
+                maxWidth: "90vw",
+                borderRadius: "16px",
+                cursor: "default",
+              }}
+            />
+          </div>
+        )}
+      </>
     );
   }
 
