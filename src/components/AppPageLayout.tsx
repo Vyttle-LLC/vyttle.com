@@ -102,69 +102,77 @@ export default function AppPageLayout({
               <div className="fade-in w-full" style={{ animationDelay: "600ms" }}>
                 <ScreenshotCarousel screenshots={screenshots} />
               </div>
-            </div>
 
-            {/* About Section */}
-            <div className="max-w-2xl mx-auto mt-20 mb-16">
-              <h2
-                className="text-2xl font-medium mb-8 text-center"
-                style={{
-                  fontFamily: "var(--font-outfit), Outfit, sans-serif",
-                  letterSpacing: "1px",
-                  color: "var(--text-primary)",
-                }}
-              >
-                About {app.name}
-              </h2>
+              {/* Divider */}
               <div
-                className="space-y-4 text-base leading-relaxed"
-                style={{
-                  fontFamily: "var(--font-dm-sans), DM Sans, sans-serif",
-                  color: "var(--text-secondary)",
-                }}
-              >
-                {children}
-              </div>
-            </div>
+                className="w-full mt-8"
+                style={{ borderTop: `1px solid color-mix(in srgb, ${app.accent} 15%, transparent)` }}
+              />
 
-            {/* Page footer links */}
-            <div
-              className="flex justify-center items-center gap-6 pt-8"
-              style={{ borderTop: "1px solid var(--border)" }}
-            >
-              <Link
-                href={`/${app.slug}/privacy`}
-                className="text-sm font-light no-underline transition-colors duration-200"
-                style={{
-                  fontFamily: "var(--font-dm-sans), DM Sans, sans-serif",
-                  color: "var(--text-secondary)",
-                }}
-              >
-                Privacy Policy
-              </Link>
-              <span style={{ color: "var(--border)" }}>&middot;</span>
-              <Link
-                href="/"
-                className="text-sm font-light no-underline transition-colors duration-200"
-                style={{
-                  fontFamily: "var(--font-dm-sans), DM Sans, sans-serif",
-                  color: "var(--text-secondary)",
-                }}
-              >
-                Back to Vyttle
-              </Link>
-              <span style={{ color: "var(--border)" }}>&middot;</span>
-              <Link
-                href={`/support?app=${app.slug}`}
-                className="text-sm font-light no-underline transition-colors duration-200"
-                style={{
-                  fontFamily: "var(--font-dm-sans), DM Sans, sans-serif",
-                  color: "var(--text-secondary)",
-                }}
-              >
-                Support
-              </Link>
-            </div>
+              {/* About Section */}
+              <div className="max-w-2xl mx-auto mt-8 mb-4 text-left">
+                <h2
+                  className="text-2xl font-medium mb-8 text-center"
+                  style={{
+                    fontFamily: "var(--font-outfit), Outfit, sans-serif",
+                    letterSpacing: "1px",
+                    color: "var(--text-primary)",
+                  }}
+                >
+                  About {app.name}
+                </h2>
+                <div
+                  className="space-y-4 text-base leading-relaxed"
+                  style={{
+                    fontFamily: "var(--font-dm-sans), DM Sans, sans-serif",
+                    color: "var(--text-secondary)",
+                  }}
+                >
+                  {children}
+                </div>
+              </div>
+
+              {/* Divider */}
+              <div
+                className="w-full mt-8"
+                style={{ borderTop: `1px solid color-mix(in srgb, ${app.accent} 15%, transparent)` }}
+              />
+
+              {/* Page footer links */}
+              <div className="flex justify-center items-center gap-6 pt-4">
+                <Link
+                  href={`/${app.slug}/privacy`}
+                  className="text-sm font-light no-underline transition-colors duration-200"
+                  style={{
+                    fontFamily: "var(--font-dm-sans), DM Sans, sans-serif",
+                    color: "var(--text-secondary)",
+                  }}
+                >
+                  Privacy Policy
+                </Link>
+                <span style={{ color: "var(--border)" }}>&middot;</span>
+                <Link
+                  href="/"
+                  className="text-sm font-light no-underline transition-colors duration-200"
+                  style={{
+                    fontFamily: "var(--font-dm-sans), DM Sans, sans-serif",
+                    color: "var(--text-secondary)",
+                  }}
+                >
+                  Back to Vyttle
+                </Link>
+                <span style={{ color: "var(--border)" }}>&middot;</span>
+                <Link
+                  href={`/support?app=${app.slug}`}
+                  className="text-sm font-light no-underline transition-colors duration-200"
+                  style={{
+                    fontFamily: "var(--font-dm-sans), DM Sans, sans-serif",
+                    color: "var(--text-secondary)",
+                  }}
+                >
+                  Support
+                </Link>
+              </div>
           </div>
         </main>
 
