@@ -56,22 +56,6 @@ export default function Nav() {
       {/* Right: Nav Links + Theme Toggle */}
       <div className="flex items-center gap-8">
         <ul className="hidden md:flex items-center gap-6 list-none">
-          <li>
-            <Link
-              href="/#work"
-              className="text-sm no-underline transition-colors duration-200"
-              style={linkStyle}
-              onMouseEnter={(e) =>
-                (e.currentTarget.style.color = "var(--amber)")
-              }
-              onMouseLeave={(e) =>
-                (e.currentTarget.style.color = "var(--text-secondary)")
-              }
-            >
-              Work
-            </Link>
-          </li>
-
           {/* Products dropdown */}
           <li ref={dropdownRef} className="relative">
             <button
