@@ -34,11 +34,7 @@ export default function Nav() {
       <div className="flex items-center gap-8">
         <ul className="hidden md:flex items-center gap-6 list-none">
           {[
-            { href: "/sixteen-to-one", label: "Sixteen to One" },
-            { href: "/stockpot", label: "Stockpot" },
-            { href: "/bramble", label: "Bramble" },
-            { href: "/pica", label: "Pica" },
-            { href: "/reviso", label: "Reviso" },
+            { href: "/#work", label: "Work" },
             { href: "/support", label: "Support" },
           ].map((link) => (
             <li key={link.href}>
