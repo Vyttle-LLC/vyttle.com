@@ -8,7 +8,7 @@ import { apps } from "@/lib/apps";
 
 export default function Nav() {
   const [open, setOpen] = useState(false);
-  const dropdownRef = useRef<HTMLDivElement>(null);
+  const dropdownRef = useRef<HTMLLIElement>(null);
 
   useEffect(() => {
     if (!open) return;
