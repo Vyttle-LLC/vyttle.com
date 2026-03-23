@@ -33,11 +33,11 @@ export default function ScreenshotCarousel({
     return (
       <>
         <div className="mt-12 w-full overflow-hidden -mx-6 md:-mx-12 px-6 md:px-12">
-          <div className="flex gap-4 overflow-x-auto snap-x snap-mandatory scroll-smooth pb-2 no-scrollbar">
-            {screenshots.map((shot, i) => (
+          <div className="flex gap-4 justify-center overflow-x-auto snap-x snap-mandatory scroll-smooth pb-2 no-scrollbar">
+            {screenshots.map((shot) => (
               <div
                 key={shot.src}
-                className={`snap-center shrink-0 ${i === 0 ? "ml-auto" : ""} ${i === screenshots.length - 1 ? "mr-auto" : ""}`}
+                className="snap-center shrink-0"
               >
                 <button
                   onClick={() => setActiveImage(shot)}
@@ -93,11 +93,11 @@ export default function ScreenshotCarousel({
 
   return (
     <div className="mt-12 w-full overflow-hidden -mx-6 md:-mx-12 px-6 md:px-12">
-      <div className="flex gap-4 overflow-x-auto snap-x snap-mandatory scroll-smooth pb-2 no-scrollbar">
+      <div className="flex gap-4 justify-center overflow-x-auto snap-x snap-mandatory scroll-smooth pb-2 no-scrollbar">
         {Array.from({ length: count }, (_, i) => (
           <div
             key={i}
-            className={`snap-center shrink-0 ${i === 0 ? "ml-auto" : ""} ${i === count - 1 ? "mr-auto" : ""}`}
+            className="snap-center shrink-0"
           >
             <div
               className="w-[180px] h-[360px] rounded-3xl flex items-center justify-center"
