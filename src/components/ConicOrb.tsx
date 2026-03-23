@@ -1,7 +1,7 @@
 export default function ConicOrb() {
   return (
     <div
-      className="absolute inset-0 pointer-events-none overflow-hidden"
+      className="fixed inset-0 pointer-events-none overflow-hidden z-0"
       aria-hidden="true"
     >
       {/* Aurora band 1 — warm (crema → tomato → bramble → cyan) */}
