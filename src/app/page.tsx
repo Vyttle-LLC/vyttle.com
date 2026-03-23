@@ -47,7 +47,7 @@ export default function HomePage() {
               animationDelay: "400ms",
             }}
           >
-            iOS apps &amp; developer tools from Vyttle
+            Mobile applications &amp; developer tools from Vyttle
           </p>
         </div>
 

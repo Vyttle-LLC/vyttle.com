@@ -16,7 +16,7 @@ export default function BentoCell({
 }) {
   const accentColor = app.accentVar || app.accent;
   const badgeColor = app.badgeVar || accentColor;
-  const typeLabel = app.type === "app" ? "iOS" : "SaaS";
+  const typeLabel = app.type === "app" ? "Mobile" : "SaaS";
   const href = app.externalUrl || `/${app.slug}`;
 
   return (
