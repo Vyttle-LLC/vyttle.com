@@ -34,11 +34,13 @@ export default function BentoCell({
         }}
         onMouseEnter={(e) => {
           e.currentTarget.style.transform = "scale(1.02)";
+          e.currentTarget.style.background = `color-mix(in srgb, ${app.accent} 12%, transparent)`;
           e.currentTarget.style.borderColor = `color-mix(in srgb, ${app.accent} 25%, transparent)`;
           e.currentTarget.style.boxShadow = `0 0 40px color-mix(in srgb, ${app.accent} 8%, transparent)`;
         }}
         onMouseLeave={(e) => {
           e.currentTarget.style.transform = "scale(1)";
+          e.currentTarget.style.background = `color-mix(in srgb, ${app.accent} 4%, transparent)`;
           e.currentTarget.style.borderColor = `color-mix(in srgb, ${app.accent} 10%, transparent)`;
           e.currentTarget.style.boxShadow = "none";
         }}
