@@ -1,234 +1,94 @@
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
-import AppCard from "@/components/AppCard";
 import VyttleMark from "@/components/marks/VyttleMark";
-import SixteenToOneMark from "@/components/marks/SixteenToOneMark";
-import StockpotMark from "@/components/marks/StockpotMark";
-import BrambleMark from "@/components/marks/BrambleMark";
-import PicaMark from "@/components/marks/PicaMark";
-import RevisoMark from "@/components/marks/RevisoMark";
-import { apps, getAppsByType } from "@/lib/apps";
+import ConicOrb from "@/components/ConicOrb";
+import BentoGrid from "@/components/BentoGrid";
 
 export default function HomePage() {
   return (
     <>
-      <Nav />
+      {/* Fixed aurora background */}
+      <ConicOrb />
 
-      {/* ==================== HERO ==================== */}
-      <section className="min-h-screen flex flex-col items-center justify-center relative px-6 overflow-hidden">
-        {/* Subtle grid background */}
-        <div
-          className="absolute inset-0 opacity-30 pointer-events-none"
-          style={{
-            backgroundImage:
-              "linear-gradient(var(--border) 1px, transparent 1px), linear-gradient(90deg, var(--border) 1px, transparent 1px)",
-            backgroundSize: "80px 80px",
-            maskImage:
-              "radial-gradient(ellipse 60% 50% at 50% 50%, black, transparent)",
-            WebkitMaskImage:
-              "radial-gradient(ellipse 60% 50% at 50% 50%, black, transparent)",
-          }}
-        />
+      <div className="relative z-10">
+        <Nav />
 
-        {/* Ambient glow */}
-        <div
-          className="absolute w-[500px] h-[500px] rounded-full animate-glow-pulse pointer-events-none"
-          style={{
-            background:
-              "radial-gradient(circle, rgba(212, 147, 61, 0.06) 0%, transparent 70%)",
-            top: "50%",
-            left: "50%",
-            transform: "translate(-50%, -55%)",
-          }}
-        />
+        {/* ==================== HERO ==================== */}
+        <section className="min-h-screen flex flex-col items-center justify-center relative px-6">
+          {/* Content */}
+          <div className="text-center flex flex-col items-center">
+            {/* Floating mark */}
+            <div className="animate-float mb-10 fade-in" style={{ animationDelay: "0ms" }}>
+              <VyttleMark
+                size={80}
+                className="transition-all duration-400"
+              />
+            </div>
 
-        {/* Content */}
-        <div className="relative z-10 text-center flex flex-col items-center gap-0">
-          {/* Floating diamond */}
-          <div className="animate-float mb-10">
-            <VyttleMark
-              size={80}
-              className="transition-all duration-400"
-            />
+            <h1
+              className="text-4xl md:text-[48px] mb-5 fade-in"
+              style={{
+                fontFamily: "var(--font-source-serif), 'Source Serif 4', serif",
+                fontWeight: 300,
+                letterSpacing: "1px",
+                color: "var(--text-primary)",
+                transition: "color 0.4s ease",
+                animationDelay: "200ms",
+              }}
+            >
+              Small by design
+            </h1>
+
+            <p
+              className="text-base font-light max-w-[480px] leading-relaxed fade-in"
+              style={{
+                fontFamily: "var(--font-dm-sans), DM Sans, sans-serif",
+                color: "var(--text-secondary)",
+                transition: "color 0.4s ease",
+                animationDelay: "400ms",
+              }}
+            >
+              Mobile applications &amp; developer tools from Vyttle
+            </p>
           </div>
 
-          <h1
-            className="text-4xl md:text-[56px] font-semibold mb-5"
-            style={{
-              fontFamily: "var(--font-outfit), Outfit, sans-serif",
-              letterSpacing: "2px",
-              color: "var(--text-primary)",
-              transition: "color 0.4s ease",
-            }}
-          >
-            Small by{" "}
-            <em className="not-italic" style={{ color: "var(--amber-accent)" }}>
-              design
-            </em>
-            .
-          </h1>
-
-          <p
-            className="text-lg font-light max-w-[480px] leading-relaxed"
-            style={{
-              fontFamily: "var(--font-dm-sans), DM Sans, sans-serif",
-              color: "var(--text-secondary)",
-              transition: "color 0.4s ease",
-            }}
-          >
-            We build intentionally compact apps — focused tools that do one
-            thing well, and nothing more.
-          </p>
-        </div>
-
-        {/* Scroll cue */}
-        <div
-          className="absolute bottom-10 left-1/2 flex flex-col items-center gap-2 animate-scroll-hint"
-          style={{ transform: "translateX(-50%)" }}
-        >
-          <span
-            className="text-xs font-normal uppercase"
-            style={{
-              fontFamily: "var(--font-dm-sans), DM Sans, sans-serif",
-              letterSpacing: "3px",
-              color: "var(--text-tertiary)",
-            }}
-          >
-            Explore
-          </span>
+          {/* Scroll cue */}
           <div
-            className="w-px h-8"
-            style={{
-              background:
-                "linear-gradient(to bottom, var(--text-tertiary), transparent)",
-            }}
-          />
-        </div>
-      </section>
+            className="absolute bottom-10 left-1/2 fade-in"
+            style={{ transform: "translateX(-50%)", animationDelay: "600ms" }}
+          >
+            <div className="flex flex-col items-center gap-2 animate-scroll-hint">
+              <span
+                className="text-xs font-normal uppercase"
+                style={{
+                  fontFamily: "var(--font-dm-sans), DM Sans, sans-serif",
+                  letterSpacing: "3px",
+                  color: "var(--text-tertiary)",
+                }}
+              >
+                Explore
+              </span>
+              <div
+                className="w-px h-8"
+                style={{
+                  background:
+                    "linear-gradient(to bottom, var(--text-tertiary), transparent)",
+                }}
+              />
+            </div>
+          </div>
+        </section>
 
-      {/* ==================== OUR APPS ==================== */}
-      <section className="pt-28 md:pt-32 pb-16 md:pb-20 lg:px-12 max-w-[1200px] mx-auto">
-        <div
-          className="text-center mb-14 px-6 lg:px-0"
-          style={{
-            fontFamily: "var(--font-dm-sans), DM Sans, sans-serif",
-            fontWeight: 400,
-            fontSize: "12px",
-            letterSpacing: "4px",
-            textTransform: "uppercase",
-            color: "var(--text-tertiary)",
-            transition: "color 0.4s ease",
-          }}
+        {/* ==================== BENTO GRID ==================== */}
+        <section
+          id="work"
+          className="pt-16 md:pt-24 pb-28 md:pb-32 px-6 md:px-12 max-w-[1200px] mx-auto"
         >
-          Our Apps
-        </div>
+          <BentoGrid />
+        </section>
 
-        <div className="flex gap-6 overflow-x-auto snap-x snap-mandatory scroll-smooth px-6 lg:px-0 pt-2 pb-4 lg:py-0 lg:grid lg:grid-cols-4 lg:overflow-visible no-scrollbar items-stretch">
-          <div className="snap-center shrink-0 lg:shrink flex">
-            <AppCard
-              name={apps[0].name}
-              nameHtml={apps[0].nameHtml}
-              tagline={apps[0].tagline}
-              href={`/${apps[0].slug}`}
-              logomark={
-                <SixteenToOneMark
-                  size={64}
-                  color={apps[0].accent}
-                  className="transition-colors duration-400"
-                />
-              }
-              accentColor={apps[0].accent}
-              badgeColor={apps[0].badgeVar}
-              isSerif
-            />
-          </div>
-          <div className="snap-center shrink-0 lg:shrink flex">
-            <AppCard
-              name={apps[1].name}
-              tagline={apps[1].tagline}
-              href={`/${apps[1].slug}`}
-              logomark={
-                <StockpotMark
-                  size={60}
-                  color={apps[1].accent}
-                  className="transition-colors duration-400"
-                />
-              }
-              accentColor={apps[1].accent}
-              badgeColor={apps[1].badgeVar}
-            />
-          </div>
-          <div className="snap-center shrink-0 lg:shrink flex">
-            <AppCard
-              name={apps[2].name}
-              tagline={apps[2].tagline}
-              href={`/${apps[2].slug}`}
-              logomark={
-                <BrambleMark
-                  size={60}
-                  className="transition-colors duration-400"
-                />
-              }
-              accentColor={apps[2].accent}
-              badgeColor={apps[2].badgeVar}
-            />
-          </div>
-          <div className="snap-center shrink-0 lg:shrink flex">
-            <AppCard
-              name={apps[3].name}
-              tagline={apps[3].tagline}
-              href={`/${apps[3].slug}`}
-              logomark={
-                <PicaMark
-                  size={60}
-                  color={apps[3].accent}
-                  className="transition-colors duration-400"
-                />
-              }
-              accentColor={apps[3].accent}
-              badgeColor={apps[3].badgeVar}
-            />
-          </div>
-        </div>
-      </section>
-
-      {/* ==================== OUR PRODUCTS ==================== */}
-      <section className="pb-28 md:pb-32 px-6 md:px-12 max-w-[1200px] mx-auto">
-        <div
-          className="text-center mb-14"
-          style={{
-            fontFamily: "var(--font-dm-sans), DM Sans, sans-serif",
-            fontWeight: 400,
-            fontSize: "12px",
-            letterSpacing: "4px",
-            textTransform: "uppercase",
-            color: "var(--text-tertiary)",
-            transition: "color 0.4s ease",
-          }}
-        >
-          Our Products
-        </div>
-
-        <div className="flex justify-center">
-          <div className="w-full max-w-[380px]">
-            <AppCard
-              name={apps[4].name}
-              tagline={apps[4].tagline}
-              href={`/${apps[4].slug}`}
-              logomark={
-                <RevisoMark
-                  size={60}
-                  className="transition-colors duration-400"
-                />
-              }
-              accentColor={apps[4].accent}
-              badgeColor={apps[4].badgeVar}
-            />
-          </div>
-        </div>
-      </section>
-
-      <Footer />
+        <Footer />
+      </div>
     </>
   );
 }

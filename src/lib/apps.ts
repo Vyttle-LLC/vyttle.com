@@ -9,6 +9,7 @@ export interface VyttleApp {
   description: string;
   status: AppStatus;
   type: ProductType;
+  featured?: boolean;
   appStoreUrl?: string;
   externalUrl?: string;
   accent: string;
@@ -30,6 +31,7 @@ export const apps: VyttleApp[] = [
       "A coffee ratio calculator that does one thing and does it well. Dial in your brew with precision — water, coffee, ratio, done.",
     status: "coming-soon",
     type: "app",
+    featured: true,
     accent: "#C4956A",
     badgeVar: "var(--badge-crema)",
     accentLight: "#DFC5A8",
@@ -91,7 +93,6 @@ export const apps: VyttleApp[] = [
       "A GitHub Action that provides intelligent, inline AI-powered code reviews on pull requests. Bring your own API key, pay per org — not per seat.",
     status: "coming-soon",
     type: "product",
-    externalUrl: "https://reviso.dev",
     accent: "#22D3EE",
     accentVar: "var(--reviso-accent)",
     badgeVar: "var(--badge-reviso)",
