@@ -93,7 +93,6 @@ export const apps: VyttleApp[] = [
       "A GitHub Action that provides intelligent, inline AI-powered code reviews on pull requests. Bring your own API key, pay per org — not per seat.",
     status: "coming-soon",
     type: "product",
-    externalUrl: "https://reviso.dev",
     accent: "#22D3EE",
     accentVar: "var(--reviso-accent)",
     badgeVar: "var(--badge-reviso)",
