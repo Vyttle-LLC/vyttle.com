@@ -173,6 +173,7 @@ export default function AppPageLayout({
                   Support
                 </Link>
               </div>
+            </div>
           </div>
         </main>
 
