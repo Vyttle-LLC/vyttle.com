@@ -17,29 +17,28 @@ export default function ConicOrb() {
     return () => observer.disconnect();
   }, []);
 
-  // Vibrant, saturated colors for light mode; warm muted for dark
   const bands = isLight
     ? [
-        // Light mode — saturated, cooler tones that pop on white
-        { top: "5%", left: "-20%", w: "55%", h: "300px", bg: "radial-gradient(ellipse at center, rgba(124,77,255,0.25) 0%, rgba(74,111,224,0.12) 50%, transparent 80%)", anim: "aurora-seg-1 8s ease-in-out infinite" },
-        { top: "12%", left: "15%", w: "50%", h: "260px", bg: "radial-gradient(ellipse at center, rgba(34,211,238,0.2) 0%, rgba(124,77,255,0.1) 60%, transparent 85%)", anim: "aurora-seg-2 6s ease-in-out infinite" },
-        { top: "5%", left: "45%", w: "55%", h: "280px", bg: "radial-gradient(ellipse at center, rgba(74,111,224,0.2) 0%, rgba(34,211,238,0.12) 50%, transparent 80%)", anim: "aurora-seg-3 10s ease-in-out infinite" },
-        { top: "45%", left: "-10%", w: "50%", h: "270px", bg: "radial-gradient(ellipse at center, rgba(124,77,255,0.2) 0%, rgba(196,149,106,0.1) 55%, transparent 80%)", anim: "aurora-seg-4 7s ease-in-out infinite" },
-        { top: "50%", left: "20%", w: "55%", h: "250px", bg: "radial-gradient(ellipse at center, rgba(34,211,238,0.18) 0%, rgba(74,111,224,0.1) 60%, transparent 85%)", anim: "aurora-seg-5 9s ease-in-out infinite" },
-        { top: "42%", left: "50%", w: "55%", h: "280px", bg: "radial-gradient(ellipse at center, rgba(196,149,106,0.18) 0%, rgba(124,77,255,0.1) 50%, transparent 80%)", anim: "aurora-seg-6 6s ease-in-out infinite" },
-        { top: "20%", left: "5%", w: "40%", h: "220px", bg: "radial-gradient(ellipse at center, rgba(34,211,238,0.22) 0%, transparent 70%)", anim: "aurora-seg-7 5s ease-in-out infinite" },
-        { top: "30%", left: "40%", w: "45%", h: "240px", bg: "radial-gradient(ellipse at center, rgba(124,77,255,0.2) 0%, rgba(34,211,238,0.1) 50%, transparent 75%)", anim: "aurora-seg-8 7s ease-in-out infinite" },
+        // Light mode — boosted opacity so colors are clearly visible on white
+        { top: "5%", left: "-20%", w: "55%", h: "300px", bg: "radial-gradient(ellipse at center, rgba(124,77,255,0.45) 0%, rgba(74,111,224,0.25) 50%, transparent 80%)", anim: "aurora-seg-1 8s ease-in-out infinite" },
+        { top: "12%", left: "15%", w: "50%", h: "260px", bg: "radial-gradient(ellipse at center, rgba(34,211,238,0.4) 0%, rgba(124,77,255,0.2) 60%, transparent 85%)", anim: "aurora-seg-2 6s ease-in-out infinite" },
+        { top: "5%", left: "45%", w: "55%", h: "280px", bg: "radial-gradient(ellipse at center, rgba(74,111,224,0.4) 0%, rgba(34,211,238,0.22) 50%, transparent 80%)", anim: "aurora-seg-3 10s ease-in-out infinite" },
+        { top: "45%", left: "-10%", w: "50%", h: "270px", bg: "radial-gradient(ellipse at center, rgba(124,77,255,0.4) 0%, rgba(196,149,106,0.2) 55%, transparent 80%)", anim: "aurora-seg-4 7s ease-in-out infinite" },
+        { top: "50%", left: "20%", w: "55%", h: "250px", bg: "radial-gradient(ellipse at center, rgba(34,211,238,0.35) 0%, rgba(74,111,224,0.2) 60%, transparent 85%)", anim: "aurora-seg-5 9s ease-in-out infinite" },
+        { top: "42%", left: "50%", w: "55%", h: "280px", bg: "radial-gradient(ellipse at center, rgba(196,149,106,0.35) 0%, rgba(124,77,255,0.2) 50%, transparent 80%)", anim: "aurora-seg-6 6s ease-in-out infinite" },
+        { top: "20%", left: "5%", w: "40%", h: "220px", bg: "radial-gradient(ellipse at center, rgba(34,211,238,0.4) 0%, transparent 70%)", anim: "aurora-seg-7 5s ease-in-out infinite" },
+        { top: "30%", left: "40%", w: "45%", h: "240px", bg: "radial-gradient(ellipse at center, rgba(124,77,255,0.38) 0%, rgba(34,211,238,0.2) 50%, transparent 75%)", anim: "aurora-seg-8 7s ease-in-out infinite" },
       ]
     : [
-        // Dark mode — warm, rich aurora
-        { top: "5%", left: "-20%", w: "55%", h: "300px", bg: "radial-gradient(ellipse at center, rgba(196,149,106,0.45) 0%, rgba(216,74,43,0.2) 50%, transparent 80%)", anim: "aurora-seg-1 8s ease-in-out infinite" },
-        { top: "12%", left: "15%", w: "50%", h: "260px", bg: "radial-gradient(ellipse at center, rgba(216,74,43,0.35) 0%, rgba(196,149,106,0.15) 60%, transparent 85%)", anim: "aurora-seg-2 6s ease-in-out infinite" },
-        { top: "5%", left: "45%", w: "55%", h: "280px", bg: "radial-gradient(ellipse at center, rgba(196,149,106,0.3) 0%, rgba(124,77,255,0.2) 50%, transparent 80%)", anim: "aurora-seg-3 10s ease-in-out infinite" },
-        { top: "45%", left: "-10%", w: "50%", h: "270px", bg: "radial-gradient(ellipse at center, rgba(74,111,224,0.4) 0%, rgba(124,77,255,0.2) 55%, transparent 80%)", anim: "aurora-seg-4 7s ease-in-out infinite" },
-        { top: "50%", left: "20%", w: "55%", h: "250px", bg: "radial-gradient(ellipse at center, rgba(124,77,255,0.35) 0%, rgba(74,111,224,0.15) 60%, transparent 85%)", anim: "aurora-seg-5 9s ease-in-out infinite" },
-        { top: "42%", left: "50%", w: "55%", h: "280px", bg: "radial-gradient(ellipse at center, rgba(124,77,255,0.3) 0%, rgba(196,149,106,0.2) 50%, transparent 80%)", anim: "aurora-seg-6 6s ease-in-out infinite" },
-        { top: "20%", left: "5%", w: "40%", h: "220px", bg: "radial-gradient(ellipse at center, rgba(34,211,238,0.35) 0%, transparent 70%)", anim: "aurora-seg-7 5s ease-in-out infinite" },
-        { top: "30%", left: "40%", w: "45%", h: "240px", bg: "radial-gradient(ellipse at center, rgba(34,211,238,0.3) 0%, rgba(124,77,255,0.15) 50%, transparent 75%)", anim: "aurora-seg-8 7s ease-in-out infinite" },
+        // Dark mode — dialed back so bento cell accent colors aren't masked
+        { top: "5%", left: "-20%", w: "55%", h: "300px", bg: "radial-gradient(ellipse at center, rgba(196,149,106,0.25) 0%, rgba(216,74,43,0.1) 50%, transparent 80%)", anim: "aurora-seg-1 8s ease-in-out infinite" },
+        { top: "12%", left: "15%", w: "50%", h: "260px", bg: "radial-gradient(ellipse at center, rgba(216,74,43,0.2) 0%, rgba(196,149,106,0.08) 60%, transparent 85%)", anim: "aurora-seg-2 6s ease-in-out infinite" },
+        { top: "5%", left: "45%", w: "55%", h: "280px", bg: "radial-gradient(ellipse at center, rgba(196,149,106,0.18) 0%, rgba(124,77,255,0.1) 50%, transparent 80%)", anim: "aurora-seg-3 10s ease-in-out infinite" },
+        { top: "45%", left: "-10%", w: "50%", h: "270px", bg: "radial-gradient(ellipse at center, rgba(74,111,224,0.22) 0%, rgba(124,77,255,0.1) 55%, transparent 80%)", anim: "aurora-seg-4 7s ease-in-out infinite" },
+        { top: "50%", left: "20%", w: "55%", h: "250px", bg: "radial-gradient(ellipse at center, rgba(124,77,255,0.2) 0%, rgba(74,111,224,0.08) 60%, transparent 85%)", anim: "aurora-seg-5 9s ease-in-out infinite" },
+        { top: "42%", left: "50%", w: "55%", h: "280px", bg: "radial-gradient(ellipse at center, rgba(124,77,255,0.18) 0%, rgba(196,149,106,0.1) 50%, transparent 80%)", anim: "aurora-seg-6 6s ease-in-out infinite" },
+        { top: "20%", left: "5%", w: "40%", h: "220px", bg: "radial-gradient(ellipse at center, rgba(34,211,238,0.2) 0%, transparent 70%)", anim: "aurora-seg-7 5s ease-in-out infinite" },
+        { top: "30%", left: "40%", w: "45%", h: "240px", bg: "radial-gradient(ellipse at center, rgba(34,211,238,0.18) 0%, rgba(124,77,255,0.08) 50%, transparent 75%)", anim: "aurora-seg-8 7s ease-in-out infinite" },
       ];
 
   return (
