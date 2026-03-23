@@ -32,8 +32,8 @@ export default function ScreenshotCarousel({
   if (screenshots && screenshots.length > 0) {
     return (
       <>
-        <div className="mt-12 w-full overflow-hidden -mx-6 md:-mx-12 px-6 md:px-12">
-          <div className="flex gap-4 justify-center overflow-x-auto snap-x snap-mandatory scroll-smooth pb-2 no-scrollbar">
+        <div className="mt-12 w-full">
+          <div className="flex gap-4 justify-center flex-wrap">
             {screenshots.map((shot) => (
               <div
                 key={shot.src}
@@ -92,8 +92,8 @@ export default function ScreenshotCarousel({
   }
 
   return (
-    <div className="mt-12 w-full overflow-hidden -mx-6 md:-mx-12 px-6 md:px-12">
-      <div className="flex gap-4 justify-center overflow-x-auto snap-x snap-mandatory scroll-smooth pb-2 no-scrollbar">
+    <div className="mt-12 w-full">
+      <div className="flex gap-4 justify-center flex-wrap">
         {Array.from({ length: count }, (_, i) => (
           <div
             key={i}
