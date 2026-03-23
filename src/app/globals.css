@@ -4,7 +4,7 @@
 
 :root {
   /* Vyttle Core */
-  --midnight: #0C0E1A;
+  --midnight: #08090E;
   --navy: #1A1E35;
   --slate: #5B6178;
   --silver: #A8ADBD;
@@ -96,7 +96,7 @@
   --font-dm-sans: var(--font-dm-sans);
   --font-source-serif: var(--font-source-serif);
 
-  --color-midnight: #0C0E1A;
+  --color-midnight: #08090E;
   --color-navy: #1A1E35;
   --color-slate: #5B6178;
   --color-silver: #A8ADBD;
@@ -119,6 +119,7 @@
   --animate-pulse-dot: pulse-dot 2s ease-in-out infinite;
   --animate-glow-pulse: glow-pulse 8s ease-in-out infinite;
   --animate-scroll-hint: scroll-hint 2s ease-in-out infinite;
+  --animate-conic-rotate: conic-rotate 20s linear infinite;
 }
 
 /* ==================== KEYFRAMES ==================== */
@@ -141,6 +142,37 @@
 @keyframes scroll-hint {
   0%, 100% { opacity: 0.5; transform: translateX(-50%) translateY(0); }
   50% { opacity: 1; transform: translateX(-50%) translateY(6px); }
+}
+
+@keyframes conic-rotate {
+  0% { transform: translate(-50%, -50%) rotate(0deg); }
+  100% { transform: translate(-50%, -50%) rotate(360deg); }
+}
+
+/* Scroll reveal */
+[data-reveal] {
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+[data-reveal].revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Staggered fade-in for page load */
+.fade-in {
+  opacity: 0;
+  transform: translateY(12px);
+  animation: fade-in-up 0.6s ease forwards;
+}
+
+@keyframes fade-in-up {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 /* ==================== BASE STYLES ==================== */
