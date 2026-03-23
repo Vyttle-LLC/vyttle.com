@@ -34,33 +34,42 @@ export default function AppPageLayout({
             style={{
               border: "1px solid var(--card-border)",
               borderRadius: "24px",
+              background: `color-mix(in srgb, ${accentColor} 3%, transparent)`,
             }}
           >
-            {/* Logomark */}
-            <div className="w-24 h-24 flex items-center justify-center">
+            {/* Logomark with glow halo */}
+            <div
+              className="w-24 h-24 flex items-center justify-center fade-in"
+              style={{
+                animationDelay: "0ms",
+                filter: `drop-shadow(0 0 20px color-mix(in srgb, ${app.accent} 25%, transparent))`,
+              }}
+            >
               {logomark}
             </div>
 
             {/* App Name */}
             {app.nameHtml ? (
               <h1
-                className="text-4xl md:text-[40px]"
+                className="text-4xl md:text-[40px] fade-in"
                 style={{
                   fontFamily:
                     "var(--font-source-serif), 'Source Serif 4', serif",
                   fontWeight: 400,
                   letterSpacing: "1px",
                   color: accentColor,
+                  animationDelay: "200ms",
                 }}
                 dangerouslySetInnerHTML={{ __html: app.nameHtml }}
               />
             ) : (
               <h1
-                className="text-4xl md:text-[36px] font-semibold uppercase"
+                className="text-4xl md:text-[36px] font-semibold uppercase fade-in"
                 style={{
                   fontFamily: "var(--font-outfit), Outfit, sans-serif",
                   letterSpacing: "6px",
                   color: accentColor,
+                  animationDelay: "200ms",
                 }}
               >
                 {app.name}
@@ -69,20 +78,25 @@ export default function AppPageLayout({
 
             {/* Description */}
             <p
-              className="text-base font-normal max-w-md leading-relaxed"
+              className="text-base font-normal max-w-md leading-relaxed fade-in"
               style={{
                 fontFamily: "var(--font-dm-sans), DM Sans, sans-serif",
                 color: "var(--text-secondary)",
+                animationDelay: "400ms",
               }}
             >
               {app.description}
             </p>
 
             {/* Coming Soon */}
-            <ComingSoonBadge color={badgeColor} />
+            <div className="fade-in" style={{ animationDelay: "500ms" }}>
+              <ComingSoonBadge color={badgeColor} />
+            </div>
 
             {/* Screenshot Carousel */}
-            <ScreenshotCarousel screenshots={screenshots} />
+            <div className="fade-in w-full" style={{ animationDelay: "600ms" }}>
+              <ScreenshotCarousel screenshots={screenshots} />
+            </div>
           </div>
 
           {/* About Section */}
