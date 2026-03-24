@@ -29,9 +29,10 @@ export const apps: VyttleApp[] = [
     tagline: "The ratio, perfected.",
     description:
       "A coffee ratio calculator that does one thing and does it well. Dial in your brew with precision — water, coffee, ratio, done.",
-    status: "coming-soon",
+    status: "available",
     type: "app",
     featured: true,
+    appStoreUrl: "https://apps.apple.com/us/app/sixteen-to-one/id6760734071",
     accent: "#C4956A",
     badgeVar: "var(--badge-crema)",
     accentLight: "#DFC5A8",
