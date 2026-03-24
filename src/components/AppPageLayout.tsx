@@ -93,9 +93,25 @@ export default function AppPageLayout({
                 {app.description}
               </p>
 
-              {/* Coming Soon */}
+              {/* Status badge */}
               <div className="fade-in" style={{ animationDelay: "500ms" }}>
-                <ComingSoonBadge color={badgeColor} />
+                {app.status === "available" && app.appStoreUrl ? (
+                  <a
+                    href={app.appStoreUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-sm font-medium no-underline hover:opacity-85 transition-opacity duration-200"
+                    style={{
+                      fontFamily: "var(--font-dm-sans), DM Sans, sans-serif",
+                      background: accentColor,
+                      color: app.darkBg,
+                    }}
+                  >
+                    Download on the App Store
+                  </a>
+                ) : (
+                  <ComingSoonBadge color={badgeColor} />
+                )}
               </div>
 
               {/* Screenshot Carousel */}
