@@ -106,7 +106,21 @@ export default function BentoCell({
 
         {/* Badge */}
         <div className="mt-auto pt-2">
-          <ComingSoonBadge color={badgeColor} />
+          {app.status === "available" ? (
+            <div
+              className="inline-flex items-center gap-1.5 px-4 py-1.5 rounded-full text-[10px] font-normal uppercase"
+              style={{
+                fontFamily: "var(--font-dm-sans), DM Sans, sans-serif",
+                letterSpacing: "2px",
+                background: accentColor,
+                color: app.darkBg,
+              }}
+            >
+              Available Now
+            </div>
+          ) : (
+            <ComingSoonBadge color={badgeColor} />
+          )}
         </div>
       </div>
     </Link>
