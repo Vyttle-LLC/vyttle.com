@@ -33,7 +33,7 @@ export default function ScreenshotCarousel({
     return (
       <>
         <div className="mt-12 w-full">
-          <div className="flex gap-4 justify-center flex-wrap">
+          <div className="flex gap-4 justify-start md:justify-center overflow-x-auto snap-x snap-mandatory pb-4 scrollbar-hide" style={{ WebkitOverflowScrolling: "touch" }}>
             {screenshots.map((shot) => (
               <div
                 key={shot.src}
@@ -93,7 +93,7 @@ export default function ScreenshotCarousel({
 
   return (
     <div className="mt-12 w-full">
-      <div className="flex gap-4 justify-center flex-wrap">
+      <div className="flex gap-4 justify-start md:justify-center overflow-x-auto snap-x snap-mandatory pb-4 scrollbar-hide" style={{ WebkitOverflowScrolling: "touch" }}>
         {Array.from({ length: count }, (_, i) => (
           <div
             key={i}
