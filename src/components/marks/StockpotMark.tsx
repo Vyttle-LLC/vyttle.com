@@ -15,22 +15,21 @@ export default function StockpotMark({
     <svg
       width={size}
       height={size}
-      viewBox="0 0 60 60"
+      viewBox="17 17 66 66"
       fill="none"
       className={className}
       style={style}
       aria-label="Stockpot logomark"
     >
       {/* Pot body */}
-      <circle cx="30" cy="30" r="22" fill="var(--stockpot-structural)" />
+      <path d="M50,26 A24,24 0 1,1 50,74 A24,24 0 1,1 50,26 Z" fill="var(--stockpot-structural)" />
+      <circle cx="50" cy="50" r="8" fill="var(--bg-primary)" />
       {/* Left handle */}
-      <rect x="2" y="26" width="8" height="8" rx="3" fill="var(--stockpot-structural)" />
+      <rect x="17" y="46" width="10" height="8" rx="3" fill="var(--stockpot-structural)" />
       {/* Right handle */}
-      <rect x="50" y="26" width="8" height="8" rx="3" fill="var(--stockpot-structural)" />
-      {/* Center ring fill */}
-      <circle cx="30" cy="30" r="7" fill="var(--bg-primary)" />
-      {/* Center dot */}
-      <circle cx="30" cy="30" r="5" fill={color} />
+      <rect x="73" y="46" width="10" height="8" rx="3" fill="var(--stockpot-structural)" />
+      {/* Tomato dot */}
+      <circle cx="50" cy="50" r="5.5" fill={color} />
     </svg>
   );
 }

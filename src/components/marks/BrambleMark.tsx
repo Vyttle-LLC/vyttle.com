@@ -13,24 +13,26 @@ export default function BrambleMark({
     <svg
       width={size}
       height={size}
-      viewBox="0 0 60 60"
+      viewBox="13 13 74 74"
       fill="none"
       className={className}
       style={style}
       aria-label="Bramble logomark"
     >
-      {/* Connection lines */}
-      <line x1="30" y1="6" x2="30" y2="30" stroke="var(--mark-neutral-sub)" strokeWidth="3" strokeLinecap="round" />
-      <line x1="54" y1="30" x2="30" y2="30" stroke="var(--mark-neutral-sub)" strokeWidth="3" strokeLinecap="round" />
-      <line x1="30" y1="54" x2="30" y2="30" stroke="var(--mark-neutral-sub)" strokeWidth="3" strokeLinecap="round" />
-      <line x1="6" y1="30" x2="30" y2="30" stroke="var(--mark-neutral-sub)" strokeWidth="3" strokeLinecap="round" />
-      {/* Outer nodes (solid circles) */}
-      <circle cx="30" cy="6" r="5.5" fill="var(--mark-neutral)" />
-      <circle cx="54" cy="30" r="5.5" fill="var(--mark-neutral)" />
-      <circle cx="30" cy="54" r="5.5" fill="var(--mark-neutral)" />
-      <circle cx="6" cy="30" r="5.5" fill="var(--mark-neutral)" />
-      {/* Center node */}
-      <circle cx="30" cy="30" r="7.5" fill="var(--bramble-accent)" />
+      <g transform="translate(10,10)">
+        {/* Connection lines */}
+        <line x1="40" y1="10" x2="40" y2="40" stroke="var(--bramble-structural)" strokeWidth="3.5" strokeLinecap="round" />
+        <line x1="70" y1="40" x2="40" y2="40" stroke="var(--bramble-structural)" strokeWidth="3.5" strokeLinecap="round" />
+        <line x1="40" y1="70" x2="40" y2="40" stroke="var(--bramble-structural)" strokeWidth="3.5" strokeLinecap="round" />
+        <line x1="10" y1="40" x2="40" y2="40" stroke="var(--bramble-structural)" strokeWidth="3.5" strokeLinecap="round" />
+        {/* Outer nodes */}
+        <circle cx="40" cy="10" r="7" fill="var(--bramble-node)" />
+        <circle cx="70" cy="40" r="7" fill="var(--bramble-node)" />
+        <circle cx="40" cy="70" r="7" fill="var(--bramble-node)" />
+        <circle cx="10" cy="40" r="7" fill="var(--bramble-node)" />
+        {/* Center node */}
+        <circle cx="40" cy="40" r="9.5" fill="var(--bramble-accent)" />
+      </g>
     </svg>
   );
 }

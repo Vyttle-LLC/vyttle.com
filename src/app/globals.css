@@ -41,6 +41,8 @@
   --sixteen-structural: #DFC5A8;
   --stockpot-structural: #8A8580;
   --bramble-accent: #7C4DFF;
+  --bramble-structural: #736C80;
+  --bramble-node: #E8E5ED;
   --pica-structural: #A8ADBD;
   --reviso-structural: #5B6178;
   --cyan-deep: #06B6D4;
@@ -74,6 +76,8 @@
   --sixteen-structural: #1C1008;
   --stockpot-structural: #3A3632;
   --bramble-accent: #7C4DFF;
+  --bramble-structural: #332F3D;
+  --bramble-node: #1C1A22;
   --pica-structural: #1A1E35;
   --reviso-structural: #A8ADBD;
   --reviso-accent: var(--cyan-deep);
