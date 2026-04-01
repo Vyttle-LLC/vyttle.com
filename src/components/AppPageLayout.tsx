@@ -98,6 +98,7 @@ export default function AppPageLayout({
                 {app.status === "available" && (app.appStoreUrl || app.playStoreUrl) ? (
                   <>
                     {app.appStoreUrl && (
+                      <div className="flex-1 flex justify-center sm:justify-end">
                       <a
                         href={app.appStoreUrl}
                         target="_blank"
@@ -119,8 +120,10 @@ export default function AppPageLayout({
                           </g>
                         </svg>
                       </a>
+                      </div>
                     )}
                     {app.playStoreUrl && (
+                      <div className="flex-1 flex justify-center sm:justify-start">
                       <a
                         href={app.playStoreUrl}
                         target="_blank"
@@ -135,6 +138,7 @@ export default function AppPageLayout({
                           width={168}
                         />
                       </a>
+                      </div>
                     )}
                   </>
                 ) : (
