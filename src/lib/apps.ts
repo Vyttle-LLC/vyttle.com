@@ -11,6 +11,7 @@ export interface VyttleApp {
   type: ProductType;
   featured?: boolean;
   appStoreUrl?: string;
+  playStoreUrl?: string;
   externalUrl?: string;
   accent: string;
   accentVar?: string;
@@ -33,6 +34,7 @@ export const apps: VyttleApp[] = [
     type: "app",
     featured: true,
     appStoreUrl: "https://apps.apple.com/us/app/sixteen-to-one/id6760734071",
+    playStoreUrl: "https://play.google.com/store/apps/details?id=com.vyttle.sixteentoone",
     accent: "#C4956A",
     badgeVar: "var(--badge-crema)",
     accentLight: "#DFC5A8",
