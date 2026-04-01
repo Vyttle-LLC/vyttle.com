@@ -132,7 +132,7 @@ export default function AppPageLayout({
                           src="/badges/google-play.png"
                           alt="Get it on Google Play"
                           height={50}
-                          width={168}
+                          width={150}
                         />
                       </a>
                     )}
