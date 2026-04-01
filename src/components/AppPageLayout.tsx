@@ -94,10 +94,11 @@ export default function AppPageLayout({
               </p>
 
               {/* Status badge / store links */}
-              <div className="fade-in flex flex-wrap items-center justify-center gap-4" style={{ animationDelay: "500ms" }}>
+              <div className="fade-in flex flex-col sm:flex-row items-center justify-center gap-4" style={{ animationDelay: "500ms" }}>
                 {app.status === "available" && (app.appStoreUrl || app.playStoreUrl) ? (
                   <>
                     {app.appStoreUrl && (
+                      <div className="flex-1 flex justify-center sm:justify-end">
                       <a
                         href={app.appStoreUrl}
                         target="_blank"
@@ -119,22 +120,25 @@ export default function AppPageLayout({
                           </g>
                         </svg>
                       </a>
+                      </div>
                     )}
                     {app.playStoreUrl && (
+                      <div className="flex-1 flex justify-center sm:justify-start">
                       <a
                         href={app.playStoreUrl}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="inline-flex items-center overflow-hidden hover:opacity-85 transition-opacity duration-200"
-                        style={{ height: 50 }}
+                        className="inline-block hover:opacity-85 transition-opacity duration-200"
                       >
                         {/* eslint-disable-next-line @next/next/no-img-element */}
                         <img
                           src="/badges/google-play.png"
                           alt="Get it on Google Play"
-                          style={{ height: 74, margin: '0 -10px' }}
+                          height={50}
+                          width={168}
                         />
                       </a>
+                      </div>
                     )}
                   </>
                 ) : (
