@@ -102,7 +102,8 @@ export default function AppPageLayout({
                         href={app.appStoreUrl}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="inline-block hover:opacity-85 transition-opacity duration-200"
+                        className="inline-flex justify-center hover:opacity-85 transition-opacity duration-200"
+                        style={{ width: 168 }}
                       >
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 40" width="150" height="50" role="img" aria-label="Download on the App Store">
                           <title>Download on the App Store</title>
@@ -132,7 +133,7 @@ export default function AppPageLayout({
                           src="/badges/google-play.png"
                           alt="Get it on Google Play"
                           height={50}
-                          width={150}
+                          width={168}
                         />
                       </a>
                     )}
