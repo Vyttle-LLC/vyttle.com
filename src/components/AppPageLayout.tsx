@@ -94,7 +94,7 @@ export default function AppPageLayout({
               </p>
 
               {/* Status badge / store links */}
-              <div className="fade-in flex flex-wrap items-center justify-center gap-4" style={{ animationDelay: "500ms" }}>
+              <div className="fade-in flex flex-col sm:flex-row items-center justify-center gap-4" style={{ animationDelay: "500ms" }}>
                 {app.status === "available" && (app.appStoreUrl || app.playStoreUrl) ? (
                   <>
                     {app.appStoreUrl && (
