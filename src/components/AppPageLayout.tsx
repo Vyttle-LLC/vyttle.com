@@ -125,14 +125,14 @@ export default function AppPageLayout({
                         href={app.playStoreUrl}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="inline-block hover:opacity-85 transition-opacity duration-200"
+                        className="inline-flex items-center overflow-hidden hover:opacity-85 transition-opacity duration-200"
+                        style={{ height: 50 }}
                       >
                         {/* eslint-disable-next-line @next/next/no-img-element */}
                         <img
                           src="/badges/google-play.png"
                           alt="Get it on Google Play"
-                          height={50}
-                          width={168}
+                          style={{ height: 74, margin: '0 -10px' }}
                         />
                       </a>
                     )}
