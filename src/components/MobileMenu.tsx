@@ -58,9 +58,13 @@ export default function MobileMenu({
     };
   }, [mounted]);
 
-  // Move focus in on open; Escape closes and returns focus to the toggle.
+  // Move focus to the first link once the panel is actually mounted; Escape
+  // closes and returns focus to the toggle. Keyed on `mounted` because on the
+  // render where `open` flips true the panel is still unmounted (returns null
+  // below), so firstLinkRef isn't attached yet — focusing it there is a no-op,
+  // and this effect wouldn't re-run on the later mount since `open` is unchanged.
   useEffect(() => {
-    if (!open) return;
+    if (!open || !mounted) return;
     firstLinkRef.current?.focus();
     const onKey = (e: KeyboardEvent) => {
       if (e.key === "Escape") {
@@ -70,7 +74,7 @@ export default function MobileMenu({
     };
     document.addEventListener("keydown", onKey);
     return () => document.removeEventListener("keydown", onKey);
-  }, [open, onClose, toggleRef]);
+  }, [open, mounted, onClose, toggleRef]);
 
   if (!mounted) return null;
 

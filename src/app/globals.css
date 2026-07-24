@@ -297,6 +297,23 @@ body {
   border-color: var(--amber-accent);
 }
 
+/* The same ring on every other interactive control, so keyboard focus reads as
+   one amber system rather than the browser's default blue. Scoped to real
+   interactive elements — the programmatically-focused <main> skip target
+   (focus:outline-none) is deliberately excluded. Bespoke treatments
+   (.field-input above, the screenshot carousel) win on specificity and keep
+   their own offsets. */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible,
+summary:focus-visible,
+[role="button"]:focus-visible {
+  outline: 2px solid var(--amber-accent);
+  outline-offset: 2px;
+}
+
 /* ==================== PROSE STYLES (for MDX pages) ==================== */
 
 .prose h1 {
@@ -348,6 +365,20 @@ body {
 
 .prose a:hover {
   color: var(--gold);
+}
+
+/* Amber can't clear AA (4.5:1) as normal-size text on the light surface — it
+   lands at 2.4:1. So in light mode the link text takes the readable primary
+   tone and keeps its amber identity in the underline; the underline brightens
+   on hover. Dark mode keeps amber text, which clears AA there at 7.35:1. */
+:root[data-theme="light"] .prose a {
+  color: var(--text-primary);
+  text-decoration-color: var(--amber-accent);
+}
+
+:root[data-theme="light"] .prose a:hover {
+  color: var(--text-primary);
+  text-decoration-color: var(--amber);
 }
 
 .prose strong {
