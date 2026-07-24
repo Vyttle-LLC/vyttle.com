@@ -313,7 +313,17 @@ Two states, deliberately inverted from each other.
 - **Left:** 20px Vyttle diamond and the wordmark at +6px tracking
 - **Links:** DM Sans 400 at 14px in secondary text, shifting to amber on hover
 - **Products dropdown:** Same glass treatment, 12px radius, and the one component in the system with a real drop shadow. Each row carries a 8px accent dot and tints to that accent at 8% on hover.
-- **Mobile:** Links collapse; the theme toggle and wordmark persist.
+- **Mobile (below `md`):** The horizontal links collapse into a hamburger toggle; the wordmark and theme toggle stay in the bar. Tapping the toggle opens the mobile menu. Both the toggle and the menu belong to the content plane, not a new one.
+
+### Mobile menu (signature component)
+
+Below `md`, the primary nav becomes a full-viewport glass overlay rather than a scaled-down bar — one calm surface showing one set of choices at a time, matching the spacious hero.
+
+- **Surface:** `--surface-glass` with `backdrop-filter: blur(24px)`, so it reads as glass over the atmosphere rather than an opaque panel — the aurora still whispers through. Sits at `z-40`, below the nav bar's `z-50`, so the toggle (now an ✕) stays on top and reachable. Padding respects `env(safe-area-inset-*)` via `max()`.
+- **Content:** the five products as flat rows (8px accent dot + name, echoing the desktop dropdown) under a "Products" eyebrow, a hairline divider, then Support. The desktop dropdown is deliberately *not* re-nested inside the menu — a disclosure-within-a-disclosure for five short items is friction, not progressive disclosure.
+- **Semantics:** a disclosure, not a modal. The toggle carries `aria-expanded` and `aria-controls`; the panel is a labeled region, not `role="dialog"`. Claiming `aria-modal` would be false, since the control that closes it lives outside it in the bar.
+- **Behavior:** rows are ≥48px tall; body scroll locks while open; Escape closes and returns focus to the toggle; opening moves focus to the first link. It auto-closes if the viewport crosses into desktop, so its JS scroll-lock can never strand a `md:hidden` overlay.
+- **Motion:** one authored moment — a 200ms fade with an 8px upward slide, and a symmetric exit. Reduced-motion snaps with no slide, per The Instrument Rule.
 
 ### The Atmosphere (signature component)
 
