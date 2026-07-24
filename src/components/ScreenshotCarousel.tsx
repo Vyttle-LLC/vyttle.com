@@ -67,7 +67,7 @@ export default function ScreenshotCarousel({
               position: "fixed",
               inset: 0,
               zIndex: 9999,
-              background: "rgba(0, 0, 0, 0.85)",
+              background: "var(--scrim)",
               display: "flex",
               alignItems: "center",
               justifyContent: "center",

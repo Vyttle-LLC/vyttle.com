@@ -29,18 +29,20 @@ export default function BentoCell({
       <div
         className="relative rounded-xl p-8 flex flex-col gap-4 cursor-pointer transition-all duration-200 h-full overflow-hidden"
         style={{
-          background: `color-mix(in srgb, ${app.accent} 4%, transparent)`,
+          background: `color-mix(in srgb, ${app.accent} 4%, var(--surface-glass))`,
           border: `1px solid color-mix(in srgb, ${app.accent} 10%, transparent)`,
+          backdropFilter: "blur(8px)",
+          WebkitBackdropFilter: "blur(8px)",
         }}
         onMouseEnter={(e) => {
           e.currentTarget.style.transform = "scale(1.02)";
-          e.currentTarget.style.background = `color-mix(in srgb, ${app.accent} 12%, transparent)`;
+          e.currentTarget.style.background = `color-mix(in srgb, ${app.accent} 12%, var(--surface-glass))`;
           e.currentTarget.style.borderColor = `color-mix(in srgb, ${app.accent} 25%, transparent)`;
           e.currentTarget.style.boxShadow = `0 0 40px color-mix(in srgb, ${app.accent} 8%, transparent)`;
         }}
         onMouseLeave={(e) => {
           e.currentTarget.style.transform = "scale(1)";
-          e.currentTarget.style.background = `color-mix(in srgb, ${app.accent} 4%, transparent)`;
+          e.currentTarget.style.background = `color-mix(in srgb, ${app.accent} 4%, var(--surface-glass))`;
           e.currentTarget.style.borderColor = `color-mix(in srgb, ${app.accent} 10%, transparent)`;
           e.currentTarget.style.boxShadow = "none";
         }}
@@ -52,8 +54,11 @@ export default function BentoCell({
             fontFamily: "var(--font-dm-sans), DM Sans, sans-serif",
             fontSize: "10px",
             letterSpacing: "1.5px",
-            color: `color-mix(in srgb, ${app.accent} 50%, transparent)`,
-            border: `1px solid color-mix(in srgb, ${app.accent} 15%, transparent)`,
+            // Neutral, not accent: at 50% alpha this measured 1.3-3.4:1.
+            // The chip is a category label, not product identity — the
+            // mark, tint, border and badge already carry the accent.
+            color: "var(--text-tertiary)",
+            border: `1px solid color-mix(in srgb, ${app.accent} 25%, transparent)`,
             padding: "3px 8px",
             borderRadius: "12px",
           }}

@@ -35,6 +35,17 @@
   --card-border: rgba(168, 173, 189, 0.08);
   --nav-bg: rgba(12, 14, 26, 0.85);
 
+  /* Glass base for content surfaces that sit over the aurora.
+     The atmosphere belongs BEHIND content, not behind text — at less
+     than 0.92 the aurora bleeds through and 10px labels drop under
+     4.5:1. Measured floor is 0.90; this carries headroom. */
+  --surface-glass: rgba(12, 14, 26, 0.92);
+
+  /* Lightbox scrim. Midnight rather than pure black, and deliberately
+     NOT theme-aware: a screenshot reads best against a dark surround in
+     either theme. */
+  --scrim: rgba(12, 14, 26, 0.88);
+
   /* Theme-aware mark colors — dark defaults */
   --mark-neutral: #DDD8CC;
   --mark-neutral-sub: rgba(221, 216, 204, 0.5);
@@ -54,7 +65,7 @@
   /* Theme-aware badge colors — dark defaults */
   --badge-crema: #C4956A;
   --badge-stockpot: #D4756A;
-  --badge-bramble: #7C4DFF;
+  --badge-bramble: #9D7AFF;
   --badge-pica: #8AA4F0;
   --badge-reviso: #22D3EE;
 }
@@ -69,6 +80,7 @@
   --border: rgba(221, 224, 232, 0.8);
   --card-border: rgba(221, 224, 232, 0.5);
   --nav-bg: rgba(244, 245, 247, 0.85);
+  --surface-glass: rgba(244, 245, 247, 0.92);
 
   /* Theme-aware mark colors — light overrides */
   --mark-neutral: #1A1E35;
@@ -88,9 +100,9 @@
   /* Theme-aware badge colors — light overrides */
   --badge-crema: #5C3D2E;
   --badge-stockpot: #8B2920;
-  --badge-bramble: #7C4DFF;
-  --badge-pica: #4A6FE0;
-  --badge-reviso: #0891B2;
+  --badge-bramble: #6C37FF;
+  --badge-pica: #315BDC;
+  --badge-reviso: #0E7490;
 }
 
 /* ==================== TAILWIND THEME ==================== */
