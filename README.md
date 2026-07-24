@@ -1,6 +1,6 @@
 # vyttle.com
 
-The marketing website for [Vyttle](https://vyttle.com) — a software studio building intentionally small, privacy-first iOS apps.
+The marketing website for [Vyttle](https://vyttle.com) — a software studio building intentionally small, privacy-first mobile apps and developer tools.
 
 ## Apps & Products
 

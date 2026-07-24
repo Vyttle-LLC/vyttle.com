@@ -103,13 +103,13 @@ export default function SupportForm() {
   const inputStyle = {
     fontFamily: "var(--font-dm-sans), DM Sans, sans-serif",
     fontWeight: 300,
-    fontSize: "15px",
+    // 16px minimum: iOS Safari zooms the viewport on focus below this.
+    fontSize: "16px",
     padding: "12px 16px",
     borderRadius: "10px",
     border: "1px solid var(--border)",
     background: "var(--bg-card)",
     color: "var(--text-primary)",
-    outline: "none",
     width: "100%",
     transition: "all 0.2s ease",
   };
@@ -149,6 +149,7 @@ export default function SupportForm() {
           id="name"
           name="name"
           required
+          className="field-input"
           placeholder="Your name"
           value={formData.name}
           onChange={(e) =>
@@ -177,6 +178,7 @@ export default function SupportForm() {
           id="email"
           name="email"
           required
+          className="field-input"
           placeholder="you@example.com"
           value={formData.email}
           onChange={(e) =>
@@ -201,6 +203,7 @@ export default function SupportForm() {
           App
         </label>
         <select
+          className="field-input"
           id="app"
           name="app"
           required
@@ -239,6 +242,7 @@ export default function SupportForm() {
           name="message"
           required
           rows={5}
+          className="field-input"
           placeholder="How can we help?"
           value={formData.message}
           onChange={(e) =>
@@ -257,7 +261,7 @@ export default function SupportForm() {
           fontFamily: "var(--font-dm-sans), DM Sans, sans-serif",
           letterSpacing: "1px",
           background: "var(--amber)",
-          color: "#fff",
+          color: "var(--midnight)",
           opacity: submitting ? 0.5 : 1,
         }}
       >

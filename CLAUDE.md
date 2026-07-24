@@ -2,7 +2,7 @@
 
 ## Project
 
-Marketing website for **Vyttle** — a software studio building privacy-first iOS apps. Showcases apps (Sixteen to One, Stockpot, Bramble, Pica) and products (Reviso).
+Marketing website for **Vyttle** — a software studio building privacy-first mobile apps and developer tools. Showcases apps (Sixteen to One, Stockpot, Bramble, Pica) and products (Reviso).
 
 ## Tech Stack
 
