@@ -11,7 +11,7 @@ export default function TermsPage() {
   return (
     <>
       <Nav />
-      <main className="pt-32 pb-16 px-6 md:px-12">
+      <main id="main" tabIndex={-1} className="pt-32 pb-16 px-6 md:px-12 focus:outline-none">
         <div className="max-w-3xl mx-auto prose">
           <h1>Terms of Use</h1>
           <p

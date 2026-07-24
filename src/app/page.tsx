@@ -13,6 +13,7 @@ export default function HomePage() {
       <div className="relative z-10">
         <Nav />
 
+        <main id="main" tabIndex={-1} className="focus:outline-none">
         {/* ==================== HERO ==================== */}
         <section className="min-h-screen flex flex-col items-center justify-center relative px-6">
           {/* Content */}
@@ -82,10 +83,15 @@ export default function HomePage() {
         {/* ==================== BENTO GRID ==================== */}
         <section
           id="work"
+          aria-labelledby="work-heading"
           className="pt-16 md:pt-24 pb-28 md:pb-32 px-6 md:px-12 max-w-[1200px] mx-auto"
         >
+          <h2 id="work-heading" className="sr-only">
+            Apps and products
+          </h2>
           <BentoGrid />
         </section>
+        </main>
 
         <Footer />
       </div>

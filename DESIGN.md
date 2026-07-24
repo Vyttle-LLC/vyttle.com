@@ -333,6 +333,10 @@ Eight absolutely-positioned radial-gradient ellipses in a fixed, full-viewport, 
 
 Each product renders as an inline SVG component driven by CSS custom properties rather than hardcoded fills, which is what lets a single mark be theme-aware without duplicate assets. `--mark-neutral` carries the structural fill (Cool Warm Fog on dark, Navy on light); per-product variables like `--sixteen-structural` and `--bramble-node` do the same for product marks. Accent dots are hardcoded precisely because they must not respond to theme.
 
+### Screenshot lightbox (dialog)
+
+App-page screenshots open into a true modal. The overlay is `role="dialog"` + `aria-modal`, labeled by the image's alt text, over the `--scrim`. Opening moves focus to a glass circular close button (44×44, top-right, safe-area aware); Tab is trapped on it; Escape or a backdrop tap closes; and focus returns to the exact thumbnail that opened it. This is the one genuinely modal surface in the system — the nav menus are disclosures, not dialogs, because their controls sit outside them.
+
 ## Do's and Don'ts
 
 ### Do:
@@ -346,6 +350,10 @@ Each product renders as an inline SVG component driven by CSS custom properties 
 - **Do** keep transitions at 200ms for state and 400ms for theme, with no easing that overshoots.
 - **Do** honor `prefers-reduced-motion` for every new animation, matching the existing block that disables fades, reveals, and decorative motion.
 - **Do** give policy, support, and per-app legal pages the same craft as the homepage — they carry more real traffic.
+- **Do** give every page one `<main id="main" tabIndex={-1}>` landmark and a heading; the skip link routes to it and moves focus into content past the fixed nav. A section with no visible heading gets an `sr-only` one rather than none.
+- **Do** give every overlay honest semantics and managed focus: the lightbox is a `dialog` (`aria-modal`, focus trapped, focus returned to its trigger on close); the nav menus are disclosures (`aria-expanded` + `aria-controls`, Escape closes and restores focus). Never claim `aria-modal` when the closing control lives outside the overlay.
+- **Do** keep the focus ring one color — a 2px `--amber-accent` outline via `:focus-visible` — so keyboard focus reads as a system, not per-control accidents.
+- **Do** mark a logomark `aria-hidden` when visible brand text sits beside it; announce it only when it stands alone.
 
 ### Don't:
 - **Don't** let this read as a generic AI-era SaaS landing page. The aurora is one wrong move from that cliché; what saves it is that it stays behind glass and never becomes the subject. No gradient blob behind a centered CTA, no testimonial wall, no "Trusted by" logo strip, no pricing table.

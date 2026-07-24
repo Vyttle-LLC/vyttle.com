@@ -11,6 +11,7 @@ export default function Nav() {
   const [open, setOpen] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const dropdownRef = useRef<HTMLLIElement>(null);
+  const productsButtonRef = useRef<HTMLButtonElement>(null);
   const menuButtonRef = useRef<HTMLButtonElement>(null);
 
   useEffect(() => {
@@ -20,8 +21,28 @@ export default function Nav() {
         setOpen(false);
       }
     };
+    // Escape closes and returns focus to the trigger; focus leaving the
+    // dropdown (Tab past it) closes it too, so it never lingers unseen.
+    const handleKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") {
+        setOpen(false);
+        productsButtonRef.current?.focus();
+      }
+    };
+    const handleFocusOut = (e: FocusEvent) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(e.relatedTarget as Node)) {
+        setOpen(false);
+      }
+    };
     document.addEventListener("mousedown", handleClick);
-    return () => document.removeEventListener("mousedown", handleClick);
+    document.addEventListener("keydown", handleKey);
+    const node = dropdownRef.current;
+    node?.addEventListener("focusout", handleFocusOut);
+    return () => {
+      document.removeEventListener("mousedown", handleClick);
+      document.removeEventListener("keydown", handleKey);
+      node?.removeEventListener("focusout", handleFocusOut);
+    };
   }, [open]);
 
   // The mobile menu's scroll-lock is JS, not media-query — so if the viewport
@@ -75,9 +96,12 @@ export default function Nav() {
           {/* Products dropdown */}
           <li ref={dropdownRef} className="relative">
             <button
+              ref={productsButtonRef}
               onClick={() => setOpen(!open)}
-              className="text-sm transition-colors duration-200 cursor-pointer bg-transparent border-none p-0"
+              className="text-sm flex items-center gap-1 transition-colors duration-200 cursor-pointer bg-transparent border-none p-0"
               style={linkStyle}
+              aria-expanded={open}
+              aria-controls="products-menu"
               onMouseEnter={(e) =>
                 (e.currentTarget.style.color = "var(--amber)")
               }
@@ -86,19 +110,26 @@ export default function Nav() {
               }}
             >
               Products
-              <span
-                className="inline-block ml-1 transition-transform duration-200"
-                style={{
-                  transform: open ? "rotate(180deg)" : "rotate(0deg)",
-                  fontSize: "10px",
-                }}
+              <svg
+                width="10"
+                height="10"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                className="transition-transform duration-200"
+                style={{ transform: open ? "rotate(180deg)" : "rotate(0deg)" }}
+                aria-hidden="true"
               >
-                ▼
-              </span>
+                <path d="M6 9l6 6 6-6" />
+              </svg>
             </button>
 
             {open && (
               <div
+                id="products-menu"
                 className="absolute top-full mt-3 right-0 rounded-xl py-2 min-w-[200px]"
                 style={{
                   background: "var(--nav-bg)",

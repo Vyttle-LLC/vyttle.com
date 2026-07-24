@@ -31,7 +31,7 @@ export default function AppPageLayout({
       <div className="relative z-10">
         <Nav />
 
-        <main className="pt-32 pb-16 px-6 md:px-12">
+        <main id="main" tabIndex={-1} className="pt-32 pb-16 px-6 md:px-12 focus:outline-none">
           <div className="max-w-[1200px] mx-auto">
             {/* Hero */}
             <div
