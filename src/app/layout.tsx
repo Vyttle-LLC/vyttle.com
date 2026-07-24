@@ -28,11 +28,11 @@ const sourceSerif = Source_Serif_4({
 export const metadata: Metadata = {
   title: "Vyttle — Small by design",
   description:
-    "A software studio building intentionally small, privacy-first iOS apps. No accounts. No tracking. No servers.",
+    "A software studio building intentionally small, privacy-first mobile apps and developer tools. No accounts. No tracking. No servers.",
   openGraph: {
     title: "Vyttle — Small by design",
     description:
-      "A software studio building intentionally small, privacy-first iOS apps.",
+      "A software studio building intentionally small, privacy-first mobile apps and developer tools.",
     type: "website",
     siteName: "Vyttle",
   },
