@@ -7,12 +7,17 @@ export default function ThemeToggle() {
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
+    // Client-only mount guard: render a placeholder until mounted, then read the
+    // persisted theme once. setState-on-mount is the SSR-hydration idiom here —
+    // a single extra render, not the cascading loop this rule targets.
+    /* eslint-disable react-hooks/set-state-in-effect */
     setMounted(true);
     const saved = localStorage.getItem("vyttle-theme") as
       | "light"
       | "dark"
       | null;
     if (saved) setTheme(saved);
+    /* eslint-enable react-hooks/set-state-in-effect */
   }, []);
 
   const toggle = () => {

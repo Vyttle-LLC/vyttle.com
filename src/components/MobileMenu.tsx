@@ -34,8 +34,10 @@ export default function MobileMenu({
     return () => mq.removeEventListener("change", sync);
   }, []);
 
-  // Enter / exit lifecycle.
+  // Enter / exit lifecycle. Drives the mount-then-animate sequence off `open`;
+  // setState in this effect is the mechanism, not an accidental cascade.
   useEffect(() => {
+    /* eslint-disable react-hooks/set-state-in-effect */
     if (open) {
       setMounted(true);
       const id = requestAnimationFrame(() => setEntered(true));
@@ -46,6 +48,7 @@ export default function MobileMenu({
       const t = setTimeout(() => setMounted(false), reduce ? 0 : 200);
       return () => clearTimeout(t);
     }
+    /* eslint-enable react-hooks/set-state-in-effect */
   }, [open, mounted, reduce]);
 
   // Lock body scroll while the overlay covers the page.
