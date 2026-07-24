@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 
-export default function ConicOrb() {
+export default function ConicOrb({ dim = false }: { dim?: boolean }) {
   const [isLight, setIsLight] = useState(false);
   // Animate the atmosphere only where it's free and wanted: desktop widths with
   // motion not reduced. Below `md` it renders static — same colors and blur,
@@ -66,6 +66,12 @@ export default function ConicOrb() {
     <div
       className="fixed inset-0 pointer-events-none overflow-hidden z-0"
       aria-hidden="true"
+      /* Reading pages pass dim: a negative z so static prose paints over the
+         field without each page wrapping its content in a stacking context,
+         and a theme-aware opacity that keeps it behind the reading. Light is
+         held lower — its bands run ~2x alpha and body text sits at a tighter
+         5.6:1, so the field must not dent legibility; dark has ~8.6:1 headroom. */
+      style={dim ? { zIndex: -10, opacity: isLight ? 0.22 : 0.5 } : undefined}
     >
       {bands.map((b, i) => (
         <div

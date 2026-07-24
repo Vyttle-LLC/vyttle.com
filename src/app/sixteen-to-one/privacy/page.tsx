@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Nav from "@/components/Nav";
+import ConicOrb from "@/components/ConicOrb";
 import Footer from "@/components/Footer";
 import Link from "next/link";
 
@@ -11,6 +12,7 @@ export const metadata: Metadata = {
 export default function SixteenToOnePrivacyPage() {
   return (
     <>
+      <ConicOrb dim />
       <Nav />
       <main id="main" tabIndex={-1} className="pt-32 pb-16 px-6 md:px-12 focus:outline-none">
         <div className="max-w-3xl mx-auto prose">
