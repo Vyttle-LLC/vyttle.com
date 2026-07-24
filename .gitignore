@@ -42,3 +42,6 @@ next-env.d.ts
 
 # superpowers
 .superpowers/
+
+# impeccable live mode (local session state; config.json is committed)
+.impeccable/live/sessions/
