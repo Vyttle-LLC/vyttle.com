@@ -62,6 +62,11 @@
   /* Theme-aware accent — hero "design" word */
   --amber-accent: var(--amber);
 
+  /* Amber for TEXT. --amber-accent clears the 3:1 non-text bar (focus rings,
+     borders) but not the 4.5:1 normal-text bar on light: raw amber lands at
+     2.4:1 there. Any amber-colored word or link uses this instead. */
+  --amber-text: var(--amber);
+
   /* Theme-aware badge colors — dark defaults */
   --badge-crema: #C4956A;
   --badge-stockpot: #D4756A;
@@ -96,6 +101,10 @@
 
   /* Theme-aware accent — hero "design" word */
   --amber-accent: #B8802E;
+
+  /* Amber darkened until it clears 4.5:1 as text on the light surface (4.99:1),
+     while staying in the brand's amber family. See the dark block for why. */
+  --amber-text: #8F6018;
 
   /* Theme-aware badge colors — light overrides */
   --badge-crema: #5C3D2E;

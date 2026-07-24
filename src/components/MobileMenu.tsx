@@ -167,7 +167,7 @@ export default function MobileMenu({
           className="flex items-center no-underline rounded-lg transition-colors duration-200"
           style={{ ...rowStyle, padding: "0 8px" }}
           onMouseEnter={(e) => {
-            e.currentTarget.style.color = "var(--amber)";
+            e.currentTarget.style.color = "var(--amber-text)";
           }}
           onMouseLeave={(e) => {
             e.currentTarget.style.color = "var(--text-primary)";

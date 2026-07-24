@@ -104,7 +104,7 @@ export default function Nav() {
               aria-expanded={open}
               aria-controls="products-menu"
               onMouseEnter={(e) =>
-                (e.currentTarget.style.color = "var(--amber)")
+                (e.currentTarget.style.color = "var(--amber-text)")
               }
               onMouseLeave={(e) => {
                 if (!open) e.currentTarget.style.color = "var(--text-secondary)";
@@ -182,7 +182,7 @@ export default function Nav() {
               className="text-sm no-underline transition-colors duration-200"
               style={linkStyle}
               onMouseEnter={(e) =>
-                (e.currentTarget.style.color = "var(--amber)")
+                (e.currentTarget.style.color = "var(--amber-text)")
               }
               onMouseLeave={(e) =>
                 (e.currentTarget.style.color = "var(--text-secondary)")

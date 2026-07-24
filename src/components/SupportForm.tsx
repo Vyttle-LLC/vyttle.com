@@ -101,7 +101,7 @@ export default function SupportForm() {
           className="text-sm cursor-pointer bg-transparent border-none"
           style={{
             fontFamily: "var(--font-dm-sans), DM Sans, sans-serif",
-            color: "var(--amber)",
+            color: "var(--amber-text)",
           }}
         >
           Send another message
@@ -109,6 +109,14 @@ export default function SupportForm() {
       </div>
     );
   }
+
+  // One treatment for both inline support-email links. --amber-text keeps the
+  // accent identity while clearing 4.5:1 as text in both themes.
+  const mailtoStyle = {
+    color: "var(--amber-text)",
+    textDecoration: "underline",
+    textUnderlineOffset: "2px",
+  };
 
   const inputStyle = {
     fontFamily: "var(--font-dm-sans), DM Sans, sans-serif",
@@ -290,35 +298,49 @@ export default function SupportForm() {
           }}
         >
           We couldn&apos;t send your message. Please try again, or email{" "}
-          <a
-            href="mailto:support@vyttle.com"
-            style={{
-              color: "var(--text-primary)",
-              textDecoration: "underline",
-              textDecorationColor: "var(--amber-accent)",
-            }}
-          >
+          <a href="mailto:support@vyttle.com" style={mailtoStyle}>
             support@vyttle.com
           </a>
           .
         </div>
       )}
 
-      {/* Submit */}
-      <button
-        type="submit"
-        disabled={submitting}
-        className="text-sm font-medium py-3.5 px-8 rounded-[10px] border-none cursor-pointer self-start transition-all duration-200"
-        style={{
-          fontFamily: "var(--font-dm-sans), DM Sans, sans-serif",
-          letterSpacing: "1px",
-          background: "var(--amber)",
-          color: "var(--midnight)",
-          opacity: submitting ? 0.5 : 1,
-        }}
-      >
-        {submitting ? "Sending…" : "Send message"}
-      </button>
+      {/* Submit, with the reassurance that belongs at the moment someone
+          actually hands over their name and email — a compression of what
+          /privacy already commits to, plus the plain-email alternative for
+          people who would rather not use a form at all. */}
+      <div className="flex flex-col items-start gap-3">
+        <button
+          type="submit"
+          disabled={submitting}
+          className="text-sm font-medium py-3.5 px-8 rounded-[10px] border-none cursor-pointer transition-all duration-200"
+          style={{
+            fontFamily: "var(--font-dm-sans), DM Sans, sans-serif",
+            letterSpacing: "1px",
+            background: "var(--amber)",
+            color: "var(--midnight)",
+            opacity: submitting ? 0.5 : 1,
+          }}
+        >
+          {submitting ? "Sending…" : "Send message"}
+        </button>
+
+        <p
+          className="text-xs"
+          style={{
+            fontFamily: "var(--font-dm-sans), DM Sans, sans-serif",
+            fontWeight: 300,
+            lineHeight: 1.6,
+            color: "var(--text-tertiary)",
+          }}
+        >
+          Used only to reply, never shared, and deleted once your issue is
+          resolved. Prefer plain email?{" "}
+          <a href="mailto:support@vyttle.com" style={mailtoStyle}>
+            support@vyttle.com
+          </a>
+        </p>
+      </div>
     </form>
   );
 }

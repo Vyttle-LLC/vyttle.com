@@ -98,7 +98,12 @@ export default function AppPageLayout({
                 {app.status === "available" && (app.appStoreUrl || app.playStoreUrl) ? (
                   <>
                     {app.appStoreUrl && (
-                      <div className="flex-1 flex justify-center sm:justify-end">
+                      /* No flex-1 here: equal halves starved the wider Google
+                         Play badge, and Tailwind's preflight max-width on img
+                         then scaled it to 159x47, so the two badges rendered at
+                         different heights. The row's own justify-center centers
+                         the pair at their natural size. */
+                      <div className="flex justify-center">
                       <a
                         href={app.appStoreUrl}
                         target="_blank"
@@ -123,7 +128,7 @@ export default function AppPageLayout({
                       </div>
                     )}
                     {app.playStoreUrl && (
-                      <div className="flex-1 flex justify-center sm:justify-start">
+                      <div className="flex justify-center">
                       <a
                         href={app.playStoreUrl}
                         target="_blank"
