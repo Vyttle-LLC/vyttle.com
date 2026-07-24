@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { apps } from "@/lib/apps";
 
 export default function SupportForm() {
@@ -12,6 +12,8 @@ export default function SupportForm() {
   });
   const [submitted, setSubmitted] = useState(false);
   const [submitting, setSubmitting] = useState(false);
+  const [failed, setFailed] = useState(false);
+  const successHeadingRef = useRef<HTMLHeadingElement>(null);
 
   useEffect(() => {
     const params = new URLSearchParams(window.location.search);
@@ -21,8 +23,16 @@ export default function SupportForm() {
     }
   }, []);
 
+  // On success the form is replaced by the confirmation; move focus to its
+  // heading so screen-reader and keyboard users learn the message went
+  // through, not only sighted ones.
+  useEffect(() => {
+    if (submitted) successHeadingRef.current?.focus();
+  }, [submitted]);
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    setFailed(false);
     setSubmitting(true);
 
     try {
@@ -36,9 +46,7 @@ export default function SupportForm() {
       });
       setSubmitted(true);
     } catch {
-      alert(
-        "Sorry, something went wrong. Please try again or email support@vyttle.com"
-      );
+      setFailed(true);
     } finally {
       setSubmitting(false);
     }
@@ -66,7 +74,9 @@ export default function SupportForm() {
           </svg>
         </div>
         <h2
-          className="text-2xl font-medium mb-4"
+          ref={successHeadingRef}
+          tabIndex={-1}
+          className="text-2xl font-medium mb-4 focus:outline-none"
           style={{
             fontFamily: "var(--font-outfit), Outfit, sans-serif",
             color: "var(--text-primary)",
@@ -81,7 +91,7 @@ export default function SupportForm() {
             color: "var(--text-secondary)",
           }}
         >
-          We&apos;ve received your message and will get back to you soon.
+          We&apos;ve got your message and will reply by email as soon as we can.
         </p>
         <button
           onClick={() => {
@@ -121,6 +131,7 @@ export default function SupportForm() {
       data-netlify="true"
       data-netlify-honeypot="bot-field"
       onSubmit={handleSubmit}
+      aria-busy={submitting}
       className="max-w-lg mx-auto flex flex-col gap-5"
     >
       <input type="hidden" name="form-name" value="support" />
@@ -129,6 +140,17 @@ export default function SupportForm() {
           Don&apos;t fill this out: <input name="bot-field" />
         </label>
       </div>
+
+      <p
+        className="text-xs"
+        style={{
+          fontFamily: "var(--font-dm-sans), DM Sans, sans-serif",
+          fontWeight: 300,
+          color: "var(--text-tertiary)",
+        }}
+      >
+        All fields are required.
+      </p>
 
       {/* Name */}
       <div className="flex flex-col gap-1.5">
@@ -200,7 +222,7 @@ export default function SupportForm() {
             color: "var(--text-secondary)",
           }}
         >
-          App
+          Product
         </label>
         <select
           className="field-input"
@@ -213,7 +235,7 @@ export default function SupportForm() {
           }
           style={inputStyle}
         >
-          <option value="">Select an app...</option>
+          <option value="">Select a product…</option>
           {apps.map((a) => (
             <option key={a.slug} value={a.slug}>
               {a.name}
@@ -243,7 +265,7 @@ export default function SupportForm() {
           required
           rows={5}
           className="field-input"
-          placeholder="How can we help?"
+          placeholder="Tell us what's going on…"
           value={formData.message}
           onChange={(e) =>
             setFormData((prev) => ({ ...prev, message: e.target.value }))
@@ -251,6 +273,36 @@ export default function SupportForm() {
           style={{ ...inputStyle, resize: "vertical", minHeight: "120px" }}
         />
       </div>
+
+      {failed && (
+        <div
+          role="alert"
+          className="text-sm"
+          style={{
+            fontFamily: "var(--font-dm-sans), DM Sans, sans-serif",
+            fontWeight: 300,
+            lineHeight: 1.5,
+            color: "var(--text-primary)",
+            background: "var(--bg-card)",
+            border: "1px solid var(--border)",
+            borderRadius: "10px",
+            padding: "12px 16px",
+          }}
+        >
+          We couldn&apos;t send your message. Please try again, or email{" "}
+          <a
+            href="mailto:support@vyttle.com"
+            style={{
+              color: "var(--text-primary)",
+              textDecoration: "underline",
+              textDecorationColor: "var(--amber-accent)",
+            }}
+          >
+            support@vyttle.com
+          </a>
+          .
+        </div>
+      )}
 
       {/* Submit */}
       <button
@@ -265,7 +317,7 @@ export default function SupportForm() {
           opacity: submitting ? 0.5 : 1,
         }}
       >
-        {submitting ? "Sending..." : "Send Message"}
+        {submitting ? "Sending…" : "Send message"}
       </button>
     </form>
   );
