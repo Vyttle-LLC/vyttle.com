@@ -68,6 +68,12 @@ typography:
     fontWeight: 400
     lineHeight: 1
     letterSpacing: "3px"
+  micro:
+    fontFamily: "DM Sans, sans-serif"
+    fontSize: "10px"
+    fontWeight: 400
+    lineHeight: 1
+    letterSpacing: "2px"
 rounded:
   sm: "10px"
   md: "12px"
@@ -173,6 +179,13 @@ The five product accents. Each belongs to exactly one product and is inherited f
 - **Cool Warm Fog** (`#DDD8CC`): The logomark's structural fill on dark. Distinct from Fog — it is deliberately warmer, so the diamond reads as an object rather than as text.
 - **White** (`#F4F5F7`): The primary light background. Never pure `#FFFFFF`.
 
+### Surfaces
+
+Two composited surface tokens, both built from Midnight rather than pure black:
+
+- **`--surface-glass`** (`rgba(12,14,26,0.92)` dark / `rgba(244,245,247,0.92)` light): The base any content surface composites onto when it sits over the atmosphere. See The Glass-Not-Clear Rule.
+- **`--scrim`** (`rgba(12,14,26,0.88)`): The lightbox overlay. Deliberately **not** theme-aware — a screenshot reads best against a dark surround in either theme — and deliberately Midnight rather than pure black, so the overlay belongs to this palette.
+
 ### Named Rules
 
 **The One Voice Rule.** Amber is the studio's color, not a product's. A product page uses that product's accent for every accent role; it never borrows amber. Conversely, no product accent may appear on the homepage hero, the footer, or the wordmark. Nothing on this site uses two accents at once.
@@ -200,7 +213,8 @@ The five product accents. Each belongs to exactly one product and is inherited f
 - **Headline** (Outfit, 600, 2.5rem, +0.02em): Page titles in prose and policy pages. App page titles set uppercase at +6px in the product's accent.
 - **Title** (Outfit, 500, 1.5rem, +0.01em): Section headings — "About [App]", "Thanks for reaching out!"
 - **Body** (DM Sans, 400, 1rem, line-height 1.8): All reading copy. Prose columns cap at `max-w-3xl`; app-page copy at `max-w-2xl`. Taglines and support copy set at 300.
-- **Label** (DM Sans, 300–400, 10–11px, +2px to +4px, uppercase): Section eyebrows, badges, type chips, the scroll cue. The most-used voice on the site.
+- **Label** (DM Sans, 300–400, 11px, +3px to +4px, uppercase): Section eyebrows and the scroll cue. The most-used voice on the site.
+- **Micro** (DM Sans, 400, 10px, +1.5px to +2px, uppercase): Status badges and type chips. The smallest type in the system, and therefore the tier where contrast has to be checked rather than assumed — every measured contrast failure this system has had was at this size.
 
 ### Named Rules
 
@@ -246,6 +260,8 @@ The only true shadows in the system are state or structure, never rest: a 40px a
 
 **The Look-Through Rule.** The atmosphere must never become the subject. If a visitor notices the background before the words, it is too loud. It has no hard edges, resolves into no recognizable shape, and every band stays under `blur(70px)`.
 
+**The Glass-Not-Clear Rule.** A content surface sitting over the atmosphere composites onto `--surface-glass` (0.92 alpha), never onto `transparent`. The atmosphere belongs behind *content*, not behind *text*. A 96%-clear surface lets the aurora through the words themselves, and because the aurora animates, the effective contrast becomes a moving target — 10px labels measured as low as 1.3:1 against a light-mode band at peak. 0.90 is the measured floor; 0.92 is the token. Pair it with a backdrop blur so the surface reads as glass rather than as a panel.
+
 ## Shapes
 
 Radius scales with the surface it wraps. Inputs and buttons take 10px; bento cells take 12px; screenshots, lightboxes, and the app-page container take 24px; badges and the theme toggle are fully round. Nothing on this site has square corners, and nothing has a radius the eye would call "soft" — every value is small enough to read as machined rather than pillowy.
@@ -273,12 +289,12 @@ Two states, deliberately inverted from each other.
 
 - **Coming Soon:** Outlined — 1px accent border, accent text, transparent fill, with a 5px accent dot pulsing on a 2s opacity cycle (0.4 → 1). Pill radius, 10px uppercase at +2px.
 - **Available Now:** Filled — solid accent background with text set in that product's own dark background color. The inversion is the signal; a shipped product looks materially different from a promised one.
-- **Type chip:** "Mobile" / "SaaS", absolutely positioned top-right of each bento cell. 10px uppercase at +1.5px, accent text at 50%, 15% accent border, pill radius.
+- **Type chip:** "Mobile" / "SaaS", absolutely positioned top-right of each bento cell. 10px uppercase at +1.5px, **neutral text** (`--text-tertiary`) inside a 25% accent border, pill radius. The text is deliberately not accent-colored: the chip states a category, not an identity, and the mark, tint, border and status badge already carry the accent four times over in the same cell. Accent text here previously ran at 50% alpha and measured 1.3–3.4:1.
 
 ### Bento Cells
 
 - **Corner Style:** 12px radius
-- **Background:** The product's accent at 4% over the page background (`color-mix(in srgb, {accent} 4%, transparent)`)
+- **Background:** The product's accent at 4% over `--surface-glass` (`color-mix(in srgb, {accent} 4%, var(--surface-glass))`), with `backdrop-filter: blur(8px)`. Composited over the glass token, never over `transparent` — see The Glass-Not-Clear Rule.
 - **Border:** 1px of the same accent at 10%
 - **Internal Padding:** 32px, uniform, at every breakpoint
 - **Hover:** Tint to 12%, border to 25%, `scale(1.02)`, and a 40px accent glow — all on a 200ms transition. Roughly a 3× jump in presence, and the single most characteristic interaction in the system.
@@ -297,7 +313,17 @@ Two states, deliberately inverted from each other.
 - **Left:** 20px Vyttle diamond and the wordmark at +6px tracking
 - **Links:** DM Sans 400 at 14px in secondary text, shifting to amber on hover
 - **Products dropdown:** Same glass treatment, 12px radius, and the one component in the system with a real drop shadow. Each row carries a 8px accent dot and tints to that accent at 8% on hover.
-- **Mobile:** Links collapse; the theme toggle and wordmark persist.
+- **Mobile (below `md`):** The horizontal links collapse into a hamburger toggle; the wordmark and theme toggle stay in the bar. Tapping the toggle opens the mobile menu. Both the toggle and the menu belong to the content plane, not a new one.
+
+### Mobile menu (signature component)
+
+Below `md`, the primary nav becomes a full-viewport glass overlay rather than a scaled-down bar — one calm surface showing one set of choices at a time, matching the spacious hero.
+
+- **Surface:** `--surface-glass` with `backdrop-filter: blur(24px)`, so it reads as glass over the atmosphere rather than an opaque panel — the aurora still whispers through. Sits at `z-40`, below the nav bar's `z-50`, so the toggle (now an ✕) stays on top and reachable. Padding respects `env(safe-area-inset-*)` via `max()`.
+- **Content:** the five products as flat rows (8px accent dot + name, echoing the desktop dropdown) under a "Products" eyebrow, a hairline divider, then Support. The desktop dropdown is deliberately *not* re-nested inside the menu — a disclosure-within-a-disclosure for five short items is friction, not progressive disclosure.
+- **Semantics:** a disclosure, not a modal. The toggle carries `aria-expanded` and `aria-controls`; the panel is a labeled region, not `role="dialog"`. Claiming `aria-modal` would be false, since the control that closes it lives outside it in the bar.
+- **Behavior:** rows are ≥48px tall; body scroll locks while open; Escape closes and returns focus to the toggle; opening moves focus to the first link. It auto-closes if the viewport crosses into desktop, so its JS scroll-lock can never strand a `md:hidden` overlay.
+- **Motion:** one authored moment — a 200ms fade with an 8px upward slide, and a symmetric exit. Reduced-motion snaps with no slide, per The Instrument Rule.
 
 ### The Atmosphere (signature component)
 
@@ -306,6 +332,10 @@ Eight absolutely-positioned radial-gradient ellipses in a fixed, full-viewport, 
 ### The Marks (signature component)
 
 Each product renders as an inline SVG component driven by CSS custom properties rather than hardcoded fills, which is what lets a single mark be theme-aware without duplicate assets. `--mark-neutral` carries the structural fill (Cool Warm Fog on dark, Navy on light); per-product variables like `--sixteen-structural` and `--bramble-node` do the same for product marks. Accent dots are hardcoded precisely because they must not respond to theme.
+
+### Screenshot lightbox (dialog)
+
+App-page screenshots open into a true modal. The overlay is `role="dialog"` + `aria-modal`, labeled by the image's alt text, over the `--scrim`. Opening moves focus to a glass circular close button (44×44, top-right, safe-area aware); Tab is trapped on it; Escape or a backdrop tap closes; and focus returns to the exact thumbnail that opened it. This is the one genuinely modal surface in the system — the nav menus are disclosures, not dialogs, because their controls sit outside them.
 
 ## Do's and Don'ts
 
@@ -320,6 +350,10 @@ Each product renders as an inline SVG component driven by CSS custom properties 
 - **Do** keep transitions at 200ms for state and 400ms for theme, with no easing that overshoots.
 - **Do** honor `prefers-reduced-motion` for every new animation, matching the existing block that disables fades, reveals, and decorative motion.
 - **Do** give policy, support, and per-app legal pages the same craft as the homepage — they carry more real traffic.
+- **Do** give every page one `<main id="main" tabIndex={-1}>` landmark and a heading; the skip link routes to it and moves focus into content past the fixed nav. A section with no visible heading gets an `sr-only` one rather than none.
+- **Do** give every overlay honest semantics and managed focus: the lightbox is a `dialog` (`aria-modal`, focus trapped, focus returned to its trigger on close); the nav menus are disclosures (`aria-expanded` + `aria-controls`, Escape closes and restores focus). Never claim `aria-modal` when the closing control lives outside the overlay.
+- **Do** keep the focus ring one color — a 2px `--amber-accent` outline via `:focus-visible` — so keyboard focus reads as a system, not per-control accidents.
+- **Do** mark a logomark `aria-hidden` when visible brand text sits beside it; announce it only when it stands alone.
 
 ### Don't:
 - **Don't** let this read as a generic AI-era SaaS landing page. The aurora is one wrong move from that cliché; what saves it is that it stays behind glass and never becomes the subject. No gradient blob behind a centered CTA, no testimonial wall, no "Trusted by" logo strip, no pricing table.

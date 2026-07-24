@@ -35,6 +35,17 @@
   --card-border: rgba(168, 173, 189, 0.08);
   --nav-bg: rgba(12, 14, 26, 0.85);
 
+  /* Glass base for content surfaces that sit over the aurora.
+     The atmosphere belongs BEHIND content, not behind text — at less
+     than 0.92 the aurora bleeds through and 10px labels drop under
+     4.5:1. Measured floor is 0.90; this carries headroom. */
+  --surface-glass: rgba(12, 14, 26, 0.92);
+
+  /* Lightbox scrim. Midnight rather than pure black, and deliberately
+     NOT theme-aware: a screenshot reads best against a dark surround in
+     either theme. */
+  --scrim: rgba(12, 14, 26, 0.88);
+
   /* Theme-aware mark colors — dark defaults */
   --mark-neutral: #DDD8CC;
   --mark-neutral-sub: rgba(221, 216, 204, 0.5);
@@ -51,10 +62,15 @@
   /* Theme-aware accent — hero "design" word */
   --amber-accent: var(--amber);
 
+  /* Amber for TEXT. --amber-accent clears the 3:1 non-text bar (focus rings,
+     borders) but not the 4.5:1 normal-text bar on light: raw amber lands at
+     2.4:1 there. Any amber-colored word or link uses this instead. */
+  --amber-text: var(--amber);
+
   /* Theme-aware badge colors — dark defaults */
   --badge-crema: #C4956A;
   --badge-stockpot: #D4756A;
-  --badge-bramble: #7C4DFF;
+  --badge-bramble: #9D7AFF;
   --badge-pica: #8AA4F0;
   --badge-reviso: #22D3EE;
 }
@@ -69,6 +85,7 @@
   --border: rgba(221, 224, 232, 0.8);
   --card-border: rgba(221, 224, 232, 0.5);
   --nav-bg: rgba(244, 245, 247, 0.85);
+  --surface-glass: rgba(244, 245, 247, 0.92);
 
   /* Theme-aware mark colors — light overrides */
   --mark-neutral: #1A1E35;
@@ -85,12 +102,16 @@
   /* Theme-aware accent — hero "design" word */
   --amber-accent: #B8802E;
 
+  /* Amber darkened until it clears 4.5:1 as text on the light surface (4.99:1),
+     while staying in the brand's amber family. See the dark block for why. */
+  --amber-text: #8F6018;
+
   /* Theme-aware badge colors — light overrides */
   --badge-crema: #5C3D2E;
   --badge-stockpot: #8B2920;
-  --badge-bramble: #7C4DFF;
-  --badge-pica: #4A6FE0;
-  --badge-reviso: #0891B2;
+  --badge-bramble: #6C37FF;
+  --badge-pica: #315BDC;
+  --badge-reviso: #0E7490;
 }
 
 /* ==================== TAILWIND THEME ==================== */
@@ -239,9 +260,8 @@
     transform: none;
     transition: none;
   }
-  [aria-hidden="true"] .absolute {
-    animation: none;
-  }
+  /* The aurora's motion is gated in ConicOrb.tsx, not here: each band's
+     `animation` is an inline style, which a stylesheet rule can't override. */
 }
 
 /* ==================== BASE STYLES ==================== */
@@ -283,6 +303,23 @@ body {
   outline: 2px solid var(--amber-accent);
   outline-offset: 2px;
   border-color: var(--amber-accent);
+}
+
+/* The same ring on every other interactive control, so keyboard focus reads as
+   one amber system rather than the browser's default blue. Scoped to real
+   interactive elements — the programmatically-focused <main> skip target
+   (focus:outline-none) is deliberately excluded. Bespoke treatments
+   (.field-input above, the screenshot carousel) win on specificity and keep
+   their own offsets. */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible,
+summary:focus-visible,
+[role="button"]:focus-visible {
+  outline: 2px solid var(--amber-accent);
+  outline-offset: 2px;
 }
 
 /* ==================== PROSE STYLES (for MDX pages) ==================== */
@@ -336,6 +373,20 @@ body {
 
 .prose a:hover {
   color: var(--gold);
+}
+
+/* Amber can't clear AA (4.5:1) as normal-size text on the light surface — it
+   lands at 2.4:1. So in light mode the link text takes the readable primary
+   tone and keeps its amber identity in the underline; the underline brightens
+   on hover. Dark mode keeps amber text, which clears AA there at 7.35:1. */
+:root[data-theme="light"] .prose a {
+  color: var(--text-primary);
+  text-decoration-color: var(--amber-accent);
+}
+
+:root[data-theme="light"] .prose a:hover {
+  color: var(--text-primary);
+  text-decoration-color: var(--amber);
 }
 
 .prose strong {

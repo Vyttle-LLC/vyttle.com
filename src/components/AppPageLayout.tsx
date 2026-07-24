@@ -2,7 +2,7 @@ import { ReactNode } from "react";
 import Nav from "./Nav";
 import Footer from "./Footer";
 import ComingSoonBadge from "./ComingSoonBadge";
-import ScreenshotCarousel from "./ScreenshotCarousel";
+import ScreenshotCarousel, { type Screenshot } from "./ScreenshotCarousel";
 import Link from "next/link";
 import { VyttleApp } from "@/lib/apps";
 import ConicOrb from "./ConicOrb";
@@ -11,7 +11,7 @@ interface AppPageLayoutProps {
   app: VyttleApp;
   logomark: ReactNode;
   children?: ReactNode;
-  screenshots?: { src: string; alt: string }[];
+  screenshots?: Screenshot[];
 }
 
 export default function AppPageLayout({
@@ -31,7 +31,7 @@ export default function AppPageLayout({
       <div className="relative z-10">
         <Nav />
 
-        <main className="pt-32 pb-16 px-6 md:px-12">
+        <main id="main" tabIndex={-1} className="pt-32 pb-16 px-6 md:px-12 focus:outline-none">
           <div className="max-w-[1200px] mx-auto">
             {/* Hero */}
             <div
@@ -98,7 +98,12 @@ export default function AppPageLayout({
                 {app.status === "available" && (app.appStoreUrl || app.playStoreUrl) ? (
                   <>
                     {app.appStoreUrl && (
-                      <div className="flex-1 flex justify-center sm:justify-end">
+                      /* No flex-1 here: equal halves starved the wider Google
+                         Play badge, and Tailwind's preflight max-width on img
+                         then scaled it to 159x47, so the two badges rendered at
+                         different heights. The row's own justify-center centers
+                         the pair at their natural size. */
+                      <div className="flex justify-center">
                       <a
                         href={app.appStoreUrl}
                         target="_blank"
@@ -123,7 +128,7 @@ export default function AppPageLayout({
                       </div>
                     )}
                     {app.playStoreUrl && (
-                      <div className="flex-1 flex justify-center sm:justify-start">
+                      <div className="flex justify-center">
                       <a
                         href={app.playStoreUrl}
                         target="_blank"
