@@ -11,9 +11,9 @@ export const metadata: Metadata = {
 };
 
 const screenshots = [
-  { src: "/screenshots/sixteen-to-one/light-drip.png", alt: "Sixteen to One in light mode showing Drip method with dark roast settings" },
-  { src: "/screenshots/sixteen-to-one/dark-chemex.png", alt: "Sixteen to One in dark mode showing Chemex method with medium roast settings" },
-  { src: "/screenshots/sixteen-to-one/settings.png", alt: "Sixteen to One settings showing unit conversions and appearance options" },
+  { src: "/screenshots/sixteen-to-one/light-drip.png", alt: "Sixteen to One in light mode showing Drip method with dark roast settings", width: 1206, height: 2622 },
+  { src: "/screenshots/sixteen-to-one/dark-chemex.png", alt: "Sixteen to One in dark mode showing Chemex method with medium roast settings", width: 1206, height: 2622 },
+  { src: "/screenshots/sixteen-to-one/settings.png", alt: "Sixteen to One settings showing unit conversions and appearance options", width: 1206, height: 2622 },
 ];
 
 export default function SixteenToOnePage() {

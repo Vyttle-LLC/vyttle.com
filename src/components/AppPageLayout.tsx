@@ -2,7 +2,7 @@ import { ReactNode } from "react";
 import Nav from "./Nav";
 import Footer from "./Footer";
 import ComingSoonBadge from "./ComingSoonBadge";
-import ScreenshotCarousel from "./ScreenshotCarousel";
+import ScreenshotCarousel, { type Screenshot } from "./ScreenshotCarousel";
 import Link from "next/link";
 import { VyttleApp } from "@/lib/apps";
 import ConicOrb from "./ConicOrb";
@@ -11,7 +11,7 @@ interface AppPageLayoutProps {
   app: VyttleApp;
   logomark: ReactNode;
   children?: ReactNode;
-  screenshots?: { src: string; alt: string }[];
+  screenshots?: Screenshot[];
 }
 
 export default function AppPageLayout({

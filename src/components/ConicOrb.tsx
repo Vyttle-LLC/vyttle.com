@@ -4,6 +4,14 @@ import { useEffect, useState } from "react";
 
 export default function ConicOrb() {
   const [isLight, setIsLight] = useState(false);
+  // Animate the atmosphere only where it's free and wanted: desktop widths with
+  // motion not reduced. Below `md` it renders static — same colors and blur,
+  // minus the continuous full-screen compositing of eight blurred layers that
+  // needlessly drains battery on the phones most visitors arrive on, and calmer
+  // behind the policy pages they come to read. Reduced-motion always gets the
+  // still field. This lives in JS, not the CSS reduced-motion block, because the
+  // per-band `animation` is an inline style a stylesheet rule cannot override.
+  const [animate, setAnimate] = useState(false);
 
   useEffect(() => {
     const check = () =>
@@ -15,6 +23,19 @@ export default function ConicOrb() {
       attributeFilter: ["data-theme"],
     });
     return () => observer.disconnect();
+  }, []);
+
+  useEffect(() => {
+    const desktop = window.matchMedia("(min-width: 768px)");
+    const reduced = window.matchMedia("(prefers-reduced-motion: reduce)");
+    const sync = () => setAnimate(desktop.matches && !reduced.matches);
+    sync();
+    desktop.addEventListener("change", sync);
+    reduced.addEventListener("change", sync);
+    return () => {
+      desktop.removeEventListener("change", sync);
+      reduced.removeEventListener("change", sync);
+    };
   }, []);
 
   const bands = isLight
@@ -58,7 +79,7 @@ export default function ConicOrb() {
             background: b.bg,
             filter: "blur(70px)",
             borderRadius: "50%",
-            animation: b.anim,
+            animation: animate ? b.anim : undefined,
           }}
         />
       ))}

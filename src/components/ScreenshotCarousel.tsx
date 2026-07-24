@@ -1,10 +1,13 @@
 "use client";
 
+import Image from "next/image";
 import { useState, useCallback, useEffect, useRef } from "react";
 
-interface Screenshot {
+export interface Screenshot {
   src: string;
   alt: string;
+  width: number;
+  height: number;
 }
 
 interface ScreenshotCarouselProps {
@@ -70,9 +73,12 @@ export default function ScreenshotCarousel({
                   className="cursor-pointer bg-transparent border-none p-0 rounded-3xl focus-visible:[outline:2px_solid_var(--amber-accent)] focus-visible:[outline-offset:3px]"
                   aria-label={`View full size: ${shot.alt}`}
                 >
-                  <img
+                  <Image
                     src={shot.src}
                     alt={shot.alt}
+                    width={shot.width}
+                    height={shot.height}
+                    loading="lazy"
                     className="rounded-3xl"
                     style={{
                       width: "180px",
@@ -129,11 +135,15 @@ export default function ScreenshotCarousel({
                 <path d="M6 6l12 12M18 6L6 18" />
               </svg>
             </button>
-            <img
+            <Image
               src={activeImage.src}
               alt={activeImage.alt}
+              width={activeImage.width}
+              height={activeImage.height}
               onClick={(e) => e.stopPropagation()}
               style={{
+                width: "auto",
+                height: "auto",
                 maxHeight: "90vh",
                 maxWidth: "90vw",
                 borderRadius: "16px",

@@ -251,9 +251,8 @@
     transform: none;
     transition: none;
   }
-  [aria-hidden="true"] .absolute {
-    animation: none;
-  }
+  /* The aurora's motion is gated in ConicOrb.tsx, not here: each band's
+     `animation` is an inline style, which a stylesheet rule can't override. */
 }
 
 /* ==================== BASE STYLES ==================== */
