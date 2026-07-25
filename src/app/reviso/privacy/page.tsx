@@ -111,7 +111,13 @@ export default function RevisoPrivacyPage() {
             >
               Back to Reviso
             </Link>
-            <span style={{ color: "var(--border)" }}>&middot;</span>
+            <span
+              aria-hidden="true"
+              className="text-xs"
+              style={{ color: "var(--text-tertiary)" }}
+            >
+              &middot;
+            </span>
             <Link
               href="/support?app=reviso"
               className="text-sm"

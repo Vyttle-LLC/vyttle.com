@@ -67,12 +67,19 @@
      2.4:1 there. Any amber-colored word or link uses this instead. */
   --amber-text: var(--amber);
 
-  /* Theme-aware badge colors — dark defaults */
-  --badge-crema: #C4956A;
-  --badge-stockpot: #D4756A;
-  --badge-bramble: #9D7AFF;
-  --badge-pica: #8AA4F0;
-  --badge-reviso: #22D3EE;
+  /* Each product's accent as TEXT — the per-product twin of --amber-text.
+     The vivid accent clears the 3:1 non-text bar (solid fills, borders, glows)
+     but not the text bars on light, where Crema measures 2.34:1 and even Cyan
+     Deep measures 2.15:1 at display size. Every accent-colored *word* uses
+     these: app-page titles and Coming Soon labels. Dark keeps each product's
+     brand value; light darkens within the same hue.
+     Formerly --badge-*, which named the first place this was needed rather
+     than the role it actually fills. */
+  --accent-text-crema: #C4956A;
+  --accent-text-stockpot: #D4756A;
+  --accent-text-bramble: #9D7AFF;
+  --accent-text-pica: #8AA4F0;
+  --accent-text-reviso: #22D3EE;
 }
 
 [data-theme="light"] {
@@ -106,12 +113,15 @@
      while staying in the brand's amber family. See the dark block for why. */
   --amber-text: #8F6018;
 
-  /* Theme-aware badge colors — light overrides */
-  --badge-crema: #5C3D2E;
-  --badge-stockpot: #8B2920;
-  --badge-bramble: #6C37FF;
-  --badge-pica: #315BDC;
-  --badge-reviso: #0E7490;
+  /* Each darkened until it clears 4.5:1 as normal text on the light surface —
+     these were solved for the 10px badge, so they carry ample headroom at
+     display size. Hue and saturation preserved; only lightness moves, so each
+     still reads as its own product. See the dark block for why. */
+  --accent-text-crema: #5C3D2E;
+  --accent-text-stockpot: #8B2920;
+  --accent-text-bramble: #6C37FF;
+  --accent-text-pica: #315BDC;
+  --accent-text-reviso: #0E7490;
 }
 
 /* ==================== TAILWIND THEME ==================== */

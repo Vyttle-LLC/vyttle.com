@@ -14,8 +14,11 @@ export default function BentoCell({
   logomark: ReactNode;
   className?: string;
 }) {
+  // Fill vs word: the "Available Now" chip is a solid accent background carrying
+  // dark text, so it wants the vivid accent; the Coming Soon label *is* accent
+  // text and wants the darkened-on-light one.
   const accentColor = app.accentVar || app.accent;
-  const badgeColor = app.badgeVar || accentColor;
+  const accentText = app.accentTextVar || accentColor;
   const typeLabel = app.type === "app" ? "Mobile" : "SaaS";
   const href = app.externalUrl || `/${app.slug}`;
   const featured = app.featured;
@@ -133,7 +136,7 @@ export default function BentoCell({
                 Available Now
               </div>
             ) : (
-              <ComingSoonBadge color={badgeColor} />
+              <ComingSoonBadge color={accentText} />
             )}
           </div>
         </div>

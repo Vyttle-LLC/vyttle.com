@@ -98,7 +98,13 @@ export default function SixteenToOnePrivacyPage() {
             >
               Back to Sixteen to One
             </Link>
-            <span style={{ color: "var(--border)" }}>&middot;</span>
+            <span
+              aria-hidden="true"
+              className="text-xs"
+              style={{ color: "var(--text-tertiary)" }}
+            >
+              &middot;
+            </span>
             <Link
               href="/support?app=sixteen-to-one"
               className="text-sm"

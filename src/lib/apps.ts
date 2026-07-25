@@ -18,9 +18,14 @@ export interface VyttleApp {
   appStoreUrl?: string;
   playStoreUrl?: string;
   externalUrl?: string;
+  /** The vivid accent. Correct for solid fills, low-alpha tints, borders and
+   *  glows — anything that is not a word. */
   accent: string;
+  /** Theme-aware form of `accent`, where the product needs one. */
   accentVar?: string;
-  badgeVar?: string;
+  /** The accent as TEXT: darkened on light until it clears the text contrast
+   *  bars, hue preserved. Any accent-colored word uses this, never `accent`. */
+  accentTextVar?: string;
   accentLight: string;
   darkBg: string;
   lightBg: string;
@@ -42,7 +47,7 @@ export const apps: VyttleApp[] = [
     appStoreUrl: "https://apps.apple.com/us/app/sixteen-to-one/id6760734071",
     playStoreUrl: "https://play.google.com/store/apps/details?id=com.vyttle.sixteentoone",
     accent: "#C4956A",
-    badgeVar: "var(--badge-crema)",
+    accentTextVar: "var(--accent-text-crema)",
     accentLight: "#DFC5A8",
     darkBg: "#1C1008",
     lightBg: "#F8F4EE",
@@ -58,7 +63,7 @@ export const apps: VyttleApp[] = [
     type: "app",
     hasPrivacyPolicy: true,
     accent: "#C0392B",
-    badgeVar: "var(--badge-stockpot)",
+    accentTextVar: "var(--accent-text-stockpot)",
     accentLight: "#D4756A",
     darkBg: "#1A1816",
     lightBg: "#F4F3F1",
@@ -75,7 +80,7 @@ export const apps: VyttleApp[] = [
     hasPrivacyPolicy: true,
     accent: "#7C4DFF",
     accentVar: "var(--bramble-accent)",
-    badgeVar: "var(--badge-bramble)",
+    accentTextVar: "var(--accent-text-bramble)",
     accentLight: "#B89DD4",
     darkBg: "#100F14",
     lightBg: "#F6F4F8",
@@ -90,7 +95,7 @@ export const apps: VyttleApp[] = [
     status: "coming-soon",
     type: "app",
     accent: "#4A6FE0",
-    badgeVar: "var(--badge-pica)",
+    accentTextVar: "var(--accent-text-pica)",
     accentLight: "#8AA4F0",
     darkBg: "#0A0E1C",
     lightBg: "#EDF0FB",
@@ -107,7 +112,7 @@ export const apps: VyttleApp[] = [
     hasPrivacyPolicy: true,
     accent: "#22D3EE",
     accentVar: "var(--reviso-accent)",
-    badgeVar: "var(--badge-reviso)",
+    accentTextVar: "var(--accent-text-reviso)",
     accentLight: "#A5F3FC",
     darkBg: "#0A1019",
     lightBg: "#E8F6FA",
