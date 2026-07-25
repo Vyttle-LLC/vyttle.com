@@ -167,9 +167,12 @@
   50% { opacity: 1; }
 }
 
+/* Y only. The translateX(-50%) this used to carry was compensating for a
+   centering transform that an animation on the parent was cancelling; the cue
+   is centered by flow now, so a keyframe carrying layout would double-apply. */
 @keyframes scroll-hint {
-  0%, 100% { opacity: 0.5; transform: translateX(-50%) translateY(0); }
-  50% { opacity: 1; transform: translateX(-50%) translateY(6px); }
+  0%, 100% { opacity: 0.5; transform: translateY(0); }
+  50% { opacity: 1; transform: translateY(6px); }
 }
 
 /* Aurora segments — large movements so they're visible through heavy blur */
@@ -270,6 +273,23 @@
     transform: none;
     transition: none;
   }
+
+  /* The perpetual loops. These are ambient character, not feedback, so nothing
+     is lost by holding them still — but each needs its resting state chosen
+     rather than inherited, or stopping the animation changes how the element
+     reads. The float and the cue rest at their neutral position; the Coming
+     Soon dot holds the LIT end of its cycle, not the 0.4 dim one, so a stopped
+     badge still reads as active rather than half-faded. */
+  .animate-float,
+  .animate-scroll-hint {
+    animation: none;
+    transform: none;
+  }
+  .animate-pulse-dot {
+    animation: none;
+    opacity: 1;
+  }
+
   /* The aurora's motion is gated in ConicOrb.tsx, not here: each band's
      `animation` is an inline style, which a stylesheet rule can't override. */
 }

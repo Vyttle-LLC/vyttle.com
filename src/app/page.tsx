@@ -18,12 +18,18 @@ export default function HomePage() {
         <section className="min-h-screen flex flex-col items-center justify-center relative px-6">
           {/* Content */}
           <div className="text-center flex flex-col items-center">
-            {/* Floating mark */}
-            <div className="animate-float mb-10 fade-in" style={{ animationDelay: "0ms" }}>
-              <VyttleMark
-                size={80}
-                className="transition-all duration-400"
-              />
+            {/* Floating mark. Entrance and ambient drift sit on separate
+                elements because both animate `transform`, and two animations on
+                one element means the later declaration simply wins — which is
+                why `animate-float` never ran at all: `.fade-in` was overriding
+                it, and the hero's one piece of ambient character was dead. */}
+            <div className="mb-10 fade-in" style={{ animationDelay: "0ms" }}>
+              <div className="animate-float">
+                <VyttleMark
+                  size={80}
+                  className="transition-all duration-400"
+                />
+              </div>
             </div>
 
             <h1
@@ -53,29 +59,34 @@ export default function HomePage() {
             </p>
           </div>
 
-          {/* Scroll cue */}
-          <div
-            className="absolute bottom-10 left-1/2 fade-in"
-            style={{ transform: "translateX(-50%)", animationDelay: "600ms" }}
-          >
-            <div className="flex flex-col items-center gap-2 animate-scroll-hint">
-              <span
-                className="text-xs font-normal uppercase"
-                style={{
-                  fontFamily: "var(--font-dm-sans), DM Sans, sans-serif",
-                  letterSpacing: "3px",
-                  color: "var(--text-tertiary)",
-                }}
-              >
-                Explore
-              </span>
-              <div
-                className="w-px h-8"
-                style={{
-                  background:
-                    "linear-gradient(to bottom, var(--text-tertiary), transparent)",
-                }}
-              />
+          {/* Scroll cue. Centered by flow rather than by `translateX(-50%)`:
+              an animation on the same element replaces the whole `transform`,
+              so the entrance was silently cancelling the centering, and the
+              keyframe's own translateX was accidentally putting it back. That
+              cancellation broke under reduced motion, landing the cue 35px left
+              of centre. Layout, entrance and ambient bob now each own one
+              element, so none can clobber another. */}
+          <div className="absolute bottom-10 left-0 right-0 flex justify-center">
+            <div className="fade-in" style={{ animationDelay: "600ms" }}>
+              <div className="flex flex-col items-center gap-2 animate-scroll-hint">
+                <span
+                  className="text-xs font-normal uppercase"
+                  style={{
+                    fontFamily: "var(--font-dm-sans), DM Sans, sans-serif",
+                    letterSpacing: "3px",
+                    color: "var(--text-tertiary)",
+                  }}
+                >
+                  Explore
+                </span>
+                <div
+                  className="w-px h-8"
+                  style={{
+                    background:
+                      "linear-gradient(to bottom, var(--text-tertiary), transparent)",
+                  }}
+                />
+              </div>
             </div>
           </div>
         </section>
