@@ -61,6 +61,33 @@ export default function MobileMenu({
     };
   }, [mounted]);
 
+  // Being a disclosure rather than a modal settles the ARIA, not the occlusion:
+  // this overlay is opaque, so everything under it must leave the tab order and
+  // the accessibility tree too. Measured without it, 9 elements stayed
+  // reachable — the skip link, five product cells and three footer links — so a
+  // keyboard user tabbed into content they could not see and a screen reader
+  // read the whole page out from behind the glass.
+  //
+  // Scoped to the content landmarks on purpose. The nav bar is NOT inerted: it
+  // holds both the ✕ that closes this and the panel itself, and inerting an
+  // ancestor of the only exit would trap the user.
+  useEffect(() => {
+    if (!mounted) return;
+    const occluded = [
+      ...document.querySelectorAll<HTMLElement>("main, footer"),
+      ...document.querySelectorAll<HTMLElement>('body > a[href="#main"]'),
+    ];
+    // Record prior state so we restore rather than clobber, in case something
+    // else ever inerts one of these for its own reasons.
+    const wasInert = occluded.map((el) => el.hasAttribute("inert"));
+    occluded.forEach((el) => el.setAttribute("inert", ""));
+    return () => {
+      occluded.forEach((el, i) => {
+        if (!wasInert[i]) el.removeAttribute("inert");
+      });
+    };
+  }, [mounted]);
+
   // Move focus to the first link once the panel is actually mounted; Escape
   // closes and returns focus to the toggle. Keyed on `mounted` because on the
   // render where `open` flips true the panel is still unmounted (returns null

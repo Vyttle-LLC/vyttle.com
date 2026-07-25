@@ -51,6 +51,14 @@ export default function RootLayout({
             __html: `(function(){var t=localStorage.getItem('vyttle-theme')||'dark';document.documentElement.setAttribute('data-theme',t)})()`,
           }}
         />
+        {/* The product grid and interior sections start at opacity 0 and are
+            revealed by an IntersectionObserver. With scripting unavailable that
+            reveal never fires and the homepage is a hero above an empty page,
+            so restore them. Deliberately scoped to [data-reveal]: .fade-in is a
+            pure CSS animation with `forwards` and needs no fallback. */}
+        <noscript>
+          <style>{`[data-reveal]{opacity:1!important;transform:none!important;transition:none!important}`}</style>
+        </noscript>
       </head>
       <body
         className={`${outfit.variable} ${dmSans.variable} ${sourceSerif.variable} antialiased`}

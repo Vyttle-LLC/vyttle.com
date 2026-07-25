@@ -22,10 +22,18 @@ export default function BentoCell({
   const typeLabel = app.type === "app" ? "Mobile" : "SaaS";
   const href = app.externalUrl || `/${app.slug}`;
   const featured = app.featured;
+  const statusLabel = app.status === "available" ? "Available Now" : "Coming Soon";
+  // Without this the link's name was its whole subtree concatenated —
+  // "MobileSixteen to OneThe ratio, perfected.Available Now" — so four of five
+  // product links opened with the word "Mobile" and were indistinguishable in a
+  // screen reader's link list. Leads with the name, and keeps every visible
+  // string verbatim so the accessible name still contains the visible label.
+  const label = `${app.name} — ${app.tagline} ${statusLabel}`;
 
   return (
     <Link
       href={href}
+      aria-label={label}
       className={`block no-underline ${className}`}
       style={{ color: "inherit" }}
       {...(app.externalUrl ? { target: "_blank", rel: "noopener noreferrer" } : {})}
@@ -55,8 +63,12 @@ export default function BentoCell({
           e.currentTarget.style.boxShadow = "none";
         }}
       >
-        {/* Type badge */}
+        {/* Type badge. aria-hidden because the link now carries an explicit
+            label: the category is a visual filter, and reading it first made
+            every product link announce as "Mobile…". Still discoverable on the
+            product page itself. */}
         <div
+          aria-hidden="true"
           className="absolute top-6 right-6 text-xs uppercase"
           style={{
             fontFamily: "var(--font-dm-sans), DM Sans, sans-serif",
