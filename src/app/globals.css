@@ -332,6 +332,24 @@ summary:focus-visible,
   outline-offset: 2px;
 }
 
+/* ==================== TAP TARGETS ==================== */
+
+/* WCAG 2.2 AA (2.5.8) puts the floor at 24x24 CSS px. This site holds 44x44 —
+   the figure the theme toggle already uses, and close to the mobile menu's 48px
+   rows — because most visitors arrive on a phone from a store listing.
+   The box grows around the glyph: font size, weight and tracking are untouched,
+   so the composition reads exactly as designed and only the hit area changes.
+   Standalone controls and nav links only. Deliberately NOT for links inside a
+   sentence — 2.5.8 exempts those, and padding them would break the line box and
+   the prose rhythm on the policy pages. */
+.tap-target {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 44px;
+  min-width: 44px;
+}
+
 /* ==================== ACCENT ROWS ==================== */
 
 /* The nav dropdown and mobile menu tint a row in its product's accent on hover,

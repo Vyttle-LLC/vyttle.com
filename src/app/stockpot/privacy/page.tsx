@@ -108,7 +108,7 @@ export default function StockpotPrivacyPage() {
           >
             <Link
               href="/stockpot"
-              className="text-sm"
+              className="tap-target text-sm"
               style={{ color: "var(--text-secondary)" }}
             >
               Back to Stockpot
@@ -122,7 +122,7 @@ export default function StockpotPrivacyPage() {
             </span>
             <Link
               href="/support?app=stockpot"
-              className="text-sm"
+              className="tap-target text-sm"
               style={{ color: "var(--text-secondary)" }}
             >
               Support

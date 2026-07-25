@@ -106,7 +106,7 @@ export default function BramblePrivacyPage() {
           >
             <Link
               href="/bramble"
-              className="text-sm"
+              className="tap-target text-sm"
               style={{ color: "var(--text-secondary)" }}
             >
               Back to Bramble
@@ -120,7 +120,7 @@ export default function BramblePrivacyPage() {
             </span>
             <Link
               href="/support?app=bramble"
-              className="text-sm"
+              className="tap-target text-sm"
               style={{ color: "var(--text-secondary)" }}
             >
               Support

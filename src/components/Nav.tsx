@@ -99,7 +99,7 @@ export default function Nav() {
             <button
               ref={productsButtonRef}
               onClick={() => setOpen(!open)}
-              className="text-sm flex items-center gap-1 transition-colors duration-200 cursor-pointer bg-transparent border-none p-0"
+              className="tap-target text-sm items-center gap-1 transition-colors duration-200 cursor-pointer bg-transparent border-none p-0"
               style={linkStyle}
               aria-expanded={open}
               aria-controls="products-menu"
@@ -179,7 +179,7 @@ export default function Nav() {
           <li>
             <Link
               href="/support"
-              className="text-sm no-underline transition-colors duration-200"
+              className="tap-target text-sm no-underline transition-colors duration-200"
               style={linkStyle}
               onMouseEnter={(e) =>
                 (e.currentTarget.style.color = "var(--amber-text)")

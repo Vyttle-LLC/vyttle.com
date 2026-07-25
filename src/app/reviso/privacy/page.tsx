@@ -106,7 +106,7 @@ export default function RevisoPrivacyPage() {
           >
             <Link
               href="/reviso"
-              className="text-sm"
+              className="tap-target text-sm"
               style={{ color: "var(--text-secondary)" }}
             >
               Back to Reviso
@@ -120,7 +120,7 @@ export default function RevisoPrivacyPage() {
             </span>
             <Link
               href="/support?app=reviso"
-              className="text-sm"
+              className="tap-target text-sm"
               style={{ color: "var(--text-secondary)" }}
             >
               Support

@@ -93,7 +93,7 @@ export default function SixteenToOnePrivacyPage() {
           >
             <Link
               href="/sixteen-to-one"
-              className="text-sm"
+              className="tap-target text-sm"
               style={{ color: "var(--text-secondary)" }}
             >
               Back to Sixteen to One
@@ -107,7 +107,7 @@ export default function SixteenToOnePrivacyPage() {
             </span>
             <Link
               href="/support?app=sixteen-to-one"
-              className="text-sm"
+              className="tap-target text-sm"
               style={{ color: "var(--text-secondary)" }}
             >
               Support

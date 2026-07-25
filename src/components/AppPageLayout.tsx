@@ -200,7 +200,7 @@ export default function AppPageLayout({
               <div className="flex justify-center items-center gap-6 pt-4">
                 <Link
                   href={privacyHref(app)}
-                  className="text-sm font-light no-underline transition-colors duration-200"
+                  className="tap-target text-sm font-light no-underline transition-colors duration-200"
                   style={{
                     fontFamily: "var(--font-dm-sans), DM Sans, sans-serif",
                     color: "var(--text-secondary)",
@@ -222,7 +222,7 @@ export default function AppPageLayout({
                 </span>
                 <Link
                   href="/"
-                  className="text-sm font-light no-underline transition-colors duration-200"
+                  className="tap-target text-sm font-light no-underline transition-colors duration-200"
                   style={{
                     fontFamily: "var(--font-dm-sans), DM Sans, sans-serif",
                     color: "var(--text-secondary)",
@@ -244,7 +244,7 @@ export default function AppPageLayout({
                 </span>
                 <Link
                   href={`/support?app=${app.slug}`}
-                  className="text-sm font-light no-underline transition-colors duration-200"
+                  className="tap-target text-sm font-light no-underline transition-colors duration-200"
                   style={{
                     fontFamily: "var(--font-dm-sans), DM Sans, sans-serif",
                     color: "var(--text-secondary)",
