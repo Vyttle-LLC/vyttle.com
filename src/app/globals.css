@@ -322,6 +322,22 @@ summary:focus-visible,
   outline-offset: 2px;
 }
 
+/* ==================== ACCENT ROWS ==================== */
+
+/* The nav dropdown and mobile menu tint a row in its product's accent on hover,
+   via inline style mutations that need a client component. This does the same
+   in CSS off a per-row `--row-accent`, so a server-rendered list of products
+   keeps the pattern without shipping JS for it — and, unlike the JS version,
+   it also lights up on keyboard focus. */
+.accent-row {
+  transition: background-color 200ms ease;
+}
+
+.accent-row:hover,
+.accent-row:focus-visible {
+  background: color-mix(in srgb, var(--row-accent) 10%, transparent);
+}
+
 /* ==================== PROSE STYLES (for MDX pages) ==================== */
 
 .prose h1 {

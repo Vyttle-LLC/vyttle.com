@@ -12,7 +12,13 @@ export default function SupportForm() {
   });
   const [submitted, setSubmitted] = useState(false);
   const [submitting, setSubmitting] = useState(false);
-  const [failed, setFailed] = useState(false);
+  // Not a boolean: the two ways this can fail need to name different problems
+  // and offer different recoveries. Emailing instead is the answer to "we
+  // couldn't send it"; it is not the answer to "you left a field blank."
+  const [error, setError] = useState<{
+    message: string;
+    offerEmail: boolean;
+  } | null>(null);
   const successHeadingRef = useRef<HTMLHeadingElement>(null);
 
   useEffect(() => {
@@ -32,27 +38,73 @@ export default function SupportForm() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setFailed(false);
+    setError(null);
+
+    // `required` accepts a field of spaces, which sends a ticket with nothing
+    // in it and no way to follow up beyond the address.
+    const trimmed = {
+      name: formData.name.trim(),
+      email: formData.email.trim(),
+      app: formData.app,
+      message: formData.message.trim(),
+    };
+
+    const firstBlank = (["name", "email", "message"] as const).find(
+      (field) => !trimmed[field],
+    );
+
+    if (firstBlank) {
+      setError({
+        message: "Name, email, and message can't be blank.",
+        offerEmail: false,
+      });
+      // Announcing the problem isn't enough when the alert sits below the
+      // fields — put the cursor on the one that needs fixing.
+      document.getElementById(firstBlank)?.focus();
+      return;
+    }
+
     setSubmitting(true);
 
     try {
-      await fetch("/", {
+      const res = await fetch("/", {
         method: "POST",
         headers: { "Content-Type": "application/x-www-form-urlencoded" },
         body: new URLSearchParams({
           "form-name": "support",
-          ...formData,
+          ...trimmed,
         }).toString(),
       });
+
+      // Netlify answers an unregistered form with a 404 or 405 rather than a
+      // rejected promise. Without this, a message that was never delivered
+      // still renders the confirmation — the user waits for a reply that is
+      // not coming, and nothing surfaces the failure on either end.
+      if (!res.ok) {
+        throw new Error(`Form endpoint responded ${res.status}`);
+      }
+
       setSubmitted(true);
     } catch {
-      setFailed(true);
+      setError({
+        message: "We couldn't send your message. Please try again.",
+        offerEmail: true,
+      });
     } finally {
       setSubmitting(false);
     }
   };
 
   if (submitted) {
+    // Echo the two things the sender can't otherwise verify: which product the
+    // message was filed against, and the address the reply goes to — a typo
+    // there is the one failure neither side can see. No reply window: the
+    // studio is one person and an invented SLA would be a promise, not a fact.
+    const product =
+      formData.app === "general"
+        ? null
+        : apps.find((a) => a.slug === formData.app)?.name ?? null;
+
     return (
       <div className="max-w-lg mx-auto text-center py-16">
         <div
@@ -91,7 +143,17 @@ export default function SupportForm() {
             color: "var(--text-secondary)",
           }}
         >
-          We&apos;ve got your message and will reply by email as soon as we can.
+          We&apos;ve got your message{product ? ` about ${product}` : ""} and
+          will reply to{" "}
+          <span
+            style={{
+              color: "var(--text-primary)",
+              overflowWrap: "anywhere",
+            }}
+          >
+            {formData.email.trim()}
+          </span>{" "}
+          as soon as we can.
         </p>
         <button
           onClick={() => {
@@ -282,7 +344,7 @@ export default function SupportForm() {
         />
       </div>
 
-      {failed && (
+      {error && (
         <div
           role="alert"
           className="text-sm"
@@ -297,11 +359,17 @@ export default function SupportForm() {
             padding: "12px 16px",
           }}
         >
-          We couldn&apos;t send your message. Please try again, or email{" "}
-          <a href="mailto:support@vyttle.com" style={mailtoStyle}>
-            support@vyttle.com
-          </a>
-          .
+          {error.message}
+          {error.offerEmail && (
+            <>
+              {" "}
+              Or email{" "}
+              <a href="mailto:support@vyttle.com" style={mailtoStyle}>
+                support@vyttle.com
+              </a>
+              .
+            </>
+          )}
         </div>
       )}
 

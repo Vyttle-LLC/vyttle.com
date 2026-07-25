@@ -4,7 +4,7 @@ import Footer from "./Footer";
 import ComingSoonBadge from "./ComingSoonBadge";
 import ScreenshotCarousel, { type Screenshot } from "./ScreenshotCarousel";
 import Link from "next/link";
-import { VyttleApp } from "@/lib/apps";
+import { VyttleApp, privacyHref } from "@/lib/apps";
 import ConicOrb from "./ConicOrb";
 
 interface AppPageLayoutProps {
@@ -194,7 +194,7 @@ export default function AppPageLayout({
               {/* Page footer links */}
               <div className="flex justify-center items-center gap-6 pt-4">
                 <Link
-                  href={`/${app.slug}/privacy`}
+                  href={privacyHref(app)}
                   className="text-sm font-light no-underline transition-colors duration-200"
                   style={{
                     fontFamily: "var(--font-dm-sans), DM Sans, sans-serif",

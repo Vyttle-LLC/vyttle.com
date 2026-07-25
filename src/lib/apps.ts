@@ -10,6 +10,11 @@ export interface VyttleApp {
   status: AppStatus;
   type: ProductType;
   featured?: boolean;
+  /** True when this product ships its own policy route at `/<slug>/privacy`.
+   *  Products still in development don't have one — there is no data-collection
+   *  story to document yet — so `privacyHref()` sends them to the site-wide
+   *  `/privacy`, which says so. Add the route file and set this in one commit. */
+  hasPrivacyPolicy?: boolean;
   appStoreUrl?: string;
   playStoreUrl?: string;
   externalUrl?: string;
@@ -33,6 +38,7 @@ export const apps: VyttleApp[] = [
     status: "available",
     type: "app",
     featured: true,
+    hasPrivacyPolicy: true,
     appStoreUrl: "https://apps.apple.com/us/app/sixteen-to-one/id6760734071",
     playStoreUrl: "https://play.google.com/store/apps/details?id=com.vyttle.sixteentoone",
     accent: "#C4956A",
@@ -50,6 +56,7 @@ export const apps: VyttleApp[] = [
       "A recipe app that keeps your collection local and private. Organize, cook, and share — all synced through iCloud, nothing in the cloud you don't control.",
     status: "coming-soon",
     type: "app",
+    hasPrivacyPolicy: true,
     accent: "#C0392B",
     badgeVar: "var(--badge-stockpot)",
     accentLight: "#D4756A",
@@ -65,6 +72,7 @@ export const apps: VyttleApp[] = [
       "A lightweight contact manager that helps you clean up, organize, and actually maintain your address book. Local-first with iCloud sync.",
     status: "coming-soon",
     type: "app",
+    hasPrivacyPolicy: true,
     accent: "#7C4DFF",
     accentVar: "var(--bramble-accent)",
     badgeVar: "var(--badge-bramble)",
@@ -96,6 +104,7 @@ export const apps: VyttleApp[] = [
       "A GitHub Action that provides intelligent, inline AI-powered code reviews on pull requests. Bring your own API key, pay per org — not per seat.",
     status: "coming-soon",
     type: "product",
+    hasPrivacyPolicy: true,
     accent: "#22D3EE",
     accentVar: "var(--reviso-accent)",
     badgeVar: "var(--badge-reviso)",
@@ -112,4 +121,19 @@ export function getAppBySlug(slug: string): VyttleApp | undefined {
 
 export function getAppsByType(type: ProductType): VyttleApp[] {
   return apps.filter((app) => app.type === type);
+}
+
+/** Where a product's "Privacy Policy" link points. A product without its own
+ *  policy falls back to the site-wide one rather than 404ing — these are
+ *  store-required URLs, and a dead one is the worst thing to show someone who
+ *  came specifically to check whether the studio is legitimate. */
+export function privacyHref(app: VyttleApp): string {
+  return app.hasPrivacyPolicy ? `/${app.slug}/privacy` : "/privacy";
+}
+
+/** The products that publish their own policy, for the index on /privacy.
+ *  Derived rather than hand-listed: the hand-listed copy is how Pica went
+ *  missing from that page while still being linked from its own. */
+export function appsWithPrivacyPolicy(): VyttleApp[] {
+  return apps.filter((app) => app.hasPrivacyPolicy);
 }
