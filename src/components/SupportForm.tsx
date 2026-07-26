@@ -1,7 +1,29 @@
 "use client";
 
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef, useCallback } from "react";
+import Script from "next/script";
 import { apps } from "@/lib/apps";
+
+// Public reCAPTCHA site key, inlined at build time. When unset (e.g. local dev)
+// the widget is skipped so the form still works locally; production builds on
+// Netlify must set NEXT_PUBLIC_RECAPTCHA_SITE_KEY.
+const RECAPTCHA_SITE_KEY = process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY;
+
+type Grecaptcha = {
+  render: (
+    el: HTMLElement,
+    opts: { sitekey: string; theme?: "light" | "dark" }
+  ) => number;
+  getResponse: (id?: number) => string;
+  reset: (id?: number) => void;
+};
+
+declare global {
+  interface Window {
+    grecaptcha?: Grecaptcha;
+    onRecaptchaLoad?: () => void;
+  }
+}
 
 export default function SupportForm() {
   const [formData, setFormData] = useState({
@@ -12,14 +34,11 @@ export default function SupportForm() {
   });
   const [submitted, setSubmitted] = useState(false);
   const [submitting, setSubmitting] = useState(false);
-  // Not a boolean: the two ways this can fail need to name different problems
-  // and offer different recoveries. Emailing instead is the answer to "we
-  // couldn't send it"; it is not the answer to "you left a field blank."
-  const [error, setError] = useState<{
-    message: string;
-    offerEmail: boolean;
-  } | null>(null);
+  const [failed, setFailed] = useState(false);
+  const [formError, setFormError] = useState<string | null>(null);
   const successHeadingRef = useRef<HTMLHeadingElement>(null);
+  const recaptchaRef = useRef<HTMLDivElement>(null);
+  const widgetId = useRef<number | null>(null);
 
   useEffect(() => {
     const params = new URLSearchParams(window.location.search);
@@ -36,60 +55,88 @@ export default function SupportForm() {
     if (submitted) successHeadingRef.current?.focus();
   }, [submitted]);
 
+  // Render the reCAPTCHA widget explicitly. Guarding on childElementCount keeps
+  // this idempotent across remounts (e.g. after "Send another message"), where
+  // the div is fresh but the onload callback may fire again.
+  const renderRecaptcha = useCallback(() => {
+    if (!RECAPTCHA_SITE_KEY) return;
+    const el = recaptchaRef.current;
+    if (!window.grecaptcha || !el || el.childElementCount > 0) return;
+    const theme =
+      document.documentElement.dataset.theme === "light" ? "light" : "dark";
+    widgetId.current = window.grecaptcha.render(el, {
+      sitekey: RECAPTCHA_SITE_KEY,
+      theme,
+    });
+  }, []);
+
+  // Wire the API onload callback, and cover the case where the script already
+  // loaded before this component mounted (SPA navigation).
+  useEffect(() => {
+    window.onRecaptchaLoad = renderRecaptcha;
+    if (window.grecaptcha) renderRecaptcha();
+  }, [renderRecaptcha]);
+
+  // Returning from the success screen remounts the form with an empty widget
+  // div — re-render into it.
+  useEffect(() => {
+    if (!submitted) renderRecaptcha();
+  }, [submitted, renderRecaptcha]);
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setError(null);
+    setFailed(false);
+    setFormError(null);
 
-    // `required` accepts a field of spaces, which sends a ticket with nothing
-    // in it and no way to follow up beyond the address.
+    // Defense-in-depth for real users; the server-enforced protection against
+    // bots posting empty bodies is the reCAPTCHA token, validated by Netlify.
     const trimmed = {
       name: formData.name.trim(),
       email: formData.email.trim(),
-      app: formData.app,
+      app: formData.app.trim(),
       message: formData.message.trim(),
     };
-
-    const firstBlank = (["name", "email", "message"] as const).find(
-      (field) => !trimmed[field],
+    const firstBlank = (["name", "email", "app", "message"] as const).find(
+      (field) => !trimmed[field]
     );
-
     if (firstBlank) {
-      setError({
-        message: "Name, email, and message can't be blank.",
-        offerEmail: false,
-      });
+      setFormError("Please fill out every field before sending.");
       // Announcing the problem isn't enough when the alert sits below the
       // fields — put the cursor on the one that needs fixing.
       document.getElementById(firstBlank)?.focus();
       return;
     }
 
-    setSubmitting(true);
+    let token = "";
+    if (RECAPTCHA_SITE_KEY) {
+      token =
+        window.grecaptcha?.getResponse(widgetId.current ?? undefined) ?? "";
+      if (!token) {
+        setFormError("Please confirm you're not a robot.");
+        return;
+      }
+    }
 
+    setSubmitting(true);
     try {
+      const body = new URLSearchParams({
+        "form-name": "support",
+        ...trimmed,
+      });
+      if (token) body.set("g-recaptcha-response", token);
+
       const res = await fetch("/", {
         method: "POST",
         headers: { "Content-Type": "application/x-www-form-urlencoded" },
-        body: new URLSearchParams({
-          "form-name": "support",
-          ...trimmed,
-        }).toString(),
+        body: body.toString(),
       });
-
-      // Netlify answers an unregistered form with a 404 or 405 rather than a
-      // rejected promise. Without this, a message that was never delivered
-      // still renders the confirmation — the user waits for a reply that is
-      // not coming, and nothing surfaces the failure on either end.
-      if (!res.ok) {
-        throw new Error(`Form endpoint responded ${res.status}`);
-      }
-
+      if (!res.ok) throw new Error(`Request failed: ${res.status}`);
       setSubmitted(true);
     } catch {
-      setError({
-        message: "We couldn't send your message. Please try again.",
-        offerEmail: true,
-      });
+      setFailed(true);
+      if (RECAPTCHA_SITE_KEY && window.grecaptcha && widgetId.current !== null) {
+        window.grecaptcha.reset(widgetId.current);
+      }
     } finally {
       setSubmitting(false);
     }
@@ -98,8 +145,8 @@ export default function SupportForm() {
   if (submitted) {
     // Echo the two things the sender can't otherwise verify: which product the
     // message was filed against, and the address the reply goes to — a typo
-    // there is the one failure neither side can see. No reply window: the
-    // studio is one person and an invented SLA would be a promise, not a fact.
+    // there is the one failure neither side can see. No reply window: the studio
+    // is one person and an invented SLA would be a promise, not a fact.
     const product =
       formData.app === "general"
         ? null
@@ -159,6 +206,9 @@ export default function SupportForm() {
           onClick={() => {
             setSubmitted(false);
             setFormData({ name: "", email: "", app: "", message: "" });
+            setFailed(false);
+            setFormError(null);
+            widgetId.current = null;
           }}
           className="text-sm cursor-pointer bg-transparent border-none"
           style={{
@@ -200,10 +250,18 @@ export default function SupportForm() {
       method="POST"
       data-netlify="true"
       data-netlify-honeypot="bot-field"
+      data-netlify-recaptcha="true"
       onSubmit={handleSubmit}
       aria-busy={submitting}
       className="max-w-lg mx-auto flex flex-col gap-5"
     >
+      {RECAPTCHA_SITE_KEY && (
+        <Script
+          src="https://www.google.com/recaptcha/api.js?onload=onRecaptchaLoad&render=explicit"
+          strategy="afterInteractive"
+        />
+      )}
+
       <input type="hidden" name="form-name" value="support" />
       <div hidden>
         <label>
@@ -344,7 +402,10 @@ export default function SupportForm() {
         />
       </div>
 
-      {error && (
+      {/* reCAPTCHA — blocks bot/empty submissions Netlify would otherwise accept */}
+      {RECAPTCHA_SITE_KEY && <div ref={recaptchaRef} />}
+
+      {formError && (
         <div
           role="alert"
           className="text-sm"
@@ -359,17 +420,30 @@ export default function SupportForm() {
             padding: "12px 16px",
           }}
         >
-          {error.message}
-          {error.offerEmail && (
-            <>
-              {" "}
-              Or email{" "}
-              <a href="mailto:support@vyttle.com" style={mailtoStyle}>
-                support@vyttle.com
-              </a>
-              .
-            </>
-          )}
+          {formError}
+        </div>
+      )}
+
+      {failed && (
+        <div
+          role="alert"
+          className="text-sm"
+          style={{
+            fontFamily: "var(--font-dm-sans), DM Sans, sans-serif",
+            fontWeight: 300,
+            lineHeight: 1.5,
+            color: "var(--text-primary)",
+            background: "var(--bg-card)",
+            border: "1px solid var(--border)",
+            borderRadius: "10px",
+            padding: "12px 16px",
+          }}
+        >
+          We couldn&apos;t send your message. Please try again, or email{" "}
+          <a href="mailto:support@vyttle.com" style={mailtoStyle}>
+            support@vyttle.com
+          </a>
+          .
         </div>
       )}
 
