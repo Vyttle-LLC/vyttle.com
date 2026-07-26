@@ -45,3 +45,6 @@ next-env.d.ts
 
 # impeccable live mode (local session state; config.json is committed)
 .impeccable/live/sessions/
+
+# impeccable critique snapshots (dated evaluations; superseded on each run)
+.impeccable/critique/
