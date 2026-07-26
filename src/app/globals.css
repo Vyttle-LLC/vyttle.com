@@ -113,15 +113,16 @@
      while staying in the brand's amber family. See the dark block for why. */
   --amber-text: #8F6018;
 
-  /* Each darkened until it clears 4.5:1 as normal text on the light surface —
-     these were solved for the 10px badge, so they carry ample headroom at
-     display size. Hue and saturation preserved; only lightness moves, so each
-     still reads as its own product. See the dark block for why. */
-  --accent-text-crema: #5C3D2E;
-  --accent-text-stockpot: #8B2920;
-  --accent-text-bramble: #6C37FF;
-  --accent-text-pica: #315BDC;
-  --accent-text-reviso: #0E7490;
+  /* Each value is the tone its product's brand kit sanctions for accent text on
+     light, not a darkening derived here. Hue is preserved; only lightness moves,
+     so each still reads as its own product. All clear 4.5:1 on the app-page hero
+     (a 6% accent tint over White), so one value serves both the 40px title and
+     the 10px badge and no separate display tier is needed. See the dark block. */
+  --accent-text-crema: #5C3D2E;    /* Medium Roast     — 8.48:1 */
+  --accent-text-stockpot: #C0392B; /* Tomato Red       — 4.59:1 */
+  --accent-text-bramble: #6C37FF;  /* Violet Deep      — 4.91:1 */
+  --accent-text-pica: #315BDC;     /* Cobalt Dark      — 4.90:1 */
+  --accent-text-reviso: #155E75;   /* Cyan Ink         — 6.32:1 */
 }
 
 /* ==================== TAILWIND THEME ==================== */
