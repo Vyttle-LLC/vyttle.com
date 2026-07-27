@@ -108,15 +108,21 @@ export default function StockpotPrivacyPage() {
           >
             <Link
               href="/stockpot"
-              className="text-sm"
+              className="tap-target link-quiet text-sm"
               style={{ color: "var(--text-secondary)" }}
             >
               Back to Stockpot
             </Link>
-            <span style={{ color: "var(--border)" }}>&middot;</span>
+            <span
+              aria-hidden="true"
+              className="text-xs"
+              style={{ color: "var(--text-tertiary)" }}
+            >
+              &middot;
+            </span>
             <Link
               href="/support?app=stockpot"
-              className="text-sm"
+              className="tap-target link-quiet text-sm"
               style={{ color: "var(--text-secondary)" }}
             >
               Support

@@ -3,6 +3,7 @@ import Nav from "@/components/Nav";
 import ConicOrb from "@/components/ConicOrb";
 import Footer from "@/components/Footer";
 import Link from "next/link";
+import { appsWithPrivacyPolicy } from "@/lib/apps";
 
 export const metadata: Metadata = {
   title: "Privacy Policy — Vyttle",
@@ -58,25 +59,25 @@ export default function PrivacyPage() {
 
           <h2>App &amp; Product Privacy</h2>
           <p>
-            Each of our apps and products has its own privacy policy that
-            describes how it handles your data:
+            These products publish their own privacy policy describing how they
+            handle your data:
           </p>
+          {/* Derived from apps.ts, not hand-listed — a hand-listed copy is how
+              a product ends up linked from its own page but missing here. */}
           <ul>
-            <li>
-              <Link href="/sixteen-to-one/privacy">
-                Sixteen to One Privacy Policy
-              </Link>
-            </li>
-            <li>
-              <Link href="/stockpot/privacy">Stockpot Privacy Policy</Link>
-            </li>
-            <li>
-              <Link href="/bramble/privacy">Bramble Privacy Policy</Link>
-            </li>
-            <li>
-              <Link href="/reviso/privacy">Reviso Privacy Policy</Link>
-            </li>
+            {appsWithPrivacyPolicy().map((app) => (
+              <li key={app.slug}>
+                <Link href={`/${app.slug}/privacy`}>
+                  {app.name} Privacy Policy
+                </Link>
+              </li>
+            ))}
           </ul>
+          <p>
+            Products still in development don&apos;t have their own policy yet,
+            because there is nothing yet to describe. Until one ships, this
+            policy is the one that applies.
+          </p>
 
           <h2>Hosting</h2>
           <p>

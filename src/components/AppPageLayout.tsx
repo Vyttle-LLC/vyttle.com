@@ -4,7 +4,7 @@ import Footer from "./Footer";
 import ComingSoonBadge from "./ComingSoonBadge";
 import ScreenshotCarousel, { type Screenshot } from "./ScreenshotCarousel";
 import Link from "next/link";
-import { VyttleApp } from "@/lib/apps";
+import { VyttleApp, privacyHref } from "@/lib/apps";
 import ConicOrb from "./ConicOrb";
 
 interface AppPageLayoutProps {
@@ -20,8 +20,13 @@ export default function AppPageLayout({
   children,
   screenshots,
 }: AppPageLayoutProps) {
-  const accentColor = app.accentVar || app.accent;
-  const badgeColor = app.badgeVar || accentColor;
+  // One resolved accent for every structural role — outline, tint, mark glow,
+  // dividers. These previously read raw `app.accent` while the title read the
+  // theme-aware var, so /reviso drew a #22D3EE outline around a Cyan Deep
+  // title: two cyans on the one page a developer is evaluating.
+  const accent = app.accentVar || app.accent;
+  // The same accent as a word. Titles and the Coming Soon badge share it.
+  const accentText = app.accentTextVar || accent;
 
   return (
     <>
@@ -37,9 +42,9 @@ export default function AppPageLayout({
             <div
               className="flex flex-col items-center text-center gap-6 py-20 px-6 md:px-12 rounded-3xl relative overflow-hidden"
               style={{
-                border: `1.5px solid ${app.accent}`,
+                border: `1.5px solid ${accent}`,
                 borderRadius: "24px",
-                background: `color-mix(in srgb, ${app.accent} 6%, var(--bg-primary))`,
+                background: `color-mix(in srgb, ${accent} 6%, var(--bg-primary))`,
               }}
             >
               {/* Logomark with glow halo */}
@@ -47,7 +52,7 @@ export default function AppPageLayout({
                 className="w-24 h-24 flex items-center justify-center fade-in"
                 style={{
                   animationDelay: "0ms",
-                  filter: `drop-shadow(0 0 20px color-mix(in srgb, ${app.accent} 25%, transparent))`,
+                  filter: `drop-shadow(0 0 20px color-mix(in srgb, ${accent} 25%, transparent))`,
                 }}
               >
                 {logomark}
@@ -62,7 +67,7 @@ export default function AppPageLayout({
                       "var(--font-source-serif), 'Source Serif 4', serif",
                     fontWeight: 400,
                     letterSpacing: "1px",
-                    color: accentColor,
+                    color: accentText,
                     animationDelay: "200ms",
                   }}
                   dangerouslySetInnerHTML={{ __html: app.nameHtml }}
@@ -73,7 +78,7 @@ export default function AppPageLayout({
                   style={{
                     fontFamily: "var(--font-outfit), Outfit, sans-serif",
                     letterSpacing: "6px",
-                    color: accentColor,
+                    color: accentText,
                     animationDelay: "200ms",
                   }}
                 >
@@ -147,7 +152,7 @@ export default function AppPageLayout({
                     )}
                   </>
                 ) : (
-                  <ComingSoonBadge color={badgeColor} />
+                  <ComingSoonBadge color={accentText} />
                 )}
               </div>
 
@@ -159,7 +164,7 @@ export default function AppPageLayout({
               {/* Divider */}
               <div
                 className="w-full mt-8"
-                style={{ borderTop: `1px solid color-mix(in srgb, ${app.accent} 15%, transparent)` }}
+                style={{ borderTop: `1px solid color-mix(in srgb, ${accent} 15%, transparent)` }}
               />
 
               {/* About Section */}
@@ -188,14 +193,14 @@ export default function AppPageLayout({
               {/* Divider */}
               <div
                 className="w-full mt-8"
-                style={{ borderTop: `1px solid color-mix(in srgb, ${app.accent} 15%, transparent)` }}
+                style={{ borderTop: `1px solid color-mix(in srgb, ${accent} 15%, transparent)` }}
               />
 
               {/* Page footer links */}
               <div className="flex justify-center items-center gap-6 pt-4">
                 <Link
-                  href={`/${app.slug}/privacy`}
-                  className="text-sm font-light no-underline transition-colors duration-200"
+                  href={privacyHref(app)}
+                  className="tap-target link-quiet text-sm font-light no-underline"
                   style={{
                     fontFamily: "var(--font-dm-sans), DM Sans, sans-serif",
                     color: "var(--text-secondary)",
@@ -203,10 +208,21 @@ export default function AppPageLayout({
                 >
                   Privacy Policy
                 </Link>
-                <span style={{ color: "var(--border)" }}>&middot;</span>
+                {/* --border is a hairline token at 0.2/0.8 alpha: right for a
+                    1px rule, invisible as a 16px glyph (it measured 1.1:1).
+                    Separators are decoration, so they are hidden from the
+                    reading order and held back by size rather than by a dimmer
+                    tone — the Two-Tone Text Rule's own remedy. */}
+                <span
+                  aria-hidden="true"
+                  className="text-xs"
+                  style={{ color: "var(--text-tertiary)" }}
+                >
+                  &middot;
+                </span>
                 <Link
                   href="/"
-                  className="text-sm font-light no-underline transition-colors duration-200"
+                  className="tap-target link-quiet text-sm font-light no-underline"
                   style={{
                     fontFamily: "var(--font-dm-sans), DM Sans, sans-serif",
                     color: "var(--text-secondary)",
@@ -214,10 +230,21 @@ export default function AppPageLayout({
                 >
                   Back to Vyttle
                 </Link>
-                <span style={{ color: "var(--border)" }}>&middot;</span>
+                {/* --border is a hairline token at 0.2/0.8 alpha: right for a
+                    1px rule, invisible as a 16px glyph (it measured 1.1:1).
+                    Separators are decoration, so they are hidden from the
+                    reading order and held back by size rather than by a dimmer
+                    tone — the Two-Tone Text Rule's own remedy. */}
+                <span
+                  aria-hidden="true"
+                  className="text-xs"
+                  style={{ color: "var(--text-tertiary)" }}
+                >
+                  &middot;
+                </span>
                 <Link
                   href={`/support?app=${app.slug}`}
-                  className="text-sm font-light no-underline transition-colors duration-200"
+                  className="tap-target link-quiet text-sm font-light no-underline"
                   style={{
                     fontFamily: "var(--font-dm-sans), DM Sans, sans-serif",
                     color: "var(--text-secondary)",

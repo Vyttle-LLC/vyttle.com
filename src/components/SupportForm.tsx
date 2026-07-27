@@ -96,8 +96,14 @@ export default function SupportForm() {
       app: formData.app.trim(),
       message: formData.message.trim(),
     };
-    if (!trimmed.name || !trimmed.email || !trimmed.app || !trimmed.message) {
+    const firstBlank = (["name", "email", "app", "message"] as const).find(
+      (field) => !trimmed[field]
+    );
+    if (firstBlank) {
       setFormError("Please fill out every field before sending.");
+      // Announcing the problem isn't enough when the alert sits below the
+      // fields — put the cursor on the one that needs fixing.
+      document.getElementById(firstBlank)?.focus();
       return;
     }
 
@@ -137,6 +143,15 @@ export default function SupportForm() {
   };
 
   if (submitted) {
+    // Echo the two things the sender can't otherwise verify: which product the
+    // message was filed against, and the address the reply goes to — a typo
+    // there is the one failure neither side can see. No reply window: the studio
+    // is one person and an invented SLA would be a promise, not a fact.
+    const product =
+      formData.app === "general"
+        ? null
+        : apps.find((a) => a.slug === formData.app)?.name ?? null;
+
     return (
       <div className="max-w-lg mx-auto text-center py-16">
         <div
@@ -175,7 +190,17 @@ export default function SupportForm() {
             color: "var(--text-secondary)",
           }}
         >
-          We&apos;ve got your message and will reply by email as soon as we can.
+          We&apos;ve got your message{product ? ` about ${product}` : ""} and
+          will reply to{" "}
+          <span
+            style={{
+              color: "var(--text-primary)",
+              overflowWrap: "anywhere",
+            }}
+          >
+            {formData.email.trim()}
+          </span>{" "}
+          as soon as we can.
         </p>
         <button
           onClick={() => {

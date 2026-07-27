@@ -68,7 +68,7 @@ export default function Nav() {
     <>
     <nav
       aria-label="Primary"
-      className="fixed top-0 left-0 right-0 z-50 h-16 flex items-center justify-between px-6 md:px-12 transition-all duration-400"
+      className="fixed top-0 left-0 right-0 z-50 h-16 flex items-center justify-between nav-gutter transition-all duration-400"
       style={{
         background: "var(--nav-bg)",
         backdropFilter: "blur(20px)",
@@ -99,7 +99,7 @@ export default function Nav() {
             <button
               ref={productsButtonRef}
               onClick={() => setOpen(!open)}
-              className="text-sm flex items-center gap-1 transition-colors duration-200 cursor-pointer bg-transparent border-none p-0"
+              className="tap-target text-sm items-center gap-1 transition-colors duration-200 cursor-pointer bg-transparent border-none p-0"
               style={linkStyle}
               aria-expanded={open}
               aria-controls="products-menu"
@@ -179,7 +179,7 @@ export default function Nav() {
           <li>
             <Link
               href="/support"
-              className="text-sm no-underline transition-colors duration-200"
+              className="tap-target text-sm no-underline transition-colors duration-200"
               style={linkStyle}
               onMouseEnter={(e) =>
                 (e.currentTarget.style.color = "var(--amber-text)")

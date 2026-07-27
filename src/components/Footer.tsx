@@ -41,7 +41,7 @@ export default function Footer() {
             <li key={link.href}>
               <Link
                 href={link.href}
-                className="text-xs font-light no-underline transition-colors duration-200 hover:text-amber"
+                className="tap-target text-xs font-light no-underline transition-colors duration-200 hover:text-amber"
                 style={{
                   fontFamily: "var(--font-dm-sans), DM Sans, sans-serif",
                   letterSpacing: "1px",

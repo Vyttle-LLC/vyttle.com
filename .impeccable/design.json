@@ -1,6 +1,6 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-07-23T00:00:00.000Z",
+  "generatedAt": "2026-07-26T00:00:00.000Z",
   "title": "Design System: Vyttle",
   "extensions": {
     "colorMeta": {
@@ -9,129 +9,491 @@
         "displayName": "Midnight",
         "canonical": "oklch(17% 0.02 265)",
         "note": "Primary dark background and text-on-light. globals.css currently ships #08090E; #0C0E1A is canonical company-wide.",
-        "tonalRamp": ["oklch(15% 0.02 265)", "oklch(26% 0.02 265)", "oklch(37% 0.02 265)", "oklch(48% 0.02 265)", "oklch(59% 0.02 265)", "oklch(70% 0.02 265)", "oklch(81% 0.02 265)", "oklch(92% 0.02 265)"]
+        "tonalRamp": [
+          "oklch(15% 0.02 265)",
+          "oklch(26% 0.02 265)",
+          "oklch(37% 0.02 265)",
+          "oklch(48% 0.02 265)",
+          "oklch(59% 0.02 265)",
+          "oklch(70% 0.02 265)",
+          "oklch(81% 0.02 265)",
+          "oklch(92% 0.02 265)"
+        ]
       },
       "navy": {
         "role": "neutral",
         "displayName": "Navy",
         "canonical": "oklch(25% 0.04 270)",
         "note": "Secondary dark surface; logomark structural fill on light backgrounds.",
-        "tonalRamp": ["oklch(15% 0.04 270)", "oklch(26% 0.04 270)", "oklch(37% 0.04 270)", "oklch(48% 0.04 270)", "oklch(59% 0.04 270)", "oklch(70% 0.04 270)", "oklch(81% 0.04 270)", "oklch(92% 0.04 270)"]
+        "tonalRamp": [
+          "oklch(15% 0.04 270)",
+          "oklch(26% 0.04 270)",
+          "oklch(37% 0.04 270)",
+          "oklch(48% 0.04 270)",
+          "oklch(59% 0.04 270)",
+          "oklch(70% 0.04 270)",
+          "oklch(81% 0.04 270)",
+          "oklch(92% 0.04 270)"
+        ]
       },
       "slate": {
         "role": "neutral",
         "displayName": "Slate",
         "canonical": "oklch(45% 0.03 275)",
         "note": "Secondary text in light mode; source of the 20%-alpha dark-mode border.",
-        "tonalRamp": ["oklch(15% 0.03 275)", "oklch(26% 0.03 275)", "oklch(37% 0.03 275)", "oklch(48% 0.03 275)", "oklch(59% 0.03 275)", "oklch(70% 0.03 275)", "oklch(81% 0.03 275)", "oklch(92% 0.03 275)"]
+        "tonalRamp": [
+          "oklch(15% 0.03 275)",
+          "oklch(26% 0.03 275)",
+          "oklch(37% 0.03 275)",
+          "oklch(48% 0.03 275)",
+          "oklch(59% 0.03 275)",
+          "oklch(70% 0.03 275)",
+          "oklch(81% 0.03 275)",
+          "oklch(92% 0.03 275)"
+        ]
       },
       "silver": {
         "role": "neutral",
         "displayName": "Silver",
         "canonical": "oklch(73% 0.02 270)",
         "note": "Secondary AND tertiary text on dark — both roles resolve here by design.",
-        "tonalRamp": ["oklch(15% 0.02 270)", "oklch(26% 0.02 270)", "oklch(37% 0.02 270)", "oklch(48% 0.02 270)", "oklch(59% 0.02 270)", "oklch(70% 0.02 270)", "oklch(81% 0.02 270)", "oklch(92% 0.02 270)"]
+        "tonalRamp": [
+          "oklch(15% 0.02 270)",
+          "oklch(26% 0.02 270)",
+          "oklch(37% 0.02 270)",
+          "oklch(48% 0.02 270)",
+          "oklch(59% 0.02 270)",
+          "oklch(70% 0.02 270)",
+          "oklch(81% 0.02 270)",
+          "oklch(92% 0.02 270)"
+        ]
       },
       "fog": {
         "role": "neutral",
         "displayName": "Fog",
         "canonical": "oklch(89% 0.01 265)",
         "note": "Primary text on dark; borders and dividers on light.",
-        "tonalRamp": ["oklch(15% 0.01 265)", "oklch(26% 0.01 265)", "oklch(37% 0.01 265)", "oklch(48% 0.01 265)", "oklch(59% 0.01 265)", "oklch(70% 0.01 265)", "oklch(81% 0.01 265)", "oklch(92% 0.01 265)"]
+        "tonalRamp": [
+          "oklch(15% 0.01 265)",
+          "oklch(26% 0.01 265)",
+          "oklch(37% 0.01 265)",
+          "oklch(48% 0.01 265)",
+          "oklch(59% 0.01 265)",
+          "oklch(70% 0.01 265)",
+          "oklch(81% 0.01 265)",
+          "oklch(92% 0.01 265)"
+        ]
       },
       "cool-warm-fog": {
         "role": "neutral",
         "displayName": "Cool Warm Fog",
         "canonical": "oklch(88% 0.02 90)",
         "note": "Logomark structural fill on dark. Deliberately warmer than Fog so the diamond reads as an object, not as text.",
-        "tonalRamp": ["oklch(15% 0.02 90)", "oklch(26% 0.02 90)", "oklch(37% 0.02 90)", "oklch(48% 0.02 90)", "oklch(59% 0.02 90)", "oklch(70% 0.02 90)", "oklch(81% 0.02 90)", "oklch(92% 0.02 90)"]
+        "tonalRamp": [
+          "oklch(15% 0.02 90)",
+          "oklch(26% 0.02 90)",
+          "oklch(37% 0.02 90)",
+          "oklch(48% 0.02 90)",
+          "oklch(59% 0.02 90)",
+          "oklch(70% 0.02 90)",
+          "oklch(81% 0.02 90)",
+          "oklch(92% 0.02 90)"
+        ]
       },
       "white": {
         "role": "neutral",
         "displayName": "White",
         "canonical": "oklch(96% 0.003 265)",
         "note": "Primary light background. Never pure #FFFFFF.",
-        "tonalRamp": ["oklch(15% 0.003 265)", "oklch(26% 0.003 265)", "oklch(37% 0.003 265)", "oklch(48% 0.003 265)", "oklch(59% 0.003 265)", "oklch(70% 0.003 265)", "oklch(81% 0.003 265)", "oklch(96% 0.003 265)"]
+        "tonalRamp": [
+          "oklch(15% 0.003 265)",
+          "oklch(26% 0.003 265)",
+          "oklch(37% 0.003 265)",
+          "oklch(48% 0.003 265)",
+          "oklch(59% 0.003 265)",
+          "oklch(70% 0.003 265)",
+          "oklch(81% 0.003 265)",
+          "oklch(96% 0.003 265)"
+        ]
       },
       "amber": {
         "role": "primary",
         "displayName": "Amber",
         "canonical": "oklch(70% 0.12 65)",
         "note": "The studio's own voice. Constant #D4933D on the logomark dot in both themes; deepens to #B8802E for interactive use on light.",
-        "tonalRamp": ["oklch(15% 0.12 65)", "oklch(26% 0.12 65)", "oklch(37% 0.12 65)", "oklch(48% 0.12 65)", "oklch(59% 0.12 65)", "oklch(70% 0.12 65)", "oklch(81% 0.12 65)", "oklch(92% 0.12 65)"]
+        "tonalRamp": [
+          "oklch(15% 0.12 65)",
+          "oklch(26% 0.12 65)",
+          "oklch(37% 0.12 65)",
+          "oklch(48% 0.12 65)",
+          "oklch(59% 0.12 65)",
+          "oklch(70% 0.12 65)",
+          "oklch(81% 0.12 65)",
+          "oklch(92% 0.12 65)"
+        ]
       },
       "gold": {
         "role": "primary",
         "displayName": "Gold",
         "canonical": "oklch(87% 0.08 85)",
         "note": "Amber's hover state in prose links. A highlight, never a fill.",
-        "tonalRamp": ["oklch(15% 0.08 85)", "oklch(26% 0.08 85)", "oklch(37% 0.08 85)", "oklch(48% 0.08 85)", "oklch(59% 0.08 85)", "oklch(70% 0.08 85)", "oklch(81% 0.08 85)", "oklch(92% 0.08 85)"]
+        "tonalRamp": [
+          "oklch(15% 0.08 85)",
+          "oklch(26% 0.08 85)",
+          "oklch(37% 0.08 85)",
+          "oklch(48% 0.08 85)",
+          "oklch(59% 0.08 85)",
+          "oklch(70% 0.08 85)",
+          "oklch(81% 0.08 85)",
+          "oklch(92% 0.08 85)"
+        ]
       },
       "crema": {
         "role": "secondary",
         "displayName": "Crema",
         "canonical": "oklch(68% 0.07 65)",
         "note": "Sixteen to One. Inherited from that product's own coffee-derived kit.",
-        "tonalRamp": ["oklch(15% 0.07 65)", "oklch(26% 0.07 65)", "oklch(37% 0.07 65)", "oklch(48% 0.07 65)", "oklch(59% 0.07 65)", "oklch(70% 0.07 65)", "oklch(81% 0.07 65)", "oklch(92% 0.07 65)"]
+        "tonalRamp": [
+          "oklch(15% 0.07 65)",
+          "oklch(26% 0.07 65)",
+          "oklch(37% 0.07 65)",
+          "oklch(48% 0.07 65)",
+          "oklch(59% 0.07 65)",
+          "oklch(70% 0.07 65)",
+          "oklch(81% 0.07 65)",
+          "oklch(92% 0.07 65)"
+        ]
       },
       "tomato": {
         "role": "secondary",
         "displayName": "Tomato",
         "canonical": "oklch(52% 0.17 30)",
         "note": "Stockpot. Deliberately moved off coral to a true red so it cannot be confused with Amber or Crema.",
-        "tonalRamp": ["oklch(15% 0.17 30)", "oklch(26% 0.17 30)", "oklch(37% 0.17 30)", "oklch(48% 0.17 30)", "oklch(59% 0.17 30)", "oklch(70% 0.17 30)", "oklch(81% 0.17 30)", "oklch(92% 0.17 30)"]
+        "tonalRamp": [
+          "oklch(15% 0.17 30)",
+          "oklch(26% 0.17 30)",
+          "oklch(37% 0.17 30)",
+          "oklch(48% 0.17 30)",
+          "oklch(59% 0.17 30)",
+          "oklch(70% 0.17 30)",
+          "oklch(81% 0.17 30)",
+          "oklch(92% 0.17 30)"
+        ]
       },
       "vivid-violet": {
         "role": "secondary",
         "displayName": "Vivid Violet",
         "canonical": "oklch(56% 0.25 285)",
         "note": "Bramble. The one product accent identical in both themes.",
-        "tonalRamp": ["oklch(15% 0.25 285)", "oklch(26% 0.25 285)", "oklch(37% 0.25 285)", "oklch(48% 0.25 285)", "oklch(59% 0.25 285)", "oklch(70% 0.25 285)", "oklch(81% 0.25 285)", "oklch(92% 0.25 285)"]
+        "tonalRamp": [
+          "oklch(15% 0.25 285)",
+          "oklch(26% 0.25 285)",
+          "oklch(37% 0.25 285)",
+          "oklch(48% 0.25 285)",
+          "oklch(59% 0.25 285)",
+          "oklch(70% 0.25 285)",
+          "oklch(81% 0.25 285)",
+          "oklch(92% 0.25 285)"
+        ]
       },
       "cobalt": {
         "role": "secondary",
         "displayName": "Cobalt",
         "canonical": "oklch(56% 0.17 270)",
         "note": "Pica. The 'Cobalt Blueprint' palette.",
-        "tonalRamp": ["oklch(15% 0.17 270)", "oklch(26% 0.17 270)", "oklch(37% 0.17 270)", "oklch(48% 0.17 270)", "oklch(59% 0.17 270)", "oklch(70% 0.17 270)", "oklch(81% 0.17 270)", "oklch(92% 0.17 270)"]
+        "tonalRamp": [
+          "oklch(15% 0.17 270)",
+          "oklch(26% 0.17 270)",
+          "oklch(37% 0.17 270)",
+          "oklch(48% 0.17 270)",
+          "oklch(59% 0.17 270)",
+          "oklch(70% 0.17 270)",
+          "oklch(81% 0.17 270)",
+          "oklch(92% 0.17 270)"
+        ]
       },
       "electric-cyan": {
         "role": "secondary",
         "displayName": "Electric Cyan",
         "canonical": "oklch(78% 0.13 200)",
         "note": "Reviso. Falls back to Cyan Deep #06B6D4 on light backgrounds; Cyan Dark #0891B2 for text-on-white at WCAG AA.",
-        "tonalRamp": ["oklch(15% 0.13 200)", "oklch(26% 0.13 200)", "oklch(37% 0.13 200)", "oklch(48% 0.13 200)", "oklch(59% 0.13 200)", "oklch(70% 0.13 200)", "oklch(81% 0.13 200)", "oklch(92% 0.13 200)"]
+        "tonalRamp": [
+          "oklch(15% 0.13 200)",
+          "oklch(26% 0.13 200)",
+          "oklch(37% 0.13 200)",
+          "oklch(48% 0.13 200)",
+          "oklch(59% 0.13 200)",
+          "oklch(70% 0.13 200)",
+          "oklch(81% 0.13 200)",
+          "oklch(92% 0.13 200)"
+        ]
+      },
+      "amber-dark": {
+        "role": "primary",
+        "displayName": "Amber Dark",
+        "canonical": "#8F6018",
+        "tonalRamp": [
+          "#2A1C07",
+          "#402A0B",
+          "#563810",
+          "#6B4614",
+          "#8F6018",
+          "#B8802E",
+          "#D4933D",
+          "#E8BC7E"
+        ]
+      },
+      "medium-roast": {
+        "role": "secondary",
+        "displayName": "Medium Roast",
+        "canonical": "#5C3D2E",
+        "tonalRamp": [
+          "#1C1008",
+          "#2A1A0E",
+          "#3D291C",
+          "#5C3D2E",
+          "#7D5642",
+          "#A67558",
+          "#C4956A",
+          "#DFC5A8"
+        ]
+      },
+      "tomato-deep": {
+        "role": "secondary",
+        "displayName": "Tomato Deep",
+        "canonical": "#8B2920",
+        "tonalRamp": [
+          "#2B0D09",
+          "#4A1610",
+          "#6B1F18",
+          "#8B2920",
+          "#C0392B",
+          "#D4756A",
+          "#E5A39B",
+          "#F2D1CC"
+        ]
+      },
+      "violet-light": {
+        "role": "secondary",
+        "displayName": "Violet Light",
+        "canonical": "#9D7AFF",
+        "tonalRamp": [
+          "#160A33",
+          "#24105C",
+          "#3A1A96",
+          "#5426D6",
+          "#7C4DFF",
+          "#9D7AFF",
+          "#C3ADFF",
+          "#E4DAFF"
+        ]
+      },
+      "violet-deep": {
+        "role": "secondary",
+        "displayName": "Violet Deep",
+        "canonical": "#6C37FF",
+        "tonalRamp": [
+          "#160A33",
+          "#24105C",
+          "#3A1A96",
+          "#6C37FF",
+          "#7C4DFF",
+          "#9D7AFF",
+          "#C3ADFF",
+          "#E4DAFF"
+        ]
+      },
+      "cobalt-dark": {
+        "role": "secondary",
+        "displayName": "Cobalt Dark",
+        "canonical": "#315BDC",
+        "tonalRamp": [
+          "#0A0E1C",
+          "#111B4A",
+          "#1B2E7C",
+          "#315BDC",
+          "#4A6FE0",
+          "#8AA4F0",
+          "#B6C6F7",
+          "#DFE7FC"
+        ]
+      },
+      "cyan-ink": {
+        "role": "secondary",
+        "displayName": "Cyan Ink",
+        "canonical": "#155E75",
+        "tonalRamp": [
+          "#04222B",
+          "#083D4D",
+          "#155E75",
+          "#0E7490",
+          "#06B6D4",
+          "#22D3EE",
+          "#A5F3FC",
+          "#CFFAFE"
+        ]
       }
     },
     "typographyMeta": {
-      "display": { "displayName": "Display", "purpose": "Source Serif 4 Light. Exactly two uses site-wide: the homepage promise and Sixteen to One's name." },
-      "wordmark": { "displayName": "Wordmark", "purpose": "Outfit 600 uppercase at +6px tracking. The VYTTLE lockup in nav and footer." },
-      "headline": { "displayName": "Headline", "purpose": "Outfit 600. Page titles; app pages set it uppercase at +6px in the product accent." },
-      "title": { "displayName": "Title", "purpose": "Outfit 500. Section headings within a page." },
-      "body": { "displayName": "Body", "purpose": "DM Sans. All reading copy at line-height 1.8; taglines and support copy drop to 300." },
-      "field": { "displayName": "Field", "purpose": "DM Sans Light at 16px for form controls. 16px is a floor, not a preference — iOS Safari zooms the viewport when focusing an input below it." },
-      "micro": { "displayName": "Micro", "purpose": "DM Sans 400 at 10px uppercase, +1.5px to +2px. Status badges and type chips. The smallest tier, and the one where contrast must be measured rather than assumed — every contrast failure this system has had was at this size." },
-      "label": { "displayName": "Label", "purpose": "DM Sans uppercase, 10-11px, +2px to +4px tracking. The most-used voice on the site." }
+      "display": {
+        "displayName": "Display",
+        "purpose": "Source Serif 4 Light. Exactly two uses site-wide: the homepage promise and Sixteen to One's name."
+      },
+      "wordmark": {
+        "displayName": "Wordmark",
+        "purpose": "Outfit 600 uppercase at +6px tracking. The VYTTLE lockup in nav and footer."
+      },
+      "headline": {
+        "displayName": "Headline",
+        "purpose": "Outfit 600. Page titles; app pages set it uppercase at +6px in the product accent."
+      },
+      "title": {
+        "displayName": "Title",
+        "purpose": "Outfit 500. Section headings within a page."
+      },
+      "body": {
+        "displayName": "Body",
+        "purpose": "DM Sans. All reading copy at line-height 1.8; taglines and support copy drop to 300."
+      },
+      "field": {
+        "displayName": "Field",
+        "purpose": "DM Sans Light at 16px for form controls. 16px is a floor, not a preference — iOS Safari zooms the viewport when focusing an input below it."
+      },
+      "micro": {
+        "displayName": "Micro",
+        "purpose": "DM Sans 400 at 10px uppercase, +1.5px to +2px. Status badges and type chips. The smallest tier, and the one where contrast must be measured rather than assumed — every contrast failure this system has had was at this size."
+      },
+      "label": {
+        "displayName": "Label",
+        "purpose": "DM Sans uppercase, 10-11px, +2px to +4px tracking. The most-used voice on the site."
+      }
     },
     "shadows": [
-      { "name": "accent-glow", "value": "0 0 40px color-mix(in srgb, var(--accent) 8%, transparent)", "purpose": "Bento cell hover only. Emitted, not cast — zero offset." },
-      { "name": "mark-halo", "value": "drop-shadow(0 0 20px color-mix(in srgb, var(--accent) 25%, transparent))", "purpose": "App-page hero logomarks at rest. Makes the mark read as lit rather than printed." },
-      { "name": "menu-shadow", "value": "0 8px 32px rgba(0,0,0,0.3)", "purpose": "The nav Products dropdown. The single real drop shadow in the system." }
+      {
+        "name": "accent-glow",
+        "value": "0 0 40px color-mix(in srgb, var(--accent) 8%, transparent)",
+        "purpose": "Bento cell hover only. Emitted, not cast — zero offset."
+      },
+      {
+        "name": "mark-halo",
+        "value": "drop-shadow(0 0 20px color-mix(in srgb, var(--accent) 25%, transparent))",
+        "purpose": "App-page hero logomarks at rest. Makes the mark read as lit rather than printed."
+      },
+      {
+        "name": "menu-shadow",
+        "value": "0 8px 32px rgba(0,0,0,0.3)",
+        "purpose": "The nav Products dropdown. The single real drop shadow in the system."
+      }
     ],
     "motion": [
-      { "name": "state", "value": "200ms ease", "purpose": "All hover and interaction state changes. No bounce, no overshoot." },
-      { "name": "theme", "value": "400ms ease", "purpose": "Color transitions when data-theme flips." },
-      { "name": "reveal", "value": "600ms ease", "purpose": "Scroll reveal and page-load fade, translateY(12-16px) to 0, staggered 80ms per item." },
-      { "name": "float", "value": "float 6s ease-in-out infinite", "purpose": "Hero logomark, translateY 0 to -12px. Ambient, never demanding." },
-      { "name": "pulse-dot", "value": "pulse-dot 2s ease-in-out infinite", "purpose": "Coming Soon badge dot, opacity 0.4 to 1." },
-      { "name": "scroll-hint", "value": "scroll-hint 2s ease-in-out infinite", "purpose": "Homepage scroll cue, 6px vertical drift with opacity." },
-      { "name": "aurora", "value": "aurora-seg-1..8, 5s-10s ease-in-out infinite", "purpose": "Eight independent atmosphere bands with staggered durations so the field never visibly loops." }
+      {
+        "name": "state",
+        "value": "200ms ease",
+        "purpose": "Every state change: hover, tint, border, opacity."
+      },
+      {
+        "name": "theme",
+        "value": "400ms ease",
+        "purpose": "Colour transitions when data-theme flips."
+      },
+      {
+        "name": "reveal",
+        "value": "600ms ease",
+        "purpose": "Scroll-triggered section reveal. Carries a <noscript> fallback."
+      },
+      {
+        "name": "float",
+        "value": "float 6s ease-in-out infinite",
+        "purpose": "Hero mark ambient drift. Must sit on its own element — sharing one with .fade-in silently cancelled it."
+      },
+      {
+        "name": "pulse-dot",
+        "value": "pulse-dot 2s ease-in-out infinite",
+        "purpose": "Coming Soon dot. Rests LIT (opacity 1) under reduced motion, not dim."
+      },
+      {
+        "name": "scroll-hint",
+        "value": "scroll-hint 2s ease-in-out infinite",
+        "purpose": "Homepage scroll cue. Y-axis only; centring is by flow, never transform."
+      },
+      {
+        "name": "aurora",
+        "value": "aurora-seg-1..8 5-10s ease-in-out infinite",
+        "purpose": "Atmosphere bands. Gated in ConicOrb, not CSS, because each band animation is an inline style."
+      }
     ],
     "breakpoints": [
-      { "name": "sm", "value": "640px" },
-      { "name": "md", "value": "768px" },
-      { "name": "container", "value": "1200px" }
-    ]
+      {
+        "name": "sm",
+        "value": "640px"
+      },
+      {
+        "name": "md",
+        "value": "768px"
+      },
+      {
+        "name": "container",
+        "value": "1200px"
+      }
+    ],
+    "accentTextTier": {
+      "purpose": "Each product accent as a word. The fill value fails contrast as text in at least one theme for every product, so this is the normal path, not an edge case. Values come from each product brand kit.",
+      "measuredAgainst": "Midnight #0C0E1A on dark, and the app-page hero (6% accent over White #F4F5F7) on light.",
+      "tiers": [
+        {
+          "token": "--accent-text-crema",
+          "dark": "#C4956A",
+          "light": "#5C3D2E",
+          "lightRatio": 8.48,
+          "kitName": "Crema / Medium Roast",
+          "status": "matches kit"
+        },
+        {
+          "token": "--accent-text-stockpot",
+          "dark": "#D4756A",
+          "light": "#C0392B",
+          "lightRatio": 4.59,
+          "kitName": "Tomato Light / Tomato Red",
+          "status": "matches kit"
+        },
+        {
+          "token": "--accent-text-bramble",
+          "dark": "#9D7AFF",
+          "light": "#6C37FF",
+          "lightRatio": 4.91,
+          "kitName": "Violet Light / Violet Deep",
+          "status": "matches kit"
+        },
+        {
+          "token": "--accent-text-pica",
+          "dark": "#8AA4F0",
+          "light": "#315BDC",
+          "lightRatio": 4.9,
+          "kitName": "Cobalt Light / Cobalt Dark",
+          "status": "matches kit"
+        },
+        {
+          "token": "--accent-text-reviso",
+          "dark": "#22D3EE",
+          "light": "#155E75",
+          "lightRatio": 6.32,
+          "kitName": "Cyan / Cyan Ink",
+          "status": "matches kit"
+        }
+      ],
+      "notAdopted": [
+        {
+          "value": "#0891B2",
+          "kitName": "Cyan Dark",
+          "reason": "Large accent text (3:1). Reaches 3.20:1 on the Reviso hero — 8% headroom guarded by invariants nothing enforces. See The One Value Rule."
+        },
+        {
+          "value": "#8B2920",
+          "kitName": "Tomato Deep",
+          "reason": "Hover and pressed on light. Available if the app pages ever gain a hover state on accent titles; they have none today."
+        }
+      ]
+    }
   },
   "components": [
     {
@@ -205,64 +567,177 @@
       "description": "The wide-tracked uppercase micro-label that opens a section. The most-used typographic voice on the site.",
       "html": "<div class=\"ds-eyebrow\">Support</div>",
       "css": ".ds-eyebrow { font-family: var(--font-dm-sans), 'DM Sans', sans-serif; font-size: 11px; font-weight: 300; letter-spacing: 4px; text-transform: uppercase; color: var(--text-tertiary, #A8ADBD); }"
+    },
+    {
+      "name": "Tap Target",
+      "kind": "custom",
+      "refersTo": "tap-target",
+      "description": "Minimum comfortable hit area for standalone controls and nav links. Grows the box around the glyph so type is untouched.",
+      "html": "<a href=\"#\" class=\"ds-tap-target\">Privacy</a>",
+      "css": ".ds-tap-target { display: inline-flex; align-items: center; justify-content: center; min-height: 44px; min-width: 44px; font-family: var(--font-dm-sans), \"DM Sans\", sans-serif; font-size: 12px; font-weight: 300; letter-spacing: 1px; color: var(--text-secondary); text-decoration: none; transition: color 200ms ease; } .ds-tap-target:hover { color: var(--amber-text); } .ds-tap-target:focus-visible { outline: 2px solid var(--amber-accent); outline-offset: 2px; }"
+    },
+    {
+      "name": "Accent Row",
+      "kind": "nav",
+      "refersTo": "accent-row",
+      "description": "Product row for server-rendered lists (the not-found directory). Reproduces the nav dropdown tint in pure CSS off a per-row --row-accent, and unlike the JS version it also lights on keyboard focus.",
+      "html": "<a href=\"/reviso\" class=\"ds-accent-row\" style=\"--row-accent:#22D3EE\"><span class=\"ds-accent-dot\"></span>Reviso</a>",
+      "css": ".ds-accent-row { display: flex; align-items: center; gap: 12px; min-height: 48px; padding: 0 8px; border-radius: 10px; font-family: var(--font-dm-sans), \"DM Sans\", sans-serif; font-size: 16px; font-weight: 300; color: var(--text-primary); text-decoration: none; transition: background-color 200ms ease; } .ds-accent-row:hover, .ds-accent-row:focus-visible { background: color-mix(in srgb, var(--row-accent) 10%, transparent); } .ds-accent-dot { width: 8px; height: 8px; border-radius: 9999px; flex-shrink: 0; background: var(--row-accent); }"
+    },
+    {
+      "name": "Quiet Link",
+      "kind": "nav",
+      "refersTo": "link-quiet",
+      "description": "Neutral nav link on a product page. Comes forward to primary text on hover — amber would break The One Voice Rule there, and the product accent is reserved for accent roles.",
+      "html": "<a href=\"/privacy\" class=\"ds-link-quiet\">Privacy Policy</a>",
+      "css": ".ds-link-quiet { display: inline-flex; align-items: center; justify-content: center; min-height: 44px; min-width: 44px; font-family: var(--font-dm-sans), \"DM Sans\", sans-serif; font-size: 14px; font-weight: 300; color: var(--text-secondary); text-decoration: none; transition: color 200ms ease; } .ds-link-quiet:hover { color: var(--text-primary); } .ds-link-quiet:focus-visible { outline: 2px solid var(--amber-accent); outline-offset: 2px; }"
     }
   ],
   "narrative": {
     "northStar": "The Observatory",
-    "overview": "A dark room built for watching small, precise things. The page is a near-black field with a slow aurora drifting far behind it; the content sits forward on glass, flat and exact. Nothing in this system competes for attention, because an observatory that glares at you is a failed observatory. The atmosphere moves on 6-10 second cycles and never resolves into a shape you can name. You look through it, not at it.\n\nThe instruments are the logomarks: hard geometry, even-odd cutouts, no flourish, no gradient, no bevel. The Vyttle diamond is a solid form with a circular hole punched through it and a single amber dot suspended in the gap. That amber dot is the fixed star — it is #D4933D in dark mode and #D4933D in light mode, in every size, forever. Every other color in this system is theme-aware. That one is not, and its constancy is the whole idea.\n\nFive products share this sky, and each owns exactly one accent. Their colors never mix and never fill; they arrive as light — a 4% tint, a 10% border, a 40px glow on hover. Restraint here is measured, not vibed: a bento cell at rest is barely present, and hovering it roughly triples its presence. That 3x jump is the personality of the entire system.",
+    "overview": "A dark room built for watching small, precise things. The page is a near-black field with a slow aurora drifting far behind it; the content sits forward on glass, flat and exact. Nothing in this system competes for attention, because an observatory that glares at you is a failed observatory. The atmosphere moves on 6–10 second cycles and never resolves into a shape you can name. You look *through* it, not *at* it.\n\nThe instruments are the logomarks: hard geometry, even-odd cutouts, no flourish, no gradient, no bevel. The Vyttle diamond is a solid form with a circular hole punched through it and a single amber dot suspended in the gap. That amber dot is the fixed star — it is `#D4933D` in dark mode and `#D4933D` in light mode, in every size, forever. Every other color in this system is theme-aware. That one is not, and its constancy is the whole idea.\n\nFive products share this sky, and each owns exactly one accent. Their colors never mix and never fill; they arrive as *light* — a 4% tint, a 10% border, a 40px glow on hover. Restraint here is measured, not vibed: a bento cell at rest is barely present, and hovering it roughly triples its presence. That 3× jump is the personality of the entire system.",
     "keyCharacteristics": [
       "Two planes only: a fixed, blurred atmosphere and a flat content layer on glass",
       "One accent per product, always emitted as light, never used as a large fill",
       "Amber belongs to the studio alone and is constant across both themes",
       "Geometric display type set in wide uppercase; humanist body type set light",
       "Motion is ambient and slow; state changes are 200ms and never bounce",
-      "Dark is the default; both themes are fully designed, not inverted"
+      "Dark is the default; both themes are fully designed, not inverted",
+      "Every accent used as a *word* resolves through a text tier, never the fill value"
     ],
     "rules": [
-      { "name": "The One Voice Rule", "body": "Amber is the studio's color, not a product's. A product page uses that product's accent for every accent role; it never borrows amber. Conversely, no product accent may appear on the homepage hero, the footer, or the wordmark. Nothing on this site uses two accents at once.", "section": "colors" },
-      { "name": "The Constant Star Rule", "body": "The amber dot at the center of the Vyttle diamond is #D4933D in every theme, every size, and every export. It is the only color in the system exempt from theming. If a mark's dot changes with the theme, the mark is wrong.", "section": "colors" },
-      { "name": "The Emitted Color Rule", "body": "Product accents arrive as light, not as paint: a 4% background tint, a 10% border, a 25% border and 40px glow on hover, a 1.5px hero outline. There are exactly two sanctioned solid fills in the system — the Available Now badge and the primary button — and both follow the same inversion: solid accent, dark text.", "section": "colors" },
-      { "name": "The Dark-On-Accent Rule", "body": "Any solid accent fill sets its text dark, never white. Every accent in this palette is mid-to-high lightness, so white-on-accent fails WCAG AA — amber measures 2.6:1 against white and 7.3:1 against Midnight. If a new component needs a solid accent background, the text is Midnight or that product's dark tone; if the design seems to demand white text, the fill is the wrong color.", "section": "colors" },
-      { "name": "The Two-Tone Text Rule", "body": "There are exactly two text tones per theme, not three. --text-secondary and --text-tertiary resolve to the same value (Silver on dark, Slate on light) because a third, fainter tone failed WCAG AA at the sizes this site uses it. Do not reintroduce a dimmer tier to create hierarchy; use size, weight, and tracking instead.", "section": "colors" },
-      { "name": "The Wide Uppercase Rule", "body": "Uppercase text never sets below +2px tracking, and the smaller it gets, the wider it tracks: badges at 10px take +2px, section eyebrows at 11px take +4px, the wordmark at 16px takes +6px. Uppercase at default tracking is a bug in this system.", "section": "typography" },
-      { "name": "The Serif Exception Rule", "body": "Source Serif 4 is not a general display face. It appears in exactly two places: the homepage promise and Sixteen to One's name. Adding a third use dilutes both. Every other heading is Outfit.", "section": "typography" },
-      { "name": "The Light-Weight Rule", "body": "Nothing on this site sets above 600, and body copy that wants to feel calm sets at 300. Weight is not how this system creates emphasis — color and tracking are.", "section": "typography" },
-      { "name": "The 1200 Rule", "body": "Content never exceeds 1200px, and text never exceeds its own narrower measure inside that. A full-width element on this site is always atmosphere, never content.", "section": "layout" },
-      { "name": "The Two-Plane Rule", "body": "There are exactly two planes: the atmosphere (fixed, blurred, aria-hidden) and the content (flat, on glass). Nothing lives between them. A new element that wants to feel raised is asking the wrong question — it belongs on the content plane, flat, and it distinguishes itself with tint and border.", "section": "elevation" },
-      { "name": "The Perceptual Parity Rule", "body": "The atmosphere is tuned by eye, not by number. Light mode carries roughly twice the alpha of dark mode (0.35-0.45 versus 0.18-0.25) because color on white needs it to register at all. These numbers are supposed to disagree — matching them would destroy the parity they create. Dark is additionally dialed back so the bento cells' own accents are not masked.", "section": "elevation" },
-      { "name": "The Look-Through Rule", "body": "The atmosphere must never become the subject. If a visitor notices the background before the words, it is too loud. It has no hard edges, resolves into no recognizable shape, and every band stays under blur(70px).", "section": "elevation" },
-      { "name": "The Glass-Not-Clear Rule", "body": "A content surface sitting over the atmosphere composites onto --surface-glass (0.92 alpha), never onto transparent. The atmosphere belongs behind content, not behind text. A 96%-clear surface lets the aurora through the words themselves, and because the aurora animates, the effective contrast becomes a moving target — 10px labels measured as low as 1.3:1 against a light-mode band at peak. 0.90 is the measured floor; 0.92 is the token. Pair it with a backdrop blur so the surface reads as glass rather than as a panel.", "section": "elevation" },
-      { "name": "The Softer-As-It-Grows Rule", "body": "Radius is proportional to surface: 10px for controls, 12px for cells, 24px for containers, pill for badges. A 24px radius on a button, or a 10px radius on a page-level container, breaks the scale.", "section": "shapes" },
-      { "name": "The Instrument Rule", "body": "An instrument responds accurately; it does not perform. Transitions run 200ms for state and 400ms for theme, with no bounce, no spring, and no overshoot anywhere in the system.", "section": "components" }
+      {
+        "name": "The One Voice Rule",
+        "body": "Amber is the studio's color, not a product's. A product page uses that product's accent for every accent role; it never borrows amber. Conversely, no product accent may appear on the homepage hero, the footer, or the wordmark. Nothing on this site uses two accents at once.",
+        "section": "colors"
+      },
+      {
+        "name": "The Constant Star Rule",
+        "body": "The amber dot at the center of the Vyttle diamond is `#D4933D` in every theme, every size, and every export. It is the only color in the system exempt from theming. If a mark's dot changes with the theme, the mark is wrong.",
+        "section": "colors"
+      },
+      {
+        "name": "The Emitted Color Rule",
+        "body": "Product accents arrive as light, not as paint: a 4% background tint, a 10% border, a 25% border and 40px glow on hover, a 1.5px hero outline. There are exactly two sanctioned solid fills in the system — the \"Available Now\" badge and the primary button — and both follow the same inversion: solid accent, dark text. For the badge that means the product's own dark background color; for the button it means Midnight. That inversion is what marks a shipped product as different from a promised one, and it is also what keeps the fills accessible.",
+        "section": "colors"
+      },
+      {
+        "name": "The Accent Text Tier Rule",
+        "body": "An accent used as a *word* never takes the fill value. It resolves through that product's `--accent-text-*` token, which is the tone its brand kit sanctions for text at that contrast bar. Every accent in the lineup fails as text in at least one theme — Crema at 2.45:1 on light, Electric Cyan at 1.66:1, Vivid Violet and Cobalt in *both* — so this is not an edge case, it is the normal path. A fill value appearing as text is a bug, and the audit test is one line: does the token name contain `accent-text`?",
+        "section": "colors"
+      },
+      {
+        "name": "The One Value Rule",
+        "body": "A product gets one accent-text value per theme, chosen to clear the *body* bar (4.5:1), and it serves every size from the 40px title to the 10px badge. Brand kits may offer a separate large-text tone at the 3:1 bar — Reviso's Cyan Dark is one — but this site does not adopt them: Cyan Dark reaches only 3.20:1 on the Reviso hero, which is 8% of headroom guarded by two invariants nothing enforces, that the hero tint stays at 6% and the title stays ≥24px. A second tier would also make one product the only one needing two values, to preserve a distinction whose real justification is non-text UI. If light-mode presence is wanted, take it from the channels that already exist at non-text bars — the 1.5px outline, the mark halo, the 6% tint.",
+        "section": "colors"
+      },
+      {
+        "name": "The Dark-On-Accent Rule",
+        "body": "Any solid accent fill sets its text dark, never white. Every accent in this palette is mid-to-high lightness, so white-on-accent fails WCAG AA — amber measures 2.6:1 against white and 7.3:1 against Midnight. If a new component needs a solid accent background, the text is Midnight or that product's dark tone; if the design seems to demand white text, the fill is the wrong color.",
+        "section": "colors"
+      },
+      {
+        "name": "The Two-Tone Text Rule",
+        "body": "There are exactly two text tones per theme, not three. `--text-secondary` and `--text-tertiary` resolve to the same value (Silver on dark, Slate on light) because a third, fainter tone failed WCAG AA at the sizes this site uses it. Do not reintroduce a dimmer tier to create hierarchy; use size, weight, and tracking instead. This is also the remedy when something needs to recede: the app-page separators are held back by dropping to 12px, not by dimming below AA.",
+        "section": "colors"
+      },
+      {
+        "name": "The Border-Is-Not-Text Rule",
+        "body": "`--border` and `--card-border` are hairline tokens at low alpha, correct for a 1px rule and invisible as a glyph — they measured 1.1:1 when they were used to color the app-page separators. A border token never colors text, and decorative punctuation is `aria-hidden` rather than announced.",
+        "section": "colors"
+      },
+      {
+        "name": "The Wide Uppercase Rule",
+        "body": "Uppercase text never sets below +2px tracking, and the smaller it gets, the wider it tracks: badges at 10px take +2px, section eyebrows at 11px take +4px, the wordmark at 16px takes +6px. Uppercase at default tracking is a bug in this system.",
+        "section": "typography"
+      },
+      {
+        "name": "The Serif Exception Rule",
+        "body": "Source Serif 4 is not a general display face. It appears in exactly two places: the homepage promise and Sixteen to One's name (which inherits it from that product's own brand kit). Adding a third use dilutes both. Every other heading is Outfit.",
+        "section": "typography"
+      },
+      {
+        "name": "The Light-Weight Rule",
+        "body": "Nothing on this site sets above 600, and body copy that wants to feel calm sets at 300. Weight is not how this system creates emphasis — color and tracking are.",
+        "section": "typography"
+      },
+      {
+        "name": "The On-Ramp Rule",
+        "body": "A literal `font-size` that is not on the hierarchy above is drift, even by 4px. When a new surface needs a heading between two steps it takes the nearer step; the not-found title uses the Headline step rather than inventing a 32px one.",
+        "section": "typography"
+      },
+      {
+        "name": "The 1200 Rule",
+        "body": "Content never exceeds 1200px, and text never exceeds its own narrower measure inside that. A full-width element on this site is always atmosphere, never content.",
+        "section": "layout"
+      },
+      {
+        "name": "The Real Inset Rule",
+        "body": "`viewport-fit=cover` is on, so the page reaches the physical screen edge and the documented 24px gutter no longer clears a notch in landscape (~44px there). Anything full-bleed clears the insets itself: `body` carries `env(safe-area-inset-left/right)`, and the fixed nav carries its own via `.nav-gutter`, because fixed elements escape body padding. Every inset is wrapped in `max()` against the documented step, so nothing moves in portrait where the insets are zero. Six `env()` declarations sat inert before the viewport meta was set — a safe-area value without `viewport-fit=cover` is decoration.",
+        "section": "layout"
+      },
+      {
+        "name": "The Two-Plane Rule",
+        "body": "There are exactly two planes: the atmosphere (fixed, blurred, `aria-hidden`) and the content (flat, on glass). Nothing lives between them. A new element that wants to feel \"raised\" is asking the wrong question — it belongs on the content plane, flat, and it distinguishes itself with tint and border.",
+        "section": "elevation-depth"
+      },
+      {
+        "name": "The Perceptual Parity Rule",
+        "body": "The atmosphere is tuned by eye, not by number. Light mode carries roughly twice the alpha of dark mode (0.35–0.45 versus 0.18–0.25) because color on white needs it to register at all. These numbers are *supposed* to disagree — matching them would destroy the parity they create. Dark is additionally dialed back so the bento cells' own accents are not masked by the field behind them.",
+        "section": "elevation-depth"
+      },
+      {
+        "name": "The Look-Through Rule",
+        "body": "The atmosphere must never become the subject. If a visitor notices the background before the words, it is too loud. It has no hard edges, resolves into no recognizable shape, and every band stays under `blur(70px)`.",
+        "section": "elevation-depth"
+      },
+      {
+        "name": "The Glass-Not-Clear Rule",
+        "body": "A content surface sitting over the atmosphere composites onto `--surface-glass` (0.92 alpha), never onto `transparent`. The atmosphere belongs behind *content*, not behind *text*. A 96%-clear surface lets the aurora through the words themselves, and because the aurora animates, the effective contrast becomes a moving target — 10px labels measured as low as 1.3:1 against a light-mode band at peak. 0.90 is the measured floor; 0.92 is the token. Pair it with a backdrop blur so the surface reads as glass rather than as a panel.",
+        "section": "elevation-depth"
+      },
+      {
+        "name": "The Softer-As-It-Grows Rule",
+        "body": "Radius is proportional to surface: 10px for controls, 12px for cells, 24px for containers, pill for badges. A 24px radius on a button, or a 10px radius on a page-level container, breaks the scale.",
+        "section": "shapes"
+      }
     ],
     "dos": [
-      "Do treat the atmosphere as something to look through. Keep it behind glass, aria-hidden, pointer-events: none, and under blur(70px).",
-      "Do give each product exactly one accent, inherited from that product's own brand kit, so the color matches its app icon and store listing.",
-      "Do express accents as light — 4% tint, 10% border, hover glow — and reserve solid accent fills for the Available Now badge alone.",
-      "Do keep the amber dot at #D4933D in both themes, at every size, in every export.",
-      "Do track uppercase wide: +2px minimum, +4px for 11px eyebrows, +6px for the wordmark.",
-      "Do design light mode as its own composition. Both themes are first-class; light is not an inversion, and its atmosphere is legitimately ~2x the alpha of dark's.",
-      "Do hold 32px of internal padding in bento cells and 1200px maximum content width.",
-      "Do keep transitions at 200ms for state and 400ms for theme, with no easing that overshoots.",
-      "Do honor prefers-reduced-motion for every new animation, matching the existing block that disables fades, reveals, and decorative motion.",
-      "Do give policy, support, and per-app legal pages the same craft as the homepage — they carry more real traffic.",
-      "Do give every page one <main id=\"main\" tabIndex={-1}> landmark and a heading; the skip link routes to it and moves focus into content past the fixed nav. A section with no visible heading gets an sr-only one rather than none.",
-      "Do give every overlay honest semantics and managed focus: the lightbox is a dialog (aria-modal, focus trapped, focus returned to its trigger on close); the nav menus are disclosures (aria-expanded + aria-controls, Escape closes and restores focus). Never claim aria-modal when the closing control lives outside the overlay.",
-      "Do keep the focus ring one color — a 2px --amber-accent outline via :focus-visible — so keyboard focus reads as a system, not per-control accidents.",
-      "Do mark a logomark aria-hidden when visible brand text sits beside it; announce it only when it stands alone."
+      "**Do** treat the atmosphere as something to look through. Keep it behind glass, `aria-hidden`, `pointer-events: none`, and under `blur(70px)`.",
+      "**Do** give each product exactly one accent, inherited from that product's own brand kit, so the color matches its app icon and store listing.",
+      "**Do** resolve any accent used as a word through its `--accent-text-*` token, and take that value from the product's brand kit rather than darkening one by eye.",
+      "**Do** express accents as light — 4% tint, 10% border, hover glow — and reserve solid accent fills for the \"Available Now\" badge and the primary button.",
+      "**Do** keep the amber dot at `#D4933D` in both themes, at every size, in every export.",
+      "**Do** track uppercase wide: +2px minimum, +4px for 11px eyebrows, +6px for the wordmark.",
+      "**Do** design light mode as its own composition. Both themes are first-class; light is not an inversion, and its atmosphere is legitimately ~2× the alpha of dark's.",
+      "**Do** hold 32px of internal padding in bento cells and 1200px maximum content width.",
+      "**Do** give standalone controls and nav links a 44×44 hit area, and leave inline prose links at their natural size.",
+      "**Do** keep transitions at 200ms for state and 400ms for theme, with no easing that overshoots.",
+      "**Do** honor `prefers-reduced-motion` for every animation, and choose each stopped element's resting state rather than inheriting it.",
+      "**Do** give layout, entrance, and ambient motion their own elements, so no animation can clobber another's `transform`.",
+      "**Do** clear the safe-area insets on anything full-bleed, wrapped in `max()` against the documented gutter.",
+      "**Do** give policy, support, and per-app legal pages the same craft as the homepage — they carry more real traffic.",
+      "**Do** give every page one `<main id=\"main\" tabIndex={-1}>` landmark and a heading; the skip link routes to it and moves focus into content past the fixed nav. A section with no visible heading gets an `sr-only` one rather than none.",
+      "**Do** give every overlay honest semantics and managed focus: the lightbox is a `dialog` (`aria-modal`, focus trapped, focus returned to its trigger on close); the nav menus are disclosures (`aria-expanded` + `aria-controls`, Escape closes and restores focus). Never claim `aria-modal` when the closing control lives outside the overlay.",
+      "**Do** make an opaque overlay `inert` to what it covers, even when it is a disclosure rather than a modal.",
+      "**Do** keep the focus ring one color — a 2px `--amber-accent` outline via `:focus-visible` — so keyboard focus reads as a system, not per-control accidents.",
+      "**Do** mark a logomark `aria-hidden` when visible brand text sits beside it; announce it only when it stands alone.",
+      "**Do** keep content visible by default and let JavaScript enhance it; the scroll reveal carries a `<noscript>` fallback, because without one the homepage was a hero above an empty page."
     ],
     "donts": [
-      "Don't let this read as a generic AI-era SaaS landing page. The aurora is one wrong move from that cliche; what saves it is that it stays behind glass and never becomes the subject. No gradient blob behind a centered CTA, no testimonial wall, no Trusted by logo strip, no pricing table.",
-      "Don't let it read as an Apple product-page clone. No scroll-jacking, no parallax device reveals, no full-bleed hero screenshots, no spec-sheet drama.",
-      "Don't let a legal or support page read as a compliance page. No unstyled prose, no default blue links, no bare h1 on white.",
-      "Don't let it read as an indie-maximalist portfolio. No brutalist type, no chaotic grids, no novelty cursors. Personality here comes from precision, not volume.",
-      "Don't add a shadow to a resting surface. If something needs to come forward, it glows in its own accent or it moves to the nav's glass — those are the only two answers.",
-      "Don't introduce a third text tone to create hierarchy. Two tones per theme; use size, weight, and tracking instead.",
-      "Don't use amber on a product page or a product accent on the homepage hero, footer, or wordmark.",
-      "Don't set Source Serif 4 anywhere beyond the homepage promise and Sixteen to One's name.",
-      "Don't set any weight above 600.",
-      "Don't add analytics, embeds, remote fonts, or any third-party runtime request. The site's tracking-free implementation is the argument for its privacy claim.",
-      "Don't fabricate social proof. No testimonials, ratings, user counts, or download numbers exist."
+      "**Don't** let this read as a generic AI-era SaaS landing page. The aurora is one wrong move from that cliché; what saves it is that it stays behind glass and never becomes the subject. No gradient blob behind a centered CTA, no testimonial wall, no \"Trusted by\" logo strip, no pricing table.",
+      "**Don't** let it read as an Apple product-page clone. No scroll-jacking, no parallax device reveals, no full-bleed hero screenshots, no spec-sheet drama.",
+      "**Don't** let a legal or support page read as a compliance page. No unstyled prose, no default blue links, no bare `<h1>` on white.",
+      "**Don't** let it read as an indie-maximalist portfolio. No brutalist type, no chaotic grids, no novelty cursors. Personality here comes from precision, not volume.",
+      "**Don't** add a shadow to a resting surface. If something needs to come forward, it glows in its own accent or it moves to the nav's glass — those are the only two answers.",
+      "**Don't** introduce a third text tone to create hierarchy. Two tones per theme; use size, weight, and tracking instead.",
+      "**Don't** color text with `--border` or any hairline token, and don't leave decorative punctuation in the reading order.",
+      "**Don't** use amber on a product page or a product accent on the homepage hero, footer, or wordmark.",
+      "**Don't** put two `animation` declarations on one element, or center anything with a `transform` an animation might own.",
+      "**Don't** set Source Serif 4 anywhere beyond the homepage promise and Sixteen to One's name.",
+      "**Don't** set any weight above 600, or a font size off the documented hierarchy.",
+      "**Don't** add analytics, embeds, remote fonts, or any third-party runtime request. The site's tracking-free implementation is the argument for its privacy claim.",
+      "**Don't** fabricate social proof. No testimonials, ratings, user counts, or download numbers exist — see PRODUCT.md."
     ]
   }
 }
