@@ -19,9 +19,8 @@ export interface VyttleApp {
   /** Where it runs, as a visitor would say it: "iPhone & Android", "macOS". */
   platforms: string;
   /** True when this product ships its own policy route at `/<slug>/privacy`.
-   *  Products still in development don't have one — there is no data-collection
-   *  story to document yet — so `privacyHref()` sends them to the site-wide
-   *  `/privacy`, which says so. Add the route file and set this in one commit. */
+   *  Without one, `privacyHref()` falls back to the website policy at `/privacy`.
+   *  Add the route file and set this in one commit. */
   hasPrivacyPolicy?: boolean;
   appStoreUrl?: string;
   playStoreUrl?: string;

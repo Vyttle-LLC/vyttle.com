@@ -1,29 +1,7 @@
 "use client";
 
-import { useState, useEffect, useRef, useCallback } from "react";
-import Script from "next/script";
+import { useState, useEffect, useRef } from "react";
 import { apps } from "@/lib/apps";
-
-// Public reCAPTCHA site key, inlined at build time. When unset (e.g. local dev)
-// the widget is skipped so the form still works locally; production builds on
-// Netlify must set NEXT_PUBLIC_RECAPTCHA_SITE_KEY.
-const RECAPTCHA_SITE_KEY = process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY;
-
-type Grecaptcha = {
-  render: (
-    el: HTMLElement,
-    opts: { sitekey: string; theme?: "light" | "dark" }
-  ) => number;
-  getResponse: (id?: number) => string;
-  reset: (id?: number) => void;
-};
-
-declare global {
-  interface Window {
-    grecaptcha?: Grecaptcha;
-    onRecaptchaLoad?: () => void;
-  }
-}
 
 export default function SupportForm() {
   const [formData, setFormData] = useState({
@@ -37,8 +15,6 @@ export default function SupportForm() {
   const [failed, setFailed] = useState(false);
   const [formError, setFormError] = useState<string | null>(null);
   const successHeadingRef = useRef<HTMLHeadingElement>(null);
-  const recaptchaRef = useRef<HTMLDivElement>(null);
-  const widgetId = useRef<number | null>(null);
 
   useEffect(() => {
     const params = new URLSearchParams(window.location.search);
@@ -55,41 +31,12 @@ export default function SupportForm() {
     if (submitted) successHeadingRef.current?.focus();
   }, [submitted]);
 
-  // Render the reCAPTCHA widget explicitly. Guarding on childElementCount keeps
-  // this idempotent across remounts (e.g. after "Send another message"), where
-  // the div is fresh but the onload callback may fire again.
-  const renderRecaptcha = useCallback(() => {
-    if (!RECAPTCHA_SITE_KEY) return;
-    const el = recaptchaRef.current;
-    if (!window.grecaptcha || !el || el.childElementCount > 0) return;
-    const theme =
-      document.documentElement.dataset.theme === "light" ? "light" : "dark";
-    widgetId.current = window.grecaptcha.render(el, {
-      sitekey: RECAPTCHA_SITE_KEY,
-      theme,
-    });
-  }, []);
-
-  // Wire the API onload callback, and cover the case where the script already
-  // loaded before this component mounted (SPA navigation).
-  useEffect(() => {
-    window.onRecaptchaLoad = renderRecaptcha;
-    if (window.grecaptcha) renderRecaptcha();
-  }, [renderRecaptcha]);
-
-  // Returning from the success screen remounts the form with an empty widget
-  // div — re-render into it.
-  useEffect(() => {
-    if (!submitted) renderRecaptcha();
-  }, [submitted, renderRecaptcha]);
-
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setFailed(false);
     setFormError(null);
 
-    // Defense-in-depth for real users; the server-enforced protection against
-    // bots posting empty bodies is the reCAPTCHA token, validated by Netlify.
+    // Native required validation allows whitespace-only values; reject those too.
     const trimmed = {
       name: formData.name.trim(),
       email: formData.email.trim(),
@@ -107,23 +54,13 @@ export default function SupportForm() {
       return;
     }
 
-    let token = "";
-    if (RECAPTCHA_SITE_KEY) {
-      token =
-        window.grecaptcha?.getResponse(widgetId.current ?? undefined) ?? "";
-      if (!token) {
-        setFormError("Please confirm you're not a robot.");
-        return;
-      }
-    }
-
     setSubmitting(true);
     try {
       const body = new URLSearchParams({
         "form-name": "support",
+        "bot-field": String(new FormData(e.currentTarget).get("bot-field")),
         ...trimmed,
       });
-      if (token) body.set("g-recaptcha-response", token);
 
       const res = await fetch("/", {
         method: "POST",
@@ -134,9 +71,6 @@ export default function SupportForm() {
       setSubmitted(true);
     } catch {
       setFailed(true);
-      if (RECAPTCHA_SITE_KEY && window.grecaptcha && widgetId.current !== null) {
-        window.grecaptcha.reset(widgetId.current);
-      }
     } finally {
       setSubmitting(false);
     }
@@ -206,7 +140,6 @@ export default function SupportForm() {
             setFormData({ name: "", email: "", app: "", message: "" });
             setFailed(false);
             setFormError(null);
-            widgetId.current = null;
           }}
           className="text-sm cursor-pointer bg-transparent border-none"
           style={{
@@ -246,18 +179,10 @@ export default function SupportForm() {
       method="POST"
       data-netlify="true"
       data-netlify-honeypot="bot-field"
-      data-netlify-recaptcha="true"
       onSubmit={handleSubmit}
       aria-busy={submitting}
       className="w-full flex flex-col gap-5"
     >
-      {RECAPTCHA_SITE_KEY && (
-        <Script
-          src="https://www.google.com/recaptcha/api.js?onload=onRecaptchaLoad&render=explicit"
-          strategy="afterInteractive"
-        />
-      )}
-
       <input type="hidden" name="form-name" value="support" />
       <div hidden>
         <label>
@@ -385,9 +310,6 @@ export default function SupportForm() {
         />
       </div>
 
-      {/* reCAPTCHA — blocks bot/empty submissions Netlify would otherwise accept */}
-      {RECAPTCHA_SITE_KEY && <div ref={recaptchaRef} />}
-
       {formError && (
         <div
           role="alert"
@@ -449,8 +371,8 @@ export default function SupportForm() {
             color: "var(--text-tertiary)",
           }}
         >
-          Used only to reply, never shared, and deleted once your issue is
-          resolved. Prefer plain email?{" "}
+          Used only to reply, handled through Netlify Forms, and deleted once
+          your issue is resolved. Prefer plain email?{" "}
           <a href="mailto:support@vyttle.com" style={mailtoStyle}>
             support@vyttle.com
           </a>
