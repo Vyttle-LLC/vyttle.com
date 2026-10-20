@@ -2,10 +2,16 @@
 
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
-import { apps } from "@/lib/apps";
+import { STATUS_LABEL, getAppsByKind, productHref, type ProductKind } from "@/lib/apps";
+import Stamp from "./Stamp";
+
+const MENU_GROUPS: { kind: ProductKind; label: string }[] = [
+  { kind: "app", label: "Apps" },
+  { kind: "tool", label: "Open source" },
+];
 
 /**
- * Full-viewport glass overlay that replaces the horizontal nav below `md`.
+ * Full-viewport overlay that replaces the horizontal nav below `md`.
  * A disclosure region — not a modal: the toggle that controls it lives in the
  * nav bar, above this overlay, so it stays reachable. The bar keeps its own
  * z-50; this sits at z-40 so the toggle (now an ✕) stays on top and clickable.
@@ -63,10 +69,8 @@ export default function MobileMenu({
 
   // Being a disclosure rather than a modal settles the ARIA, not the occlusion:
   // this overlay is opaque, so everything under it must leave the tab order and
-  // the accessibility tree too. Measured without it, 9 elements stayed
-  // reachable — the skip link, five product cells and three footer links — so a
-  // keyboard user tabbed into content they could not see and a screen reader
-  // read the whole page out from behind the glass.
+  // the accessibility tree too. Otherwise a keyboard user tabs into links they
+  // cannot see and a screen reader reads the page out from behind the overlay.
   //
   // Scoped to the content landmarks on purpose. The nav bar is NOT inerted: it
   // holds both the ✕ that closes this and the panel itself, and inerting an
@@ -108,97 +112,63 @@ export default function MobileMenu({
 
   if (!mounted) return null;
 
-  const rowStyle = {
-    fontFamily: "var(--font-dm-sans), DM Sans, sans-serif",
-    fontSize: "16px",
-    fontWeight: 400,
-    color: "var(--text-primary)",
-    minHeight: "48px",
-  };
-
   return (
     <div
       id="mobile-menu"
-      className="fixed inset-0 z-40 md:hidden"
+      className="fixed inset-0 z-40 md:hidden overflow-y-auto"
       onClick={onClose}
       style={{
-        background: "var(--surface-glass)",
-        backdropFilter: "blur(24px)",
-        WebkitBackdropFilter: "blur(24px)",
+        background: "var(--bg-primary)",
         opacity: entered ? 1 : 0,
         transition: reduce ? "none" : "opacity 200ms ease",
-        paddingTop: "calc(64px + max(24px, env(safe-area-inset-top)))",
-        paddingLeft: "max(24px, env(safe-area-inset-left))",
-        paddingRight: "max(24px, env(safe-area-inset-right))",
+        paddingTop: "calc(70px + max(16px, env(safe-area-inset-top)))",
+        paddingLeft: "max(20px, env(safe-area-inset-left))",
+        paddingRight: "max(20px, env(safe-area-inset-right))",
         paddingBottom: "max(24px, env(safe-area-inset-bottom))",
       }}
     >
       <nav
         aria-label="Mobile"
-        className="flex flex-col"
+        className="flex flex-col gap-8"
         style={{
           transform: entered || reduce ? "translateY(0)" : "translateY(8px)",
           transition: reduce ? "none" : "transform 200ms ease",
         }}
       >
-        <span
-          className="uppercase"
-          style={{
-            fontFamily: "var(--font-dm-sans), DM Sans, sans-serif",
-            fontSize: "11px",
-            fontWeight: 400,
-            letterSpacing: "4px",
-            color: "var(--text-tertiary)",
-            padding: "0 8px 8px",
-          }}
-        >
-          Products
-        </span>
-
-        {apps.map((app, i) => (
-          <Link
-            key={app.slug}
-            ref={i === 0 ? firstLinkRef : undefined}
-            href={app.externalUrl || `/${app.slug}`}
-            onClick={onClose}
-            className="flex items-center gap-3 no-underline rounded-lg transition-colors duration-200"
-            style={{ ...rowStyle, padding: "0 8px" }}
-            {...(app.externalUrl
-              ? { target: "_blank", rel: "noopener noreferrer" }
-              : {})}
-            onMouseEnter={(e) => {
-              e.currentTarget.style.background = `color-mix(in srgb, ${app.accent} 10%, transparent)`;
-            }}
-            onMouseLeave={(e) => {
-              e.currentTarget.style.background = "transparent";
-            }}
-          >
-            <span
-              className="w-2 h-2 rounded-full shrink-0"
-              style={{ background: app.accent }}
-            />
-            {app.name}
-          </Link>
+        {MENU_GROUPS.map((group, groupIndex) => (
+          <div key={group.kind} className="flex flex-col">
+            <span className="t-label px-2 pb-2" style={{ color: "var(--text-secondary)" }}>
+              {group.label}
+            </span>
+            {getAppsByKind(group.kind).map((app, i) => (
+              <Link
+                key={app.slug}
+                ref={groupIndex === 0 && i === 0 ? firstLinkRef : undefined}
+                href={productHref(app)}
+                onClick={onClose}
+                className="accent-row flex items-center gap-4 no-underline px-2 py-2"
+                style={{ "--row-accent": app.accent, color: "var(--text-primary)", minHeight: 56 } as React.CSSProperties}
+                {...(app.externalUrl ? { target: "_blank", rel: "noopener noreferrer" } : {})}
+              >
+                <Stamp app={app} chip className="w-9 shrink-0" />
+                <span className="t-title" style={{ fontSize: 19 }}>
+                  {app.name}
+                </span>
+                <span className="ml-auto t-label whitespace-nowrap" style={{ color: "var(--text-secondary)" }}>
+                  {STATUS_LABEL[app.status]}
+                </span>
+              </Link>
+            ))}
+          </div>
         ))}
 
-        <div
-          style={{
-            borderTop: "1px solid var(--border)",
-            margin: "12px 8px",
-          }}
-        />
+        <div className="perf-rule mx-2" aria-hidden="true" />
 
         <Link
           href="/support"
           onClick={onClose}
-          className="flex items-center no-underline rounded-lg transition-colors duration-200"
-          style={{ ...rowStyle, padding: "0 8px" }}
-          onMouseEnter={(e) => {
-            e.currentTarget.style.color = "var(--amber-text)";
-          }}
-          onMouseLeave={(e) => {
-            e.currentTarget.style.color = "var(--text-primary)";
-          }}
+          className="accent-row flex items-center no-underline px-2 t-title"
+          style={{ "--row-accent": "var(--amber)", color: "var(--text-primary)", minHeight: 56, fontSize: 20 } as React.CSSProperties}
         >
           Support
         </Link>

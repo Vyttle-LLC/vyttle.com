@@ -1,172 +1,72 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import Nav from "@/components/Nav";
-import Footer from "@/components/Footer";
-import ConicOrb from "@/components/ConicOrb";
-import VyttleMark from "@/components/marks/VyttleMark";
-import { apps } from "@/lib/apps";
+import { apps, productHref } from "@/lib/apps";
+import Stamp from "@/components/Stamp";
 
 export const metadata: Metadata = {
   title: "Page not found — Vyttle",
-  description:
-    "That page doesn't exist. Vyttle's products, privacy policy, and support are linked here.",
+  description: "That page doesn't exist. Vyttle's products, privacy policy, and support are linked here.",
 };
 
-const siteLinks = [
+const SITE_LINKS = [
   { href: "/", label: "Home" },
-  { href: "/privacy", label: "Privacy Policy" },
+  { href: "/privacy", label: "Privacy policy" },
   { href: "/support", label: "Support" },
 ];
 
-const eyebrowStyle = {
-  fontFamily: "var(--font-dm-sans), DM Sans, sans-serif",
-  fontSize: "11px",
-  fontWeight: 400,
-  letterSpacing: "4px",
-  color: "var(--text-tertiary)",
-};
-
-const rowStyle = {
-  fontFamily: "var(--font-dm-sans), DM Sans, sans-serif",
-  fontSize: "16px",
-  fontWeight: 300,
-  color: "var(--text-primary)",
-  minHeight: "48px",
-  padding: "0 8px",
-};
-
 /**
  * The most likely way someone lands here is a stale or mistyped store link to a
- * policy page — so this is a directory, not an apology. The atmosphere is dimmed
- * like the other front doors, and recovery is two labeled groups rather than a
- * lone "go home" button.
+ * policy page — so this is a directory, not an apology: every product and every
+ * studio page, one tap away.
  */
 export default function NotFound() {
   return (
-    <>
-      <ConicOrb dim />
+    <main id="main" tabIndex={-1} className="page-x pt-28 md:pt-36 focus:outline-none">
+      <div className="page-width grid grid-cols-1 gap-14 md:grid-cols-[minmax(0,5fr)_minmax(0,6fr)] md:gap-20">
+        <div>
+          <p className="t-label" style={{ color: "var(--text-secondary)" }}>
+            Error 404
+          </p>
+          <h1 className="t-headline mt-5" style={{ fontSize: "clamp(2.5rem, 6vw, 4.25rem)" }}>
+            This page isn&apos;t here.
+          </h1>
+          <p className="t-lede mt-6 max-w-[34ch]">
+            The link may be out of date, or the address slightly off. Everything Vyttle publishes is listed here.
+          </p>
+        </div>
 
-      <div className="relative z-10">
-        <Nav />
-
-        <main
-          id="main"
-          tabIndex={-1}
-          className="pt-32 pb-16 px-6 md:px-12 focus:outline-none"
-        >
-          <div className="max-w-lg mx-auto">
-            <div className="flex flex-col items-center text-center">
-              <div className="fade-in mb-8" style={{ animationDelay: "0ms" }}>
-                <VyttleMark size={56} />
-              </div>
-
-              <span
-                className="uppercase fade-in mb-4"
-                style={{ ...eyebrowStyle, animationDelay: "100ms" }}
-              >
-                404
-              </span>
-
-              <h1
-                className="text-4xl md:text-[40px] fade-in mb-4"
-                style={{
-                  fontFamily: "var(--font-outfit), Outfit, sans-serif",
-                  fontWeight: 600,
-                  letterSpacing: "0.02em",
-                  lineHeight: 1.2,
-                  color: "var(--text-primary)",
-                  animationDelay: "200ms",
-                }}
-              >
-                This page isn&apos;t here.
-              </h1>
-
-              <p
-                className="text-base font-light leading-relaxed fade-in"
-                style={{
-                  fontFamily: "var(--font-dm-sans), DM Sans, sans-serif",
-                  color: "var(--text-secondary)",
-                  animationDelay: "300ms",
-                }}
-              >
-                The link may be out of date, or the address slightly off.
-                Everything Vyttle publishes is below.
-              </p>
-            </div>
-
-            {/* Glass panel rather than a bare list: it groups eight links into
-                two labeled sets, and it makes the switch from a centered header
-                to a left-aligned directory read as a deliberate second object
-                instead of drift. Same treatment as the nav dropdown it echoes —
-                tint and hairline, no shadow at rest. */}
-            <nav
-              aria-label="Site directory"
-              className="fade-in mt-12 flex flex-col"
-              style={{
-                animationDelay: "400ms",
-                background: "var(--surface-glass)",
-                backdropFilter: "blur(8px)",
-                border: "1px solid var(--border)",
-                borderRadius: "12px",
-                padding: "24px 16px",
-              }}
-            >
-              <span className="uppercase" style={{ ...eyebrowStyle, padding: "0 8px 8px" }}>
-                Products
-              </span>
-
-              {apps.map((app) => (
+        <nav aria-label="Site directory" className="flex flex-col gap-10">
+          <ul className="list-none flex flex-col">
+            {apps.map((app) => (
+              <li key={app.slug} style={{ borderTop: "1px solid var(--border)" }}>
                 <Link
-                  key={app.slug}
-                  href={app.externalUrl || `/${app.slug}`}
-                  className="accent-row flex items-center gap-3 no-underline rounded-lg"
-                  style={
-                    {
-                      ...rowStyle,
-                      "--row-accent": app.accent,
-                    } as React.CSSProperties
-                  }
-                  {...(app.externalUrl
-                    ? { target: "_blank", rel: "noopener noreferrer" }
-                    : {})}
+                  href={productHref(app)}
+                  className="accent-row flex items-center gap-4 px-2 py-3 no-underline"
+                  style={{ "--row-accent": app.accent, color: "var(--text-primary)" } as React.CSSProperties}
+                  {...(app.externalUrl ? { target: "_blank", rel: "noopener noreferrer" } : {})}
                 >
-                  <span
-                    className="w-2 h-2 rounded-full shrink-0"
-                    style={{ background: app.accent }}
-                  />
-                  {app.name}
+                  <Stamp app={app} chip className="w-9 shrink-0" />
+                  <span className="t-title" style={{ fontSize: 19 }}>
+                    {app.name}
+                  </span>
+                  <span className="ml-auto t-label" style={{ color: "var(--text-secondary)" }}>
+                    {app.platforms}
+                  </span>
                 </Link>
-              ))}
-
-              <div
-                style={{ borderTop: "1px solid var(--border)", margin: "12px 8px" }}
-              />
-
-              <span className="uppercase" style={{ ...eyebrowStyle, padding: "0 8px 8px" }}>
-                Vyttle
-              </span>
-
-              {siteLinks.map((link) => (
-                <Link
-                  key={link.href}
-                  href={link.href}
-                  className="accent-row flex items-center no-underline rounded-lg"
-                  style={
-                    {
-                      ...rowStyle,
-                      "--row-accent": "var(--amber-accent)",
-                    } as React.CSSProperties
-                  }
-                >
-                  {link.label}
+              </li>
+            ))}
+          </ul>
+          <ul className="list-none flex flex-wrap gap-x-8">
+            {SITE_LINKS.map((link) => (
+              <li key={link.href}>
+                <Link href={link.href} className="link-arrow">
+                  {link.label} <span aria-hidden="true">→</span>
                 </Link>
-              ))}
-            </nav>
-          </div>
-        </main>
-
-        <Footer />
+              </li>
+            ))}
+          </ul>
+        </nav>
       </div>
-    </>
+    </main>
   );
 }

@@ -1,377 +1,581 @@
 @import "tailwindcss";
 
-/* ==================== THEME VARIABLES ==================== */
+/* The Vyttle Issue — see DESIGN.md. Dark is a stockbook page, light is an album
+   page; stamp paper and the product fields are the same in both. */
+
+/* ==================== TOKENS ==================== */
 
 :root {
-  /* Vyttle Core */
-  --midnight: #0C0E1A;
-  --navy: #1A1E35;
-  --slate: #5B6178;
-  --silver: #A8ADBD;
-  --fog: #DDE0E8;
-  --white: #F4F5F7;
-  --amber: #D4933D;
-  --gold: #F0D48A;
+  --ink: #0c0e1a;
+  --paper: #f7f7f4;
+  --fog: #dde0e8;
+  --silver: #a8adbd;
+  --slate-deep: #454b60;
+  --amber: #d4933d;
 
-  /* App Accents */
-  --crema: #C4956A;
-  --crema-light: #DFC5A8;
-  --tomato: #C0392B;
-  --tomato-light: #D4756A;
-  --bramble: #7C4DFF;
-  --cobalt: #4A6FE0;
-  --cobalt-light: #8AA4F0;
-  --cyan: #22D3EE;
-  --cyan-light: #A5F3FC;
+  --font-body: var(--font-archivo), Arial, sans-serif;
+  --font-mono: var(--font-jetbrains), ui-monospace, monospace;
+  --font-source-serif-stack: var(--font-source-serif), "Source Serif 4", Georgia, serif;
 
-  /* Theme — defaults to dark */
-  --bg-primary: var(--midnight);
-  --bg-secondary: var(--navy);
-  --bg-card: rgba(26, 30, 53, 0.6);
+  /* Theme — dark (stockbook) is the default */
+  --bg-primary: var(--ink);
   --text-primary: var(--fog);
   --text-secondary: var(--silver);
   --text-tertiary: var(--silver);
-  --border: rgba(91, 97, 120, 0.2);
-  --card-border: rgba(168, 173, 189, 0.08);
-  --nav-bg: rgba(12, 14, 26, 0.85);
+  --border: rgba(168, 173, 189, 0.16);
+  --border-strong: rgba(168, 173, 189, 0.34);
+  --nav-bg: rgba(12, 14, 26, 0.88);
+  --surface-glass: rgba(12, 14, 26, 0.96);
+  --surface-sunk: rgba(221, 224, 232, 0.035);
+  --grid-line: transparent;
+  --corner: #262a3d;
 
-  /* Glass base for content surfaces that sit over the aurora.
-     The atmosphere belongs BEHIND content, not behind text — at less
-     than 0.92 the aurora bleeds through and 10px labels drop under
-     4.5:1. Measured floor is 0.90; this carries headroom. */
-  --surface-glass: rgba(12, 14, 26, 0.92);
+  /* Lightbox scrim. Midnight, and deliberately not theme-aware: a screenshot
+     reads best against a dark surround in either theme. */
+  --scrim: rgba(12, 14, 26, 0.9);
 
-  /* Lightbox scrim. Midnight rather than pure black, and deliberately
-     NOT theme-aware: a screenshot reads best against a dark surround in
-     either theme. */
-  --scrim: rgba(12, 14, 26, 0.88);
+  --shadow-sheet: drop-shadow(0 1px 1px rgb(0 0 0 / 0.45)) drop-shadow(0 18px 30px rgb(0 0 0 / 0.45));
+  --shadow-lift: drop-shadow(0 2px 2px rgb(0 0 0 / 0.4)) drop-shadow(0 22px 28px rgb(0 0 0 / 0.55));
 
-  /* Theme-aware mark colors — dark defaults */
-  --mark-neutral: #DDD8CC;
-  --mark-neutral-sub: rgba(221, 216, 204, 0.5);
-  --sixteen-structural: #DFC5A8;
-  --stockpot-structural: #8A8580;
-  --bramble-accent: #7C4DFF;
-  --bramble-structural: #736C80;
-  --bramble-node: #E8E5ED;
-  --pica-structural: #A8ADBD;
-  --reviso-structural: #5B6178;
-  --cyan-deep: #06B6D4;
-  --reviso-accent: var(--cyan);
-
-  /* Theme-aware accent — hero "design" word */
+  /* Amber is the studio's ink. --amber-accent is for non-text (rings, the
+     postmark, buttons); --amber-text is amber that must read as text. */
   --amber-accent: var(--amber);
-
-  /* Amber for TEXT. --amber-accent clears the 3:1 non-text bar (focus rings,
-     borders) but not the 4.5:1 normal-text bar on light: raw amber lands at
-     2.4:1 there. Any amber-colored word or link uses this instead. */
   --amber-text: var(--amber);
+  /* Keyboard focus: amber on the dark page; on the grey page raw amber is
+     2.1:1, under the 3:1 a focus indicator needs, so it deepens there. */
+  --focus-ring: var(--amber);
 
-  /* Each product's accent as TEXT — the per-product twin of --amber-text.
-     The vivid accent clears the 3:1 non-text bar (solid fills, borders, glows)
-     but not the text bars on light, where Crema measures 2.34:1 and even Cyan
-     Deep measures 2.15:1 at display size. Every accent-colored *word* uses
-     these: app-page titles and Coming Soon labels. Dark keeps each product's
-     brand value; light darkens within the same hue.
-     Formerly --badge-*, which named the first place this was needed rather
-     than the role it actually fills. */
-  --accent-text-crema: #C4956A;
-  --accent-text-stockpot: #D4756A;
-  --accent-text-bramble: #9D7AFF;
-  --accent-text-pica: #8AA4F0;
-  --accent-text-reviso: #22D3EE;
+  /* Theme-aware forms of the accents that change with the ground */
+  --bramble-accent: #7c4dff;
+  --reviso-accent: #22d3ee;
+  --wiffletree-accent: #86c1bc;
+
+  /* Theme-aware mark colours, for marks that sit on the ground */
+  --mark-neutral: #ddd8cc;
+  --sixteen-structural: #dfc5a8;
+  --stockpot-structural: #8a8580;
+  --bramble-structural: #736c80;
+  --bramble-node: #e8e5ed;
+  --pica-structural: #a8adbd;
+  --reviso-structural: #5b6178;
+  --wiffletree-structural: #f3f2ed;
 }
 
 [data-theme="light"] {
-  --bg-primary: var(--white);
-  --bg-secondary: #ECEDF0;
-  --bg-card: rgba(255, 255, 255, 0.8);
-  --text-primary: var(--midnight);
-  --text-secondary: var(--slate);
-  --text-tertiary: var(--slate);
-  --border: rgba(221, 224, 232, 0.8);
-  --card-border: rgba(221, 224, 232, 0.5);
-  --nav-bg: rgba(244, 245, 247, 0.85);
-  --surface-glass: rgba(244, 245, 247, 0.92);
+  --bg-primary: #e4e6ec;
+  --text-primary: var(--ink);
+  --text-secondary: var(--slate-deep);
+  --text-tertiary: var(--slate-deep);
+  --border: rgba(12, 14, 26, 0.12);
+  --border-strong: rgba(12, 14, 26, 0.26);
+  --nav-bg: rgba(228, 230, 236, 0.9);
+  --surface-glass: rgba(228, 230, 236, 0.97);
+  --surface-sunk: rgba(255, 255, 255, 0.4);
+  --grid-line: rgba(12, 14, 26, 0.05);
+  --corner: #1a1e35;
 
-  /* Theme-aware mark colors — light overrides */
-  --mark-neutral: #1A1E35;
-  --mark-neutral-sub: rgba(26, 30, 53, 0.5);
-  --sixteen-structural: #1C1008;
-  --stockpot-structural: #3A3632;
-  --bramble-accent: #7C4DFF;
-  --bramble-structural: #332F3D;
-  --bramble-node: #1C1A22;
-  --pica-structural: #1A1E35;
-  --reviso-structural: #A8ADBD;
-  --reviso-accent: var(--cyan-deep);
+  --shadow-sheet: drop-shadow(0 1px 1px rgb(12 14 26 / 0.18)) drop-shadow(0 14px 22px rgb(12 14 26 / 0.16));
+  --shadow-lift: drop-shadow(0 2px 2px rgb(12 14 26 / 0.18)) drop-shadow(0 20px 26px rgb(12 14 26 / 0.24));
 
-  /* Theme-aware accent — hero "design" word */
-  --amber-accent: #B8802E;
+  --amber-text: #7e5414; /* 5.3:1 on the grey ground */
+  --focus-ring: #7e5414;
 
-  /* Amber darkened until it clears 4.5:1 as text on the light surface (4.99:1),
-     while staying in the brand's amber family. See the dark block for why. */
-  --amber-text: #8F6018;
+  --reviso-accent: #06b6d4;
+  --wiffletree-accent: #2d5a5a;
 
-  /* Each value is the tone its product's brand kit sanctions for accent text on
-     light, not a darkening derived here. Hue is preserved; only lightness moves,
-     so each still reads as its own product. All clear 4.5:1 on the app-page hero
-     (a 6% accent tint over White), so one value serves both the 40px title and
-     the 10px badge and no separate display tier is needed. See the dark block. */
-  --accent-text-crema: #5C3D2E;    /* Medium Roast     — 8.48:1 */
-  --accent-text-stockpot: #C0392B; /* Tomato Red       — 4.59:1 */
-  --accent-text-bramble: #6C37FF;  /* Violet Deep      — 4.91:1 */
-  --accent-text-pica: #315BDC;     /* Cobalt Dark      — 4.90:1 */
-  --accent-text-reviso: #155E75;   /* Cyan Ink         — 6.32:1 */
+  --mark-neutral: #1a1e35;
+  --sixteen-structural: #1c1008;
+  --stockpot-structural: #3a3632;
+  --bramble-structural: #332f3d;
+  --bramble-node: #1c1a22;
+  --pica-structural: #1a1e35;
+  --reviso-structural: #a8adbd;
+  --wiffletree-structural: #1a262d;
 }
-
-/* ==================== TAILWIND THEME ==================== */
 
 @theme inline {
-  --font-outfit: var(--font-outfit);
-  --font-dm-sans: var(--font-dm-sans);
-  --font-source-serif: var(--font-source-serif);
-
-  --color-midnight: #0C0E1A;
-  --color-navy: #1A1E35;
-  --color-slate: #5B6178;
-  --color-silver: #A8ADBD;
-  --color-fog: #DDE0E8;
-  --color-vtl-white: #F4F5F7;
-  --color-amber: #D4933D;
-  --color-gold: #F0D48A;
-
-  --color-crema: #C4956A;
-  --color-crema-light: #DFC5A8;
-  --color-tomato: #C0392B;
-  --color-tomato-light: #D4756A;
-  --color-bramble: #7C4DFF;
-  --color-cobalt: #4A6FE0;
-  --color-cobalt-light: #8AA4F0;
-  --color-cyan: #22D3EE;
-  --color-cyan-light: #A5F3FC;
-
-  --animate-float: float 6s ease-in-out infinite;
-  --animate-pulse-dot: pulse-dot 2s ease-in-out infinite;
-  --animate-scroll-hint: scroll-hint 2s ease-in-out infinite;
+  --font-sans: var(--font-body);
 }
 
-/* ==================== KEYFRAMES ==================== */
-
-@keyframes float {
-  0%, 100% { transform: translateY(0px); }
-  50% { transform: translateY(-12px); }
-}
-
-@keyframes pulse-dot {
-  0%, 100% { opacity: 0.4; }
-  50% { opacity: 1; }
-}
-
-/* Y only. The translateX(-50%) this used to carry was compensating for a
-   centering transform that an animation on the parent was cancelling; the cue
-   is centered by flow now, so a keyframe carrying layout would double-apply. */
-@keyframes scroll-hint {
-  0%, 100% { opacity: 0.5; transform: translateY(0); }
-  50% { opacity: 1; transform: translateY(6px); }
-}
-
-/* Aurora segments — large movements so they're visible through heavy blur */
-@keyframes aurora-seg-1 {
-  0%   { transform: translate(0, 0) scale(1); opacity: 0.8; }
-  25%  { transform: translate(150px, -80px) scale(1.2); opacity: 1; }
-  50%  { transform: translate(-100px, 60px) scale(0.8); opacity: 0; }
-  75%  { transform: translate(80px, -40px) scale(1.15); opacity: 0.9; }
-  100% { transform: translate(0, 0) scale(1); opacity: 0.8; }
-}
-
-@keyframes aurora-seg-2 {
-  0%   { transform: translate(0, 0) scaleX(1); opacity: 0.6; }
-  30%  { transform: translate(-120px, 70px) scaleX(1.3); opacity: 1; }
-  60%  { transform: translate(100px, -50px) scaleX(0.7); opacity: 0; }
-  100% { transform: translate(0, 0) scaleX(1); opacity: 0.6; }
-}
-
-@keyframes aurora-seg-3 {
-  0%   { transform: translate(0, 0) scale(1); opacity: 0.7; }
-  20%  { transform: translate(-130px, -60px) scale(1.15); opacity: 0; }
-  50%  { transform: translate(80px, 90px) scale(0.85); opacity: 1; }
-  80%  { transform: translate(-60px, -30px) scale(1.2); opacity: 0.3; }
-  100% { transform: translate(0, 0) scale(1); opacity: 0.7; }
-}
-
-@keyframes aurora-seg-4 {
-  0%   { transform: translate(0, 0) scaleY(1); opacity: 0.9; }
-  35%  { transform: translate(100px, -70px) scaleY(1.3); opacity: 0.2; }
-  65%  { transform: translate(-80px, 60px) scaleY(0.8); opacity: 1; }
-  100% { transform: translate(0, 0) scaleY(1); opacity: 0.9; }
-}
-
-@keyframes aurora-seg-5 {
-  0%   { transform: translate(0, 0) scale(1); opacity: 0.5; }
-  25%  { transform: translate(120px, 50px) scale(1.2); opacity: 1; }
-  50%  { transform: translate(-90px, -70px) scale(0.85); opacity: 0; }
-  75%  { transform: translate(60px, 80px) scale(1.1); opacity: 0.8; }
-  100% { transform: translate(0, 0) scale(1); opacity: 0.5; }
-}
-
-@keyframes aurora-seg-6 {
-  0%   { transform: translate(0, 0) scaleX(1); opacity: 0.7; }
-  30%  { transform: translate(-140px, -60px) scaleX(1.25); opacity: 1; }
-  70%  { transform: translate(110px, 70px) scaleX(0.8); opacity: 0; }
-  100% { transform: translate(0, 0) scaleX(1); opacity: 0.7; }
-}
-
-@keyframes aurora-seg-7 {
-  0%   { transform: translate(0, 0) scale(1); opacity: 0; }
-  30%  { transform: translate(100px, -60px) scale(1.25); opacity: 1; }
-  60%  { transform: translate(-70px, 50px) scale(0.85); opacity: 0.4; }
-  100% { transform: translate(0, 0) scale(1); opacity: 0; }
-}
-
-@keyframes aurora-seg-8 {
-  0%   { transform: translate(0, 0) scale(1); opacity: 0.6; }
-  20%  { transform: translate(-110px, 70px) scale(1.2); opacity: 0; }
-  50%  { transform: translate(90px, -50px) scale(0.9); opacity: 1; }
-  80%  { transform: translate(-50px, 30px) scale(1.1); opacity: 0.2; }
-  100% { transform: translate(0, 0) scale(1); opacity: 0.6; }
-}
-
-/* Scroll reveal */
-[data-reveal] {
-  opacity: 0;
-  transform: translateY(16px);
-  transition: opacity 0.6s ease, transform 0.6s ease;
-}
-
-[data-reveal].revealed {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-/* Staggered fade-in for page load */
-.fade-in {
-  opacity: 0;
-  transform: translateY(12px);
-  animation: fade-in-up 0.6s ease forwards;
-}
-
-@keyframes fade-in-up {
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .fade-in {
-    animation: none;
-    opacity: 1;
-    transform: none;
-  }
-  [data-reveal] {
-    opacity: 1;
-    transform: none;
-    transition: none;
-  }
-
-  /* The perpetual loops. These are ambient character, not feedback, so nothing
-     is lost by holding them still — but each needs its resting state chosen
-     rather than inherited, or stopping the animation changes how the element
-     reads. The float and the cue rest at their neutral position; the Coming
-     Soon dot holds the LIT end of its cycle, not the 0.4 dim one, so a stopped
-     badge still reads as active rather than half-faded. */
-  .animate-float,
-  .animate-scroll-hint {
-    animation: none;
-    transform: none;
-  }
-  .animate-pulse-dot {
-    animation: none;
-    opacity: 1;
-  }
-
-  /* The aurora's motion is gated in ConicOrb.tsx, not here: each band's
-     `animation` is an inline style, which a stylesheet rule can't override. */
-}
-
-/* ==================== BASE STYLES ==================== */
-
-.no-scrollbar,
-.scrollbar-hide {
-  -ms-overflow-style: none;
-  scrollbar-width: none;
-}
-.no-scrollbar::-webkit-scrollbar,
-.scrollbar-hide::-webkit-scrollbar {
-  display: none;
-}
-
+@layer base {
 html {
   scroll-behavior: smooth;
 }
 
 body {
-  background: var(--bg-primary);
+  background-color: var(--bg-primary);
+  /* Light mode is a quadrille album page; dark mode's grid line is transparent */
+  background-image:
+    linear-gradient(var(--grid-line) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid-line) 1px, transparent 1px);
+  background-size: 24px 24px;
   color: var(--text-primary);
-  font-family: var(--font-dm-sans), "DM Sans", sans-serif;
+  font-family: var(--font-body);
+  font-size: 17px;
+  line-height: 1.6;
   min-height: 100vh;
-  transition: background 0.4s ease, color 0.4s ease;
   overflow-x: hidden;
+  transition: background-color 0.3s ease, color 0.3s ease;
 
-  /* viewport-fit=cover (see layout.tsx) lets the page reach the physical screen
-     edge, so in landscape on a notched phone the documented 24px gutter is no
-     longer enough to clear the notch — the inset there is ~44px. Both are zero
-     in portrait, so nothing moves on the common case; this only engages where
-     the hardware actually intrudes. Fixed elements escape body padding and
-     handle their own insets (the nav below, and the menu/lightbox inline). */
+  /* viewport-fit=cover (layout.tsx) lets the page reach the screen edge; these
+     only engage in landscape on a notched phone. Fixed elements handle their own. */
   padding-left: env(safe-area-inset-left);
   padding-right: env(safe-area-inset-right);
 }
 
-/* ==================== FORM FIELDS ==================== */
+::selection {
+  background: var(--amber);
+  color: var(--ink);
+}
 
-/* Keyboard focus must be visible. Mouse/touch focus stays quiet.
-   A real outline (not just a box-shadow) so the ring survives
-   forced-colors / high-contrast mode. */
+}
 
-.field-input:focus {
+/* Component classes live in a layer so Tailwind utilities (md:hidden etc.) win. */
+@layer components {
+.page-x {
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+@media (min-width: 768px) {
+  .page-x {
+    padding-left: 40px;
+    padding-right: 40px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .page-x {
+    padding-left: 56px;
+    padding-right: 56px;
+  }
+}
+
+.page-width {
+  max-width: 1240px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.section-y {
+  padding-top: clamp(96px, 14vw, 176px);
+}
+
+/* ==================== TYPE ==================== */
+
+.t-display {
+  font-variation-settings: "wdth" 125;
+  font-weight: 760;
+  font-size: clamp(3rem, 8.5vw, 6rem);
+  line-height: 0.95;
+  letter-spacing: -0.035em;
+  text-wrap: balance;
+}
+
+.t-headline {
+  font-variation-settings: "wdth" 118;
+  font-weight: 720;
+  font-size: clamp(2rem, 4.5vw, 3.25rem);
+  line-height: 1.02;
+  letter-spacing: -0.025em;
+  text-wrap: balance;
+}
+
+.t-title {
+  font-variation-settings: "wdth" 112;
+  font-weight: 680;
+  font-size: 1.5rem;
+  line-height: 1.15;
+  letter-spacing: -0.01em;
+}
+
+.t-lede {
+  font-size: clamp(1.125rem, 1.6vw, 1.3125rem);
+  line-height: 1.5;
+  color: var(--text-secondary);
+  text-wrap: pretty;
+}
+
+.t-body {
+  color: var(--text-secondary);
+  max-width: 68ch;
+  text-wrap: pretty;
+}
+
+/* Printed matter: the text a stamp or a sheet margin carries. Not an eyebrow. */
+.t-label {
+  font-variation-settings: "wdth" 112;
+  font-weight: 620;
+  font-size: 11px;
+  line-height: 1.2;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.t-serif {
+  font-family: var(--font-source-serif-stack);
+  font-variation-settings: normal;
+  font-weight: 400;
+  letter-spacing: 0;
+}
+
+.t-mono {
+  font-family: var(--font-mono);
+  font-size: 14px;
+}
+
+/* ==================== STAMP ==================== */
+
+/* Perforation by background: a tile of transparent circles centred on the edge
+   (round repeat keeps whole holes) over a paper fill inset by 1.5 radii. Holes
+   reveal whatever is behind, and drop-shadow filters follow them. */
+.stamp {
+  --r: 4.5px;
+  --accent: var(--amber);
+  --field: var(--ink);
+  container-type: inline-size;
+  position: relative;
+  display: block;
+  align-self: start;
+  padding: calc(var(--r) * 2.7);
+  background:
+    radial-gradient(var(--r), #0000 96%, var(--paper)) round calc(var(--r) * -1.5) calc(var(--r) * -1.5) / calc(var(--r) * 3) calc(var(--r) * 3),
+    linear-gradient(var(--paper) 0 0) no-repeat 50% / calc(100% - var(--r) * 3) calc(100% - var(--r) * 3);
+  color: var(--paper);
+  text-decoration: none;
+  transition:
+    transform 320ms cubic-bezier(0.16, 1, 0.3, 1),
+    filter 320ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.stamp--small {
+  --r: 3px;
+}
+
+a.stamp:hover,
+a.stamp:focus-visible {
+  transform: translateY(-6px) rotate(-1.4deg);
+  filter: var(--shadow-lift);
+  z-index: 2;
+}
+
+a.stamp:focus-visible {
+  outline-offset: 4px;
+}
+
+/* The field scopes the marks' dark-mode colours, so a mark prints identically
+   on every stamp in both themes; --bg-primary feeds the marks' cut circles. */
+.stamp__field {
+  --bg-primary: var(--field);
+  --mark-neutral: #ddd8cc;
+  --sixteen-structural: #dfc5a8;
+  --stockpot-structural: #8a8580;
+  --bramble-structural: #736c80;
+  --bramble-node: #e8e5ed;
+  --bramble-accent: #7c4dff;
+  --pica-structural: #a8adbd;
+  --reviso-structural: #5b6178;
+  --reviso-accent: #22d3ee;
+  --wiffletree-structural: #f3f2ed;
+  position: relative;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  aspect-ratio: 4 / 5;
+  overflow: hidden;
+  padding: 7cqw 7cqw 0;
+  background: var(--field);
+}
+
+.stamp__issuer {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  font-variation-settings: "wdth" 112;
+  font-weight: 640;
+  font-size: max(6px, 6cqw);
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: rgb(247 247 244 / 0.8);
+}
+
+/* The raw accent is under 4:1 on the darker fields; lift it toward paper. */
+.stamp__number {
+  color: color-mix(in srgb, var(--accent) 62%, var(--paper));
+}
+
+.stamp__mark {
+  display: grid;
+  place-items: center;
+  min-height: 0;
+}
+
+.stamp__mark svg {
+  width: auto;
+  height: auto;
+  max-width: 44cqw;
+  max-height: 44cqw;
+}
+
+.stamp__name {
+  font-variation-settings: "wdth" 112;
+  font-weight: 720;
+  font-size: 8.6cqw;
+  line-height: 1.02;
+  letter-spacing: -0.015em;
+  text-wrap: balance;
+}
+
+.stamp__meta {
+  margin-top: 2.4cqw;
+  font-variation-settings: "wdth" 108;
+  font-weight: 500;
+  font-size: max(6px, 5.4cqw);
+  letter-spacing: 0.04em;
+  color: rgb(247 247 244 / 0.72);
+}
+
+.stamp__band {
+  height: 5.5cqw;
+  margin: 6cqw -7cqw 0;
+  background: var(--accent);
+}
+
+/* A chip is a stamp too small to carry type: mark and band only. */
+.stamp--chip .stamp__field {
+  padding: 14cqw 14cqw 0;
+  grid-template-rows: 1fr;
+}
+
+.stamp--chip .stamp__mark svg {
+  max-width: 62cqw;
+  max-height: 62cqw;
+}
+
+.stamp--chip .stamp__band {
+  margin: 12cqw -14cqw 0;
+  height: 9cqw;
+}
+
+/* ==================== SHEET ==================== */
+
+/* Zero gap, so neighbouring perforations meet as one row of holes. */
+.sheet {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  filter: var(--shadow-sheet);
+}
+
+@media (min-width: 560px) {
+  .sheet {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+/* ==================== POSTMARK ==================== */
+
+.postmark {
+  position: absolute;
+  top: -9%;
+  right: -22%;
+  width: 88%;
+  color: var(--amber);
+  transform: rotate(-14deg);
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* The one authored moment: the postmark lands on the hero sheet. Elsewhere it
+   is already printed, since it would land off-screen. */
+.sheet .postmark {
+  animation: postmark-land 700ms cubic-bezier(0.16, 1, 0.3, 1) 650ms backwards;
+}
+
+@keyframes postmark-land {
+  from {
+    opacity: 0;
+    transform: scale(1.5) rotate(-26deg);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) rotate(-14deg);
+  }
+}
+
+/* ==================== PERFORATED EDGES ==================== */
+
+.perf-rule {
+  height: 6px;
+  background: radial-gradient(circle, var(--border-strong) 1.6px, transparent 2.1px) 0 50% / 9px 6px repeat-x;
+}
+
+/* A paper panel torn along a perforation top and bottom */
+.paper-panel {
+  --hole: 6px;
+  --focus-ring: #7e5414; /* raw amber is 2.4:1 on paper */
+  background: var(--paper);
+  color: var(--ink);
+  -webkit-mask:
+    radial-gradient(circle at 50% 0, #0000 var(--hole), #000 calc(var(--hole) + 0.5px)) top / calc(var(--hole) * 3) 51% repeat-x,
+    radial-gradient(circle at 50% 100%, #0000 var(--hole), #000 calc(var(--hole) + 0.5px)) bottom / calc(var(--hole) * 3) 51% repeat-x;
+  mask:
+    radial-gradient(circle at 50% 0, #0000 var(--hole), #000 calc(var(--hole) + 0.5px)) top / calc(var(--hole) * 3) 51% repeat-x,
+    radial-gradient(circle at 50% 100%, #0000 var(--hole), #000 calc(var(--hole) + 0.5px)) bottom / calc(var(--hole) * 3) 51% repeat-x;
+}
+
+/* An ink plate for commands: the same in both themes, so it keeps the amber
+   focus ring even on the grey page */
+.ink-plate {
+  --focus-ring: var(--amber);
+  --plate-rule: rgb(168 173 189 / 0.2);
+  background: #07080f;
+  border: 1px solid var(--plate-rule);
+  color: var(--fog);
+}
+
+/* A scrollable command block's fade mask would clip its own outline, so the
+   plate shows the ring, inset so it stays on ink (amber passes there). */
+.ink-plate pre:focus-visible {
   outline: none;
 }
 
-.field-input:focus-visible {
-  outline: 2px solid var(--amber-accent);
-  outline-offset: 2px;
-  border-color: var(--amber-accent);
+.ink-plate:has(> pre:focus-visible) {
+  outline: 2px solid var(--focus-ring);
+  outline-offset: -4px;
 }
 
-/* The same ring on every other interactive control, so keyboard focus reads as
-   one amber system rather than the browser's default blue. Scoped to real
-   interactive elements — the programmatically-focused <main> skip target
-   (focus:outline-none) is deliberately excluded. Bespoke treatments
-   (.field-input above, the screenshot carousel) win on specificity and keep
-   their own offsets. */
-a:focus-visible,
-button:focus-visible,
-input:focus-visible,
-select:focus-visible,
-textarea:focus-visible,
-summary:focus-visible,
-[role="button"]:focus-visible {
-  outline: 2px solid var(--amber-accent);
-  outline-offset: 2px;
+/* A command on an ink plate fades at its right edge so the cut reads as scrollable */
+.command-fade {
+  -webkit-mask: linear-gradient(90deg, #000 calc(100% - 28px), transparent);
+  mask: linear-gradient(90deg, #000 calc(100% - 28px), transparent);
 }
 
-/* ==================== TAP TARGETS ==================== */
+/* ==================== MOUNTED PRINT ==================== */
 
-/* WCAG 2.2 AA (2.5.8) puts the floor at 24x24 CSS px. This site holds 44x44 —
-   the figure the theme toggle already uses, and close to the mobile menu's 48px
-   rows — because most visitors arrive on a phone from a store listing.
-   The box grows around the glyph: font size, weight and tracking are untouched,
-   so the composition reads exactly as designed and only the hit area changes.
-   Standalone controls and nav links only. Deliberately NOT for links inside a
-   sentence — 2.5.8 exempts those, and padding them would break the line box and
-   the prose rhythm on the policy pages. */
+/* A real screenshot held to the album page by four photo corners */
+.mounted {
+  position: relative;
+  padding: 10px;
+}
+
+.mounted__corner {
+  position: absolute;
+  width: 44px;
+  height: 44px;
+  background: var(--corner);
+  box-shadow: inset 1px 1px 0 rgb(255 255 255 / 0.08);
+  z-index: 1;
+}
+
+.mounted__corner--tl { top: 0; left: 0; clip-path: polygon(0 0, 100% 0, 0 100%); }
+.mounted__corner--tr { top: 0; right: 0; clip-path: polygon(0 0, 100% 0, 100% 100%); }
+.mounted__corner--bl { bottom: 0; left: 0; clip-path: polygon(0 0, 100% 100%, 0 100%); }
+.mounted__corner--br { bottom: 0; right: 0; clip-path: polygon(100% 0, 100% 100%, 0 100%); }
+
+.mounted img {
+  display: block;
+  width: 100%;
+  height: auto;
+  box-shadow: 0 1px 2px rgb(0 0 0 / 0.25), 0 16px 40px rgb(0 0 0 / 0.3);
+}
+
+/* ==================== CONTROLS ==================== */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  min-height: 48px;
+  padding: 0 22px;
+  border-radius: 6px;
+  font-variation-settings: "wdth" 108;
+  font-weight: 640;
+  font-size: 15px;
+  letter-spacing: 0.01em;
+  text-decoration: none;
+  white-space: nowrap;
+  cursor: pointer;
+  transition:
+    background-color 200ms ease,
+    border-color 200ms ease,
+    color 200ms ease,
+    transform 200ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@media (max-width: 399px) {
+  .btn {
+    padding: 0 16px;
+  }
+}
+
+.btn:active {
+  transform: translateY(1px);
+}
+
+.btn--primary {
+  background: var(--amber);
+  color: var(--ink);
+  border: 1px solid var(--amber);
+}
+
+.btn--primary:hover {
+  background: #e3a552;
+  border-color: #e3a552;
+}
+
+.btn--secondary {
+  background: transparent;
+  color: var(--text-primary);
+  border: 1px solid var(--border-strong);
+}
+
+.btn--secondary:hover {
+  border-color: var(--text-primary);
+}
+
+.btn:disabled {
+  opacity: 0.5;
+  cursor: default;
+}
+
+/* Text link with an arrow that steps forward on hover */
+.link-arrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 44px;
+  font-variation-settings: "wdth" 108;
+  font-weight: 620;
+  color: var(--text-primary);
+  text-decoration: underline;
+  text-decoration-color: var(--border-strong);
+  text-underline-offset: 5px;
+  transition: text-decoration-color 200ms ease;
+}
+
+.link-arrow:hover {
+  text-decoration-color: var(--amber);
+}
+
+.link-arrow > [aria-hidden] {
+  transition: transform 200ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.link-arrow:hover > [aria-hidden] {
+  transform: translateX(3px);
+}
+
+.link-quiet {
+  color: var(--text-secondary);
+  text-decoration: none;
+  transition: color 200ms ease;
+}
+
+.link-quiet:hover {
+  color: var(--text-primary);
+}
+
+/* WCAG 2.5.8 floor is 24px; most visitors are on phones, so hold 44px. */
 .tap-target {
   display: inline-flex;
   align-items: center;
@@ -380,122 +584,181 @@ summary:focus-visible,
   min-width: 44px;
 }
 
-/* The nav bar is fixed, so it escapes the body's safe-area gutter and has to
-   clear the notch itself. max() preserves DESIGN.md's documented 24px / 48px
-   page padding whenever the inset is smaller — which is always in portrait, so
-   this only engages in landscape on hardware that actually intrudes. Replaces
-   `px-6 md:px-12` rather than sitting alongside it: an inline style would have
-   overridden the md step and quietly cost the bar its desktop gutter. */
-.nav-gutter {
-  padding-left: max(1.5rem, env(safe-area-inset-left));
-  padding-right: max(1.5rem, env(safe-area-inset-right));
-}
-
-@media (min-width: 768px) {
-  .nav-gutter {
-    padding-left: max(3rem, env(safe-area-inset-left));
-    padding-right: max(3rem, env(safe-area-inset-right));
-  }
-}
-
-/* Quiet hover for neutral nav links on a product page. Amber is the studio's
-   colour and would break The One Voice Rule here, and the product's own accent
-   is reserved for accent roles, not for footer links — so these simply come
-   forward to primary text. A class rather than the onMouseEnter idiom used in
-   the client nav, because these live in server components. */
-.link-quiet {
-  transition: color 200ms ease;
-}
-
-.link-quiet:hover {
-  color: var(--text-primary);
-}
-
-/* ==================== ACCENT ROWS ==================== */
-
-/* The nav dropdown and mobile menu tint a row in its product's accent on hover,
-   via inline style mutations that need a client component. This does the same
-   in CSS off a per-row `--row-accent`, so a server-rendered list of products
-   keeps the pattern without shipping JS for it — and, unlike the JS version,
-   it also lights up on keyboard focus. */
+/* Rows in the menu and the 404 directory tint toward their product's accent */
 .accent-row {
   transition: background-color 200ms ease;
 }
 
 .accent-row:hover,
 .accent-row:focus-visible {
-  background: color-mix(in srgb, var(--row-accent) 10%, transparent);
+  background: color-mix(in srgb, var(--row-accent) 12%, transparent);
 }
 
-/* ==================== PROSE STYLES (for MDX pages) ==================== */
+/* The fixed nav escapes body padding and clears the notch itself */
+.nav-gutter {
+  padding-left: max(20px, env(safe-area-inset-left));
+  padding-right: max(20px, env(safe-area-inset-right));
+}
+
+@media (min-width: 768px) {
+  .nav-gutter {
+    padding-left: max(40px, env(safe-area-inset-left));
+    padding-right: max(40px, env(safe-area-inset-right));
+  }
+}
+
+@media (min-width: 1200px) {
+  .nav-gutter {
+    padding-left: max(56px, env(safe-area-inset-left));
+    padding-right: max(56px, env(safe-area-inset-right));
+  }
+}
+
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+/* ==================== FOCUS ==================== */
+
+/* One --focus-ring outline for every interactive control. A real outline so it
+   survives forced-colours mode. The programmatically focused <main> is excluded. */
+.field-input:focus {
+  outline: none;
+}
+
+.field-input:focus-visible {
+  outline: 2px solid var(--focus-ring);
+  outline-offset: 2px;
+  border-color: var(--focus-ring);
+}
+
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible,
+summary:focus-visible,
+[role="button"]:focus-visible {
+  outline: 2px solid var(--focus-ring);
+  outline-offset: 2px;
+}
+
+/* ==================== PROSE (policy pages) ==================== */
 
 .prose h1 {
-  font-family: var(--font-outfit), "Outfit", sans-serif;
-  font-weight: 600;
-  font-size: 2.5rem;
-  letter-spacing: 0.02em;
+  font-variation-settings: "wdth" 118;
+  font-weight: 720;
+  font-size: clamp(2.25rem, 5vw, 3.25rem);
+  line-height: 1.04;
+  letter-spacing: -0.025em;
   color: var(--text-primary);
   margin-bottom: 1rem;
-  transition: color 0.4s ease;
+  text-wrap: balance;
 }
 
 .prose h2 {
-  font-family: var(--font-outfit), "Outfit", sans-serif;
-  font-weight: 500;
-  font-size: 1.5rem;
-  letter-spacing: 0.01em;
+  font-variation-settings: "wdth" 112;
+  font-weight: 680;
+  font-size: 1.375rem;
+  letter-spacing: -0.01em;
   color: var(--text-primary);
-  margin-top: 2.5rem;
+  margin-top: 3rem;
   margin-bottom: 0.75rem;
-  transition: color 0.4s ease;
 }
 
-.prose p {
+.prose p,
+.prose ul {
   color: var(--text-secondary);
-  line-height: 1.8;
   margin-bottom: 1rem;
-  transition: color 0.4s ease;
 }
 
 .prose ul {
-  color: var(--text-secondary);
-  padding-left: 1.5rem;
-  margin-bottom: 1rem;
-  transition: color 0.4s ease;
+  padding-left: 1.25rem;
+  list-style: square;
 }
 
 .prose li {
   margin-bottom: 0.5rem;
-  line-height: 1.7;
+}
+
+.prose li::marker {
+  color: var(--amber-accent);
 }
 
 .prose a {
-  color: var(--amber);
+  color: var(--text-primary);
   text-decoration: underline;
-  text-underline-offset: 2px;
-  transition: color 0.2s ease;
+  text-decoration-color: var(--amber-accent);
+  text-decoration-thickness: 1.5px;
+  text-underline-offset: 3px;
+  transition: text-decoration-color 0.2s ease;
 }
 
 .prose a:hover {
-  color: var(--gold);
-}
-
-/* Amber can't clear AA (4.5:1) as normal-size text on the light surface — it
-   lands at 2.4:1. So in light mode the link text takes the readable primary
-   tone and keeps its amber identity in the underline; the underline brightens
-   on hover. Dark mode keeps amber text, which clears AA there at 7.35:1. */
-:root[data-theme="light"] .prose a {
-  color: var(--text-primary);
-  text-decoration-color: var(--amber-accent);
-}
-
-:root[data-theme="light"] .prose a:hover {
-  color: var(--text-primary);
-  text-decoration-color: var(--amber);
+  text-decoration-color: var(--text-primary);
 }
 
 .prose strong {
   color: var(--text-primary);
-  font-weight: 500;
-  transition: color 0.4s ease;
+  font-weight: 620;
+}
+
+.prose code {
+  font-family: var(--font-mono);
+  font-size: 0.88em;
+  padding: 0.1em 0.35em;
+  border-radius: 4px;
+  background: var(--surface-sunk);
+  border: 1px solid var(--border);
+  color: var(--text-primary);
+  white-space: nowrap; /* flags like --explain must not split at the hyphen */
+}
+
+/* ==================== MOTION ==================== */
+
+.fade-in {
+  animation: fade-in-up 0.7s cubic-bezier(0.16, 1, 0.3, 1) backwards;
+}
+
+@keyframes fade-in-up {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .fade-in,
+  .sheet .postmark {
+    animation: none;
+  }
+
+  .stamp,
+  .btn,
+  .link-arrow > [aria-hidden] {
+    transition: none;
+  }
+
+  a.stamp:hover,
+  a.stamp:focus-visible {
+    transform: none;
+  }
+}
+
+/* ==================== THEME-SPECIFIC ARTWORK ==================== */
+
+[data-theme="light"] .only-dark,
+:root:not([data-theme="light"]) .only-light {
+  display: none;
+}
+
 }

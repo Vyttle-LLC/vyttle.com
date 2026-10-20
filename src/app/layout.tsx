@@ -1,22 +1,25 @@
 import type { Metadata, Viewport } from "next";
-import { Outfit, DM_Sans, Source_Serif_4 } from "next/font/google";
+import { Archivo, JetBrains_Mono, Source_Serif_4 } from "next/font/google";
+import Nav from "@/components/Nav";
+import Footer from "@/components/Footer";
 import "./globals.css";
 
-const outfit = Outfit({
+// One family across its width axis: expanded for display, normal for reading,
+// slightly wide for printed labels (see DESIGN.md).
+const archivo = Archivo({
   subsets: ["latin"],
-  weight: ["300", "400", "500", "600", "700"],
-  variable: "--font-outfit",
+  axes: ["wdth"],
+  variable: "--font-archivo",
   display: "swap",
 });
 
-const dmSans = DM_Sans({
+const jetbrainsMono = JetBrains_Mono({
   subsets: ["latin"],
-  weight: ["300", "400", "500"],
-  style: ["normal", "italic"],
-  variable: "--font-dm-sans",
+  variable: "--font-jetbrains",
   display: "swap",
 });
 
+// Only Sixteen to One's name uses it — its brand kit sets the name in serif.
 const sourceSerif = Source_Serif_4({
   subsets: ["latin"],
   weight: ["300", "400"],
@@ -39,7 +42,7 @@ export const viewport: Viewport = {
 
 const SITE_URL = "https://vyttle.com";
 const DESCRIPTION =
-  "A software studio building intentionally small, privacy-first mobile apps and developer tools. No accounts. No tracking. No servers.";
+  "An independent software studio making small, private apps for iPhone and Android, and open-source tools for developers who work with coding agents.";
 
 export const metadata: Metadata = {
   // Without metadataBase, Next cannot resolve relative og/canonical URLs and
@@ -61,7 +64,7 @@ export const metadata: Metadata = {
         url: "/og.png",
         width: 1200,
         height: 630,
-        alt: "The Vyttle diamond mark above the wordmark and the line “Small by design”.",
+        alt: "“Small by design.” beside a perforated sheet of six Vyttle stamps, one per product, with Sixteen to One postmarked April 2026.",
       },
     ],
   },
@@ -86,17 +89,9 @@ export default function RootLayout({
             __html: `(function(){var t=localStorage.getItem('vyttle-theme')||'dark';document.documentElement.setAttribute('data-theme',t)})()`,
           }}
         />
-        {/* The product grid and interior sections start at opacity 0 and are
-            revealed by an IntersectionObserver. With scripting unavailable that
-            reveal never fires and the homepage is a hero above an empty page,
-            so restore them. Deliberately scoped to [data-reveal]: .fade-in is a
-            pure CSS animation with `forwards` and needs no fallback. */}
-        <noscript>
-          <style>{`[data-reveal]{opacity:1!important;transform:none!important;transition:none!important}`}</style>
-        </noscript>
       </head>
       <body
-        className={`${outfit.variable} ${dmSans.variable} ${sourceSerif.variable} antialiased`}
+        className={`${archivo.variable} ${jetbrainsMono.variable} ${sourceSerif.variable} antialiased`}
       >
         {/* Skip link — first focusable element, visible only on keyboard focus */}
         <a
@@ -106,9 +101,8 @@ export default function RootLayout({
             background: "var(--surface-glass)",
             color: "var(--text-primary)",
             border: "1px solid var(--amber)",
-            borderRadius: "10px",
+            borderRadius: "6px",
             padding: "10px 16px",
-            fontFamily: "var(--font-dm-sans), DM Sans, sans-serif",
             fontSize: "16px",
           }}
         >
@@ -131,7 +125,9 @@ export default function RootLayout({
           <textarea name="message" />
         </form>
 
+        <Nav />
         {children}
+        <Footer />
       </body>
     </html>
   );

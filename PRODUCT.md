@@ -12,13 +12,13 @@ Three real arrival paths, all confirmed. They differ by where they came from, no
 
 1. **Store trust-checkers (highest real volume).** Someone found a Vyttle app in the App Store or Google Play and tapped the developer, support, or privacy link. Their job is to confirm a tiny unknown studio is real and safe — or to get help, or to read the policy the store required. They usually arrive deep-linked on a phone, on a page like `/sixteen-to-one/privacy`, not on the homepage.
 2. **App discoverers.** They arrive by search, word of mouth, or a shared link, browse the lineup, and leave for a store to install. The site is the top of their funnel.
-3. **Developers evaluating Reviso.** Engineers and eng leads comparing a GitHub Action for their team — a different job from the consumer apps, and they arrive before Reviso exists.
+3. **Developers evaluating the open-source tools.** Engineers who work with Claude Code or Codex, arriving from GitHub, wiffletree.dev or a shared link to see what Wiffletree and Reviso are and how to install them — a different job from the consumer apps.
 
 ## Product Purpose
 
 vyttle.com is the public face of Vyttle and its store-compliance surface. App Store and Google Play require reachable privacy and support URLs; this site satisfies that obligation and does it exceptionally well, so the required pages read as the work of a deliberate studio rather than as a compliance formality.
 
-**Success is the obligation done beautifully.** Store clickthroughs and Reviso interest are welcome side effects, not the measure. The bar is that someone who came only to verify a privacy policy leaves with a better opinion of the studio than they arrived with.
+**Success is the obligation done beautifully.** Store clickthroughs and installs of the open-source tools are welcome side effects, not the measure. The bar is that someone who came only to verify a privacy policy leaves with a better opinion of the studio than they arrived with.
 
 ## Positioning
 
@@ -30,7 +30,7 @@ The website's own differentiator is that it **runs the way the apps run**. No an
 
 - **Most arrivals are mobile and deep-linked**, coming from a store listing rather than the homepage. Policy and support pages are entry points, not terminal pages.
 - **Support runs on Netlify Forms.** Submissions land in the Netlify dashboard; replies come from Proton on the domain (`support@vyttle.com`, plus `michael@`, `hello@`, `privacy@`).
-- **The portfolio is mostly pre-launch.** One app shipped, four products in progress. The site has to present unreleased work honestly and repeatedly.
+- **The portfolio is mostly pre-launch.** One app shipped, three apps in progress, and two open-source developer tools in early release. The site has to present unreleased work honestly and repeatedly.
 - **Product truth lives in the second brain** at `~/dev/vyttle/vyttle-docs/` — per-product notes under `second-brain/notes/`, brand kits under `brand-kit/` and `products/<product>/brand-kit/`. That repo, not this one, is the source of truth for status and brand assets.
 
 ## Capabilities and Constraints
@@ -43,39 +43,41 @@ The website's own differentiator is that it **runs the way the apps run**. No an
 - Theming: dark is default, light via `data-theme` on `<html>`, persisted in `localStorage` under `vyttle-theme` by an inline pre-hydration script.
 - The product catalog is centralized in `src/lib/apps.ts` — status, accents, marks, store URLs. Pages read from it rather than hardcoding.
 
-**Product status (as of July 2026)**
+**Product status (as of October 2026)**
 
 | Product | Status |
 |---|---|
 | Sixteen to One | Shipped on iOS and Android (April 2026). Free with an optional tip jar. |
-| Pica | iOS build complete; Android port in progress. Dual launch is gated on the port. |
+| Pica | iOS feature-complete; Android port in progress. Launch is gated on the port. |
+| Stockpot | In development (iOS). |
 | Bramble | Planning. MVP scope settled: local-only, free, no IAP; enrichment deferred to v1.1. |
-| Stockpot | Ideation. Brand complete, no tickets broken out. |
-| Reviso | Pre-development. GitHub Action, TypeScript, BYOK. |
+| Wiffletree | Early release. Open-source (MIT) native macOS app that coordinates Claude and Codex coding agents. Its own site is wiffletree.dev; vyttle.com features it and links there rather than duplicating it. |
+| Reviso | Early release. Open-source (Apache-2.0) local pre-PR code review plugin for Claude Code and Codex, installable from GitHub. It is only the open-source repo: there is no hosted or paid Reviso, and none is planned. |
 
 **Explicitly undecided — must not be published as committed**
 
-- **Reviso pricing** (Free 20 PRs/mo · Pro $19 · Team $49 · Enterprise) is planning-level only. The billing backend, private-vs-public beta, and open-source-or-proprietary questions are all open. The site may state the *structure* — bring your own key, priced per org rather than per seat — because that is a settled bet; it may not state prices.
-- **Stockpot subscription pricing** is planning-level.
+- **Paid offerings.** Stockpot subscription pricing is planning-level. No prices appear on this site.
 - **No ship dates are committed** for any coming-soon product.
-- **Reviso owns its own domain** (`reviso.dev`). What lives there versus on vyttle.com is not settled.
+- **Reviso's privacy policy** (`/reviso/privacy`, rewritten October 2026 for the open-source plugin) commits to deleting feedback issues a year after filing, or sooner on request to privacy@vyttle.com. That yearly deletion is a manual job until it is automated.
 
 ## Brand Commitments
 
 - **Name and entity:** Vyttle, Vyttle LLC (Florida, February 2026). Tagline: **"Small by design."**
 - **The brand kit is binding:** `~/dev/vyttle/vyttle-docs/brand-kit/vyttle-brand-guidelines.md`, with per-product kits under `products/<product>/brand-kit/`.
 - **Amber `#D4933D` is always the accent** and always the logomark's center dot, constant across light and dark. The diamond's structural fill is theme-aware (Cool Warm Fog `#DDD8CC` on dark, Navy `#1A1E35` on light). Never place the logo on an amber or gold background; never swap the amber and neutral roles.
-- **Type family:** Outfit for display, DM Sans for body, across all products. Source Serif 4 is Sixteen to One's sanctioned exception.
+- **The marks are one family.** Every product mark shares the Vyttle diamond's construction — flat geometry, a cut circle, one accent dot — and Michael values that continuity. Wiffletree's Interlock mark comes from its own brand kit and is the exception.
+- **Type on this site** is set by DESIGN.md (Archivo, October 2026 redesign). Product brand kits keep their own faces inside their apps; Sixteen to One's name keeps its Source Serif 4 here too. The VYTTLE wordmark is outlined artwork, never live text.
 - **One accent and one logomark per product**, and accents must stay distinguishable across the lineup. Precedent: Stockpot's coral moved to a true red because it sat too close to Amber and Crema.
 - **"We" is voice, not headcount.** Vyttle is Mike Hohlios alone. No team pages, no headshots, no "our engineers," no invented staff.
 - **Zero tracking is a promise, not a preference.** `/privacy` states no cookies, analytics, ad trackers, social pixels, session tracking, or fingerprinting. Nothing may ever add analytics, pixels, embeds, or third-party runtime requests to this site.
-- **Never describe the studio as iOS-only.** Sixteen to One already ships on Google Play and Pica launches on both platforms simultaneously. The studio-level line is "intentionally small, privacy-first mobile apps and developer tools" — it covers both platforms and Reviso, which is not an app at all. Per-app copy may still name a platform when that app genuinely is single-platform (Bramble is iOS-only today).
+- **Never describe the studio as iOS-only.** Sixteen to One already ships on Google Play and Pica launches on both platforms simultaneously. The studio-level line is "small, private apps for iPhone and Android, and open-source tools for developers who work with coding agents" — it covers both platforms and the tools, which are not apps at all. Per-app copy may still name a platform when that app genuinely is single-platform (Bramble is iOS-only today).
 
 ## Evidence on Hand
 
 **Real, usable**
 
 - Three Sixteen to One product screenshots — `public/screenshots/sixteen-to-one/` (light Drip, dark Chemex, settings).
+- Wiffletree app screenshot — `public/screenshots/wiffletree/coordinator.png`, from the wiffletree-website repo.
 - Google Play badge asset — `public/badges/google-play.png`.
 - Live store listings: App Store `id6760734071`, Google Play `com.vyttle.sixteentoone`.
 - Complete logo sets for every product in `vyttle-docs` — primary, horizontal, wordmark, logomark, in dark and light, SVG and PNG. Pica additionally has 24 achievement badges.
@@ -84,7 +86,7 @@ The website's own differentiator is that it **runs the way the apps run**. No an
 **Absent — must never be fabricated**
 
 - No testimonials, reviews, star ratings, user counts, press mentions, case studies, download numbers, or revenue figures exist. Sixteen to One shipped quietly to roughly five users with no marketing push; nothing on this site may imply traction it does not have.
-- No screenshots or product imagery exist for Stockpot, Bramble, Pica, or Reviso.
+- No screenshots or product imagery exist for Stockpot, Bramble, Pica, or Reviso. They are represented by their stamps.
 - No customer logos, no "trusted by," no awards.
 
 ## Product Principles
