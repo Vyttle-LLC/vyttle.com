@@ -17,14 +17,14 @@ export default function PrivacyPage() {
         </div>
         <h1>Privacy Policy</h1>
         <p className="t-label" style={{ color: "var(--text-secondary)", marginBottom: "2.5rem" }}>
-          Last updated: February 2026
+          Last updated: October 2026
         </p>
 
         <h2>The Short Version</h2>
         <p>
-          <strong>This website doesn&apos;t collect any personal data.</strong>{" "}
-          No cookies, no analytics, no tracking. The only data we collect is
-          what you choose to send us through our support form.
+          <strong>No cookies, no analytics, no tracking.</strong>{" "}
+          We collect the details you choose to send through our support form.
+          Our host, Netlify, may also collect basic server logs as described below.
         </p>
 
         <h2>Website Data Collection</h2>
@@ -42,9 +42,10 @@ export default function PrivacyPage() {
         <p>
           When you submit a message through our support form, we collect your
           name, email address, which app you&apos;re asking about, and your
-          message. This information is stored securely, used only to respond to
-          your inquiry, never shared with third parties, and deleted after your
-          issue is resolved.
+          message. Netlify Forms processes and stores submissions, including
+          filtering them for spam. We use your information only to respond to
+          your inquiry, never sell it or share it for marketing, and delete it
+          after your issue is resolved.
         </p>
 
         <h2>App &amp; Product Privacy</h2>
@@ -64,9 +65,9 @@ export default function PrivacyPage() {
           ))}
         </ul>
         <p>
-          Products still in development don&apos;t have their own policy yet,
-          because there is nothing yet to describe. Until one ships, this
-          policy is the one that applies.
+          A product may publish its own privacy policy before it launches.
+          This policy describes the website and its support form; the product
+          policies above describe those products.
         </p>
 
         <h2>Hosting</h2>
