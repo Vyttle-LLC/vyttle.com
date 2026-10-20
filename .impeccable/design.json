@@ -1,743 +1,558 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-07-26T00:00:00.000Z",
+  "generatedAt": "2026-10-20T00:00:00.000Z",
   "title": "Design System: Vyttle",
   "extensions": {
     "colorMeta": {
-      "midnight": {
+      "ink": {
         "role": "neutral",
-        "displayName": "Midnight",
-        "canonical": "oklch(17% 0.02 265)",
-        "note": "Primary dark background and text-on-light. globals.css currently ships #08090E; #0C0E1A is canonical company-wide.",
+        "displayName": "Midnight Ink",
+        "canonical": "oklch(17% 0.025 276)",
+        "note": "Dark ground (the stockbook page), text on paper and on amber.",
         "tonalRamp": [
-          "oklch(15% 0.02 265)",
-          "oklch(26% 0.02 265)",
-          "oklch(37% 0.02 265)",
-          "oklch(48% 0.02 265)",
-          "oklch(59% 0.02 265)",
-          "oklch(70% 0.02 265)",
-          "oklch(81% 0.02 265)",
-          "oklch(92% 0.02 265)"
+          "oklch(15% 0.025 276)",
+          "oklch(26% 0.025 276)",
+          "oklch(37% 0.025 276)",
+          "oklch(48% 0.025 276)",
+          "oklch(59% 0.025 276)",
+          "oklch(70% 0.025 276)",
+          "oklch(81% 0.025 276)",
+          "oklch(92% 0.025 276)"
         ]
       },
-      "navy": {
+      "ground-dark": {
         "role": "neutral",
-        "displayName": "Navy",
-        "canonical": "oklch(25% 0.04 270)",
-        "note": "Secondary dark surface; logomark structural fill on light backgrounds.",
+        "displayName": "Stockbook",
+        "canonical": "oklch(17% 0.025 276)",
+        "note": "Dark-mode page ground. Same value as Ink.",
         "tonalRamp": [
-          "oklch(15% 0.04 270)",
-          "oklch(26% 0.04 270)",
-          "oklch(37% 0.04 270)",
-          "oklch(48% 0.04 270)",
-          "oklch(59% 0.04 270)",
-          "oklch(70% 0.04 270)",
-          "oklch(81% 0.04 270)",
-          "oklch(92% 0.04 270)"
+          "oklch(15% 0.025 276)",
+          "oklch(26% 0.025 276)",
+          "oklch(37% 0.025 276)",
+          "oklch(48% 0.025 276)",
+          "oklch(59% 0.025 276)",
+          "oklch(70% 0.025 276)",
+          "oklch(81% 0.025 276)",
+          "oklch(92% 0.025 276)"
         ]
       },
-      "slate": {
+      "ground-light": {
         "role": "neutral",
-        "displayName": "Slate",
-        "canonical": "oklch(45% 0.03 275)",
-        "note": "Secondary text in light mode; source of the 20%-alpha dark-mode border.",
+        "displayName": "Album Grey",
+        "canonical": "oklch(93% 0.008 271)",
+        "note": "Light-mode page ground, under a faint 24px quadrille grid. Never warmed toward cream.",
         "tonalRamp": [
-          "oklch(15% 0.03 275)",
-          "oklch(26% 0.03 275)",
-          "oklch(37% 0.03 275)",
-          "oklch(48% 0.03 275)",
-          "oklch(59% 0.03 275)",
-          "oklch(70% 0.03 275)",
-          "oklch(81% 0.03 275)",
-          "oklch(92% 0.03 275)"
+          "oklch(15% 0.008 271)",
+          "oklch(26% 0.008 271)",
+          "oklch(37% 0.008 271)",
+          "oklch(48% 0.008 271)",
+          "oklch(59% 0.008 271)",
+          "oklch(70% 0.008 271)",
+          "oklch(81% 0.008 271)",
+          "oklch(92% 0.008 271)"
         ]
       },
-      "silver": {
+      "paper": {
         "role": "neutral",
-        "displayName": "Silver",
-        "canonical": "oklch(73% 0.02 270)",
-        "note": "Secondary AND tertiary text on dark — both roles resolve here by design.",
+        "displayName": "Stamp Paper",
+        "canonical": "oklch(98% 0.004 106)",
+        "note": "Stamp paper and the paper panel in both themes.",
         "tonalRamp": [
-          "oklch(15% 0.02 270)",
-          "oklch(26% 0.02 270)",
-          "oklch(37% 0.02 270)",
-          "oklch(48% 0.02 270)",
-          "oklch(59% 0.02 270)",
-          "oklch(70% 0.02 270)",
-          "oklch(81% 0.02 270)",
-          "oklch(92% 0.02 270)"
+          "oklch(15% 0.004 106)",
+          "oklch(26% 0.004 106)",
+          "oklch(37% 0.004 106)",
+          "oklch(48% 0.004 106)",
+          "oklch(59% 0.004 106)",
+          "oklch(70% 0.004 106)",
+          "oklch(81% 0.004 106)",
+          "oklch(92% 0.004 106)"
         ]
       },
       "fog": {
         "role": "neutral",
         "displayName": "Fog",
-        "canonical": "oklch(89% 0.01 265)",
-        "note": "Primary text on dark; borders and dividers on light.",
+        "canonical": "oklch(91% 0.011 270)",
+        "note": "Primary text on the dark ground; text on ink plates.",
         "tonalRamp": [
-          "oklch(15% 0.01 265)",
-          "oklch(26% 0.01 265)",
-          "oklch(37% 0.01 265)",
-          "oklch(48% 0.01 265)",
-          "oklch(59% 0.01 265)",
-          "oklch(70% 0.01 265)",
-          "oklch(81% 0.01 265)",
-          "oklch(92% 0.01 265)"
+          "oklch(15% 0.011 270)",
+          "oklch(26% 0.011 270)",
+          "oklch(37% 0.011 270)",
+          "oklch(48% 0.011 270)",
+          "oklch(59% 0.011 270)",
+          "oklch(70% 0.011 270)",
+          "oklch(81% 0.011 270)",
+          "oklch(92% 0.011 270)"
         ]
       },
-      "cool-warm-fog": {
+      "silver": {
         "role": "neutral",
-        "displayName": "Cool Warm Fog",
-        "canonical": "oklch(88% 0.02 90)",
-        "note": "Logomark structural fill on dark. Deliberately warmer than Fog so the diamond reads as an object, not as text.",
+        "displayName": "Silver",
+        "canonical": "oklch(75% 0.024 272)",
+        "note": "Secondary text on the dark ground.",
         "tonalRamp": [
-          "oklch(15% 0.02 90)",
-          "oklch(26% 0.02 90)",
-          "oklch(37% 0.02 90)",
-          "oklch(48% 0.02 90)",
-          "oklch(59% 0.02 90)",
-          "oklch(70% 0.02 90)",
-          "oklch(81% 0.02 90)",
-          "oklch(92% 0.02 90)"
+          "oklch(15% 0.024 272)",
+          "oklch(26% 0.024 272)",
+          "oklch(37% 0.024 272)",
+          "oklch(48% 0.024 272)",
+          "oklch(59% 0.024 272)",
+          "oklch(70% 0.024 272)",
+          "oklch(81% 0.024 272)",
+          "oklch(92% 0.024 272)"
         ]
       },
-      "white": {
+      "slate": {
         "role": "neutral",
-        "displayName": "White",
-        "canonical": "oklch(96% 0.003 265)",
-        "note": "Primary light background. Never pure #FFFFFF.",
+        "displayName": "Slate",
+        "canonical": "oklch(50% 0.038 274)",
+        "note": "Reviso's structural mark colour. Fails AA as text on the grey ground.",
         "tonalRamp": [
-          "oklch(15% 0.003 265)",
-          "oklch(26% 0.003 265)",
-          "oklch(37% 0.003 265)",
-          "oklch(48% 0.003 265)",
-          "oklch(59% 0.003 265)",
-          "oklch(70% 0.003 265)",
-          "oklch(81% 0.003 265)",
-          "oklch(96% 0.003 265)"
+          "oklch(15% 0.038 274)",
+          "oklch(26% 0.038 274)",
+          "oklch(37% 0.038 274)",
+          "oklch(48% 0.038 274)",
+          "oklch(59% 0.038 274)",
+          "oklch(70% 0.038 274)",
+          "oklch(81% 0.038 274)",
+          "oklch(92% 0.038 274)"
+        ]
+      },
+      "slate-deep": {
+        "role": "neutral",
+        "displayName": "Slate Deep",
+        "canonical": "oklch(42% 0.036 272)",
+        "note": "Secondary text on the grey ground and on paper.",
+        "tonalRamp": [
+          "oklch(15% 0.036 272)",
+          "oklch(26% 0.036 272)",
+          "oklch(37% 0.036 272)",
+          "oklch(48% 0.036 272)",
+          "oklch(59% 0.036 272)",
+          "oklch(70% 0.036 272)",
+          "oklch(81% 0.036 272)",
+          "oklch(92% 0.036 272)"
         ]
       },
       "amber": {
         "role": "primary",
-        "displayName": "Amber",
-        "canonical": "oklch(70% 0.12 65)",
-        "note": "The studio's own voice. Constant #D4933D on the logomark dot in both themes; deepens to #B8802E for interactive use on light.",
+        "displayName": "Studio Amber",
+        "canonical": "oklch(71% 0.127 70)",
+        "note": "The studio's ink: the diamond's dot, the postmark, primary buttons, focus rings on dark surfaces. Constant across themes; never used by a product.",
         "tonalRamp": [
-          "oklch(15% 0.12 65)",
-          "oklch(26% 0.12 65)",
-          "oklch(37% 0.12 65)",
-          "oklch(48% 0.12 65)",
-          "oklch(59% 0.12 65)",
-          "oklch(70% 0.12 65)",
-          "oklch(81% 0.12 65)",
-          "oklch(92% 0.12 65)"
+          "oklch(15% 0.127 70)",
+          "oklch(26% 0.127 70)",
+          "oklch(37% 0.127 70)",
+          "oklch(48% 0.127 70)",
+          "oklch(59% 0.127 70)",
+          "oklch(70% 0.127 70)",
+          "oklch(81% 0.127 70)",
+          "oklch(92% 0.127 70)"
         ]
       },
-      "gold": {
+      "amber-text-light": {
         "role": "primary",
-        "displayName": "Gold",
-        "canonical": "oklch(87% 0.08 85)",
-        "note": "Amber's hover state in prose links. A highlight, never a fill.",
+        "displayName": "Amber Dark",
+        "canonical": "oklch(48% 0.094 72)",
+        "note": "Amber that must read on light surfaces: the focus ring on the grey page and on paper, amber text in light mode.",
         "tonalRamp": [
-          "oklch(15% 0.08 85)",
-          "oklch(26% 0.08 85)",
-          "oklch(37% 0.08 85)",
-          "oklch(48% 0.08 85)",
-          "oklch(59% 0.08 85)",
-          "oklch(70% 0.08 85)",
-          "oklch(81% 0.08 85)",
-          "oklch(92% 0.08 85)"
+          "oklch(15% 0.094 72)",
+          "oklch(26% 0.094 72)",
+          "oklch(37% 0.094 72)",
+          "oklch(48% 0.094 72)",
+          "oklch(59% 0.094 72)",
+          "oklch(70% 0.094 72)",
+          "oklch(81% 0.094 72)",
+          "oklch(92% 0.094 72)"
+        ]
+      },
+      "field-sixteen": {
+        "role": "secondary",
+        "displayName": "Sixteen to One Field",
+        "canonical": "oklch(23% 0.034 49)",
+        "note": "The deep field Sixteen to One's stamp prints on, in both themes.",
+        "tonalRamp": [
+          "oklch(15% 0.034 49)",
+          "oklch(26% 0.034 49)",
+          "oklch(37% 0.034 49)",
+          "oklch(48% 0.034 49)",
+          "oklch(59% 0.034 49)",
+          "oklch(70% 0.034 49)",
+          "oklch(81% 0.034 49)",
+          "oklch(92% 0.034 49)"
+        ]
+      },
+      "field-pica": {
+        "role": "secondary",
+        "displayName": "Pica Field",
+        "canonical": "oklch(25% 0.087 269)",
+        "note": "The deep field Pica's stamp prints on, in both themes.",
+        "tonalRamp": [
+          "oklch(15% 0.087 269)",
+          "oklch(26% 0.087 269)",
+          "oklch(37% 0.087 269)",
+          "oklch(48% 0.087 269)",
+          "oklch(59% 0.087 269)",
+          "oklch(70% 0.087 269)",
+          "oklch(81% 0.087 269)",
+          "oklch(92% 0.087 269)"
+        ]
+      },
+      "field-stockpot": {
+        "role": "secondary",
+        "displayName": "Stockpot Field",
+        "canonical": "oklch(23% 0.041 26)",
+        "note": "The deep field Stockpot's stamp prints on, in both themes.",
+        "tonalRamp": [
+          "oklch(15% 0.041 26)",
+          "oklch(26% 0.041 26)",
+          "oklch(37% 0.041 26)",
+          "oklch(48% 0.041 26)",
+          "oklch(59% 0.041 26)",
+          "oklch(70% 0.041 26)",
+          "oklch(81% 0.041 26)",
+          "oklch(92% 0.041 26)"
+        ]
+      },
+      "field-bramble": {
+        "role": "secondary",
+        "displayName": "Bramble Field",
+        "canonical": "oklch(22% 0.071 292)",
+        "note": "The deep field Bramble's stamp prints on, in both themes.",
+        "tonalRamp": [
+          "oklch(15% 0.071 292)",
+          "oklch(26% 0.071 292)",
+          "oklch(37% 0.071 292)",
+          "oklch(48% 0.071 292)",
+          "oklch(59% 0.071 292)",
+          "oklch(70% 0.071 292)",
+          "oklch(81% 0.071 292)",
+          "oklch(92% 0.071 292)"
+        ]
+      },
+      "field-wiffletree": {
+        "role": "secondary",
+        "displayName": "Wiffletree Field",
+        "canonical": "oklch(26% 0.021 234)",
+        "note": "The deep field Wiffletree's stamp prints on, in both themes.",
+        "tonalRamp": [
+          "oklch(15% 0.021 234)",
+          "oklch(26% 0.021 234)",
+          "oklch(37% 0.021 234)",
+          "oklch(48% 0.021 234)",
+          "oklch(59% 0.021 234)",
+          "oklch(70% 0.021 234)",
+          "oklch(81% 0.021 234)",
+          "oklch(92% 0.021 234)"
+        ]
+      },
+      "field-reviso": {
+        "role": "secondary",
+        "displayName": "Reviso Field",
+        "canonical": "oklch(23% 0.035 229)",
+        "note": "The deep field Reviso's stamp prints on, in both themes.",
+        "tonalRamp": [
+          "oklch(15% 0.035 229)",
+          "oklch(26% 0.035 229)",
+          "oklch(37% 0.035 229)",
+          "oklch(48% 0.035 229)",
+          "oklch(59% 0.035 229)",
+          "oklch(70% 0.035 229)",
+          "oklch(81% 0.035 229)",
+          "oklch(92% 0.035 229)"
         ]
       },
       "crema": {
-        "role": "secondary",
+        "role": "accent",
         "displayName": "Crema",
-        "canonical": "oklch(68% 0.07 65)",
-        "note": "Sixteen to One. Inherited from that product's own coffee-derived kit.",
+        "canonical": "oklch(70% 0.081 63)",
+        "note": "Sixteen to One's accent: the stamp's band, its status marker and colour-bar square. Never body text on the ground.",
         "tonalRamp": [
-          "oklch(15% 0.07 65)",
-          "oklch(26% 0.07 65)",
-          "oklch(37% 0.07 65)",
-          "oklch(48% 0.07 65)",
-          "oklch(59% 0.07 65)",
-          "oklch(70% 0.07 65)",
-          "oklch(81% 0.07 65)",
-          "oklch(92% 0.07 65)"
-        ]
-      },
-      "tomato": {
-        "role": "secondary",
-        "displayName": "Tomato",
-        "canonical": "oklch(52% 0.17 30)",
-        "note": "Stockpot. Deliberately moved off coral to a true red so it cannot be confused with Amber or Crema.",
-        "tonalRamp": [
-          "oklch(15% 0.17 30)",
-          "oklch(26% 0.17 30)",
-          "oklch(37% 0.17 30)",
-          "oklch(48% 0.17 30)",
-          "oklch(59% 0.17 30)",
-          "oklch(70% 0.17 30)",
-          "oklch(81% 0.17 30)",
-          "oklch(92% 0.17 30)"
-        ]
-      },
-      "vivid-violet": {
-        "role": "secondary",
-        "displayName": "Vivid Violet",
-        "canonical": "oklch(56% 0.25 285)",
-        "note": "Bramble. The one product accent identical in both themes.",
-        "tonalRamp": [
-          "oklch(15% 0.25 285)",
-          "oklch(26% 0.25 285)",
-          "oklch(37% 0.25 285)",
-          "oklch(48% 0.25 285)",
-          "oklch(59% 0.25 285)",
-          "oklch(70% 0.25 285)",
-          "oklch(81% 0.25 285)",
-          "oklch(92% 0.25 285)"
+          "oklch(15% 0.081 63)",
+          "oklch(26% 0.081 63)",
+          "oklch(37% 0.081 63)",
+          "oklch(48% 0.081 63)",
+          "oklch(59% 0.081 63)",
+          "oklch(70% 0.081 63)",
+          "oklch(81% 0.081 63)",
+          "oklch(92% 0.081 63)"
         ]
       },
       "cobalt": {
-        "role": "secondary",
+        "role": "accent",
         "displayName": "Cobalt",
-        "canonical": "oklch(56% 0.17 270)",
-        "note": "Pica. The 'Cobalt Blueprint' palette.",
+        "canonical": "oklch(58% 0.177 267)",
+        "note": "Pica's accent: the stamp's band, its status marker and colour-bar square. Never body text on the ground.",
         "tonalRamp": [
-          "oklch(15% 0.17 270)",
-          "oklch(26% 0.17 270)",
-          "oklch(37% 0.17 270)",
-          "oklch(48% 0.17 270)",
-          "oklch(59% 0.17 270)",
-          "oklch(70% 0.17 270)",
-          "oklch(81% 0.17 270)",
-          "oklch(92% 0.17 270)"
+          "oklch(15% 0.177 267)",
+          "oklch(26% 0.177 267)",
+          "oklch(37% 0.177 267)",
+          "oklch(48% 0.177 267)",
+          "oklch(59% 0.177 267)",
+          "oklch(70% 0.177 267)",
+          "oklch(81% 0.177 267)",
+          "oklch(92% 0.177 267)"
+        ]
+      },
+      "tomato": {
+        "role": "accent",
+        "displayName": "Tomato",
+        "canonical": "oklch(54% 0.174 30)",
+        "note": "Stockpot's accent: the stamp's band, its status marker and colour-bar square. Never body text on the ground.",
+        "tonalRamp": [
+          "oklch(15% 0.174 30)",
+          "oklch(26% 0.174 30)",
+          "oklch(37% 0.174 30)",
+          "oklch(48% 0.174 30)",
+          "oklch(59% 0.174 30)",
+          "oklch(70% 0.174 30)",
+          "oklch(81% 0.174 30)",
+          "oklch(92% 0.174 30)"
+        ]
+      },
+      "vivid-violet": {
+        "role": "accent",
+        "displayName": "Vivid Violet",
+        "canonical": "oklch(58% 0.247 288)",
+        "note": "Bramble's accent: the stamp's band, its status marker and colour-bar square. Never body text on the ground.",
+        "tonalRamp": [
+          "oklch(15% 0.247 288)",
+          "oklch(26% 0.247 288)",
+          "oklch(37% 0.247 288)",
+          "oklch(48% 0.247 288)",
+          "oklch(59% 0.247 288)",
+          "oklch(70% 0.247 288)",
+          "oklch(81% 0.247 288)",
+          "oklch(92% 0.247 288)"
+        ]
+      },
+      "sea-glass": {
+        "role": "accent",
+        "displayName": "Sea Glass",
+        "canonical": "oklch(77% 0.061 189)",
+        "note": "Wiffletree's accent: the stamp's band, its status marker and colour-bar square. Never body text on the ground.",
+        "tonalRamp": [
+          "oklch(15% 0.061 189)",
+          "oklch(26% 0.061 189)",
+          "oklch(37% 0.061 189)",
+          "oklch(48% 0.061 189)",
+          "oklch(59% 0.061 189)",
+          "oklch(70% 0.061 189)",
+          "oklch(81% 0.061 189)",
+          "oklch(92% 0.061 189)"
         ]
       },
       "electric-cyan": {
-        "role": "secondary",
+        "role": "accent",
         "displayName": "Electric Cyan",
-        "canonical": "oklch(78% 0.13 200)",
-        "note": "Reviso. Falls back to Cyan Deep #06B6D4 on light backgrounds; Cyan Dark #0891B2 for text-on-white at WCAG AA.",
+        "canonical": "oklch(80% 0.134 212)",
+        "note": "Reviso's accent: the stamp's band, its status marker and colour-bar square. Never body text on the ground.",
         "tonalRamp": [
-          "oklch(15% 0.13 200)",
-          "oklch(26% 0.13 200)",
-          "oklch(37% 0.13 200)",
-          "oklch(48% 0.13 200)",
-          "oklch(59% 0.13 200)",
-          "oklch(70% 0.13 200)",
-          "oklch(81% 0.13 200)",
-          "oklch(92% 0.13 200)"
-        ]
-      },
-      "amber-dark": {
-        "role": "primary",
-        "displayName": "Amber Dark",
-        "canonical": "#8F6018",
-        "tonalRamp": [
-          "#2A1C07",
-          "#402A0B",
-          "#563810",
-          "#6B4614",
-          "#8F6018",
-          "#B8802E",
-          "#D4933D",
-          "#E8BC7E"
-        ]
-      },
-      "medium-roast": {
-        "role": "secondary",
-        "displayName": "Medium Roast",
-        "canonical": "#5C3D2E",
-        "tonalRamp": [
-          "#1C1008",
-          "#2A1A0E",
-          "#3D291C",
-          "#5C3D2E",
-          "#7D5642",
-          "#A67558",
-          "#C4956A",
-          "#DFC5A8"
-        ]
-      },
-      "tomato-deep": {
-        "role": "secondary",
-        "displayName": "Tomato Deep",
-        "canonical": "#8B2920",
-        "tonalRamp": [
-          "#2B0D09",
-          "#4A1610",
-          "#6B1F18",
-          "#8B2920",
-          "#C0392B",
-          "#D4756A",
-          "#E5A39B",
-          "#F2D1CC"
-        ]
-      },
-      "violet-light": {
-        "role": "secondary",
-        "displayName": "Violet Light",
-        "canonical": "#9D7AFF",
-        "tonalRamp": [
-          "#160A33",
-          "#24105C",
-          "#3A1A96",
-          "#5426D6",
-          "#7C4DFF",
-          "#9D7AFF",
-          "#C3ADFF",
-          "#E4DAFF"
-        ]
-      },
-      "violet-deep": {
-        "role": "secondary",
-        "displayName": "Violet Deep",
-        "canonical": "#6C37FF",
-        "tonalRamp": [
-          "#160A33",
-          "#24105C",
-          "#3A1A96",
-          "#6C37FF",
-          "#7C4DFF",
-          "#9D7AFF",
-          "#C3ADFF",
-          "#E4DAFF"
-        ]
-      },
-      "cobalt-dark": {
-        "role": "secondary",
-        "displayName": "Cobalt Dark",
-        "canonical": "#315BDC",
-        "tonalRamp": [
-          "#0A0E1C",
-          "#111B4A",
-          "#1B2E7C",
-          "#315BDC",
-          "#4A6FE0",
-          "#8AA4F0",
-          "#B6C6F7",
-          "#DFE7FC"
-        ]
-      },
-      "cyan-ink": {
-        "role": "secondary",
-        "displayName": "Cyan Ink",
-        "canonical": "#155E75",
-        "tonalRamp": [
-          "#04222B",
-          "#083D4D",
-          "#155E75",
-          "#0E7490",
-          "#06B6D4",
-          "#22D3EE",
-          "#A5F3FC",
-          "#CFFAFE"
+          "oklch(15% 0.134 212)",
+          "oklch(26% 0.134 212)",
+          "oklch(37% 0.134 212)",
+          "oklch(48% 0.134 212)",
+          "oklch(59% 0.134 212)",
+          "oklch(70% 0.134 212)",
+          "oklch(81% 0.134 212)",
+          "oklch(92% 0.134 212)"
         ]
       }
     },
     "typographyMeta": {
       "display": {
         "displayName": "Display",
-        "purpose": "Source Serif 4 Light. Exactly two uses site-wide: the homepage promise and Sixteen to One's name."
-      },
-      "wordmark": {
-        "displayName": "Wordmark",
-        "purpose": "Outfit 600 uppercase at +6px tracking. The VYTTLE lockup in nav and footer."
+        "purpose": "The hero line only (\"Small by design.\"). Archivo at wdth 125."
       },
       "headline": {
         "displayName": "Headline",
-        "purpose": "Outfit 600. Page titles; app pages set it uppercase at +6px in the product accent."
+        "purpose": "Section and page headings, sentence case. Archivo at wdth 118."
       },
       "title": {
         "displayName": "Title",
-        "purpose": "Outfit 500. Section headings within a page."
+        "purpose": "Product names in catalogue rows, taglines, principle titles. Archivo at wdth 112."
       },
       "body": {
         "displayName": "Body",
-        "purpose": "DM Sans. All reading copy at line-height 1.8; taglines and support copy drop to 300."
+        "purpose": "Reading text, 17px, measure at most 68ch. Archivo at wdth 100."
       },
-      "field": {
-        "displayName": "Field",
-        "purpose": "DM Sans Light at 16px for form controls. 16px is a floor, not a preference — iOS Safari zooms the viewport when focusing an input below it."
+      "stamp-label": {
+        "displayName": "Stamp Label",
+        "purpose": "Printed matter only: text on a stamp, issue lines, sheet margins, form labels. Not an eyebrow over every section."
       },
-      "micro": {
-        "displayName": "Micro",
-        "purpose": "DM Sans 400 at 10px uppercase, +1.5px to +2px. Status badges and type chips. The smallest tier, and the one where contrast must be measured rather than assumed — every contrast failure this system has had was at this size."
-      },
-      "label": {
-        "displayName": "Label",
-        "purpose": "DM Sans uppercase, 10-11px, +2px to +4px tracking. The most-used voice on the site."
+      "code": {
+        "displayName": "Code",
+        "purpose": "Real commands only: install lines and slash commands."
       }
     },
     "shadows": [
       {
-        "name": "accent-glow",
-        "value": "0 0 40px color-mix(in srgb, var(--accent) 8%, transparent)",
-        "purpose": "Bento cell hover only. Emitted, not cast — zero offset."
+        "name": "sheet",
+        "value": "drop-shadow(0 1px 1px rgb(0 0 0 / 0.45)) drop-shadow(0 18px 30px rgb(0 0 0 / 0.45))",
+        "purpose": "A stamp or sheet at rest on the dark page. A filter, so it follows the perforations. Light mode: drop-shadow(0 1px 1px rgb(12 14 26 / 0.18)) drop-shadow(0 14px 22px rgb(12 14 26 / 0.16))."
       },
       {
-        "name": "mark-halo",
-        "value": "drop-shadow(0 0 20px color-mix(in srgb, var(--accent) 25%, transparent))",
-        "purpose": "App-page hero logomarks at rest. Makes the mark read as lit rather than printed."
+        "name": "lift",
+        "value": "drop-shadow(0 2px 2px rgb(0 0 0 / 0.4)) drop-shadow(0 22px 28px rgb(0 0 0 / 0.55))",
+        "purpose": "A stamp picked up (hover or focus). Light mode: drop-shadow(0 2px 2px rgb(12 14 26 / 0.18)) drop-shadow(0 20px 26px rgb(12 14 26 / 0.24))."
       },
       {
-        "name": "menu-shadow",
-        "value": "0 8px 32px rgba(0,0,0,0.3)",
-        "purpose": "The nav Products dropdown. The single real drop shadow in the system."
+        "name": "print",
+        "value": "0 1px 2px rgb(0 0 0 / 0.25), 0 16px 40px rgb(0 0 0 / 0.3)",
+        "purpose": "Real photographic material only: the mounted Wiffletree screenshot and the Sixteen to One screens."
       }
     ],
     "motion": [
       {
-        "name": "state",
+        "name": "ease-out-expo",
+        "value": "cubic-bezier(0.16, 1, 0.3, 1)",
+        "purpose": "Every authored transition: stamp lift, button press, arrow step, fade-in, postmark landing."
+      },
+      {
+        "name": "stamp-lift",
+        "value": "320ms",
+        "purpose": "A stamp lifting 6px with a -1.4deg turn when picked up."
+      },
+      {
+        "name": "state-change",
         "value": "200ms ease",
-        "purpose": "Every state change: hover, tint, border, opacity."
+        "purpose": "Colour and border changes on buttons and links."
       },
       {
-        "name": "theme",
-        "value": "400ms ease",
-        "purpose": "Colour transitions when data-theme flips."
-      },
-      {
-        "name": "reveal",
-        "value": "600ms ease",
-        "purpose": "Scroll-triggered section reveal. Carries a <noscript> fallback."
-      },
-      {
-        "name": "float",
-        "value": "float 6s ease-in-out infinite",
-        "purpose": "Hero mark ambient drift. Must sit on its own element — sharing one with .fade-in silently cancelled it."
-      },
-      {
-        "name": "pulse-dot",
-        "value": "pulse-dot 2s ease-in-out infinite",
-        "purpose": "Coming Soon dot. Rests LIT (opacity 1) under reduced motion, not dim."
-      },
-      {
-        "name": "scroll-hint",
-        "value": "scroll-hint 2s ease-in-out infinite",
-        "purpose": "Homepage scroll cue. Y-axis only; centring is by flow, never transform."
-      },
-      {
-        "name": "aurora",
-        "value": "aurora-seg-1..8 5-10s ease-in-out infinite",
-        "purpose": "Atmosphere bands. Gated in ConicOrb, not CSS, because each band animation is an inline style."
+        "name": "postmark-land",
+        "value": "700ms, 650ms delay, once",
+        "purpose": "The site's one authored moment: the postmark lands on the hero sheet. Static under prefers-reduced-motion."
       }
     ],
     "breakpoints": [
       {
-        "name": "sm",
-        "value": "640px"
+        "name": "sheet-3-col",
+        "value": "560px"
       },
       {
         "name": "md",
         "value": "768px"
       },
       {
-        "name": "container",
+        "name": "lg",
+        "value": "1024px"
+      },
+      {
+        "name": "gutter-wide",
         "value": "1200px"
       }
-    ],
-    "accentTextTier": {
-      "purpose": "Each product accent as a word. The fill value fails contrast as text in at least one theme for every product, so this is the normal path, not an edge case. Values come from each product brand kit.",
-      "measuredAgainst": "Midnight #0C0E1A on dark, and the app-page hero (6% accent over White #F4F5F7) on light.",
-      "tiers": [
-        {
-          "token": "--accent-text-crema",
-          "dark": "#C4956A",
-          "light": "#5C3D2E",
-          "lightRatio": 8.48,
-          "kitName": "Crema / Medium Roast",
-          "status": "matches kit"
-        },
-        {
-          "token": "--accent-text-stockpot",
-          "dark": "#D4756A",
-          "light": "#C0392B",
-          "lightRatio": 4.59,
-          "kitName": "Tomato Light / Tomato Red",
-          "status": "matches kit"
-        },
-        {
-          "token": "--accent-text-bramble",
-          "dark": "#9D7AFF",
-          "light": "#6C37FF",
-          "lightRatio": 4.91,
-          "kitName": "Violet Light / Violet Deep",
-          "status": "matches kit"
-        },
-        {
-          "token": "--accent-text-pica",
-          "dark": "#8AA4F0",
-          "light": "#315BDC",
-          "lightRatio": 4.9,
-          "kitName": "Cobalt Light / Cobalt Dark",
-          "status": "matches kit"
-        },
-        {
-          "token": "--accent-text-reviso",
-          "dark": "#22D3EE",
-          "light": "#155E75",
-          "lightRatio": 6.32,
-          "kitName": "Cyan / Cyan Ink",
-          "status": "matches kit"
-        }
-      ],
-      "notAdopted": [
-        {
-          "value": "#0891B2",
-          "kitName": "Cyan Dark",
-          "reason": "Large accent text (3:1). Reaches 3.20:1 on the Reviso hero — 8% headroom guarded by invariants nothing enforces. See The One Value Rule."
-        },
-        {
-          "value": "#8B2920",
-          "kitName": "Tomato Deep",
-          "reason": "Hover and pressed on light. Available if the app pages ever gain a hover state on accent titles; they have none today."
-        }
-      ]
-    }
+    ]
   },
   "components": [
+    {
+      "name": "Stamp",
+      "kind": "custom",
+      "refersTo": "stamp",
+      "description": "A product printed as a stamp: perforated paper, the product's deep field, issuer line, mark, name, platforms and the accent band. Lifts and tilts when it is a link and is picked up.",
+      "html": "<a class=\"ds-stamp\" href=\"#\" style=\"--accent:#86C1BC;--field:#1A262D\"><span class=\"ds-stamp__field\"><span class=\"ds-stamp__issuer\"><span>Vyttle</span><span class=\"ds-stamp__number\">05</span></span><span class=\"ds-stamp__mark\"><svg viewBox=\"0 0 444 214\" width=\"96\"><path fill=\"#F3F2ED\" d=\"M18 0 H79 Q97 0 107 16 L190 146 Q193 150 190 155 L149 201 Q128 223 107 203 L3 29 Q0 10 7 2 Q11 0 18 0 Z M277 106 L324 18 Q334 0 355 0 H425 Q453 0 439 26 L326 191 Z M212 147 H265 L302 201 Q310 210 299 210 H269 Q248 210 239 192 Z\"/><path fill=\"#D63C35\" d=\"M176 74 H207 Q220 74 229 88 L265 143 Q268 147 261 147 H212 L169 83 Q165 74 176 74 Z\"/></svg></span><span><span class=\"ds-stamp__name\">Wiffletree</span><span class=\"ds-stamp__meta\">macOS</span></span><span class=\"ds-stamp__band\"></span></span></a>",
+      "css": ".ds-stamp { --r: 4.5px; container-type: inline-size; position: relative; display: block; width: 200px; padding: calc(var(--r) * 2.7); background: radial-gradient(var(--r), #0000 96%, #F7F7F4) round calc(var(--r) * -1.5) calc(var(--r) * -1.5) / calc(var(--r) * 3) calc(var(--r) * 3), linear-gradient(#F7F7F4 0 0) no-repeat 50% / calc(100% - var(--r) * 3) calc(100% - var(--r) * 3); color: #F7F7F4; text-decoration: none; font-family: var(--font-archivo), Archivo, Arial, sans-serif; filter: drop-shadow(0 1px 1px rgb(0 0 0 / 0.45)) drop-shadow(0 18px 30px rgb(0 0 0 / 0.45)); transition: transform 320ms cubic-bezier(0.16, 1, 0.3, 1), filter 320ms cubic-bezier(0.16, 1, 0.3, 1); } .ds-stamp:hover, .ds-stamp:focus-visible { transform: translateY(-6px) rotate(-1.4deg); filter: drop-shadow(0 2px 2px rgb(0 0 0 / 0.4)) drop-shadow(0 22px 28px rgb(0 0 0 / 0.55)); } .ds-stamp:focus-visible { outline: 2px solid #D4933D; outline-offset: 4px; } .ds-stamp__field { display: grid; grid-template-rows: auto 1fr auto; aspect-ratio: 4 / 5; overflow: hidden; padding: 7cqw 7cqw 0; background: var(--field); } .ds-stamp__issuer { display: flex; justify-content: space-between; font-variation-settings: 'wdth' 112; font-weight: 640; font-size: 6cqw; letter-spacing: 0.16em; text-transform: uppercase; color: rgb(247 247 244 / 0.8); } .ds-stamp__number { color: color-mix(in srgb, var(--accent) 62%, #F7F7F4); } .ds-stamp__mark { display: grid; place-items: center; } .ds-stamp__name { display: block; font-variation-settings: 'wdth' 112; font-weight: 720; font-size: 8.6cqw; line-height: 1.02; } .ds-stamp__meta { display: block; margin-top: 2.4cqw; font-size: 5.4cqw; letter-spacing: 0.04em; color: rgb(247 247 244 / 0.72); } .ds-stamp__band { display: block; height: 5.5cqw; margin: 6cqw -7cqw 0; background: var(--accent); }"
+    },
     {
       "name": "Primary Button",
       "kind": "button",
       "refersTo": "button-primary",
-      "description": "Solid amber with Midnight text. Used only for the support form's submit — the site's single primary action. Dark-on-accent is required: white on amber is 2.6:1 and fails WCAG AA.",
-      "html": "<button class=\"ds-btn-primary\">Send Message</button>",
-      "css": ".ds-btn-primary { font-family: var(--font-dm-sans), 'DM Sans', sans-serif; font-size: 14px; font-weight: 500; letter-spacing: 1px; background: var(--amber, #D4933D); color: var(--midnight, #0C0E1A); padding: 14px 32px; border: none; border-radius: 10px; cursor: pointer; transition: opacity 0.2s ease, background 0.2s ease; } .ds-btn-primary:hover { background: var(--gold, #F0D48A); } .ds-btn-primary:focus-visible { outline: 2px solid var(--amber, #D4933D); outline-offset: 3px; } .ds-btn-primary:disabled { opacity: 0.5; cursor: default; }"
+      "description": "Studio amber with ink text, 6px radius, no pill. The page's main action; amber is the studio's ink, so a product never recolours it.",
+      "html": "<a class=\"ds-btn ds-btn--primary\" href=\"#\">See the apps</a>",
+      "css": ".ds-btn { display: inline-flex; align-items: center; justify-content: center; gap: 10px; min-height: 48px; padding: 0 22px; border-radius: 6px; font-family: var(--font-archivo), Archivo, Arial, sans-serif; font-variation-settings: 'wdth' 108; font-weight: 640; font-size: 15px; letter-spacing: 0.01em; text-decoration: none; white-space: nowrap; cursor: pointer; transition: background-color 200ms ease, border-color 200ms ease, transform 200ms cubic-bezier(0.16, 1, 0.3, 1); } .ds-btn:active { transform: translateY(1px); } .ds-btn:focus-visible { outline: 2px solid var(--focus-ring, #D4933D); outline-offset: 2px; } .ds-btn--primary { background: #D4933D; color: #0C0E1A; border: 1px solid #D4933D; } .ds-btn--primary:hover { background: #E3A552; border-color: #E3A552; }"
     },
     {
-      "name": "Coming Soon Badge",
-      "kind": "chip",
-      "refersTo": "badge-coming-soon",
-      "description": "Outlined pill with a pulsing accent dot. Marks a product that is real but not yet shipped.",
-      "html": "<div class=\"ds-badge-soon\"><span class=\"ds-badge-soon-dot\"></span>Coming Soon</div>",
-      "css": ".ds-badge-soon { display: inline-flex; align-items: center; gap: 6px; font-family: var(--font-dm-sans), 'DM Sans', sans-serif; font-size: 10px; font-weight: 400; letter-spacing: 2px; text-transform: uppercase; color: var(--badge-bramble, #9D7AFF); border: 1px solid var(--badge-bramble, #9D7AFF); border-radius: 9999px; padding: 6px 16px; } .ds-badge-soon-dot { width: 5px; height: 5px; border-radius: 50%; background: currentColor; animation: ds-pulse-dot 2s ease-in-out infinite; } @keyframes ds-pulse-dot { 0%, 100% { opacity: 0.4; } 50% { opacity: 1; } } @media (prefers-reduced-motion: reduce) { .ds-badge-soon-dot { animation: none; opacity: 1; } }"
-    },
-    {
-      "name": "Available Now Badge",
-      "kind": "chip",
-      "refersTo": "badge-available",
-      "description": "Filled pill, inverted from Coming Soon. Text sets in the product's own dark background color — the inversion is what marks a shipped product.",
-      "html": "<div class=\"ds-badge-available\">Available Now</div>",
-      "css": ".ds-badge-available { display: inline-flex; align-items: center; font-family: var(--font-dm-sans), 'DM Sans', sans-serif; font-size: 10px; font-weight: 400; letter-spacing: 2px; text-transform: uppercase; background: var(--crema, #C4956A); color: #1C1008; border-radius: 9999px; padding: 6px 16px; }"
-    },
-    {
-      "name": "Bento Cell",
-      "kind": "card",
-      "refersTo": "bento-cell",
-      "description": "The homepage product cell. Barely present at rest, roughly 3x more present on hover — the most characteristic interaction in the system.",
-      "html": "<a class=\"ds-bento\" href=\"#\"><span class=\"ds-bento-type\">Mobile</span><div class=\"ds-bento-mark\"><svg width=\"40\" height=\"46\" viewBox=\"0 0 56 64\" fill=\"none\" aria-hidden=\"true\"><path d=\"M28,0 L56,32 L28,64 L0,32 Z\" fill=\"var(--mark-neutral, #DDD8CC)\"/><circle cx=\"28\" cy=\"32\" r=\"10\" fill=\"var(--bg-primary, #0C0E1A)\"/><circle cx=\"28\" cy=\"32\" r=\"7\" fill=\"#D4933D\"/></svg></div><div class=\"ds-bento-name\">Bramble</div><p class=\"ds-bento-tagline\">Contacts, untangled.</p></a>",
-      "css": ".ds-bento { position: relative; display: flex; flex-direction: column; gap: 16px; padding: 32px; border-radius: 12px; text-decoration: none; overflow: hidden; background: color-mix(in srgb, #7C4DFF 4%, var(--surface-glass, rgba(12,14,26,0.92))); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); border: 1px solid color-mix(in srgb, #7C4DFF 10%, transparent); transition: transform 0.2s ease, background 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease; } .ds-bento:hover { transform: scale(1.02); background: color-mix(in srgb, #7C4DFF 12%, var(--surface-glass, rgba(12,14,26,0.92))); border-color: color-mix(in srgb, #7C4DFF 25%, transparent); box-shadow: 0 0 40px color-mix(in srgb, #7C4DFF 8%, transparent); } .ds-bento:focus-visible { outline: 2px solid #7C4DFF; outline-offset: 3px; } .ds-bento-type { position: absolute; top: 24px; right: 24px; font-family: var(--font-dm-sans), 'DM Sans', sans-serif; font-size: 10px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--text-tertiary, #A8ADBD); border: 1px solid color-mix(in srgb, #7C4DFF 25%, transparent); border-radius: 12px; padding: 3px 8px; } .ds-bento-mark { width: 48px; height: 48px; display: flex; align-items: center; justify-content: center; } .ds-bento-name { font-family: var(--font-dm-sans), 'DM Sans', sans-serif; font-size: 16px; font-weight: 500; color: var(--text-primary, #DDE0E8); } .ds-bento-tagline { margin: 0; font-family: var(--font-dm-sans), 'DM Sans', sans-serif; font-size: 14px; line-height: 1.6; color: var(--text-secondary, #A8ADBD); } @media (prefers-reduced-motion: reduce) { .ds-bento { transition: none; } .ds-bento:hover { transform: none; } }"
-    },
-    {
-      "name": "Input Field",
-      "kind": "input",
-      "refersTo": "input-field",
-      "description": "Support form text field. Stacked label above a translucent, hairline-bordered field. Never sets below 16px — iOS Safari zooms the viewport on focus below that.",
-      "html": "<div class=\"ds-field\"><label class=\"ds-field-label\" for=\"ds-email\">Email</label><input class=\"ds-field-input\" id=\"ds-email\" type=\"email\" placeholder=\"you@example.com\"></div>",
-      "css": ".ds-field { display: flex; flex-direction: column; gap: 6px; } .ds-field-label { font-family: var(--font-dm-sans), 'DM Sans', sans-serif; font-size: 12px; font-weight: 400; letter-spacing: 1px; color: var(--text-secondary, #A8ADBD); } .ds-field-input { font-family: var(--font-dm-sans), 'DM Sans', sans-serif; font-weight: 300; font-size: 16px; padding: 12px 16px; border-radius: 10px; border: 1px solid var(--border, rgba(91,97,120,0.2)); background: var(--bg-card, rgba(26,30,53,0.6)); color: var(--text-primary, #DDE0E8); width: 100%; transition: border-color 0.2s ease, box-shadow 0.2s ease; } .ds-field-input::placeholder { color: var(--text-secondary, #A8ADBD); opacity: 0.6; } .ds-field-input:focus-visible { outline: none; border-color: var(--amber, #D4933D); box-shadow: 0 0 0 3px color-mix(in srgb, #D4933D 20%, transparent); }"
-    },
-    {
-      "name": "Navigation Bar",
-      "kind": "nav",
-      "refersTo": "nav",
-      "description": "Fixed 64px glass bar. The wordmark's +6px tracking is the single most recognizable typographic detail in the identity.",
-      "html": "<nav class=\"ds-nav\"><a class=\"ds-nav-brand\" href=\"#\"><svg width=\"20\" height=\"23\" viewBox=\"0 0 56 64\" fill=\"none\" aria-hidden=\"true\"><path d=\"M28,0 L56,32 L28,64 L0,32 Z\" fill=\"var(--mark-neutral, #DDD8CC)\"/><circle cx=\"28\" cy=\"32\" r=\"10\" fill=\"var(--bg-primary, #0C0E1A)\"/><circle cx=\"28\" cy=\"32\" r=\"7\" fill=\"#D4933D\"/></svg><span class=\"ds-nav-wordmark\">VYTTLE</span></a><ul class=\"ds-nav-links\"><li><a class=\"ds-nav-link\" href=\"#\">Products</a></li><li><a class=\"ds-nav-link\" href=\"#\">Support</a></li></ul></nav>",
-      "css": ".ds-nav { display: flex; align-items: center; justify-content: space-between; height: 64px; padding: 0 24px; background: var(--nav-bg, rgba(12,14,26,0.85)); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); border-bottom: 1px solid var(--border, rgba(91,97,120,0.2)); } .ds-nav-brand { display: flex; align-items: center; gap: 12px; text-decoration: none; } .ds-nav-wordmark { font-family: var(--font-outfit), 'Outfit', sans-serif; font-size: 16px; font-weight: 600; letter-spacing: 6px; text-transform: uppercase; color: var(--text-primary, #DDE0E8); } .ds-nav-links { display: flex; align-items: center; gap: 24px; list-style: none; margin: 0; padding: 0; } .ds-nav-link { font-family: var(--font-dm-sans), 'DM Sans', sans-serif; font-size: 14px; font-weight: 400; letter-spacing: 0.5px; color: var(--text-secondary, #A8ADBD); text-decoration: none; transition: color 0.2s ease; } .ds-nav-link:hover { color: var(--amber, #D4933D); } .ds-nav-link:focus-visible { outline: 2px solid var(--amber, #D4933D); outline-offset: 4px; border-radius: 2px; }"
-    },
-    {
-      "name": "Mobile Menu",
-      "kind": "nav",
-      "refersTo": "nav",
-      "description": "Below md, the nav collapses to a hamburger that opens a full-viewport glass overlay. A disclosure (aria-expanded/aria-controls), not a modal — the toggle lives outside it in the bar. Products flatten to accent-dot rows; body scroll locks; Escape closes and restores focus; opening fades+slides 200ms, reduced-motion snaps.",
-      "html": "<div class=\"ds-mm\" role=\"region\" aria-label=\"Menu\"><nav class=\"ds-mm-nav\" aria-label=\"Mobile\"><span class=\"ds-mm-eyebrow\">Products</span><a class=\"ds-mm-row\" href=\"#\"><span class=\"ds-mm-dot\" style=\"background:#C4956A\"></span>Sixteen to One</a><a class=\"ds-mm-row\" href=\"#\"><span class=\"ds-mm-dot\" style=\"background:#C0392B\"></span>Stockpot</a><a class=\"ds-mm-row\" href=\"#\"><span class=\"ds-mm-dot\" style=\"background:#7C4DFF\"></span>Bramble</a><div class=\"ds-mm-divider\"></div><a class=\"ds-mm-row ds-mm-support\" href=\"#\">Support</a></nav></div>",
-      "css": ".ds-mm { background: var(--surface-glass, rgba(12,14,26,0.92)); backdrop-filter: blur(24px); -webkit-backdrop-filter: blur(24px); padding: 32px 24px; } .ds-mm-nav { display: flex; flex-direction: column; } .ds-mm-eyebrow { font-family: var(--font-dm-sans), 'DM Sans', sans-serif; font-size: 11px; font-weight: 400; letter-spacing: 4px; text-transform: uppercase; color: var(--text-tertiary, #A8ADBD); padding: 0 8px 8px; } .ds-mm-row { display: flex; align-items: center; gap: 12px; min-height: 48px; padding: 0 8px; border-radius: 8px; font-family: var(--font-dm-sans), 'DM Sans', sans-serif; font-size: 16px; color: var(--text-primary, #DDE0E8); text-decoration: none; transition: background 0.2s ease, color 0.2s ease; } .ds-mm-row:hover { background: color-mix(in srgb, #7C4DFF 10%, transparent); } .ds-mm-support:hover { background: transparent; color: var(--amber, #D4933D); } .ds-mm-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; } .ds-mm-divider { border-top: 1px solid var(--border, rgba(91,97,120,0.2)); margin: 12px 8px; }"
-    },
-    {
-      "name": "Theme Toggle",
+      "name": "Secondary Button",
       "kind": "button",
-      "refersTo": "theme-toggle",
-      "description": "36px circular icon button. Both themes are first-class, so this is a peer control, not a preference buried in a menu.",
-      "html": "<button class=\"ds-theme-toggle\" aria-label=\"Switch to light mode\"><svg width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\" aria-hidden=\"true\"><circle cx=\"12\" cy=\"12\" r=\"5\"/><path d=\"M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42\"/></svg></button>",
-      "css": ".ds-theme-toggle { display: flex; align-items: center; justify-content: center; width: 36px; height: 36px; border-radius: 9999px; border: 1px solid var(--border, rgba(91,97,120,0.2)); background: transparent; color: var(--text-secondary, #A8ADBD); cursor: pointer; transition: color 0.2s ease, border-color 0.2s ease; } .ds-theme-toggle:hover { color: var(--amber, #D4933D); border-color: color-mix(in srgb, #D4933D 40%, transparent); } .ds-theme-toggle:focus-visible { outline: 2px solid var(--amber, #D4933D); outline-offset: 3px; }"
+      "refersTo": "button-secondary",
+      "description": "Hairline outline in the ground's text colour. Sits beside a primary button; the border firms up on hover.",
+      "html": "<a class=\"ds-btn-secondary\" href=\"#\">Open-source tools</a>",
+      "css": ".ds-btn-secondary { display: inline-flex; align-items: center; min-height: 48px; padding: 0 22px; border-radius: 6px; font-family: var(--font-archivo), Archivo, Arial, sans-serif; font-variation-settings: 'wdth' 108; font-weight: 640; font-size: 15px; text-decoration: none; background: transparent; color: var(--text-primary, #DDE0E8); border: 1px solid var(--border-strong, rgba(168, 173, 189, 0.34)); transition: border-color 200ms ease; } .ds-btn-secondary:hover { border-color: var(--text-primary, #DDE0E8); } .ds-btn-secondary:focus-visible { outline: 2px solid var(--focus-ring, #D4933D); outline-offset: 2px; }"
     },
     {
-      "name": "Section Eyebrow",
+      "name": "Arrow Link",
       "kind": "custom",
-      "refersTo": "label",
-      "description": "The wide-tracked uppercase micro-label that opens a section. The most-used typographic voice on the site.",
-      "html": "<div class=\"ds-eyebrow\">Support</div>",
-      "css": ".ds-eyebrow { font-family: var(--font-dm-sans), 'DM Sans', sans-serif; font-size: 11px; font-weight: 300; letter-spacing: 4px; text-transform: uppercase; color: var(--text-tertiary, #A8ADBD); }"
+      "refersTo": "link-arrow",
+      "description": "Text link with a hairline underline that turns amber and an arrow that steps forward on hover. Catalogue rows and product particulars.",
+      "html": "<a class=\"ds-link-arrow\" href=\"#\">More about Reviso <span aria-hidden=\"true\">&rarr;</span></a>",
+      "css": ".ds-link-arrow { display: inline-flex; align-items: center; gap: 8px; min-height: 44px; font-family: var(--font-archivo), Archivo, Arial, sans-serif; font-variation-settings: 'wdth' 108; font-weight: 620; color: var(--text-primary, #DDE0E8); text-decoration: underline; text-decoration-color: var(--border-strong, rgba(168, 173, 189, 0.34)); text-underline-offset: 5px; transition: text-decoration-color 200ms ease; } .ds-link-arrow:hover { text-decoration-color: #D4933D; } .ds-link-arrow span { transition: transform 200ms cubic-bezier(0.16, 1, 0.3, 1); } .ds-link-arrow:hover span { transform: translateX(3px); } .ds-link-arrow:focus-visible { outline: 2px solid var(--focus-ring, #D4933D); outline-offset: 2px; }"
     },
     {
-      "name": "Tap Target",
-      "kind": "custom",
-      "refersTo": "tap-target",
-      "description": "Minimum comfortable hit area for standalone controls and nav links. Grows the box around the glyph so type is untouched.",
-      "html": "<a href=\"#\" class=\"ds-tap-target\">Privacy</a>",
-      "css": ".ds-tap-target { display: inline-flex; align-items: center; justify-content: center; min-height: 44px; min-width: 44px; font-family: var(--font-dm-sans), \"DM Sans\", sans-serif; font-size: 12px; font-weight: 300; letter-spacing: 1px; color: var(--text-secondary); text-decoration: none; transition: color 200ms ease; } .ds-tap-target:hover { color: var(--amber-text); } .ds-tap-target:focus-visible { outline: 2px solid var(--amber-accent); outline-offset: 2px; }"
+      "name": "Issue Line",
+      "kind": "chip",
+      "refersTo": "stamp-label",
+      "description": "The catalogue line for an issue: a square accent marker, the catalogue number, then status and platforms in printed label type. Status is printed text, never a glowing badge.",
+      "html": "<p class=\"ds-issue\"><span class=\"ds-issue__marker\"></span><span class=\"ds-issue__no\">No. 02</span> &nbsp;&middot; Coming soon &nbsp;&middot; iPhone&nbsp;&amp;&nbsp;Android</p>",
+      "css": ".ds-issue { font-family: var(--font-archivo), Archivo, Arial, sans-serif; font-variation-settings: 'wdth' 112; font-weight: 620; font-size: 11px; line-height: 1.9; letter-spacing: 0.14em; text-transform: uppercase; color: var(--text-secondary, #A8ADBD); } .ds-issue__marker { display: inline-block; width: 8px; height: 8px; margin-right: 8px; background: #4A6FE0; } .ds-issue__no { color: var(--text-primary, #DDE0E8); }"
     },
     {
-      "name": "Accent Row",
+      "name": "Command Box",
+      "kind": "input",
+      "refersTo": "code",
+      "description": "A real install command on an ink plate (the same in both themes, so its focus ring stays amber), faded at the right edge where it scrolls, with a copy button.",
+      "html": "<div class=\"ds-cmd\"><span class=\"ds-cmd__prompt\">$</span><code class=\"ds-cmd__code\">curl -fsSL https://raw.githubusercontent.com/Vyttle-LLC/wiffletree/main/scripts/install.sh | bash</code><button class=\"ds-cmd__copy\" type=\"button\">Copy</button></div>",
+      "css": ".ds-cmd { display: flex; align-items: center; gap: 12px; max-width: 460px; padding: 6px 6px 6px 16px; border-radius: 6px; background: #07080F; border: 1px solid rgb(168 173 189 / 0.2); color: #DDE0E8; font-family: var(--font-jetbrains), 'JetBrains Mono', ui-monospace, monospace; font-size: 14px; } .ds-cmd__prompt { color: #D4933D; } .ds-cmd__code { flex: 1; min-width: 0; overflow-x: auto; white-space: nowrap; padding: 8px 24px 8px 0; scrollbar-width: none; mask: linear-gradient(90deg, #000 calc(100% - 28px), transparent); } .ds-cmd__copy { min-height: 40px; padding: 0 14px; border: none; border-radius: 6px; background: rgb(221 224 232 / 0.08); color: #DDE0E8; font-family: var(--font-archivo), Archivo, Arial, sans-serif; font-weight: 640; cursor: pointer; } .ds-cmd__copy:hover { background: rgb(221 224 232 / 0.14); } .ds-cmd__copy:focus-visible { outline: 2px solid #D4933D; outline-offset: 2px; }"
+    },
+    {
+      "name": "Text Field",
+      "kind": "input",
+      "refersTo": "field-input",
+      "description": "Support-form input: printed label above, a sunk field with a firm hairline, 16px text so iOS never zooms, focus ring in --focus-ring.",
+      "html": "<label class=\"ds-field\"><span class=\"ds-field__label\">Email</span><input class=\"ds-field__input\" type=\"email\" placeholder=\"you@example.com\"></label>",
+      "css": ".ds-field { display: flex; flex-direction: column; gap: 6px; max-width: 360px; font-family: var(--font-archivo), Archivo, Arial, sans-serif; } .ds-field__label { font-variation-settings: 'wdth' 112; font-weight: 620; font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--text-secondary, #A8ADBD); } .ds-field__input { font: inherit; font-size: 16px; padding: 12px 16px; border-radius: 6px; border: 1px solid var(--border-strong, rgba(168, 173, 189, 0.34)); background: var(--surface-sunk, rgba(221, 224, 232, 0.035)); color: var(--text-primary, #DDE0E8); transition: border-color 0.2s ease; } .ds-field__input:focus { outline: none; } .ds-field__input:focus-visible { outline: 2px solid var(--focus-ring, #D4933D); outline-offset: 2px; border-color: var(--focus-ring, #D4933D); }"
+    },
+    {
+      "name": "Navigation",
       "kind": "nav",
-      "refersTo": "accent-row",
-      "description": "Product row for server-rendered lists (the not-found directory). Reproduces the nav dropdown tint in pure CSS off a per-row --row-accent, and unlike the JS version it also lights on keyboard focus.",
-      "html": "<a href=\"/reviso\" class=\"ds-accent-row\" style=\"--row-accent:#22D3EE\"><span class=\"ds-accent-dot\"></span>Reviso</a>",
-      "css": ".ds-accent-row { display: flex; align-items: center; gap: 12px; min-height: 48px; padding: 0 8px; border-radius: 10px; font-family: var(--font-dm-sans), \"DM Sans\", sans-serif; font-size: 16px; font-weight: 300; color: var(--text-primary); text-decoration: none; transition: background-color 200ms ease; } .ds-accent-row:hover, .ds-accent-row:focus-visible { background: color-mix(in srgb, var(--row-accent) 10%, transparent); } .ds-accent-dot { width: 8px; height: 8px; border-radius: 9999px; flex-shrink: 0; background: var(--row-accent); }"
-    },
-    {
-      "name": "Quiet Link",
-      "kind": "nav",
-      "refersTo": "link-quiet",
-      "description": "Neutral nav link on a product page. Comes forward to primary text on hover — amber would break The One Voice Rule there, and the product accent is reserved for accent roles.",
-      "html": "<a href=\"/privacy\" class=\"ds-link-quiet\">Privacy Policy</a>",
-      "css": ".ds-link-quiet { display: inline-flex; align-items: center; justify-content: center; min-height: 44px; min-width: 44px; font-family: var(--font-dm-sans), \"DM Sans\", sans-serif; font-size: 14px; font-weight: 300; color: var(--text-secondary); text-decoration: none; transition: color 200ms ease; } .ds-link-quiet:hover { color: var(--text-primary); } .ds-link-quiet:focus-visible { outline: 2px solid var(--amber-accent); outline-offset: 2px; }"
+      "refersTo": "nav",
+      "description": "Fixed translucent bar: the diamond and the outlined VYTTLE wordmark (artwork, never live text), Apps, Open source, Support, theme toggle, and a perforated bottom edge.",
+      "html": "<nav class=\"ds-nav\"><a class=\"ds-nav__brand\" href=\"#\" aria-label=\"Vyttle\"><svg width=\"18\" height=\"21\" viewBox=\"0 0 56 64\"><path d=\"M28,0 L56,32 L28,64 L0,32 Z\" fill=\"#DDD8CC\"/><circle cx=\"28\" cy=\"32\" r=\"10\" fill=\"#0C0E1A\"/><circle cx=\"28\" cy=\"32\" r=\"7\" fill=\"#D4933D\"/></svg><svg height=\"13\" width=\"92\" viewBox=\"123 31 241 34\" fill=\"currentColor\"><path d=\"M142.24 65L137.06 65L123.76 31.26L130.82 31.26L141.09 58.57L138.35 58.57L148.72 31.26L155.68 31.26L142.24 65Z M187.22 51.99L182.56 51.99L169.5 31.26L177.04 31.26L187.17 47.86L182.85 47.86L192.98 31.26L200.42 31.26L187.22 51.99ZM188.27 65L181.7 65L181.7 48.49L188.27 48.49L188.27 65Z M231.62 65L225.04 65L225.04 31.98L231.62 31.98L231.62 65ZM242.37 37.06L214.29 37.06L214.29 31.26L242.37 31.26L242.37 37.06Z M273.81 65L267.23 65L267.23 31.98L273.81 31.98L273.81 65ZM284.56 37.06L256.48 37.06L256.48 31.26L284.56 31.26L284.56 37.06Z M307.6 65L301.07 65L301.07 31.26L307.6 31.26L307.6 65ZM323.06 65L305.87 65L305.87 59.19L323.06 59.19L323.06 65Z M346.29 65L339.76 65L339.76 31.26L346.29 31.26L346.29 65ZM363.23 65L344.56 65L344.56 59.24L363.23 59.24L363.23 65ZM361.55 50.55L344.56 50.55L344.56 44.98L361.55 44.98L361.55 50.55ZM362.99 37.02L344.56 37.02L344.56 31.26L362.99 31.26L362.99 37.02Z\"/></svg></a><span class=\"ds-nav__links\"><a href=\"#\">Apps</a><a href=\"#\">Open source</a><a href=\"#\">Support</a></span></nav>",
+      "css": ".ds-nav { display: flex; align-items: center; justify-content: space-between; gap: 40px; min-width: 640px; height: 64px; padding: 0 40px; background: var(--nav-bg, rgba(12, 14, 26, 0.88)); backdrop-filter: blur(16px); font-family: var(--font-archivo), Archivo, Arial, sans-serif; border-bottom: 6px solid transparent; border-image: radial-gradient(circle, var(--border-strong, rgba(168, 173, 189, 0.34)) 1.6px, transparent 2.1px) 0 0 100% / 0 0 6px repeat; } .ds-nav__brand { display: inline-flex; align-items: center; gap: 12px; color: var(--text-primary, #DDE0E8); text-decoration: none; } .ds-nav__links { display: flex; gap: 28px; } .ds-nav__links a { color: var(--text-secondary, #A8ADBD); text-decoration: none; font-variation-settings: 'wdth' 108; font-weight: 560; font-size: 15px; transition: color 200ms ease; } .ds-nav__links a:hover { color: var(--text-primary, #DDE0E8); } .ds-nav a:focus-visible { outline: 2px solid var(--focus-ring, #D4933D); outline-offset: 2px; }"
     }
   ],
   "narrative": {
-    "northStar": "The Observatory",
-    "overview": "A dark room built for watching small, precise things. The page is a near-black field with a slow aurora drifting far behind it; the content sits forward on glass, flat and exact. Nothing in this system competes for attention, because an observatory that glares at you is a failed observatory. The atmosphere moves on 6–10 second cycles and never resolves into a shape you can name. You look *through* it, not *at* it.\n\nThe instruments are the logomarks: hard geometry, even-odd cutouts, no flourish, no gradient, no bevel. The Vyttle diamond is a solid form with a circular hole punched through it and a single amber dot suspended in the gap. That amber dot is the fixed star — it is `#D4933D` in dark mode and `#D4933D` in light mode, in every size, forever. Every other color in this system is theme-aware. That one is not, and its constancy is the whole idea.\n\nFive products share this sky, and each owns exactly one accent. Their colors never mix and never fill; they arrive as *light* — a 4% tint, a 10% border, a 40px glow on hover. Restraint here is measured, not vibed: a bento cell at rest is barely present, and hovering it roughly triples its presence. That 3× jump is the personality of the entire system.",
+    "northStar": "The Vyttle Issue",
+    "overview": "Vyttle is one issuing studio with a family of small products, and every product mark is built from the same grammar as the Vyttle diamond: a flat geometric body, a cut circle, one accent dot. That is exactly how a modernist stamp issue works — Wim Crouwel's Dutch PTT numerals, the Swiss PTT definitives — one authority, one frame, one construction system, a different colour per value.\n\nSo the site is a stamp issue. The lineup is a perforated sheet. Each product is a stamp printed in its own deep field with its mark at the centre and its accent as a printed band. A shipped app carries an amber postmark with its month of issue; everything else is honestly unissued. The pages around the sheet behave like the rest of the philatelic world: a catalogue that lists each issue with its number and status, a stockbook page that holds them, and the printed reverse of the sheet for the studio's principles.\n\nThe world is strictly modernist. No aged paper, no grunge, no sepia, no vintage cancellation texture. Flat ink, exact perforation, wide grotesk lettering, precise registration marks.",
     "keyCharacteristics": [
-      "Two planes only: a fixed, blurred atmosphere and a flat content layer on glass",
-      "One accent per product, always emitted as light, never used as a large fill",
-      "Amber belongs to the studio alone and is constant across both themes",
-      "Geometric display type set in wide uppercase; humanist body type set light",
-      "Motion is ambient and slow; state changes are 200ms and never bounce",
-      "Dark is the default; both themes are fully designed, not inverted",
-      "Every accent used as a *word* resolves through a text tier, never the fill value"
+      "The stamp is the product's unit everywhere: hero sheet, catalogue entries, product pages, nav and menus (as a perforated chip).",
+      "Colour lives in the stamps. Each stamp's field and accent band are saturated, so the sheet carries six colours at page scale while the ground stays neutral.",
+      "Amber is the studio's ink: the diamond's dot, the postmark, the primary action.",
+      "Type is one family, Archivo, used across its width axis — expanded for display, normal for reading, slightly wide for printed labels — like a postal lettering system.",
+      "Motion is philatelic: a stamp lifts off the page when picked up; a postmark lands once."
     ],
     "rules": [
       {
-        "name": "The One Voice Rule",
-        "body": "Amber is the studio's color, not a product's. A product page uses that product's accent for every accent role; it never borrows amber. Conversely, no product accent may appear on the homepage hero, the footer, or the wordmark. Nothing on this site uses two accents at once.",
+        "name": "The Studio Ink Rule",
+        "body": "Amber belongs to Vyttle: the diamond dot, the postmark, the primary button, focus rings. A product never uses amber, and amber never prints inside a product field except as the postmark that cancels it.",
         "section": "colors"
       },
       {
         "name": "The Constant Star Rule",
-        "body": "The amber dot at the center of the Vyttle diamond is `#D4933D` in every theme, every size, and every export. It is the only color in the system exempt from theming. If a mark's dot changes with the theme, the mark is wrong.",
+        "body": "The diamond's dot is `#D4933D` in every theme and size.",
         "section": "colors"
       },
       {
-        "name": "The Emitted Color Rule",
-        "body": "Product accents arrive as light, not as paint: a 4% background tint, a 10% border, a 25% border and 40px glow on hover, a 1.5px hero outline. There are exactly two sanctioned solid fills in the system — the \"Available Now\" badge and the primary button — and both follow the same inversion: solid accent, dark text. For the badge that means the product's own dark background color; for the button it means Midnight. That inversion is what marks a shipped product as different from a promised one, and it is also what keeps the fills accessible.",
-        "section": "colors"
-      },
-      {
-        "name": "The Accent Text Tier Rule",
-        "body": "An accent used as a *word* never takes the fill value. It resolves through that product's `--accent-text-*` token, which is the tone its brand kit sanctions for text at that contrast bar. Every accent in the lineup fails as text in at least one theme — Crema at 2.45:1 on light, Electric Cyan at 1.66:1, Vivid Violet and Cobalt in *both* — so this is not an edge case, it is the normal path. A fill value appearing as text is a bug, and the audit test is one line: does the token name contain `accent-text`?",
-        "section": "colors"
-      },
-      {
-        "name": "The One Value Rule",
-        "body": "A product gets one accent-text value per theme, chosen to clear the *body* bar (4.5:1), and it serves every size from the 40px title to the 10px badge. Brand kits may offer a separate large-text tone at the 3:1 bar — Reviso's Cyan Dark is one — but this site does not adopt them: Cyan Dark reaches only 3.20:1 on the Reviso hero, which is 8% of headroom guarded by two invariants nothing enforces, that the hero tint stays at 6% and the title stays ≥24px. A second tier would also make one product the only one needing two values, to preserve a distinction whose real justification is non-text UI. If light-mode presence is wanted, take it from the channels that already exist at non-text bars — the 1.5px outline, the mark halo, the 6% tint.",
-        "section": "colors"
-      },
-      {
-        "name": "The Dark-On-Accent Rule",
-        "body": "Any solid accent fill sets its text dark, never white. Every accent in this palette is mid-to-high lightness, so white-on-accent fails WCAG AA — amber measures 2.6:1 against white and 7.3:1 against Midnight. If a new component needs a solid accent background, the text is Midnight or that product's dark tone; if the design seems to demand white text, the fill is the wrong color.",
+        "name": "The Focus Rule",
+        "body": "Keyboard focus is a 2px `--focus-ring` outline: amber on the dark page, Amber Dark `#7E5414` on the grey page, where raw amber is only 2.1:1. The ring follows the surface, not the theme: Amber Dark on the paper panel in both themes (amber is 2.4:1 on paper), amber on ink plates in both themes.",
         "section": "colors"
       },
       {
         "name": "The Two-Tone Text Rule",
-        "body": "There are exactly two text tones per theme, not three. `--text-secondary` and `--text-tertiary` resolve to the same value (Silver on dark, Slate on light) because a third, fainter tone failed WCAG AA at the sizes this site uses it. Do not reintroduce a dimmer tier to create hierarchy; use size, weight, and tracking instead. This is also the remedy when something needs to recede: the app-page separators are held back by dropping to 12px, not by dimming below AA.",
+        "body": "Two text tones per theme. Dark: Fog primary, Silver secondary. Light: Ink primary, Slate Deep `#454B60` secondary (Slate fails AA on the grey ground). Hierarchy comes from size, width and weight.",
         "section": "colors"
-      },
-      {
-        "name": "The Border-Is-Not-Text Rule",
-        "body": "`--border` and `--card-border` are hairline tokens at low alpha, correct for a 1px rule and invisible as a glyph — they measured 1.1:1 when they were used to color the app-page separators. A border token never colors text, and decorative punctuation is `aria-hidden` rather than announced.",
-        "section": "colors"
-      },
-      {
-        "name": "The Wide Uppercase Rule",
-        "body": "Uppercase text never sets below +2px tracking, and the smaller it gets, the wider it tracks: badges at 10px take +2px, section eyebrows at 11px take +4px, the wordmark at 16px takes +6px. Uppercase at default tracking is a bug in this system.",
-        "section": "typography"
-      },
-      {
-        "name": "The Serif Exception Rule",
-        "body": "Source Serif 4 is not a general display face. It appears in exactly two places: the homepage promise and Sixteen to One's name (which inherits it from that product's own brand kit). Adding a third use dilutes both. Every other heading is Outfit.",
-        "section": "typography"
-      },
-      {
-        "name": "The Light-Weight Rule",
-        "body": "Nothing on this site sets above 600, and body copy that wants to feel calm sets at 300. Weight is not how this system creates emphasis — color and tracking are.",
-        "section": "typography"
-      },
-      {
-        "name": "The On-Ramp Rule",
-        "body": "A literal `font-size` that is not on the hierarchy above is drift, even by 4px. When a new surface needs a heading between two steps it takes the nearer step; the not-found title uses the Headline step rather than inventing a 32px one.",
-        "section": "typography"
-      },
-      {
-        "name": "The 1200 Rule",
-        "body": "Content never exceeds 1200px, and text never exceeds its own narrower measure inside that. A full-width element on this site is always atmosphere, never content.",
-        "section": "layout"
-      },
-      {
-        "name": "The Real Inset Rule",
-        "body": "`viewport-fit=cover` is on, so the page reaches the physical screen edge and the documented 24px gutter no longer clears a notch in landscape (~44px there). Anything full-bleed clears the insets itself: `body` carries `env(safe-area-inset-left/right)`, and the fixed nav carries its own via `.nav-gutter`, because fixed elements escape body padding. Every inset is wrapped in `max()` against the documented step, so nothing moves in portrait where the insets are zero. Six `env()` declarations sat inert before the viewport meta was set — a safe-area value without `viewport-fit=cover` is decoration.",
-        "section": "layout"
-      },
-      {
-        "name": "The Two-Plane Rule",
-        "body": "There are exactly two planes: the atmosphere (fixed, blurred, `aria-hidden`) and the content (flat, on glass). Nothing lives between them. A new element that wants to feel \"raised\" is asking the wrong question — it belongs on the content plane, flat, and it distinguishes itself with tint and border.",
-        "section": "elevation-depth"
-      },
-      {
-        "name": "The Perceptual Parity Rule",
-        "body": "The atmosphere is tuned by eye, not by number. Light mode carries roughly twice the alpha of dark mode (0.35–0.45 versus 0.18–0.25) because color on white needs it to register at all. These numbers are *supposed* to disagree — matching them would destroy the parity they create. Dark is additionally dialed back so the bento cells' own accents are not masked by the field behind them.",
-        "section": "elevation-depth"
-      },
-      {
-        "name": "The Look-Through Rule",
-        "body": "The atmosphere must never become the subject. If a visitor notices the background before the words, it is too loud. It has no hard edges, resolves into no recognizable shape, and every band stays under `blur(70px)`.",
-        "section": "elevation-depth"
-      },
-      {
-        "name": "The Glass-Not-Clear Rule",
-        "body": "A content surface sitting over the atmosphere composites onto `--surface-glass` (0.92 alpha), never onto `transparent`. The atmosphere belongs behind *content*, not behind *text*. A 96%-clear surface lets the aurora through the words themselves, and because the aurora animates, the effective contrast becomes a moving target — 10px labels measured as low as 1.3:1 against a light-mode band at peak. 0.90 is the measured floor; 0.92 is the token. Pair it with a backdrop blur so the surface reads as glass rather than as a panel.",
-        "section": "elevation-depth"
-      },
-      {
-        "name": "The Softer-As-It-Grows Rule",
-        "body": "Radius is proportional to surface: 10px for controls, 12px for cells, 24px for containers, pill for badges. A 24px radius on a button, or a 10px radius on a page-level container, breaks the scale.",
-        "section": "shapes"
       }
     ],
     "dos": [
-      "**Do** treat the atmosphere as something to look through. Keep it behind glass, `aria-hidden`, `pointer-events: none`, and under `blur(70px)`.",
-      "**Do** give each product exactly one accent, inherited from that product's own brand kit, so the color matches its app icon and store listing.",
-      "**Do** resolve any accent used as a word through its `--accent-text-*` token, and take that value from the product's brand kit rather than darkening one by eye.",
-      "**Do** express accents as light — 4% tint, 10% border, hover glow — and reserve solid accent fills for the \"Available Now\" badge and the primary button.",
-      "**Do** keep the amber dot at `#D4933D` in both themes, at every size, in every export.",
-      "**Do** track uppercase wide: +2px minimum, +4px for 11px eyebrows, +6px for the wordmark.",
-      "**Do** design light mode as its own composition. Both themes are first-class; light is not an inversion, and its atmosphere is legitimately ~2× the alpha of dark's.",
-      "**Do** hold 32px of internal padding in bento cells and 1200px maximum content width.",
-      "**Do** give standalone controls and nav links a 44×44 hit area, and leave inline prose links at their natural size.",
-      "**Do** keep transitions at 200ms for state and 400ms for theme, with no easing that overshoots.",
-      "**Do** honor `prefers-reduced-motion` for every animation, and choose each stopped element's resting state rather than inheriting it.",
-      "**Do** give layout, entrance, and ambient motion their own elements, so no animation can clobber another's `transform`.",
-      "**Do** clear the safe-area insets on anything full-bleed, wrapped in `max()` against the documented gutter.",
-      "**Do** give policy, support, and per-app legal pages the same craft as the homepage — they carry more real traffic.",
-      "**Do** give every page one `<main id=\"main\" tabIndex={-1}>` landmark and a heading; the skip link routes to it and moves focus into content past the fixed nav. A section with no visible heading gets an `sr-only` one rather than none.",
-      "**Do** give every overlay honest semantics and managed focus: the lightbox is a `dialog` (`aria-modal`, focus trapped, focus returned to its trigger on close); the nav menus are disclosures (`aria-expanded` + `aria-controls`, Escape closes and restores focus). Never claim `aria-modal` when the closing control lives outside the overlay.",
-      "**Do** make an opaque overlay `inert` to what it covers, even when it is a disclosure rather than a modal.",
-      "**Do** keep the focus ring one color — a 2px `--amber-accent` outline via `:focus-visible` — so keyboard focus reads as a system, not per-control accidents.",
-      "**Do** mark a logomark `aria-hidden` when visible brand text sits beside it; announce it only when it stands alone.",
-      "**Do** keep content visible by default and let JavaScript enhance it; the scroll reveal carries a `<noscript>` fallback, because without one the homepage was a hero above an empty page."
+      "Show every product as a stamp built by the one `Stamp` component.",
+      "Keep status honest: postmark only for shipped apps; \"Coming soon\", \"In development\", \"Planned\", \"Early release\" as printed text.",
+      "Use real screenshots only (Sixteen to One, Wiffletree). Other products are represented by their stamps.",
+      "Honour `prefers-reduced-motion`: no lift rotation, no postmark landing.",
+      "Keep the site free of analytics, pixels, embeds and runtime third-party requests."
     ],
     "donts": [
-      "**Don't** let this read as a generic AI-era SaaS landing page. The aurora is one wrong move from that cliché; what saves it is that it stays behind glass and never becomes the subject. No gradient blob behind a centered CTA, no testimonial wall, no \"Trusted by\" logo strip, no pricing table.",
-      "**Don't** let it read as an Apple product-page clone. No scroll-jacking, no parallax device reveals, no full-bleed hero screenshots, no spec-sheet drama.",
-      "**Don't** let a legal or support page read as a compliance page. No unstyled prose, no default blue links, no bare `<h1>` on white.",
-      "**Don't** let it read as an indie-maximalist portfolio. No brutalist type, no chaotic grids, no novelty cursors. Personality here comes from precision, not volume.",
-      "**Don't** add a shadow to a resting surface. If something needs to come forward, it glows in its own accent or it moves to the nav's glass — those are the only two answers.",
-      "**Don't** introduce a third text tone to create hierarchy. Two tones per theme; use size, weight, and tracking instead.",
-      "**Don't** color text with `--border` or any hairline token, and don't leave decorative punctuation in the reading order.",
-      "**Don't** use amber on a product page or a product accent on the homepage hero, footer, or wordmark.",
-      "**Don't** put two `animation` declarations on one element, or center anything with a `transform` an animation might own.",
-      "**Don't** set Source Serif 4 anywhere beyond the homepage promise and Sixteen to One's name.",
-      "**Don't** set any weight above 600, or a font size off the documented hierarchy.",
-      "**Don't** add analytics, embeds, remote fonts, or any third-party runtime request. The site's tracking-free implementation is the argument for its privacy claim.",
-      "**Don't** fabricate social proof. No testimonials, ratings, user counts, or download numbers exist — see PRODUCT.md."
+      "Don't age anything: no paper texture, sepia, coffee stains, torn edges or grunge cancels.",
+      "Don't put a tracked uppercase eyebrow over every section. Printed stamp labels belong to printed things.",
+      "Don't use cards with icon + heading + text as page structure; use catalogue rows.",
+      "Don't use glass, gradients or glows as decoration.",
+      "Don't use amber inside a product's page except as its postmark; don't use a product accent on Vyttle's own chrome.",
+      "Don't fabricate social proof, prices, ship dates or user counts."
     ]
   }
 }
