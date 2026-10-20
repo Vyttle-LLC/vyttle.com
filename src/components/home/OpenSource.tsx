@@ -114,12 +114,12 @@ export default function OpenSource({ wiffletree, reviso }: { wiffletree: VyttleA
               </div>
             </div>
             <figure className="ink-plate md:col-span-2 lg:col-span-1 self-start rounded-md p-5">
-              <figcaption className="t-label mb-4" style={{ color: "#a8adbd" }}>
+              <figcaption className="t-label mb-4" style={{ color: "var(--silver)" }}>
                 In Claude Code: install, then review a branch
               </figcaption>
-              <pre className="t-mono leading-7" style={{ fontSize: 13 }}>
+              <pre className="t-mono command-fade no-scrollbar overflow-x-auto pr-6 leading-7" style={{ fontSize: 13 }}>
                 {REVISO_COMMANDS.map((line) => (
-                  <code key={line} className="block whitespace-pre-wrap break-all py-0.5 pl-4 -indent-4">
+                  <code key={line} className="block whitespace-pre py-0.5">
                     <span aria-hidden="true" style={{ color: "#22d3ee" }}>
                       ›{" "}
                     </span>
@@ -127,7 +127,7 @@ export default function OpenSource({ wiffletree, reviso }: { wiffletree: VyttleA
                   </code>
                 ))}
               </pre>
-              <p className="mt-4 pt-4 text-[14px]" style={{ borderTop: "1px solid rgb(168 173 189 / 0.2)", color: "#a8adbd" }}>
+              <p className="mt-4 pt-4 text-[14px]" style={{ borderTop: "1px solid var(--plate-rule)", color: "var(--silver)" }}>
                 Using Codex?{" "}
                 <a href={`${reviso.repoUrl}#codex-installation`} target="_blank" rel="noopener noreferrer" className="underline underline-offset-4" style={{ color: "var(--fog)", textDecorationColor: "var(--amber)" }}>
                   Codex install steps

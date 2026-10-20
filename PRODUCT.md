@@ -77,7 +77,7 @@ The website's own differentiator is that it **runs the way the apps run**. No an
 **Real, usable**
 
 - Three Sixteen to One product screenshots — `public/screenshots/sixteen-to-one/` (light Drip, dark Chemex, settings).
-- Wiffletree app screenshots — `public/screenshots/wiffletree/` (coordinator, tickets), from the wiffletree-website repo.
+- Wiffletree app screenshot — `public/screenshots/wiffletree/coordinator.png`, from the wiffletree-website repo.
 - Google Play badge asset — `public/badges/google-play.png`.
 - Live store listings: App Store `id6760734071`, Google Play `com.vyttle.sixteentoone`.
 - Complete logo sets for every product in `vyttle-docs` — primary, horizontal, wordmark, logomark, in dark and light, SVG and PNG. Pica additionally has 24 achievement badges.

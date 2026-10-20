@@ -69,10 +69,8 @@ export default function MobileMenu({
 
   // Being a disclosure rather than a modal settles the ARIA, not the occlusion:
   // this overlay is opaque, so everything under it must leave the tab order and
-  // the accessibility tree too. Measured without it, 9 elements stayed
-  // reachable — the skip link, the product stamps and the footer links — so a
-  // keyboard user tabbed into content they could not see and a screen reader
-  // read the whole page out from behind the overlay.
+  // the accessibility tree too. Otherwise a keyboard user tabs into links they
+  // cannot see and a screen reader reads the page out from behind the overlay.
   //
   // Scoped to the content landmarks on purpose. The nav bar is NOT inerted: it
   // holds both the ✕ that closes this and the panel itself, and inerting an

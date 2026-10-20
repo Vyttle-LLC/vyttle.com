@@ -371,10 +371,6 @@ a.stamp:focus-visible {
   }
 }
 
-.registration {
-  color: var(--text-secondary);
-}
-
 /* ==================== POSTMARK ==================== */
 
 .postmark {
@@ -430,8 +426,9 @@ a.stamp:focus-visible {
    focus ring even on the grey page */
 .ink-plate {
   --focus-ring: var(--amber);
+  --plate-rule: rgb(168 173 189 / 0.2);
   background: #07080f;
-  border: 1px solid rgb(168 173 189 / 0.2);
+  border: 1px solid var(--plate-rule);
   color: var(--fog);
 }
 
