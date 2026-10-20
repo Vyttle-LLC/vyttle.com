@@ -65,9 +65,8 @@ export default function PrivacyPage() {
           ))}
         </ul>
         <p>
-          A product may publish its own privacy policy before it launches.
-          This policy describes the website and its support form; the product
-          policies above describe those products.
+          The products listed above have their own privacy policies.
+          For any Vyttle product not listed, this policy applies.
         </p>
 
         <h2>Hosting</h2>
