@@ -64,7 +64,7 @@ export const metadata: Metadata = {
         url: "/og.png",
         width: 1200,
         height: 630,
-        alt: "The Vyttle diamond mark above the wordmark and the line “Small by design”.",
+        alt: "“Small by design.” beside a perforated sheet of six Vyttle stamps, one per product, with Sixteen to One postmarked April 2026.",
       },
     ],
   },
