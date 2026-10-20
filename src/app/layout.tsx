@@ -109,16 +109,15 @@ export default function RootLayout({
           Skip to content
         </a>
         {/* Hidden form for Netlify Forms detection during static build.
-            Mirrors the real form's Netlify attributes (incl. reCAPTCHA) so
-            Netlify registers the "support" form with reCAPTCHA required. */}
+            Mirrors the support fields and honeypot so Netlify registers them. */}
         <form
           name="support"
           data-netlify="true"
           data-netlify-honeypot="bot-field"
-          data-netlify-recaptcha="true"
           hidden
         >
           <input type="hidden" name="form-name" value="support" />
+          <input type="text" name="bot-field" />
           <input type="text" name="name" />
           <input type="email" name="email" />
           <input type="text" name="app" />

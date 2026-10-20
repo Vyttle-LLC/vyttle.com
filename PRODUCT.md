@@ -29,7 +29,7 @@ The website's own differentiator is that it **runs the way the apps run**. No an
 ## Operating Context
 
 - **Most arrivals are mobile and deep-linked**, coming from a store listing rather than the homepage. Policy and support pages are entry points, not terminal pages.
-- **Support runs on Netlify Forms.** Submissions land in the Netlify dashboard; replies come from Proton on the domain (`support@vyttle.com`, plus `michael@`, `hello@`, `privacy@`).
+- **Support runs on Netlify Forms**, with a honeypot (`bot-field`) and required-field validation. Submissions land in the Netlify dashboard; replies come from Proton on the domain (`support@vyttle.com`, plus `michael@`, `hello@`, `privacy@`).
 - **The portfolio is mostly pre-launch.** One app shipped, three apps in progress, and two open-source developer tools in early release. The site has to present unreleased work honestly and repeatedly.
 - **Product truth lives in the second brain** at `~/dev/vyttle/vyttle-docs/` — per-product notes under `second-brain/notes/`, brand kits under `brand-kit/` and `products/<product>/brand-kit/`. That repo, not this one, is the source of truth for status and brand assets.
 
