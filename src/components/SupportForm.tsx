@@ -153,9 +153,9 @@ export default function SupportForm() {
         : apps.find((a) => a.slug === formData.app)?.name ?? null;
 
     return (
-      <div className="max-w-lg mx-auto text-center py-16">
+      <div className="w-full py-8">
         <div
-          className="w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6"
+          className="w-14 h-14 flex items-center justify-center mb-6"
           style={{ background: "rgba(212, 147, 61, 0.15)" }}
         >
           <svg
@@ -177,7 +177,6 @@ export default function SupportForm() {
           tabIndex={-1}
           className="text-2xl font-medium mb-4 focus:outline-none"
           style={{
-            fontFamily: "var(--font-outfit), Outfit, sans-serif",
             color: "var(--text-primary)",
           }}
         >
@@ -186,7 +185,6 @@ export default function SupportForm() {
         <p
           className="text-base font-light mb-8"
           style={{
-            fontFamily: "var(--font-dm-sans), DM Sans, sans-serif",
             color: "var(--text-secondary)",
           }}
         >
@@ -212,7 +210,6 @@ export default function SupportForm() {
           }}
           className="text-sm cursor-pointer bg-transparent border-none"
           style={{
-            fontFamily: "var(--font-dm-sans), DM Sans, sans-serif",
             color: "var(--amber-text)",
           }}
         >
@@ -231,14 +228,13 @@ export default function SupportForm() {
   };
 
   const inputStyle = {
-    fontFamily: "var(--font-dm-sans), DM Sans, sans-serif",
-    fontWeight: 300,
+    fontWeight: 400,
     // 16px minimum: iOS Safari zooms the viewport on focus below this.
     fontSize: "16px",
     padding: "12px 16px",
-    borderRadius: "10px",
-    border: "1px solid var(--border)",
-    background: "var(--bg-card)",
+    borderRadius: "6px",
+    border: "1px solid var(--border-strong)",
+    background: "var(--surface-sunk)",
     color: "var(--text-primary)",
     width: "100%",
     transition: "all 0.2s ease",
@@ -253,7 +249,7 @@ export default function SupportForm() {
       data-netlify-recaptcha="true"
       onSubmit={handleSubmit}
       aria-busy={submitting}
-      className="max-w-lg mx-auto flex flex-col gap-5"
+      className="w-full flex flex-col gap-5"
     >
       {RECAPTCHA_SITE_KEY && (
         <Script
@@ -272,7 +268,6 @@ export default function SupportForm() {
       <p
         className="text-xs"
         style={{
-          fontFamily: "var(--font-dm-sans), DM Sans, sans-serif",
           fontWeight: 300,
           color: "var(--text-tertiary)",
         }}
@@ -284,11 +279,8 @@ export default function SupportForm() {
       <div className="flex flex-col gap-1.5">
         <label
           htmlFor="name"
-          className="text-xs"
+          className="t-label"
           style={{
-            fontFamily: "var(--font-dm-sans), DM Sans, sans-serif",
-            fontWeight: 400,
-            letterSpacing: "1px",
             color: "var(--text-secondary)",
           }}
         >
@@ -313,11 +305,8 @@ export default function SupportForm() {
       <div className="flex flex-col gap-1.5">
         <label
           htmlFor="email"
-          className="text-xs"
+          className="t-label"
           style={{
-            fontFamily: "var(--font-dm-sans), DM Sans, sans-serif",
-            fontWeight: 400,
-            letterSpacing: "1px",
             color: "var(--text-secondary)",
           }}
         >
@@ -342,11 +331,8 @@ export default function SupportForm() {
       <div className="flex flex-col gap-1.5">
         <label
           htmlFor="app"
-          className="text-xs"
+          className="t-label"
           style={{
-            fontFamily: "var(--font-dm-sans), DM Sans, sans-serif",
-            fontWeight: 400,
-            letterSpacing: "1px",
             color: "var(--text-secondary)",
           }}
         >
@@ -377,11 +363,8 @@ export default function SupportForm() {
       <div className="flex flex-col gap-1.5">
         <label
           htmlFor="message"
-          className="text-xs"
+          className="t-label"
           style={{
-            fontFamily: "var(--font-dm-sans), DM Sans, sans-serif",
-            fontWeight: 400,
-            letterSpacing: "1px",
             color: "var(--text-secondary)",
           }}
         >
@@ -410,13 +393,12 @@ export default function SupportForm() {
           role="alert"
           className="text-sm"
           style={{
-            fontFamily: "var(--font-dm-sans), DM Sans, sans-serif",
             fontWeight: 300,
             lineHeight: 1.5,
             color: "var(--text-primary)",
-            background: "var(--bg-card)",
+            background: "var(--surface-sunk)",
             border: "1px solid var(--border)",
-            borderRadius: "10px",
+            borderRadius: "6px",
             padding: "12px 16px",
           }}
         >
@@ -429,13 +411,12 @@ export default function SupportForm() {
           role="alert"
           className="text-sm"
           style={{
-            fontFamily: "var(--font-dm-sans), DM Sans, sans-serif",
             fontWeight: 300,
             lineHeight: 1.5,
             color: "var(--text-primary)",
-            background: "var(--bg-card)",
+            background: "var(--surface-sunk)",
             border: "1px solid var(--border)",
-            borderRadius: "10px",
+            borderRadius: "6px",
             padding: "12px 16px",
           }}
         >
@@ -455,14 +436,7 @@ export default function SupportForm() {
         <button
           type="submit"
           disabled={submitting}
-          className="text-sm font-medium py-3.5 px-8 rounded-[10px] border-none cursor-pointer transition-all duration-200"
-          style={{
-            fontFamily: "var(--font-dm-sans), DM Sans, sans-serif",
-            letterSpacing: "1px",
-            background: "var(--amber)",
-            color: "var(--midnight)",
-            opacity: submitting ? 0.5 : 1,
-          }}
+          className="btn btn--primary"
         >
           {submitting ? "Sending…" : "Send message"}
         </button>
@@ -470,7 +444,6 @@ export default function SupportForm() {
         <p
           className="text-xs"
           style={{
-            fontFamily: "var(--font-dm-sans), DM Sans, sans-serif",
             fontWeight: 300,
             lineHeight: 1.6,
             color: "var(--text-tertiary)",

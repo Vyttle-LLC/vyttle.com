@@ -1,67 +1,66 @@
 import Link from "next/link";
+import { getAppsByKind, productHref, type ProductKind } from "@/lib/apps";
+import { ColorBar } from "./PrinterMarks";
+import VyttleMark from "./marks/VyttleMark";
+import VyttleWordmark from "./marks/VyttleWordmark";
+
+const STUDIO_LINKS = [
+  { href: "/support", label: "Support" },
+  { href: "/privacy", label: "Privacy" },
+  { href: "/terms", label: "Terms" },
+];
+
+function FooterColumn({ title, links }: { title: string; links: { href: string; label: string; external?: boolean }[] }) {
+  return (
+    <div>
+      <h2 className="t-label mb-3" style={{ color: "var(--text-secondary)" }}>
+        {title}
+      </h2>
+      <ul className="list-none flex flex-col">
+        {links.map((link) => (
+          <li key={link.href}>
+            <Link
+              href={link.href}
+              className="link-quiet inline-flex items-center min-h-[40px]"
+              {...(link.external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
+            >
+              {link.label}
+              {link.external && <span aria-hidden="true">&nbsp;↗</span>}
+            </Link>
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
+}
+
+function productLinks(kind: ProductKind) {
+  return getAppsByKind(kind).map((app) => ({ href: productHref(app), label: app.name, external: Boolean(app.externalUrl) }));
+}
 
 export default function Footer() {
   return (
-    <footer
-      className="py-12 px-6 md:px-12 max-w-[1200px] mx-auto flex flex-col md:flex-row justify-between items-center gap-6 text-center md:text-left"
-      style={{ borderTop: "1px solid var(--border)" }}
-    >
-      {/* Left */}
-      <div className="flex flex-col gap-1.5">
-        <span
-          className="text-sm font-semibold uppercase transition-colors duration-400"
-          style={{
-            fontFamily: "var(--font-outfit), Outfit, sans-serif",
-            letterSpacing: "5px",
-            color: "var(--text-primary)",
-          }}
-        >
-          VYTTLE
-        </span>
-        <span
-          className="text-xs font-normal uppercase transition-colors duration-400"
-          style={{
-            fontFamily: "var(--font-dm-sans), DM Sans, sans-serif",
-            letterSpacing: "3px",
-            color: "var(--text-tertiary)",
-          }}
-        >
-          Small by design
-        </span>
-      </div>
-
-      {/* Right */}
-      <div className="flex flex-col items-center md:items-end gap-3">
-        <ul className="flex gap-6 list-none">
-          {[
-            { href: "/privacy", label: "Privacy" },
-            { href: "/support", label: "Support" },
-            { href: "/terms", label: "Terms" },
-          ].map((link) => (
-            <li key={link.href}>
-              <Link
-                href={link.href}
-                className="tap-target text-xs font-light no-underline transition-colors duration-200 hover:text-amber"
-                style={{
-                  fontFamily: "var(--font-dm-sans), DM Sans, sans-serif",
-                  letterSpacing: "1px",
-                  color: "var(--text-secondary)",
-                }}
-              >
-                {link.label}
-              </Link>
-            </li>
-          ))}
-        </ul>
-        <span
-          className="text-xs font-light transition-colors duration-400"
-          style={{
-            fontFamily: "var(--font-dm-sans), DM Sans, sans-serif",
-            color: "var(--text-secondary)",
-          }}
-        >
-          &copy; 2026 Vyttle LLC
-        </span>
+    <footer className="page-x mt-[clamp(96px,14vw,176px)]">
+      <div className="page-width">
+        <div className="perf-rule" aria-hidden="true" />
+        <div className="grid grid-cols-1 gap-12 py-14 md:grid-cols-[1.4fr_1fr_1fr_1fr]">
+          <div className="flex flex-col gap-4">
+            <Link href="/" className="inline-flex items-center gap-3 self-start min-h-[44px]" style={{ color: "var(--text-primary)" }}>
+              <VyttleMark size={22} />
+              <VyttleWordmark height={14} />
+            </Link>
+            <p style={{ color: "var(--text-secondary)" }}>Small by design.</p>
+          </div>
+          <FooterColumn title="Apps" links={productLinks("app")} />
+          <FooterColumn title="Open source" links={productLinks("tool")} />
+          <FooterColumn title="Studio" links={STUDIO_LINKS} />
+        </div>
+        <div className="flex flex-col-reverse gap-4 pb-12 md:flex-row md:items-center md:justify-between">
+          <p className="t-label" style={{ color: "var(--text-secondary)" }}>
+            © 2026 Vyttle LLC
+          </p>
+          <ColorBar />
+        </div>
       </div>
     </footer>
   );

@@ -30,17 +30,17 @@ export default function ThemeToggle() {
   if (!mounted) return <div className="w-11 h-11" />;
 
   return (
-    // 44x44 hit area around a 36px visual circle: the mark stays the size the
+    // 44x44 hit area around a 36px visual: the control stays the size the
     // design calls for while the target meets the 44px touch minimum.
     <button
       onClick={toggle}
-      className="w-11 h-11 rounded-full flex items-center justify-center bg-transparent border-none p-0 cursor-pointer"
+      className="w-11 h-11 flex items-center justify-center bg-transparent border-none p-0 cursor-pointer"
       style={{ color: "var(--text-secondary)" }}
       aria-label={`Switch to ${theme === "light" ? "dark" : "light"} mode`}
     >
       <span
-        className="w-9 h-9 rounded-full border flex items-center justify-center transition-all duration-200"
-        style={{ borderColor: "var(--border)" }}
+        className="w-9 h-9 rounded-md border flex items-center justify-center transition-colors duration-200"
+        style={{ borderColor: "var(--border-strong)" }}
       >
       {theme === "dark" ? (
         <svg

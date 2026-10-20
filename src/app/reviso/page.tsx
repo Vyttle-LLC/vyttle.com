@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import AppPageLayout from "@/components/AppPageLayout";
-import RevisoMark from "@/components/marks/RevisoMark";
 import { getAppBySlug } from "@/lib/apps";
 
 const app = getAppBySlug("reviso")!;
@@ -14,41 +13,34 @@ export default function RevisoPage() {
   return (
     <AppPageLayout
       app={app}
-      logomark={
-        <RevisoMark
-          size={80}
-          className="transition-colors duration-400"
-        />
+      actions={
+        <a href={app.repoUrl} target="_blank" rel="noopener noreferrer" className="btn btn--primary">
+          Get Reviso on GitHub <span aria-hidden="true">↗</span>
+        </a>
       }
     >
       <p>
-        Code reviews shouldn&apos;t be noisy, expensive, or ignored. Reviso is a
-        GitHub Action that delivers intelligent, inline AI-powered reviews
-        directly on your pull requests — comments on the exact lines that matter,
-        with actionable suggestions.
+        A good code review usually waits for a pull request. Reviso runs the
+        review locally, on your branch plus any uncommitted work, so you can fix
+        what it finds before anyone else sees it.
       </p>
       <p>
-        <strong style={{ color: "var(--text-primary)" }}>
-          Bring your own key.
-        </strong>{" "}
-        Reviso uses your AI provider API key, running entirely on your GitHub
-        runners. You choose the model, you control the cost. No middleman, no
-        surprise bills.
+        <strong>It reviews for slop, too.</strong> Dead code, comments that
+        restate the code, reinvented utilities, the same rule pasted across five
+        call sites, three times the lines the job needed. Every finding is
+        measured against how your own codebase is written.
       </p>
       <p>
-        <strong style={{ color: "var(--text-primary)" }}>
-          Pay per org, not per seat.
-        </strong>{" "}
-        A 10-person team and a 50-person team pay the same price. Usage-based
-        pricing that scales with your work, not your headcount.
+        <strong>Three commands.</strong> <code>/reviso:review</code> is the
+        quick single-pass review you run as often as you commit.{" "}
+        <code>/reviso:audit</code> is the slower pre-PR gate, with parallel
+        reviewers and evidence gathered for every finding.{" "}
+        <code>/reviso:style</code> looks only at whether the change is clean.
       </p>
       <p>
-        <strong style={{ color: "var(--text-primary)" }}>
-          Quality over noise.
-        </strong>{" "}
-        Reviso feeds full file context — not just diffs — to reduce false
-        positives. Configurable focus areas, severity scoring, and confidence
-        thresholds mean you only see comments worth reading.
+        <strong>Nothing new to sign up for.</strong> Reviso runs in Claude Code
+        or Codex on the account you already use. There is no Reviso account and
+        no telemetry, and it only reports — it never edits your code.
       </p>
     </AppPageLayout>
   );

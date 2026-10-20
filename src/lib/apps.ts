@@ -1,5 +1,12 @@
-export type AppStatus = "coming-soon" | "available" | "beta";
-export type ProductType = "app" | "product";
+export type AppStatus = "available" | "early" | "coming-soon" | "in-development" | "planned";
+export type ProductKind = "app" | "tool";
+
+export interface Screenshot {
+  src: string;
+  alt: string;
+  width: number;
+  height: number;
+}
 
 export interface VyttleApp {
   slug: string;
@@ -8,8 +15,9 @@ export interface VyttleApp {
   tagline: string;
   description: string;
   status: AppStatus;
-  type: ProductType;
-  featured?: boolean;
+  kind: ProductKind;
+  /** Where it runs, as a visitor would say it: "iPhone & Android", "macOS". */
+  platforms: string;
   /** True when this product ships its own policy route at `/<slug>/privacy`.
    *  Products still in development don't have one — there is no data-collection
    *  story to document yet — so `privacyHref()` sends them to the site-wide
@@ -17,19 +25,21 @@ export interface VyttleApp {
   hasPrivacyPolicy?: boolean;
   appStoreUrl?: string;
   playStoreUrl?: string;
+  /** A product with its own site has no page here; every link goes there. */
   externalUrl?: string;
+  repoUrl?: string;
+  license?: string;
   /** The vivid accent. Correct for solid fills, low-alpha tints, borders and
    *  glows — anything that is not a word. */
   accent: string;
   /** Theme-aware form of `accent`, where the product needs one. */
   accentVar?: string;
-  /** The accent as TEXT: darkened on light until it clears the text contrast
-   *  bars, hue preserved. Any accent-colored word uses this, never `accent`. */
-  accentTextVar?: string;
-  accentLight: string;
-  darkBg: string;
-  lightBg: string;
-  mark: string;
+  /** The deep tone its stamp prints on, derived from the product's brand. */
+  field: string;
+  /** Month of issue, for shipped products: carried on the stamp's postmark. */
+  issued?: string;
+  /** Real product screenshots only — never mockups. */
+  screenshots?: Screenshot[];
 }
 
 export const apps: VyttleApp[] = [
@@ -41,50 +51,19 @@ export const apps: VyttleApp[] = [
     description:
       "A coffee ratio calculator that does one thing and does it well. Dial in your brew with precision — water, coffee, ratio, done.",
     status: "available",
-    type: "app",
-    featured: true,
+    issued: "Apr 2026",
+    kind: "app",
+    platforms: "iPhone & Android",
     hasPrivacyPolicy: true,
     appStoreUrl: "https://apps.apple.com/us/app/sixteen-to-one/id6760734071",
     playStoreUrl: "https://play.google.com/store/apps/details?id=com.vyttle.sixteentoone",
+    screenshots: [
+      { src: "/screenshots/sixteen-to-one/light-drip.png", alt: "Sixteen to One in light mode showing Drip method with dark roast settings", width: 1206, height: 2622 },
+      { src: "/screenshots/sixteen-to-one/dark-chemex.png", alt: "Sixteen to One in dark mode showing Chemex method with medium roast settings", width: 1206, height: 2622 },
+      { src: "/screenshots/sixteen-to-one/settings.png", alt: "Sixteen to One settings showing unit conversions and appearance options", width: 1206, height: 2622 },
+    ],
     accent: "#C4956A",
-    accentTextVar: "var(--accent-text-crema)",
-    accentLight: "#DFC5A8",
-    darkBg: "#1C1008",
-    lightBg: "#F8F4EE",
-    mark: "SixteenToOneMark",
-  },
-  {
-    slug: "stockpot",
-    name: "Stockpot",
-    tagline: "Your recipes. Your kitchen.",
-    description:
-      "A recipe app that keeps your collection local and private. Organize, cook, and share — all synced through iCloud, nothing in the cloud you don't control.",
-    status: "coming-soon",
-    type: "app",
-    hasPrivacyPolicy: true,
-    accent: "#C0392B",
-    accentTextVar: "var(--accent-text-stockpot)",
-    accentLight: "#D4756A",
-    darkBg: "#1A1816",
-    lightBg: "#F4F3F1",
-    mark: "StockpotMark",
-  },
-  {
-    slug: "bramble",
-    name: "Bramble",
-    tagline: "Contacts, untangled.",
-    description:
-      "A lightweight contact manager that helps you clean up, organize, and actually maintain your address book. Local-first with iCloud sync.",
-    status: "coming-soon",
-    type: "app",
-    hasPrivacyPolicy: true,
-    accent: "#7C4DFF",
-    accentVar: "var(--bramble-accent)",
-    accentTextVar: "var(--accent-text-bramble)",
-    accentLight: "#B89DD4",
-    darkBg: "#100F14",
-    lightBg: "#F6F4F8",
-    mark: "BrambleMark",
+    field: "#2A180E",
   },
   {
     slug: "pica",
@@ -93,39 +72,99 @@ export const apps: VyttleApp[] = [
     description:
       "A nonogram puzzle app where you fill cells in a grid to reveal hidden pictures. Logic, precision, and the satisfaction of solving — no hints required.",
     status: "coming-soon",
-    type: "app",
+    kind: "app",
+    platforms: "iPhone & Android",
     accent: "#4A6FE0",
-    accentTextVar: "var(--accent-text-pica)",
-    accentLight: "#8AA4F0",
-    darkBg: "#0A0E1C",
-    lightBg: "#EDF0FB",
-    mark: "PicaMark",
+    field: "#111C4A",
+  },
+  {
+    slug: "stockpot",
+    name: "Stockpot",
+    tagline: "Your recipes. Your kitchen.",
+    description:
+      "A recipe app that keeps your collection local and private. Organize, cook, and share — all synced through iCloud, nothing in the cloud you don't control.",
+    status: "in-development",
+    kind: "app",
+    platforms: "iPhone",
+    hasPrivacyPolicy: true,
+    accent: "#C0392B",
+    field: "#2E1513",
+  },
+  {
+    slug: "bramble",
+    name: "Bramble",
+    tagline: "Contacts, untangled.",
+    description:
+      "A lightweight contact manager that helps you clean up, organize, and actually maintain your address book. Local-first with iCloud sync.",
+    status: "planned",
+    kind: "app",
+    platforms: "iPhone",
+    hasPrivacyPolicy: true,
+    accent: "#7C4DFF",
+    field: "#1C1238",
+    accentVar: "var(--bramble-accent)",
+  },
+  {
+    slug: "wiffletree",
+    name: "Wiffletree",
+    tagline: "A team lead for your coding agents.",
+    description:
+      "A native Mac workspace where Claude and Codex agents work as a team. You talk to one coordinator; it plans the tickets, assigns the agents, and has every change tested and reviewed by a different agent. Merging stays with you.",
+    status: "early",
+    kind: "tool",
+    platforms: "macOS",
+    externalUrl: "https://wiffletree.dev",
+    screenshots: [
+      { src: "/screenshots/wiffletree/coordinator.png", alt: "Wiffletree's coordinator view: a project's tickets and agents in the sidebar, and the coordinator reporting a ticket that passed testing and review", width: 1280, height: 820 },
+    ],
+    repoUrl: "https://github.com/Vyttle-LLC/wiffletree",
+    license: "MIT",
+    accent: "#86C1BC",
+    field: "#1A262D",
+    accentVar: "var(--wiffletree-accent)",
   },
   {
     slug: "reviso",
     name: "Reviso",
-    tagline: "AI code reviews that don't suck.",
+    tagline: "Code review that catches the slop.",
     description:
-      "A GitHub Action that provides intelligent, inline AI-powered code reviews on pull requests. Bring your own API key, pay per org — not per seat.",
-    status: "coming-soon",
-    type: "product",
+      "A local, pre-PR code review for Claude Code and Codex. It reviews your branch before the pull request exists — and flags the AI slop other reviews let through.",
+    status: "early",
+    kind: "tool",
+    platforms: "Claude Code & Codex",
     hasPrivacyPolicy: true,
+    repoUrl: "https://github.com/Vyttle-LLC/reviso",
+    license: "Apache-2.0",
     accent: "#22D3EE",
+    field: "#08202A",
     accentVar: "var(--reviso-accent)",
-    accentTextVar: "var(--accent-text-reviso)",
-    accentLight: "#A5F3FC",
-    darkBg: "#0A1019",
-    lightBg: "#E8F6FA",
-    mark: "RevisoMark",
   },
 ];
+
+export const STATUS_LABEL: Record<AppStatus, string> = {
+  available: "Available now",
+  early: "Early release",
+  "coming-soon": "Coming soon",
+  "in-development": "In development",
+  planned: "Planned",
+};
 
 export function getAppBySlug(slug: string): VyttleApp | undefined {
   return apps.find((app) => app.slug === slug);
 }
 
-export function getAppsByType(type: ProductType): VyttleApp[] {
-  return apps.filter((app) => app.type === type);
+export function getAppsByKind(kind: ProductKind): VyttleApp[] {
+  return apps.filter((app) => app.kind === kind);
+}
+
+/** Its number in the issue — position in the lineup, two digits. */
+export function issueNumber(app: VyttleApp): string {
+  return String(apps.indexOf(app) + 1).padStart(2, "0");
+}
+
+/** Where a product's name links: its page here, or its own site. */
+export function productHref(app: VyttleApp): string {
+  return app.externalUrl ?? `/${app.slug}`;
 }
 
 /** Where a product's "Privacy Policy" link points. A product without its own

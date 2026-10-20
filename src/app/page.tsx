@@ -1,111 +1,107 @@
-import Nav from "@/components/Nav";
-import Footer from "@/components/Footer";
+/*
+ * THESIS: Vyttle is one issuing studio and its products are one stamp issue —
+ * a shared frame and geometric grammar, a colour per value. Refuses the dark
+ * SaaS hero-plus-bento grid the old site (and the category) ships.
+ * OWN-WORLD: perforated paper stamps with deep product fields and printed
+ * accent bands, on a stockbook-black or quadrille-grey page; amber postmark;
+ * Archivo across its width axis; registration marks and colour bars.
+ * STORY: a visitor sees the whole lineup at once, learns what is out and what
+ * is coming, tears off a stamp to its catalogue entry, and installs or reads on.
+ * FIRST VIEWPORT: "Small by design." at display scale on the left with two
+ * actions (apps / open source); the six-stamp sheet on the right with printer's
+ * marks; Sixteen to One carries the postmark that lands once on load.
+ * FORM: modernist postal issue, #7 of the grounded list, staged as a sheet
+ * then a catalogue; seed 4139d6c3.
+ */
+import Link from "next/link";
+import { getAppBySlug, getAppsByKind } from "@/lib/apps";
+import StampSheet from "@/components/StampSheet";
+import FeaturedApp from "@/components/home/FeaturedApp";
+import CatalogueRow from "@/components/home/CatalogueRow";
+import OpenSource from "@/components/home/OpenSource";
+import Reverse from "@/components/home/Reverse";
 import VyttleMark from "@/components/marks/VyttleMark";
-import ConicOrb from "@/components/ConicOrb";
-import BentoGrid from "@/components/BentoGrid";
 
 export default function HomePage() {
+  const [featured, ...upcoming] = getAppsByKind("app");
+
   return (
-    <>
-      {/* Fixed aurora background */}
-      <ConicOrb />
-
-      <div className="relative z-10">
-        <Nav />
-
-        <main id="main" tabIndex={-1} className="focus:outline-none">
-        {/* ==================== HERO ==================== */}
-        <section className="min-h-screen flex flex-col items-center justify-center relative px-6">
-          {/* Content */}
-          <div className="text-center flex flex-col items-center">
-            {/* Floating mark. Entrance and ambient drift sit on separate
-                elements because both animate `transform`, and two animations on
-                one element means the later declaration simply wins — which is
-                why `animate-float` never ran at all: `.fade-in` was overriding
-                it, and the hero's one piece of ambient character was dead. */}
-            <div className="mb-10 fade-in" style={{ animationDelay: "0ms" }}>
-              <div className="animate-float">
-                <VyttleMark
-                  size={80}
-                  className="transition-all duration-400"
-                />
-              </div>
-            </div>
-
-            <h1
-              className="text-4xl md:text-[48px] mb-5 fade-in"
-              style={{
-                fontFamily: "var(--font-source-serif), 'Source Serif 4', serif",
-                fontWeight: 300,
-                letterSpacing: "1px",
-                color: "var(--text-primary)",
-                transition: "color 0.4s ease",
-                animationDelay: "200ms",
-              }}
-            >
-              Small by design
+    <main id="main" tabIndex={-1} className="focus:outline-none">
+      <section className="page-x pt-24 md:pt-36" aria-labelledby="hero-heading">
+        <div className="page-width grid grid-cols-1 items-center gap-12 lg:grid-cols-[minmax(0,5fr)_minmax(0,6fr)] lg:gap-16">
+          <div className="fade-in">
+            <p className="t-label inline-flex items-center gap-3 mb-6 md:mb-8" style={{ color: "var(--text-secondary)" }}>
+              <VyttleMark size={14} />
+              Independent software studio
+            </p>
+            <h1 id="hero-heading" className="t-display">
+              Small by design.
             </h1>
+            <p className="t-lede mt-5 md:mt-7 max-w-[36ch]">
+              Vyttle makes small, private apps for iPhone and Android — and open-source tools for developers who
+              work with coding agents.
+            </p>
+            <div className="mt-8 md:mt-10 flex flex-wrap gap-3">
+              <Link href="#apps" className="btn btn--primary">
+                See the apps
+              </Link>
+              <Link href="#open-source" className="btn btn--secondary">
+                Open-source tools
+              </Link>
+            </div>
+          </div>
+          <div className="w-full max-w-[640px] justify-self-center lg:justify-self-end">
+            <StampSheet />
+          </div>
+        </div>
+      </section>
 
-            <p
-              className="text-base font-light max-w-[480px] leading-relaxed fade-in"
-              style={{
-                fontFamily: "var(--font-dm-sans), DM Sans, sans-serif",
-                color: "var(--text-secondary)",
-                transition: "color 0.4s ease",
-                animationDelay: "400ms",
-              }}
-            >
-              Mobile applications &amp; developer tools from Vyttle
+      <section id="apps" className="page-x section-y scroll-mt-16" aria-labelledby="apps-heading">
+        <div className="page-width">
+          <header className="grid grid-cols-1 gap-6 md:grid-cols-2 md:items-end mb-16">
+            <h2 id="apps-heading" className="t-headline">
+              Apps that do one thing well.
+            </h2>
+            <p className="t-body md:justify-self-end md:max-w-[44ch]">
+              For iPhone and Android. Nothing to sign up for and nothing tracking you — open the app and it works.
+            </p>
+          </header>
+
+          <FeaturedApp app={featured} />
+
+          <ul className="list-none mt-20">
+            {upcoming.map((app) => (
+              <CatalogueRow key={app.slug} app={app} />
+            ))}
+          </ul>
+        </div>
+      </section>
+
+      <OpenSource wiffletree={getAppBySlug("wiffletree")!} reviso={getAppBySlug("reviso")!} />
+
+      <Reverse />
+
+      <section className="page-x section-y" aria-labelledby="help-heading">
+        <div className="page-width flex flex-col gap-8 md:flex-row md:items-end md:justify-between">
+          <div>
+            <h2 id="help-heading" className="t-headline">
+              Need a hand?
+            </h2>
+            <p className="t-body mt-4 max-w-[46ch]">
+              Questions, bugs, or ideas about any Vyttle app or tool. You&apos;ll hear back from the person who
+              built it.
             </p>
           </div>
-
-          {/* Scroll cue. Centered by flow rather than by `translateX(-50%)`:
-              an animation on the same element replaces the whole `transform`,
-              so the entrance was silently cancelling the centering, and the
-              keyframe's own translateX was accidentally putting it back. That
-              cancellation broke under reduced motion, landing the cue 35px left
-              of centre. Layout, entrance and ambient bob now each own one
-              element, so none can clobber another. */}
-          <div className="absolute bottom-10 left-0 right-0 flex justify-center">
-            <div className="fade-in" style={{ animationDelay: "600ms" }}>
-              <div className="flex flex-col items-center gap-2 animate-scroll-hint">
-                <span
-                  className="text-xs font-normal uppercase"
-                  style={{
-                    fontFamily: "var(--font-dm-sans), DM Sans, sans-serif",
-                    letterSpacing: "3px",
-                    color: "var(--text-tertiary)",
-                  }}
-                >
-                  Explore
-                </span>
-                <div
-                  className="w-px h-8"
-                  style={{
-                    background:
-                      "linear-gradient(to bottom, var(--text-tertiary), transparent)",
-                  }}
-                />
-              </div>
-            </div>
+          <div className="flex flex-wrap gap-3">
+            <Link href="/support" className="btn btn--primary">
+              Contact support
+            </Link>
+            <a href="mailto:support@vyttle.com" className="btn btn--secondary">
+              support@vyttle.com
+            </a>
           </div>
-        </section>
-
-        {/* ==================== BENTO GRID ==================== */}
-        <section
-          id="work"
-          aria-labelledby="work-heading"
-          className="pt-16 md:pt-24 pb-28 md:pb-32 px-6 md:px-12 max-w-[1200px] mx-auto"
-        >
-          <h2 id="work-heading" className="sr-only">
-            Apps and products
-          </h2>
-          <BentoGrid />
-        </section>
-        </main>
-
-        <Footer />
-      </div>
-    </>
+        </div>
+      </section>
+    </main>
   );
 }

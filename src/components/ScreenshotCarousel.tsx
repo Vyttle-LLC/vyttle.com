@@ -3,13 +3,7 @@
 import Image from "next/image";
 import { createPortal } from "react-dom";
 import { useState, useCallback, useEffect, useRef } from "react";
-
-export interface Screenshot {
-  src: string;
-  alt: string;
-  width: number;
-  height: number;
-}
+import type { Screenshot } from "@/lib/apps";
 
 interface ScreenshotCarouselProps {
   screenshots?: Screenshot[];
@@ -70,7 +64,7 @@ export default function ScreenshotCarousel({
     return (
       <>
         <div className="mt-12 w-full">
-          <div className="flex gap-4 justify-start md:justify-center overflow-x-auto snap-x snap-mandatory pb-4 scrollbar-hide" style={{ WebkitOverflowScrolling: "touch" }}>
+          <div className="flex gap-4 justify-start md:justify-center overflow-x-auto snap-x snap-mandatory pb-4 no-scrollbar" style={{ WebkitOverflowScrolling: "touch" }}>
             {screenshots.map((shot) => (
               <div
                 key={shot.src}
@@ -78,7 +72,7 @@ export default function ScreenshotCarousel({
               >
                 <button
                   onClick={(e) => open(shot, e.currentTarget)}
-                  className="cursor-pointer bg-transparent border-none p-0 rounded-3xl focus-visible:[outline:2px_solid_var(--amber-accent)] focus-visible:[outline-offset:3px]"
+                  className="cursor-pointer bg-transparent border-none p-0 rounded-3xl focus-visible:[outline:2px_solid_var(--focus-ring)] focus-visible:[outline-offset:3px]"
                   aria-label={`View full size: ${shot.alt}`}
                 >
                   <Image
@@ -181,7 +175,7 @@ export default function ScreenshotCarousel({
 
   return (
     <div className="mt-12 w-full">
-      <div className="flex gap-4 justify-start md:justify-center overflow-x-auto snap-x snap-mandatory pb-4 scrollbar-hide" style={{ WebkitOverflowScrolling: "touch" }}>
+      <div className="flex gap-4 justify-start md:justify-center overflow-x-auto snap-x snap-mandatory pb-4 no-scrollbar" style={{ WebkitOverflowScrolling: "touch" }}>
         {Array.from({ length: count }, (_, i) => (
           <div
             key={i}
@@ -191,13 +185,12 @@ export default function ScreenshotCarousel({
               className="w-[180px] h-[360px] rounded-3xl flex items-center justify-center"
               style={{
                 border: "1px solid var(--border)",
-                background: "var(--bg-card)",
+                background: "var(--surface-sunk)",
               }}
             >
               <span
                 className="text-[10px] font-light uppercase"
                 style={{
-                  fontFamily: "var(--font-dm-sans), DM Sans, sans-serif",
                   letterSpacing: "2px",
                   color: "var(--text-tertiary)",
                   writingMode: "vertical-rl",
