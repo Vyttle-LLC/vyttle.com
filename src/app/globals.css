@@ -432,6 +432,17 @@ a.stamp:focus-visible {
   color: var(--fog);
 }
 
+/* A scrollable command block's fade mask would clip its own outline, so the
+   plate shows the ring, inset so it stays on ink (amber passes there). */
+.ink-plate pre:focus-visible {
+  outline: none;
+}
+
+.ink-plate:has(> pre:focus-visible) {
+  outline: 2px solid var(--focus-ring);
+  outline-offset: -4px;
+}
+
 /* A command on an ink plate fades at its right edge so the cut reads as scrollable */
 .command-fade {
   -webkit-mask: linear-gradient(90deg, #000 calc(100% - 28px), transparent);

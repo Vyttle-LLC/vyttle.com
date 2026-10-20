@@ -117,10 +117,17 @@ export default function OpenSource({ wiffletree, reviso }: { wiffletree: VyttleA
               <figcaption className="t-label mb-4" style={{ color: "var(--silver)" }}>
                 In Claude Code: install, then review a branch
               </figcaption>
-              <pre className="t-mono command-fade no-scrollbar overflow-x-auto pr-6 leading-7" style={{ fontSize: 13 }}>
+              {/* Focusable so keyboard users can scroll the hidden-scrollbar overflow. */}
+              <pre
+                tabIndex={0}
+                role="region"
+                aria-label="Reviso install commands"
+                className="t-mono command-fade no-scrollbar overflow-x-auto pr-6 leading-7"
+                style={{ fontSize: 13 }}
+              >
                 {REVISO_COMMANDS.map((line) => (
                   <code key={line} className="block whitespace-pre py-0.5">
-                    <span aria-hidden="true" style={{ color: "#22d3ee" }}>
+                    <span aria-hidden="true" style={{ color: reviso.accent }}>
                       ›{" "}
                     </span>
                     {line}
