@@ -42,10 +42,10 @@ export default function PrivacyPage() {
         <p>
           When you submit a message through our support form, we collect your
           name, email address, which app you&apos;re asking about, and your
-          message. Netlify Forms processes and stores submissions, including
-          filtering them for spam. We use your information only to respond to
-          your inquiry, never sell it or share it for marketing, and delete it
-          after your issue is resolved.
+          message. Netlify Forms processes and stores submissions and sends them
+          to Akismet (Automattic) for spam filtering. We use your information
+          only to respond to your inquiry, never sell it or share it for
+          marketing, and delete it after your issue is resolved.
         </p>
 
         <h2>App &amp; Product Privacy</h2>
@@ -65,8 +65,7 @@ export default function PrivacyPage() {
           ))}
         </ul>
         <p>
-          The products listed above have their own privacy policies.
-          For any Vyttle product not listed, this policy applies.
+          For any Vyttle product not listed above, this policy applies.
         </p>
 
         <h2>Hosting</h2>
