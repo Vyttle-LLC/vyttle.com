@@ -186,5 +186,5 @@ Stamps and fields are square-cornered: printed matter has no radius. Perforation
 - Don't put a tracked uppercase eyebrow over every section. Printed stamp labels belong to printed things.
 - Don't use cards with icon + heading + text as page structure; use catalogue rows.
 - Don't use glass, gradients or glows as decoration.
-- Don't use amber inside a product's page except as its postmark; don't use a product accent on Vyttle's own chrome.
+- Don't print amber inside a product's stamp (its field) except as the postmark; don't use a product accent on Vyttle's own chrome.
 - Don't fabricate social proof, prices, ship dates or user counts.
